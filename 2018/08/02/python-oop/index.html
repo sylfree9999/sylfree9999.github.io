@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="concept,python,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="创建类1，类中函数的第一个参数必须是self,它是为了指代它所存在的类2，构造函数用init表示 #创建类 class Foo:      name = &amp;#39;Jan&amp;#39;     #类里面的函数,类中第一个参数必须是self，指代本类的东西     def bar(self):         pass      def hello(self, name):         print(">
+<meta name="keywords" content="concept,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-oop">
+<meta property="og:url" content="http://yoursite.com/2018/08/02/python-oop/index.html">
+<meta property="og:site_name" content="Drill Learning">
+<meta property="og:description" content="创建类1，类中函数的第一个参数必须是self,它是为了指代它所存在的类2，构造函数用init表示 #创建类 class Foo:      name = &amp;#39;Jan&amp;#39;     #类里面的函数,类中第一个参数必须是self，指代本类的东西     def bar(self):         pass      def hello(self, name):         print(">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-08T08:43:47.839Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python-oop">
+<meta name="twitter:description" content="创建类1，类中函数的第一个参数必须是self,它是为了指代它所存在的类2，构造函数用init表示 #创建类 class Foo:      name = &amp;#39;Jan&amp;#39;     #类里面的函数,类中第一个参数必须是self，指代本类的东西     def bar(self):         pass      def hello(self, name):         print(">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/02/python-oop/">
+
+
+
+
+
+  <title>python-oop | Drill Learning</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Drill Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Spence</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/02/python-oop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python-oop</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-02T16:40:55+08:00">
+                2018-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h2><p>1，类中函数的第一个参数必须是self,它是为了指代它所存在的类<br>2，构造函数用<strong>init</strong>表示</p>
+<pre><code class="python">#创建类
+class Foo:
+
+    name = &#39;Jan&#39;
+    #类里面的函数,类中第一个参数必须是self，指代本类的东西
+    def bar(self):
+        pass
+
+    def hello(self, name):
+        print(&#39;self name {0}&#39;.format(self.name)) #指Jan
+        print(&#39;I am {0}&#39;.format(name))
+
+    def __init__(self): #其职责就是在模型创建初期完成一些动作
+        self.name = &quot;Jan2&quot;
+
+obj=Foo()
+obj.bar()
+obj.hello(&#39;july&#39;)
+
+obj1 = Foo()
+obj2 = Foo()
+</code></pre>
+<h2 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h2><p>1，直接在构造函数中用self.xx赋值会导致xx外界也能访问<br>2，<code>self.__name = name</code>,这样写就是告诉python <code>__name</code>不能被外界访问<br>3，如果既要保证安全，又要能被外部更改呢？用getter+setter<br>4，python中，如果变量名类似<code>__x__</code>,以双下划线开头和结尾的，是特殊变量，特殊变量可以直接访问，不是private变量<br>5，如果变量名是以一个下划线开头的<code>_x</code>，这样的实例变量外部是可以访问的，但是按照约定俗称的规定，这类变量<strong>虽然可以访问，但是请视为私有变量，不要随意访问</strong></p>
+<pre><code class="python">class Student:
+    def __init__(self,name,age):
+        self.name = name #用self赋值在类中别的方法也能直接访问的到
+        self.age = age
+        self.__name = name
+        self.__age = age
+
+    def detail(self):
+        print(self.name)
+        print(self.age)
+        print(self.__name)
+        print(self.__age)
+
+    def get_name(self):
+        return self.__name
+
+    def set_name(self,name):
+        self.__name = name
+
+LiLei = Student(&#39;LiLei&#39;,12)
+LiLei.age = 20 #外界可以更改，访问age
+Lilei.__age = 20 #不能被更改
+</code></pre>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><pre><code class="python">class PrimaryStudent(Student):
+    def lol(self):
+        print(&quot;lalalala&quot;)
+
+class CollegeStudent(Student):
+    #这里改写了父类的构造函数
+    def __init__(self,name,age,gender):
+        self.__name = name
+        self.__age = age
+        self.__gender = gender
+
+    def gender_detail(self):
+        print(self.__gender)
+
+obj1 = PrimaryStudent(&#39;向往&#39;,7)
+obj1.lol()
+obj1.detail()#继承爸爸的方法
+</code></pre>
+<h2 id="python-类属性和实例属性"><a href="#python-类属性和实例属性" class="headerlink" title="python 类属性和实例属性"></a>python 类属性和实例属性</h2><pre><code class="python">class A():
+    a = 10
+# scenario1
+obj1 = A()
+obj2 = A()
+print(obj1.a,obj2.a,A.a)
+
+# scenario2
+obj1.a += 2
+print(obj1.a,obj2.a,A.a)
+
+# scenario3
+A.a += 3
+print(obj1.a,obj2.a,A.a)
+</code></pre>
+<p>情形1的结果是：<code>10 10 10</code>；<br>情形2的结果是：<code>12 10 10</code>；<br>情形3的结果是：<code>12 13 13</code>；</p>
+<p><strong>为什么呢？</strong><br>在python中， <code>A</code>属于类对象，<code>obj1</code>属于实例对象，从对象的角度上来说，<code>A</code>与<code>obj1</code>是两个无关的对象，但是，Python通过下面的查找树建立了对象<code>A</code>与实例对象<code>obj1</code>,<code>obj2</code>之间的关系</p>
+<pre><code>        A
+        |
+    ---------
+    |        |
+    obj1    obj2    
+</code></pre><p>当调用<code>A.a</code>的时候，直接从<code>A</code>获取属性<code>a</code><br>在scenario1中调用<code>obj1.a</code>,python按照从<code>obj1</code>到<code>A</code>的顺序自下到上查找属性<code>a</code><br>注意的是<strong>在这个时候，<code>obj1</code>是没有属性<code>a</code>的</strong>，所以python到Class <code>A</code>中找，找到并返回</p>
+<p>在scenario2中<code>obj1.a += 2</code>包含了<strong>属性获取以及属性设置</strong>两个操作<br>属性的获取和上面一样，按照查找规则进行，即这个时候找到了类<code>A</code>的属性<code>a</code><br>但是当进行属性的设置时，<strong><code>obj1</code>这个实例对象没有属性<code>a</code>，因此会自身动态添加一个属性<code>a</code></strong><br>自此，类<code>A</code>和实例<code>obj1</code>都有自己的一个属性</p>
+<p>那么，在scenario3中，再次调用<code>obj1.a</code>的时候，按照<strong>就近原则</strong>，找到的时实例对象的<code>a</code>，所以返回12，对于<code>obj2.a</code>由于一开始没有自己的实例对象<code>a</code>,所以返回的时类<code>A</code>的<code>a</code>，也就是13</p>
+<p>可以验证，如果手动删除<code>obj1.a</code>，那么当再次调用<code>obj1.a</code>的时候，返回的会是13</p>
+<pre><code class="python">del obj1.a
+print(obj1.a)
+</code></pre>
+<h2 id="python-装饰器"><a href="#python-装饰器" class="headerlink" title="python 装饰器"></a>python 装饰器</h2><p>1，主要用于AOP<br>2，简单版，等同于<code>use_logging(foo())</code></p>
+<pre><code class="python">def use_logging(func):
+
+    def wrapper():
+        logging.warn(&quot;%s is running&quot; % func.__name__)
+        return func()
+    return wrapper
+
+@use_logging
+def foo():
+    print(&quot;i am foo&quot;)
+
+foo()
+</code></pre>
+<p>3，带业务函数参数*args,**kwargs</p>
+<pre><code class="python">def wrapper(*args, **kwargs):
+        logging.warn(&quot;%s is running&quot; % func.__name__)
+        return func(*args, **kwargs)
+    return wrapper
+</code></pre>
+<p>4，装饰器本身带参数<br>这种写法本质上就是把原本real_decorator这个装饰器再在外面包一层装饰器</p>
+<pre><code class="python">def makeHtmlTag(tag,*args,**kwds):
+    def real_decorator(fn):
+        css_class = &quot; class &#39;{0}&#39;&quot;.format(kwds[&quot;css_class&quot;]) if &quot;css_class&quot; in kwds else &quot;&quot;
+
+        def wrapped(*args, **kwds):
+            return &quot;&lt;&quot;+tag+css_class+&quot;&gt;&quot;+fn(*args,**kwds)+&quot;&lt;/&quot;+tag+&quot;&gt;&quot;
+        return wrapped
+    return real_decorator
+
+@makeHtmlTag(tag=&quot;b&quot;, css_class=&quot;bold_css&quot;)
+@makeHtmlTag(tag=&quot;i&quot;, css_class=&quot;italic_css&quot;)
+def hello(*s,**kwds):
+    return &quot;hello world!{0}{1}&quot;.format(s,kwds)
+
+print(hello(&#39;spencer&#39;,&#39;shao&#39;,name=&quot;ss&quot;,surname=&quot;shao&quot;))
+#结果为：&lt;b class &#39;bold_css&#39;&gt;&lt;i class &#39;italic_css&#39;&gt;hello world!(&#39;spencer&#39;, &#39;shao&#39;){&#39;name&#39;: &#39;ss&#39;, &#39;surname&#39;: &#39;shao&#39;}&lt;/i&gt;&lt;/b&gt;
+</code></pre>
+<p>5，类装饰器<br>注意，这里调用顺序会先是decorator的init函数，</p>
+<pre><code class="python">class makeHtmlTagClass(object):
+    def __init__(self, tag, css_class=&quot;&quot;):
+        print(&quot;inside makeHtmlTagDecorator.__init.__()&quot;)
+        self._tag = tag
+        self._css_class = &quot; class &#39;{0}&#39;&quot;.format(css_class) if css_class != &quot;&quot; else &quot;&quot;
+
+    def __call__(self, fn):
+        def wrapped(*args, **kwargs):
+            print(&quot;inside makeHtmlTagDecorator.__call__()&quot;)
+            return &quot;&lt;&quot;+self._tag+self._css_class+&quot;&gt;&quot;+fn(*args,**kwargs)+&quot;&lt;/&quot;+self._tag+&quot;&gt;&quot;
+        return wrapped
+
+
+@makeHtmlTagClass(tag=&quot;b&quot;, css_class=&quot;bold_css&quot;)
+@makeHtmlTagClass(tag=&quot;i&quot;, css_class=&quot;italic_css&quot;)
+def hello(name):
+    return &quot;Hello, {}&quot;.format(name)
+print(&quot;Finished decorating hello()&quot;)
+
+print(hello(&quot;Baby&quot;))
+
+#输出结果顺序为：
+#inside makeHtmlTagDecorator.__init.__()
+#inside makeHtmlTagDecorator.__init.__()
+#Finished decorating hello()
+#inside makeHtmlTagDecorator.__call__()
+#inside makeHtmlTagDecorator.__call__()
+#&lt;b class &#39;bold_css&#39;&gt;&lt;i class &#39;italic_css&#39;&gt;Hello, Baby&lt;/i&gt;&lt;/b&gt;
+
+</code></pre>
+<p>6，装饰器副作用<br>原本的函数变成了一个wrapper函数，所以会丢失原本函数的一些元信息，比方说<strong>name</strong>, __doc__之类<br>这个时候可以用Python的functools</p>
+<pre><code class="python">from functools import wraps
+def hello(fn):
+    @wraps(fn)
+    def wrapper():
+        print(&quot;Hi,{0}&quot;.format(fn.__name__))
+        fn()
+        print(&quot;Bye,{0}&quot;.format(fn.__name__))
+    return wrapper
+
+@hello
+def foo():
+    print(&quot;Foo&quot;)
+
+foo()
+</code></pre>
+<h2 id="slots"><a href="#slots" class="headerlink" title="slots"></a><strong>slots</strong></h2><p>1，可以限制class实例能够添加哪些属性<br>2，__slots__只对当前类的实力起作用，对继承的子类不求作用</p>
+<h2 id="property"><a href="#property" class="headerlink" title="property"></a>property</h2><h2 id="类的特殊方法和定制"><a href="#类的特殊方法和定制" class="headerlink" title="类的特殊方法和定制"></a>类的特殊方法和定制</h2><h3 id="str"><a href="#str" class="headerlink" title="str"></a><strong>str</strong></h3><p>1，返回用户看到的字符串<br>2，convert an object to a string<br>3，与toString()十分类似，也可以override这个方法</p>
+<pre><code class="python">class MyClass:
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return &quot;Hello&quot; + self.name
+
+print(MyClass(&#39;Tome&#39;)) # Hello Tome 
+# 如果没有def __str__，则默认打印的是&lt;__main__.MyClass object at 0x109afb190&gt;
+</code></pre>
+<h3 id="str-与repr"><a href="#str-与repr" class="headerlink" title="str()与repr()"></a>str()与repr()</h3><p>1，Example of str()</p>
+<pre><code class="python">s = &#39;Hello, Geeks.&#39;
+print str(s)
+print str(2.0/11.0)
+</code></pre>
+<p>output:</p>
+<pre><code>Hello, Geeks.
+0.181818181818
+</code></pre><p>2，Example of repr()</p>
+<pre><code class="python">s = &#39;Hello, Geeks.&#39;
+print repr(s)
+print repr(2.0/11.0)
+</code></pre>
+<p>output:</p>
+<pre><code>&#39;Hello, Geeks.&#39;
+0.18181818181818182
+</code></pre><p>3，Difference:<br>    <strong> str() is used for creating output for end users/ repr() is mainly used for debugging and development
+    </strong> repr() shows a representation that has all information about the object/ str() is sued to show a representation that is useful for printing the object<br>    ** Both of them can be overriden for any class and there are minor differences.If both are defined, function defined in <strong>str</strong> is used.</p>
+<h3 id="iter"><a href="#iter" class="headerlink" title="iter"></a><strong>iter</strong></h3><p>1，如果一个类想要被用于<code>for ... in</code>循环，就必须实现一个<code>__iter__()</code>方法，该方法返回一个迭代对象，在<code>def __iter__(self)</code>里实力本身就是迭代对象，所以返回自己<code>self</code>即可，主要是在<code>__next__</code>里面写逻辑，知道遇到<code>StopIteration</code>错误时退出循环</p>
+<pre><code class="python">class Fib100:
+    def __init__(self):
+        self._1, self._2 = 0, 1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self._1, self._2 = self._2, self._1 + self._2
+        if self._1 &gt; 100:
+            raise StopIteration()
+        return self._1
+
+for i in Fib100():
+    print(i)
+</code></pre>
+<h3 id="getitem"><a href="#getitem" class="headerlink" title="getitem"></a><strong>getitem</strong></h3><p>1，如果想实现下标访问，就需要实现<code>__getitem__</code></p>
+<pre><code class="python">class Fib(object):
+    def __getitem__(self, n):
+        a, b = 1, 1
+        for x in range(n):
+            a, b = b, a + b
+        return a
+
+f = Fib()
+f[0]
+</code></pre>
+<h3 id="call"><a href="#call" class="headerlink" title="call"></a><strong>call</strong></h3><pre><code class="python">class MyClass:
+    def __call__(self):
+        print(&quot;U can call cls() directly&quot;)
+
+cls = MyClass()
+cls()
+
+print(callable(cls))
+print(callable(max))
+</code></pre>
+<h2 id="元类MetaClass"><a href="#元类MetaClass" class="headerlink" title="元类MetaClass"></a>元类MetaClass</h2><p>1，python是动态语言，是在运行时编译的<br>2，用<code>type</code>动态生成一个类,第二个参数是继承自什么，一定要显式写成元组类型</p>
+<pre><code class="python">def init(self, name):
+    self.name = name
+
+def say_hello(self):
+    print(&#39;Hello {0}&#39;.format(self.name))
+
+Hello = type(&#39;Hello&#39;,(object, ), dict(__init__ = init, hello = say_hello))
+
+h = Hello(&#39;Tom&#39;)
+h.hello()
+</code></pre>
+<p>3，metaclass就是为了控制类的创建过程，就是告诉用户我这个class有哪些方法，存在attrs的表里面，attrs就是函数和方法的一个表</p>
+<pre><code class="python">def add(self, value):
+    self.append(value)
+
+class ListMetaClass(type):
+    def __new__(cls, name, bases, attrs):
+        attrs[&#39;add&#39;] = add
+        attrs[&#39;name&#39;] = &#39;Jerry&#39;
+        return type.__new__(cls, name, bases, attrs)
+
+class MyList(list, metaclass = ListMetaClass):
+    pass
+
+mli = MyList()
+mli.add(1)
+mli.add(2)
+
+print(mli.name) # Jerry
+print(mli) # [1,2]
+
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/concept/" rel="tag"># concept</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/31/python-basics/" rel="next" title="python-basics">
+                <i class="fa fa-chevron-left"></i> python-basics
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/03/python-file/" rel="prev" title="python-file">
+                python-file <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Spence">
+          <p class="site-author-name" itemprop="name">Spence</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建类"><span class="nav-number">1.</span> <span class="nav-text">创建类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问限制"><span class="nav-number">2.</span> <span class="nav-text">访问限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">3.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-类属性和实例属性"><span class="nav-number">4.</span> <span class="nav-text">python 类属性和实例属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-装饰器"><span class="nav-number">5.</span> <span class="nav-text">python 装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slots"><span class="nav-number">6.</span> <span class="nav-text">slots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#property"><span class="nav-number">7.</span> <span class="nav-text">property</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的特殊方法和定制"><span class="nav-number">8.</span> <span class="nav-text">类的特殊方法和定制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#str"><span class="nav-number">8.1.</span> <span class="nav-text">str</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#str-与repr"><span class="nav-number">8.2.</span> <span class="nav-text">str()与repr()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iter"><span class="nav-number">8.3.</span> <span class="nav-text">iter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getitem"><span class="nav-number">8.4.</span> <span class="nav-text">getitem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call"><span class="nav-number">8.5.</span> <span class="nav-text">call</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元类MetaClass"><span class="nav-number">9.</span> <span class="nav-text">元类MetaClass</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Spence</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

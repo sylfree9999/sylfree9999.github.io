@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="concept,.NET,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="声明public delegate string WithReturnWithPara(int x, int y);没有方法体的方法声明+delegate 委托其实就是MulticastDelegate的一个子类，是一个类！  public delegate void NoReturnNoPara(); public delegate void NoReturnWithPara(int x, in">
+<meta name="keywords" content="concept,.NET">
+<meta property="og:type" content="article">
+<meta property="og:title" content="net-delegate">
+<meta property="og:url" content="http://yoursite.com/2018/06/22/net-delegate/index.html">
+<meta property="og:site_name" content="Drill Learning">
+<meta property="og:description" content="声明public delegate string WithReturnWithPara(int x, int y);没有方法体的方法声明+delegate 委托其实就是MulticastDelegate的一个子类，是一个类！  public delegate void NoReturnNoPara(); public delegate void NoReturnWithPara(int x, in">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-08T08:43:47.823Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="net-delegate">
+<meta name="twitter:description" content="声明public delegate string WithReturnWithPara(int x, int y);没有方法体的方法声明+delegate 委托其实就是MulticastDelegate的一个子类，是一个类！  public delegate void NoReturnNoPara(); public delegate void NoReturnWithPara(int x, in">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/22/net-delegate/">
+
+
+
+
+
+  <title>net-delegate | Drill Learning</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Drill Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Spence</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/22/net-delegate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">net-delegate</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-22T16:39:17+08:00">
+                2018-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p><code>public delegate string WithReturnWithPara(int x, int y);</code>没有方法体的方法声明+delegate</p>
+<p>委托其实就是MulticastDelegate的一个<strong>子类</strong>，是一个<strong>类</strong>！</p>
+<pre><code class="c#">
+public delegate void NoReturnNoPara();
+public delegate void NoReturnWithPara(int x, int y);
+public delegate int WithReturnNoPara();
+public delegate void GenericDelegate(T x); //泛型委托
+
+public void Show()
+{
+    {
+        //2. 实例化委托，要求传入的签名一致的方法
+        NoReturnNoPara method = new NoReturnNoPara(this.DoNothing);
+        //3. 委托实例的调用，参数和委托声明的时候参数一致
+        method.Invoke();
+        //4. 与上面的Invoke效果是一样的
+        method();
+    }
+    {
+        NoReturnWithPara method = new NoReturnWithPara(this.DoNothingWithPara);
+        method.Invoke(1,2);
+    }
+    {
+        WithReturnNoPara method = new WithReturnNoPara(this.GetNothing);
+        int iResult = method.Invoke();
+    }
+
+}
+
+private void DoNothing()
+{
+    Console.WriteLine(&quot;This is DoNothing&quot;);
+}
+
+private void DoNothingWithPara(int x, int y)
+{
+
+}
+
+private int GetNothing()
+{
+    return 1;
+}
+</code></pre>
+<p>##.NET自带的一些委托类型</p>
+<p>####Action -&gt; 无返回值的委托</p>
+<pre><code class="c#">Action act = new Action(this.DoNothing);
+Action&lt;int,string,int,string&gt; act2 = null;
+</code></pre>
+<p>####Func -&gt; 带返回值的泛型委托，注意，最后一个泛型类型代表返回类型</p>
+<pre><code class="c#">Func&lt;int&gt; fun1 = new Func&lt;int&gt;(this.GetNothing);//返回一个int类型
+Func&lt;int,string&gt; fun2 = null; //接受一个int类型的参数，返回类型为string
+</code></pre>
+<p>####多播委托 -&gt;<br>+=表示向一个委托实例里面添加多个方法，形成方法链，invoke的时候按添加顺序执行<br>-=表示向一个委托实例里面移除方法，从方法链尾部开始匹配，遇到第一个完全吻合的，移除且只移除一个；没有匹配的不报错</p>
+<p><strong>如果是用lambda表达式来定义方法，那么永远都无法-=，因为编译器碰到lambda表达式，会自动生成一个委托，都是不同的实例</strong></p>
+<p><strong>多播委托<span style="color: red">不适用于带返回值的委托</span>&gt;带返回值的委托，因为到后面只会拿最后一个委托的返回值</strong></p>
+<pre><code class="c#">Action act = new Action(this.DoNothing);
+act += this.DoNothing;
+act += this.DoNothingStatic;
+act += new OtherClass().DoNothing;
+
+//act.BeginInvoke(null, null);//不能调用，因为不知道里面这么多实例应该按照什么顺序去执行
+foreach(Action item in act.GetInvocationList())
+{
+    item.BeginInvoke(null,null);
+}
+
+act -= this.DoNothing;
+act -= this.DoNothingStatic;
+act -= new OtherClass().DoNothing; //你会发现这个方法没有被移除，原因是上面的act += new OtherClass()与这个是两个实例，不是同一个，所以没有移除
+
+</code></pre>
+<p>##委托的使用</p>
+<pre><code class="c#">private static List&lt;Student&gt; Where(List&lt;Student&gt; studentList, Func&lt;Student, bool&gt; func)
+{
+    list&lt;Student&gt; resultList = new List&lt;Student&gt;();
+    foreach(var student in studentList)
+    {
+        if(func.invoke(student))
+        {
+            resultList.Add(student);
+        }
+    }
+}
+//caller
+private static bool Equals(Student)
+{
+    return student.ClassId == 1;
+} 
+
+Func&lt;Student,bool&gt; func = new Func&lt;Student,bool&gt;(Equals);
+var list = Where(studentList, func);
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/concept/" rel="tag"># concept</a>
+          
+            <a href="/tags/NET/" rel="tag"># .NET</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/22/net-oo/" rel="next" title="net-oo">
+                <i class="fa fa-chevron-left"></i> net-oo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/25/net-EventIOSerialize/" rel="prev" title="net-EventIOSerialize">
+                net-EventIOSerialize <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Spence">
+          <p class="site-author-name" itemprop="name">Spence</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明"><span class="nav-number">1.</span> <span class="nav-text">声明</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Spence</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

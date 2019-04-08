@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="practice,LXD,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="ENV: UBUNTU Add a non root useradduser lxduser usermod -aG sudo lxduser ##disable password authentication sudo nano /etc/ssh/sshd_config PasswordAuthentication no sudo systemctl reload sshd">
+<meta name="keywords" content="practice,LXD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lxd-ubuntu">
+<meta property="og:url" content="http://yoursite.com/2018/07/02/lxd-ubuntu/index.html">
+<meta property="og:site_name" content="Drill Learning">
+<meta property="og:description" content="ENV: UBUNTU Add a non root useradduser lxduser usermod -aG sudo lxduser ##disable password authentication sudo nano /etc/ssh/sshd_config PasswordAuthentication no sudo systemctl reload sshd">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-08T08:43:47.808Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lxd-ubuntu">
+<meta name="twitter:description" content="ENV: UBUNTU Add a non root useradduser lxduser usermod -aG sudo lxduser ##disable password authentication sudo nano /etc/ssh/sshd_config PasswordAuthentication no sudo systemctl reload sshd">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/02/lxd-ubuntu/">
+
+
+
+
+
+  <title>lxd-ubuntu | Drill Learning</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Drill Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Spence</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/02/lxd-ubuntu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">lxd-ubuntu</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-02T15:20:41+08:00">
+                2018-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>ENV: UBUNTU</p>
+<h2 id="Add-a-non-root-user"><a href="#Add-a-non-root-user" class="headerlink" title="Add a non root user"></a>Add a non root user</h2><pre><code class="shell">adduser lxduser
+usermod -aG sudo lxduser
+##disable password authentication
+sudo nano /etc/ssh/sshd_config
+PasswordAuthentication no
+sudo systemctl reload sshd
+</code></pre>
+<a id="more"></a>
+<h2 id="Configure-LXD"><a href="#Configure-LXD" class="headerlink" title="Configure LXD"></a>Configure LXD</h2><pre><code class="shell">sudo usermod --append --groups lxd lxduser
+sudo apt-get update
+sudo apt-get install zfsutils-linux
+sudo lxd init
+Do you want to configure a new storage pool (yes/no) [default=yes]? yes
+Name of the storage backend to use (dir or zfs) [default=zfs]: zfs
+Create a new ZFS pool (yes/no) [default=yes]? yes
+Name of the new ZFS pool [default=lxd]: lxd
+Would you like to use an existing block device (yes/no) [default=no]?
+Would you like to use an existing block device (yes/no) [default=no]? no
+Size in GB of the new loop device (1GB minimum) [default=15]: 15
+Would you like LXD to be available over the network (yes/no) [default=no]? no
+Do you want to configure the LXD bridge (yes/no) [default=yes]? yes
+
+</code></pre>
+<h2 id="Create-Container"><a href="#Create-Container" class="headerlink" title="Create Container"></a>Create Container</h2><pre><code class="shell">lxc list
+Generating a client certificate. This may take a minute...
+If this is your first time using LXD, you should also run: sudo lxd init
+To start your first container, try: lxc launch ubuntu:16.04
+
++------+-------+------+------+------+-----------+
+| NAME | STATE | IPV4 | IPV6 | TYPE | SNAPSHOTS |
++------+-------+------+------+------+-----------+
+
+lxc launch ubuntu:x webserver
+
+##The x in ubuntu:x is a shortcut for the first letter of Xenial, the codename of Ubuntu 16.04. ubuntu: is the identifier for the preconfigured repository of LXD images. You could also use ubuntu:16.04 for the image name.
+
+</code></pre>
+<h2 id="Configure-Container"><a href="#Configure-Container" class="headerlink" title="Configure Container"></a>Configure Container</h2><pre><code class="shell">lxc exec webserver -- sudo --login --user ubuntu
+</code></pre>
+<h2 id="Ubuntu-Nginx-AutoStart"><a href="#Ubuntu-Nginx-AutoStart" class="headerlink" title="Ubuntu Nginx AutoStart"></a>Ubuntu Nginx AutoStart</h2><p>[<a href="https://community.rackspace.com/products/f/public-cloud-forum/6747/ubuntu-and-debian---adding-an-nginx-init-script]" target="_blank" rel="noopener">https://community.rackspace.com/products/f/public-cloud-forum/6747/ubuntu-and-debian---adding-an-nginx-init-script]</a></p>
+<pre><code>sudo nano /etc/init.d/nginx
+</code></pre><p>Add those, <strong>spotted: ADD YOUR NGINX INSTALLATION PATH INTO $PATH</strong></p>
+<pre><code>#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:          nginx
+# Required-Start:    $all
+# Required-Stop:     $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts the nginx web server
+# Description:       starts nginx using start-stop-daemon
+### END INIT INFO
+
+PATH=/usr/local/nginx/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/usr/local/nginx/sbin
+NAME=nginx
+DESC=nginx
+
+test -x $DAEMON || exit 0
+
+# Include nginx defaults if available
+if [ -f /etc/default/nginx ] ; then
+    . /etc/default/nginx
+fi
+
+set -e
+
+. /lib/lsb/init-functions
+
+case &quot;$1&quot; in
+  start)
+    echo -n &quot;Starting $DESC: &quot;
+    start-stop-daemon --start --quiet --pidfile /usr/local/nginx/logs/$NAME.pid \
+        --exec $DAEMON -- $DAEMON_OPTS || true
+    echo &quot;$NAME.&quot;
+    ;;
+  stop)
+    echo -n &quot;Stopping $DESC: &quot;
+    start-stop-daemon --stop --quiet --pidfile /usr/local/nginx/logs/$NAME.pid \
+        --exec $DAEMON || true
+    echo &quot;$NAME.&quot;
+    ;;
+  restart|force-reload)
+    echo -n &quot;Restarting $DESC: &quot;
+    start-stop-daemon --stop --quiet --pidfile \
+        /usr/local/nginx/logs/$NAME.pid --exec $DAEMON || true
+    sleep 1
+    start-stop-daemon --start --quiet --pidfile \
+        /usr/local/nginx/logs/$NAME.pid --exec $DAEMON -- $DAEMON_OPTS || true
+    echo &quot;$NAME.&quot;
+    ;;
+  reload)
+      echo -n &quot;Reloading $DESC configuration: &quot;
+      start-stop-daemon --stop --signal HUP --quiet --pidfile /usr/local/nginx/logs/$NAME.pid \
+          --exec $DAEMON || true
+      echo &quot;$NAME.&quot;
+      ;;
+  status)
+      status_of_proc -p /usr/local/nginx/logs/$NAME.pid &quot;$DAEMON&quot; nginx &amp;&amp; exit 0 || exit $?
+      ;;
+  *)
+    N=/etc/init.d/$NAME
+    echo &quot;Usage: $N {start|stop|restart|reload|force-reload|status}&quot; &gt;&amp;2
+    exit 1
+    ;;
+esac
+
+exit 0
+</code></pre><pre><code>sudo chmod +x /etc/init.d/nginx
+sudo /usr/sbin/update-rc.d -f nginx defaults
+</code></pre><p>The output will be similar to this:</p>
+<pre><code>Adding system startup for /etc/init.d/nginx ...
+ Adding system startup for /etc/init.d/nginx ...
+   /etc/rc0.d/K20nginx -&gt; ../init.d/nginx
+   /etc/rc1.d/K20nginx -&gt; ../init.d/nginx
+   /etc/rc6.d/K20nginx -&gt; ../init.d/nginx
+   /etc/rc2.d/S20nginx -&gt; ../init.d/nginx
+   /etc/rc3.d/S20nginx -&gt; ../init.d/nginx
+   /etc/rc4.d/S20nginx -&gt; ../init.d/nginx
+   /etc/rc5.d/S20nginx -&gt; ../init.d/nginx
+</code></pre><p>Then start/stop/restart</p>
+<pre><code>sudo /etc/init.d/nginx start
+...
+sudo /etc/init.d/nginx stop
+...
+sudo /etc/init.d/nginx restart
+</code></pre><h2 id="Reset-timezone"><a href="#Reset-timezone" class="headerlink" title="Reset timezone"></a>Reset timezone</h2><pre><code>sudo dpkg-reconfigure tzdata
+</code></pre><h2 id="Rename-Container"><a href="#Rename-Container" class="headerlink" title="Rename Container"></a>Rename Container</h2><p>1,    Login to the container</p>
+<pre><code>```
+sudo -s
+hostname newName
+echo newName &gt; /etc/hostname
+bash
+reboot
+exit
+```
+</code></pre><p>2,    Return to the host</p>
+<pre><code>```
+sudo -s
+lxc stop oldName
+lxc move oldName newName
+lxc start newName
+lxc list
+```
+</code></pre><h2 id="Copy-Container"><a href="#Copy-Container" class="headerlink" title="Copy Container"></a>Copy Container</h2><pre><code>lxc copy old1 new1
+lxc start new1
+</code></pre><h2 id="Add-Swap-Space"><a href="#Add-Swap-Space" class="headerlink" title="Add Swap Space"></a>Add Swap Space</h2><p>[<a href="https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04]" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04]</a></p>
+<h4 id="Check-system-for-swap-information"><a href="#Check-system-for-swap-information" class="headerlink" title="Check system for swap information"></a>Check system for swap information</h4><pre><code>sudo swapon --show
+</code></pre><p>If you don’t get back any output, this means your system does not have swap space available currently.</p>
+<p>You can verify that there is no active swap using the free utility:</p>
+<pre><code>free -h
+</code></pre><pre><code>Output
+              total        used        free      shared  buff/cache   available
+Mem:           488M         36M        104M        652K        348M        426M
+Swap:            0B          0B          0B
+</code></pre><h4 id="Check-Available-Space-on-the-Hard-Drive-Partition"><a href="#Check-Available-Space-on-the-Hard-Drive-Partition" class="headerlink" title="Check Available Space on the Hard Drive Partition"></a>Check Available Space on the Hard Drive Partition</h4><p>The most common way of allocating space for swap is to use a separate partition devoted to the task. However, altering the partitioning scheme is not always possible. We can just as easily create a swap file that resides on an existing partition.</p>
+<p>Before we do this, we should check the current disk usage by typing:</p>
+<pre><code>df -h
+</code></pre><pre><code>Output
+Filesystem      Size  Used Avail Use% Mounted on
+udev            238M     0  238M   0% /dev
+tmpfs            49M  624K   49M   2% /run
+/dev/vda1        20G  1.1G   18G   6% /
+tmpfs           245M     0  245M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           245M     0  245M   0% /sys/fs/cgroup
+tmpfs            49M     0   49M   0% /run/user/1001
+</code></pre><h4 id="Create-a-Swap-File"><a href="#Create-a-Swap-File" class="headerlink" title="Create a Swap File"></a>Create a Swap File</h4><p>Now that we know our available hard drive space, we can go about creating a swap file within our filesystem. We will create a file of the swap size that we want called swapfile in our root (/) directory.</p>
+<p>The best way of creating a swap file is with the fallocate program. This command creates a file of a preallocated size instantly.</p>
+<p>Since the server in our example has 512MB of RAM, we will create a 1 Gigabyte file in this guide. Adjust this to meet the needs of your own server:</p>
+<pre><code>sudo fallocate -l 1G /swapfile
+</code></pre><p>We can verify that the correct amount of space was reserved by typing:</p>
+<pre><code>ls -lh /swapfile
+</code></pre><pre><code>-rw-r--r-- 1 root root 1.0G Apr 25 11:14 /swapfile
+</code></pre><h4 id="Enabling-the-Swap-File"><a href="#Enabling-the-Swap-File" class="headerlink" title="Enabling the Swap File"></a>Enabling the Swap File</h4><p>Now that we have a file of the correct size available, we need to actually turn this into swap space.</p>
+<p>First, we need to lock down the permissions of the file so that only the users with root privileges can read the contents. This prevents normal users from being able to access the file, which would have significant security implications.</p>
+<p>Make the file only accessible to root by typing:</p>
+<pre><code>sudo chmod 600 /swapfile
+</code></pre><p>We can now mark the file as swap space by typing:</p>
+<pre><code>sudo mkswap /swapfile
+</code></pre><pre><code>Setting up swapspace version 1, size = 1024 MiB (1073737728 bytes)
+no label, UUID=6e965805-2ab9-450f-aed6-577e74089dbf
+</code></pre><p>After marking the file, we can enable the swap file, allowing our system to start utilizing it:</p>
+<pre><code>sudo swapon /swapfile
+</code></pre><p>We can verify that the swap is available by typing:</p>
+<pre><code>sudo swapon --show
+</code></pre><pre><code>Output
+NAME      TYPE  SIZE USED PRIO
+/swapfile file 1024M   0B   -1
+</code></pre><h4 id="Make-the-swap-file-permanant"><a href="#Make-the-swap-file-permanant" class="headerlink" title="Make the swap file permanant"></a>Make the swap file permanant</h4><p>Our recent changes have enabled the swap file for the current session. However, if we reboot, the server will not retain the swap settings automatically. We can change this by adding the swap file to our <code>/etc/fstab</code>file.</p>
+<pre><code>sudo cp /etc/fstab /etc/fstab.bak
+echo &#39;/swapfile none swap sw 0 0&#39; | sudo tee -a /etc/fstab
+</code></pre><h4 id="Adjusting-the-Swappiness-Property"><a href="#Adjusting-the-Swappiness-Property" class="headerlink" title="Adjusting the Swappiness Property"></a>Adjusting the Swappiness Property</h4><p>The swappiness parameter configures how often your system swaps data out of RAM to the swap space. This is a value between 0 and 100 that represents a percentage.</p>
+<p>With values close to zero, the kernel will not swap data to the disk unless absolutely necessary. Remember, interactions with the swap file are “expensive” in that they take a lot longer than interactions with RAM and they can cause a significant reduction in performance. Telling the system not to rely on the swap much will generally make your system faster.</p>
+<p>Values that are closer to 100 will try to put more data into swap in an effort to keep more RAM space free. Depending on your applications’ memory profile or what you are using your server for, this might be better in some cases.</p>
+<pre><code>cat /proc/sys/vm/swappiness
+</code></pre><pre><code>Output
+60
+</code></pre><p>For a Desktop, a swappiness setting of 60 is not a bad value. For a server, you might want to move it closer to 0.</p>
+<p>We can set the swappiness to a different value by using the sysctl command.</p>
+<p>For instance, to set the swappiness to 10, we could type:</p>
+<pre><code>sudo sysctl vm.swappiness=10
+</code></pre><pre><code>Output
+vm.swappiness = 10
+</code></pre><p>This setting will persist until the next reboot. We can set this value automatically at restart by adding the line to our /etc/sysctl.conf file:</p>
+<pre><code>sudo nano /etc/sysctl.conf
+</code></pre><p>At the bottom, you can add:</p>
+<pre><code>vm.swappiness=10
+</code></pre><h4 id="Adjusting-the-Cache-Pressure-Setting"><a href="#Adjusting-the-Cache-Pressure-Setting" class="headerlink" title="Adjusting the Cache Pressure Setting"></a>Adjusting the Cache Pressure Setting</h4><p>Another related value that you might want to modify is the vfs_cache_pressure. This setting configures how much the system will choose to cache inode and dentry information over other data.</p>
+<p>Basically, this is access data about the filesystem. This is generally very costly to look up and very frequently requested, so it’s an excellent thing for your system to cache. You can see the current value by querying the proc filesystem again:</p>
+<pre><code>cat /proc/sys/vm/vfs_cache_pressure
+</code></pre><pre><code>Output
+100
+</code></pre><p>As it is currently configured, our system removes inode information from the cache too quickly. We can set this to a more conservative setting like 50 by typing:</p>
+<pre><code>sudo sysctl vm.vfs_cache_pressure=50
+</code></pre><p>Again, this is only valid for our current session. We can change that by adding it to our configuration file like we did with our swappiness setting:</p>
+<pre><code>sudo nano /etc/sysctl.conf
+vm.vfs_cache_pressure=50
+</code></pre><h2 id="Bash-Script-to-launch-lxd"><a href="#Bash-Script-to-launch-lxd" class="headerlink" title="Bash Script to launch lxd"></a>Bash Script to launch lxd</h2><p>REF:[<a href="https://gist.github.com/CalebEverett/aef682acf6988bbc44d9d8196f222355]" target="_blank" rel="noopener">https://gist.github.com/CalebEverett/aef682acf6988bbc44d9d8196f222355]</a></p>
+<pre><code class="bash">#!/bin/bash
+
+# variables
+CONTAINER=mycontainer
+IMAGE=ubuntu-daily:xenial
+PORT=8080
+PROFILES=default
+FOLDER=app
+REPO=https://github.com/CalebEverett/hello-lxd.git
+RUN_USER=app
+RUN_USER_UID=1444
+CONTAINER_ROOT_UID=$(cat /etc/subgid | grep lxd | cut -d : -f 2)
+
+function wait_bar () {
+  for i in {1..10}
+  do
+    printf &#39;= %.0s&#39; {1..$i}
+    sleep $1s
+  done
+}
+
+# create the container if it doesn&#39;t exist
+if [ ! -e /var/lib/lxd/containers/$CONTAINER ]
+  then
+    lxc launch --verbose $IMAGE $CONTAINER
+    wait_bar 0.5
+    echo container $CONTAINER started
+  else
+    echo container $CONTAINER already created
+fi
+
+# apply profiles
+lxc profile apply $CONTAINER $PROFILES
+
+# delete ubuntu user
+if [ ! -z $(lxc exec $CONTAINER -- getent passwd | grep ubuntu) ]
+then
+  lxc exec $CONTAINER -- userdel -r ubuntu
+fi
+
+# create running user
+if [ -z $(lxc exec $CONTAINER -- getent passwd | grep $RUN_USER) ]
+then
+  lxc exec $CONTAINER -- useradd -u $RUN_USER_UID -s /usr/sbin/nologin $RUN_USER
+fi
+
+#install node
+if [ -z $(lxc exec $CONTAINER -- which node) ]
+then
+  printf &quot;\n\n*** Installing node ***&quot;
+  lxc exec $CONTAINER -- /bin/bash -c &#39;curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -&#39;
+  lxc exec $CONTAINER -- apt-get install -y nodejs
+  echo Node $(lxc exec $CONTAINER -- node -v) installed
+else
+  echo Node $(lxc exec $CONTAINER -- node -v) already installed
+fi
+
+#install git
+if [ -z $(lxc exec $CONTAINER -- which git) ]
+then
+  printf &quot;\n\n*** Installing git ***&quot;
+  lxc exec $CONTAINER -- apt-get install -y git
+  echo $(lxc exec $CONTAINER -- git --version) installed
+else
+  echo $(lxc exec $CONTAINER -- git --version) already installed
+fi
+
+# redirect 80 to $PORT
+if [[ -z $(lxc exec $CONTAINER -- cat /etc/ufw/before.rules | grep PREROUTING) ]]
+then
+  lxc exec $CONTAINER -- /bin/bash -c &quot;sed -i &#39;/#   ufw-before-forward/ a\
+#\n\
+# redirect 80 to $PORT\n\
+*nat\n\
+:PREROUTING ACCEPT [0:0]\n\
+-A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port $PORT\n\
+COMMIT&#39; /etc/ufw/before.rules&quot;
+  lxc exec $CONTAINER -- ufw enable
+  lxc exec $CONTAINER -- ufw allow $PORT/tcp
+fi
+
+#mount $FOLDER directory if developing
+if [[ $FOLDER &amp;&amp;  $PROFILES == *&quot;default&quot;* ]]
+then
+  printf &quot;\n\n*** Mounting shared folder ***\n&quot;
+  if [ ! -d ./$FOLDER ]; then mkdir ./$FOLDER; fi
+  if [[ -z $(lxc config device list $CONTAINER | grep $FOLDER) ]]
+  then
+    lxc config device add $CONTAINER $FOLDER disk path=/usr/src/$FOLDER source=$(pwd)/$FOLDER
+    sudo chown -R $((CONTAINER_ROOT_UID + RUN_USER_UID)):$((CONTAINER_ROOT_UID + $RUN_USER_UID)) ./$FOLDER
+    sudo setfacl -R -m d:u:$USER:xwr,u:$USER:xwr,d:g:$USER:xwr,g:$USER:xwr ./$FOLDER
+    sudo chown -R $((CONTAINER_ROOT_UID + RUN_USER_UID)):$((CONTAINER_ROOT_UID + $RUN_USER_UID)) ./$FOLDER
+    echo $(pwd)/$FOLDER mounted at /usr/src/$FOLDER
+  else
+    echo Directory $(pwd)/$FOLDER already mounted
+  fi
+fi
+
+#clone repo and install modules
+if [ $REPO ]
+  then 
+  if [[ -z $(lxc exec $CONTAINER -- cat /usr/src/$FOLDER/package.json) ]]
+    then
+      lxc exec $CONTAINER -- git clone -q $REPO /usr/src/$FOLDER
+      lxc exec $CONTAINER --env HOME=/usr/src/$FOLDER -- npm install
+      lxc exec $CONTAINER -- chown -R $RUN_USER:$RUN_USER /usr/src/$FOLDER/node_modules
+    fi
+fi
+
+# build and run as a service if production
+if [[ $PROFILES == *&quot;pro&quot;* ]]
+then  
+  if [[ $(lxc exec $CONTAINER -- /bin/bash -c &#39;if [ ! -f /etc/systemd/system/$CONTAINER.service ]; then echo 0; fi&#39;) ]]
+  then
+    printf &quot;\n\n*** Creating service file ***&quot;
+    lxc exec $CONTAINER -- /bin/bash -c &quot;cat &lt;&lt;-EOF &gt; /etc/systemd/system/$CONTAINER.service
+    [Unit]
+    Description=$CONTAINER
+    [Service]
+    WorkingDirectory=/usr/src/$FOLDER
+    ExecStart=/usr/bin/node /usr/src/$FOLDER/index.js
+    Restart=always
+    RestartSec=10
+    StandardOutput=syslog
+    StandardError=syslog
+    SyslogIdentifier=$CONTAINER
+    User=$RUN_USER
+    Environment=HOME=/usr/src/$FOLDER
+    Environment=NODE_ENV=production
+    Environment=PORT=$PORT
+
+    [Install]
+    WantedBy=multi-user.target
+EOF&quot;
+    lxc exec $CONTAINER -- systemctl enable $CONTAINER.service
+    sleep 3.0s
+    lxc exec $CONTAINER -- systemctl start $CONTAINER.service
+  fi
+fi
+
+printf &quot;\n&quot; &amp;&amp; lxc list $CONTAINER
+
+# start app for dev
+if [[ $PROFILES == *&quot;default&quot;* &amp;&amp; -z $(lxc exec $CONTAINER -- ps aux | grep /usr/src/$FOLDER/index.js) ]]
+then
+  google-chrome $(lxc exec $CONTAINER -- bash -c &quot;ifconfig | grep -o &#39;[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}&#39; | head -n 1&quot;)
+  lxc exec $CONTAINER --env HOME=/usr/src/$FOLDER --env PORT=$PORT -- node index.js
+fi
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/practice/" rel="tag"># practice</a>
+          
+            <a href="/tags/LXD/" rel="tag"># LXD</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/28/net-expression/" rel="next" title="net-expression">
+                <i class="fa fa-chevron-left"></i> net-expression
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/17/net-async/" rel="prev" title="net-async">
+                net-async <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Spence">
+          <p class="site-author-name" itemprop="name">Spence</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-a-non-root-user"><span class="nav-number">1.</span> <span class="nav-text">Add a non root user</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configure-LXD"><span class="nav-number">2.</span> <span class="nav-text">Configure LXD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-Container"><span class="nav-number">3.</span> <span class="nav-text">Create Container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configure-Container"><span class="nav-number">4.</span> <span class="nav-text">Configure Container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu-Nginx-AutoStart"><span class="nav-number">5.</span> <span class="nav-text">Ubuntu Nginx AutoStart</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reset-timezone"><span class="nav-number">6.</span> <span class="nav-text">Reset timezone</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rename-Container"><span class="nav-number">7.</span> <span class="nav-text">Rename Container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Copy-Container"><span class="nav-number">8.</span> <span class="nav-text">Copy Container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-Swap-Space"><span class="nav-number">9.</span> <span class="nav-text">Add Swap Space</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Check-system-for-swap-information"><span class="nav-number">9.0.1.</span> <span class="nav-text">Check system for swap information</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Check-Available-Space-on-the-Hard-Drive-Partition"><span class="nav-number">9.0.2.</span> <span class="nav-text">Check Available Space on the Hard Drive Partition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-a-Swap-File"><span class="nav-number">9.0.3.</span> <span class="nav-text">Create a Swap File</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enabling-the-Swap-File"><span class="nav-number">9.0.4.</span> <span class="nav-text">Enabling the Swap File</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Make-the-swap-file-permanant"><span class="nav-number">9.0.5.</span> <span class="nav-text">Make the swap file permanant</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adjusting-the-Swappiness-Property"><span class="nav-number">9.0.6.</span> <span class="nav-text">Adjusting the Swappiness Property</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adjusting-the-Cache-Pressure-Setting"><span class="nav-number">9.0.7.</span> <span class="nav-text">Adjusting the Cache Pressure Setting</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash-Script-to-launch-lxd"><span class="nav-number">10.</span> <span class="nav-text">Bash Script to launch lxd</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Spence</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

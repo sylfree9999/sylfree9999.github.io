@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="concept,shell,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content=". ./test.sh 两个点的含义#!/bin/bash aa = &amp;quot;hello&amp;quot; 如果echo $aa是没有东西的，为什么？ 当只运行一个    ./test.sh 的时候,其实是test.sh是在别的进程里面跑的，所以你在当前进程里跑的时候是不会输出东西的所以用. ./test.sh是说在我现在这个进程里面来跑这个脚本 变量定义1，系统变量：$HOME、$PWD、$SHE">
+<meta name="keywords" content="concept,shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shell 基本语法">
+<meta property="og:url" content="http://yoursite.com/2018/06/20/shell-basic/index.html">
+<meta property="og:site_name" content="Drill Learning">
+<meta property="og:description" content=". ./test.sh 两个点的含义#!/bin/bash aa = &amp;quot;hello&amp;quot; 如果echo $aa是没有东西的，为什么？ 当只运行一个    ./test.sh 的时候,其实是test.sh是在别的进程里面跑的，所以你在当前进程里跑的时候是不会输出东西的所以用. ./test.sh是说在我现在这个进程里面来跑这个脚本 变量定义1，系统变量：$HOME、$PWD、$SHE">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-08T08:43:47.854Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shell 基本语法">
+<meta name="twitter:description" content=". ./test.sh 两个点的含义#!/bin/bash aa = &amp;quot;hello&amp;quot; 如果echo $aa是没有东西的，为什么？ 当只运行一个    ./test.sh 的时候,其实是test.sh是在别的进程里面跑的，所以你在当前进程里跑的时候是不会输出东西的所以用. ./test.sh是说在我现在这个进程里面来跑这个脚本 变量定义1，系统变量：$HOME、$PWD、$SHE">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/20/shell-basic/">
+
+
+
+
+
+  <title>Shell 基本语法 | Drill Learning</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Drill Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Spence</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/20/shell-basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Shell 基本语法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-20T16:14:59+08:00">
+                2018-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="test-sh-两个点的含义"><a href="#test-sh-两个点的含义" class="headerlink" title=". ./test.sh 两个点的含义"></a>. ./test.sh 两个点的含义</h2><pre><code>#!/bin/bash
+aa = &quot;hello&quot;
+</code></pre><p>如果<code>echo $aa</code>是没有东西的，为什么？</p>
+<p>当只运行一个    <code>./test.sh</code> 的时候,其实是test.sh是在别的进程里面跑的，所以你在当前进程里跑的时候是不会输出东西的<br>所以用<code>. ./test.sh</code>是说在我现在这个进程里面来跑这个脚本</p>
+<h2 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h2><pre><code>1，系统变量：$HOME、$PWD、$SHELL(现在用的是哪种解释器)、$USER(当前用户)等
+2，查看所有变量:`set`
+3，定义变量：VAR=value，&lt;span style=&quot;color:red;&quot;&gt;等号两侧不能有空格&lt;/span&gt;，变量名称一般为大写 
+4，双引号与单引号的区别：双引号仅将空格脱意，单引号会将所有特殊字符脱意(单引号里面用变量引用没有用) 
+
+    ```
+    X=hello
+    echo $X -&gt; hello
+    X=&quot;hello world&quot;
+    echo $X -&gt; hello world
+    X=&#39;hello\nworld&#39;
+    echo $X -&gt; hello\nworld
+    Y=abc
+    X=&#39;hello $Y&#39;
+    echo $X -&gt; hello $Y
+    X=&quot;hello $Y&quot;
+    echo $X -&gt; hello abc
+    ```
+
+5，撤销变量：unset X
+6，export：可以把变量提升为全局环境变量，所有连上去的BASH都能访问，否则只在当前的bash能用
+
+7，&lt;span style=&quot;color:red;&quot;&gt;把当前command的结果赋予另一个变量&lt;/span&gt;
+    1，用A=`ls -la`反引号的形式
+    2，用A=$(ls -la)，等价于上面的方式
+
+    ```
+    X=&quot;Hello;World;SS&quot;
+    echo $X | cut -d &quot;;&quot; -f2  //拿到以；为分隔符切分的第二个元素
+    Y=`echo $X | cut -d &quot;;&quot; -f2`
+    echo $Y -&gt; World
+    ```
+
+8，Shell中的特殊变量
+    1，$? 上一个命令执行的状态，类似与方法的返回值，通常情况下返回值为0代表成功，非0代表不正常
+        ```
+        true
+        echo $? -&gt; 0
+        false
+        echo $? -&gt; 1
+        ll
+        echo $? -&gt; 0
+        lsss
+        echo $? -&gt; 127
+        ```
+    2，$$ 表示当前进程号
+    3，$0 表示当前脚本名称
+    4，$N 表示N位置的输入参数
+        ```
+        #!/bin/bash
+        aa=&quot;hello&quot;
+        echo &quot;第一个参数=&quot;$1
+        echo &quot;第二个参数=&quot;$2
+
+        ./test.sh hello world
+        第一个参数=hello
+        第二个参数=world
+        ```
+    5，$# 表示参数的个数，常用于循环
+    6，$*和$@都表示参数列表
+        &quot;$*&quot;会将所有的参数作为一个整体，以&quot;$S1$S2...$Sn&quot;的形式输出
+        &quot;$@&quot;会将各个参数分开，以&quot;$S1&quot;&quot;$S2&quot;...&quot;$Sn&quot;的形式输出
+        ```
+        #!/bin/bash
+        echo $*
+        echo $@
+        for N in &quot;$*&quot;
+        do
+        echo $N
+        done
+
+        for N in &quot;$@&quot;
+        do
+        echo $N
+        done
+
+        ```
+</code></pre><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>格式：expr m+n 或者 $((m+n)) 注意expr运算符间要有空格<br>例如（2+3）*4</p>
+<pre><code>S=`expr 2+3`\*4 或者 $(((2+3)*4)),最外层的$()代表取其值
+</code></pre><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><pre><code>for N in 1 2 3
+do
+    echo $N
+done
+或者 for N in {1..3};do echo $N;done
+或者
+for ((i=0;i&lt;=5;i++)) //必须要是两层括号
+do
+    echo &quot;welcome $i times&quot;
+done
+</code></pre><h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><pre><code>while expression
+do 
+    command
+done
+或者
+int=1
+while ((int&lt;=3))
+do
+    echo $int
+    let int++
+done
+</code></pre><h2 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h2><pre><code>case $1 in
+start)
+    echo &quot;starting&quot;
+    ;;
+stop)
+    echo &quot;stoping&quot;
+    ;;
+*)
+    echo &quot;Usage:{start|stop}&quot;
+esac
+</code></pre><h2 id="read命令"><a href="#read命令" class="headerlink" title="read命令"></a>read命令</h2><pre><code>read -p &quot;please enter a number: &quot; numb
+please enter a number:  1
+echo $numb
+1
+</code></pre><h2 id="if"><a href="#if" class="headerlink" title="if"></a>if</h2><pre><code>if [ $NAME=root ]
+then
+    echo &quot;hello ${NAME}&quot;
+elif [ $NAME=itcast ]
+    then
+        echo &quot;hello ${NAME}&quot;
+else
+    echo &quot;OUT&quot;
+fi
+</code></pre><p>[ condition ]一定要前后有空格，空[  ]则返回1，即false</p>
+<h2 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h2><p>[ condition ] &amp;&amp; echo OK || echo notok<br>= 字符串比较<br>-lt 小于<br>-le 小于等于<br>-eq 等于<br>-gt 大于<br>-ge 大于等于<br>-ne 不等于<br>-r     有读的权限<br>-w     有写权限<br>-f     文件存在并且是一个常规的文件<br>-s     文件存在且不为空<br>-d     文件存在并且为一个目录<br>-b     文件存在并且是一个块设备<br>-L     文件存在并且是一个链接</p>
+<h2 id="Shell-自定义函数"><a href="#Shell-自定义函数" class="headerlink" title="Shell 自定义函数"></a>Shell 自定义函数</h2><pre><code>[ function ] funname [()]
+{
+    action;
+    [return int;]
+}
+例如可以这样定义
+function start() / function start/ start()
+函数只能返回int类型
+
+如果要传入参数，需要在外面定义
+
+!#/bin/bash
+function fSum()
+{
+    echo $1,$2;
+    return $(($1+$2));
+}
+fSum 3 2;
+total=$?;
+fSum 5 7;
+total=$?;
+echo $total, $?;
+</code></pre><h2 id="脚本调试"><a href="#脚本调试" class="headerlink" title="脚本调试"></a>脚本调试</h2><p><code>sh -vx helloWorld.sh</code> 只会展现所有的执行状态，不会停</p>
+<h2 id="模拟用户输入"><a href="#模拟用户输入" class="headerlink" title="模拟用户输入"></a>模拟用户输入</h2><pre><code class="bash">auto_ssh_copy_id() {
+    expect -c &quot;set timeout -1;
+        spawn ssh-copy-id $1;
+        expect {
+            *(yes/no)* {send -- yes\r;exp_continue;}
+            *assword:* {send -- $2\r;exp_continue;}
+            eof           {exit 0;}
+        }
+    &quot;;
+}
+
+
+ssy_copy_id_to_all() {
+    for SERVER in $SERVERS
+    do
+        auto_ssh_copy_id $SERVER $PASSWORD
+    done    
+}
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/concept/" rel="tag"># concept</a>
+          
+            <a href="/tags/shell/" rel="tag"># shell</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/16/css-basic/" rel="next" title="css-basic">
+                <i class="fa fa-chevron-left"></i> css-basic
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/20/linux-file-processing-commands/" rel="prev" title="Linux文本处理sed,awk,cut,sort">
+                Linux文本处理sed,awk,cut,sort <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Spence">
+          <p class="site-author-name" itemprop="name">Spence</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#test-sh-两个点的含义"><span class="nav-number">1.</span> <span class="nav-text">. ./test.sh 两个点的含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量定义"><span class="nav-number">2.</span> <span class="nav-text">变量定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">3.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for循环"><span class="nav-number">4.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#while循环"><span class="nav-number">5.</span> <span class="nav-text">while循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#case语句"><span class="nav-number">6.</span> <span class="nav-text">case语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#read命令"><span class="nav-number">7.</span> <span class="nav-text">read命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if"><span class="nav-number">8.</span> <span class="nav-text">if</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断语句"><span class="nav-number">9.</span> <span class="nav-text">判断语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-自定义函数"><span class="nav-number">10.</span> <span class="nav-text">Shell 自定义函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本调试"><span class="nav-number">11.</span> <span class="nav-text">脚本调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟用户输入"><span class="nav-number">12.</span> <span class="nav-text">模拟用户输入</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Spence</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

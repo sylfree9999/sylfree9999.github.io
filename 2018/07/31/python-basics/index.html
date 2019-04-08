@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="concept,python,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="PYTHON 3.6 字符串换行1，字符串中末尾加”\”最终会打印出一行2，字符串换行方法一加\n3，字符串换行方法二用多行写法 str = &amp;#39;abcd&amp;#39; \         &amp;#39;efgh&amp;#39; # 结果是abcdefgh print(str)  #结果是Hello #world str = &amp;#39;Hello\nworld!&amp;#39; print(str)  #结果是">
+<meta name="keywords" content="concept,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-basics">
+<meta property="og:url" content="http://yoursite.com/2018/07/31/python-basics/index.html">
+<meta property="og:site_name" content="Drill Learning">
+<meta property="og:description" content="PYTHON 3.6 字符串换行1，字符串中末尾加”\”最终会打印出一行2，字符串换行方法一加\n3，字符串换行方法二用多行写法 str = &amp;#39;abcd&amp;#39; \         &amp;#39;efgh&amp;#39; # 结果是abcdefgh print(str)  #结果是Hello #world str = &amp;#39;Hello\nworld!&amp;#39; print(str)  #结果是">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-08T08:43:47.839Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python-basics">
+<meta name="twitter:description" content="PYTHON 3.6 字符串换行1，字符串中末尾加”\”最终会打印出一行2，字符串换行方法一加\n3，字符串换行方法二用多行写法 str = &amp;#39;abcd&amp;#39; \         &amp;#39;efgh&amp;#39; # 结果是abcdefgh print(str)  #结果是Hello #world str = &amp;#39;Hello\nworld!&amp;#39; print(str)  #结果是">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/31/python-basics/">
+
+
+
+
+
+  <title>python-basics | Drill Learning</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Drill Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Spence</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/31/python-basics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python-basics</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-31T10:05:37+08:00">
+                2018-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>PYTHON 3.6</p>
+<h2 id="字符串换行"><a href="#字符串换行" class="headerlink" title="字符串换行"></a>字符串换行</h2><p>1，字符串中末尾加”\”最终会打印出一行<br>2，字符串换行方法一加\n<br>3，字符串换行方法二用多行写法</p>
+<pre><code class="python">str = &#39;abcd&#39; \
+        &#39;efgh&#39;
+# 结果是abcdefgh
+print(str)
+
+#结果是Hello
+#world
+str = &#39;Hello\nworld!&#39;
+print(str)
+
+#结果是Hello
+#world
+str = &quot;&quot;&quot;Hello
+world!
+&quot;&quot;&quot;
+</code></pre>
+<h2 id="单引号与双引号"><a href="#单引号与双引号" class="headerlink" title="单引号与双引号"></a>单引号与双引号</h2><p>1，单引号里可以直接写双引号<br>2，双引号里可以直接写单引号<br>3，单/双引号里面要单/双引号，则需要转义</p>
+<a id="more"></a>
+<pre><code class="python"># abc&quot;123&quot;efg
+print(&#39;abc&quot;123&quot;efg&#39;)
+# abc&#39;123&#39;efg
+print(&quot;abc&#39;123&#39;efg&quot;)
+# abc&#39;123&#39;efg
+print(&#39;abc\&#39;123\&#39;efg&#39;)
+# abc&quot;123&quot;efg
+print(&quot;abc\&quot;123\&quot;efg&quot;)
+</code></pre>
+<h2 id="常见字符串处理"><a href="#常见字符串处理" class="headerlink" title="常见字符串处理"></a>常见字符串处理</h2><p>1，取出空格及特殊符号strip,lstrip,rstrip<br>2，复制字符串：str1 = str2<br>3，连接字符串<br>    str2 += str1<br>    new_str = str2 + str1<br>4，查找字符串：pos = str1.index(str2)<br>5，比较字符串：str1 == str2/str1 &lt; str2<br>6，字符串长度：len(str)<br>7，大小写转换：<br>    u_str = str.upper()<br>    l_str = str.lower()<br>8，首字母大写：str.capitalize();string.capword(str)<br>9，分割与合并字符串：split,splitlines,join<br>10，类型转换：int，float转换<br>11，格式化字符串<br>12，不能修改字符串</p>
+<pre><code class="python">import string
+
+s = &#39;abc&#39;
+#报错
+s[0] = &#39;d&#39;
+
+#去除空格
+ s = &#39; abcd efg &#39;
+ print(s.strip()) #返回的是新的字符串
+ print(s.lstrip())
+ print(s.rstrip())
+
+# 字符串的连接
+s1 = &#39;abc&#39;
+s2 = &#39;def&#39;
+print(s1 + &quot;\n&quot; + s2)
+
+# 位置比较
+s_1 = &#39;abcdefg&#39;
+s_2 = &#39;abdeffxx&#39;
+print(s_1.index(&#39;bcd&#39;)) # 1
+print(s_2.index(&#39;bcd&#39;)) # Exception
+
+# 空字符串 不能写成 == False，不等于None
+# 空字符串在内存中还是被分配了对象的
+# 
+s = &#39;&#39;
+if not s:
+    print(&#39;Empty&#39;)
+
+# 字符串的分割和连接
+s = &#39;abc,def,ghi&#39;
+splitted = s.split(&#39;,&#39;)
+print(typeof(splitted)) #&lt;class &#39;list&#39;&gt;
+print(splitted)#[&#39;abc&#39;,&#39;def&#39;,&#39;ghi&#39;]
+
+s=&quot;&quot;&quot;abc
+def
+ghi
+&quot;&quot;&quot;
+s_1 = s.splitted(&#39;\n&#39;)
+s_2 = s.splitlines()
+print(s_1)
+print(s_2)
+
+# 字符串的连接
+s = [&#39;abc&#39;,&#39;def&#39;,&#39;ghi&#39;]
+print(&#39;&#39;.join(s))
+print(&#39;-&#39;.join(s)) # abc-def-ghi
+
+#常用判断
+print(&#39;1234abcd&#39;.isalnum())
+print(&#39;\t12ab&#39;.isalnum())#False
+print(&#39;abcd&#39;.isalpha())
+print(&#39;12345&#39;.isdigit())
+print(&#39;  &#39;.isspace())
+
+#数字到字符串
+print(str(5))
+print(str(5.))
+print(str(5.12345))
+#字符串到数字
+print(int(&#39;1234&#39;))
+print(float(&#39;1234.56&#39;))
+print((int(&#39;ffff&#39;,16)) #16进制的ffff转成10进制
+</code></pre>
+<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><pre><code class="python"># None的判断
+x = None
+if not x:
+    print(&#39;None&#39;)
+else:
+    print(&#39;Not None&#39;)
+
+if x is None:
+    print(&#39;None&#39;)
+
+# for
+for i in range(start,end,step):
+    print(i)  
+</code></pre>
+<h2 id="AND-OR"><a href="#AND-OR" class="headerlink" title="AND/OR"></a>AND/OR</h2><p>1，AND/OR<strong>不一定只会返回True/False</strong><br>2，<strong>AND</strong> return the first Falsey value if there are any, else return the last value in the expression<br>3，<strong>OR</strong> return the first Truthy value if there are any, else return the last value in the expression</p>
+<pre><code class="python">[] and [] + [1,2] # returns []
+#Spotted,[] and [] + [1,2] is actually this: [] and ([] + [1,2]),你必须把后面的+[1,2]与前面的[]看作是一个整体
+
+[] + [1,2] # returns [1,2]
+
+10 or 7 - 2 # returns 10,同理，10 or (7 - 2)要看成这种形式
+</code></pre>
+<h2 id="循环for-else"><a href="#循环for-else" class="headerlink" title="循环for/else"></a>循环for/else</h2><p><span style="color: red"><code>for</code> loop也有一个<code>else</code></span><br><code>else</code> 是在loop正常结束后执行的，也就是说这个loop没有<code>break</code></p>
+<p>下面这个是一个基本的</p>
+<pre><code class="python">for item in container:
+    if search_something(item):
+        #Found it!
+        process(item)
+        break
+    else:
+        #Didn&#39;t find anything
+        not_found_in_container()
+</code></pre>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><pre><code class="python">#默认参数
+def func(x,y = 500):
+    return x+y
+print(func(100)) # 600
+
+
+def func(p):
+    print(&#39;x=&#39;,p[&#39;x&#39;])
+    print(&#39;y=&#39;,p[&#39;y&#39;])
+
+print(func({&#39;x&#39;:100,&#39;y&#39;:200}))
+
+
+#可变参数，*告诉pytnhon后面都放到这个numbers数组
+#这样写有一个问题，你传进去的可变tuple每个元素是没有名字的，你除非知道他们的索引才能用
+def func(name,*numbers):
+    print(numbers[0])
+    print(numbers[3])
+    print(type(numbers)) #Tuple
+# tuple = 只读数组
+func(&#39;tom&#39;,1,2,3,4,&quot;Hello&quot;)
+
+#可变参数方法二, **代表key/values的字典
+def func(name,**kvs):
+    print(type(kvs)) #&lt;class &#39;dict&#39;&gt;
+    print(kvs)#{&#39;uk&#39;:&#39;London&#39;,&#39;china&#39;:&#39;Beijing&#39;}
+func(&#39;Tom&#39;,china=&quot;Beijing&quot;,uk=&quot;London&quot;)
+
+def func(a,b,c,*,china,uk):
+    print(china,uk)
+
+func(1,2,3,china=&#39;BJ&#39;,uk=&#39;LD&#39;)
+
+# 函数可以作为参数
+def sum(x,y,p=None):
+    s = x+y
+    if p:
+        p(s)
+    return s
+
+sum(100,200,print)
+</code></pre>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p><strong>经常会碰到这样的错误：<br>local variable ‘a’ referenced before assignment</strong></p>
+<pre><code class="python">a = 3
+def func():
+    print(a)
+    a = a+1 #这一句会报错
+func()
+</code></pre>
+<p><span style="color: red">a=3定义了全局变量a，作用域从定义处到代码结束，在a=3以下的函数中是可以引用全局变量a的，但是如果要修改函数中与全局变量同名的变量，在函数中的该变量就会变成局部变量，在修改之前对该变量的引用就会引发为定义的错误,<strong>所以，哪个函数需要修改全局变量，就需要在这个函数中声明一下，但是有一个函数不需要声明，就是主函数</strong></span></p>
+<pre><code class="c#">a = 3
+def func():
+    global a
+    print(a)
+    a = a+1 #这一句会报错
+func()
+
+if __name__ == &quot;__main__&quot;:
+    print (a)  # 2
+    a = a + 1
+    Fuc()
+    print (a)  # 3
+</code></pre>
+<p>##<strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong>练习<strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></p>
+<p>1，求100以内的素数</p>
+<pre><code class="python">#找素数,1不是素数，最小的质数/素数为2
+#素数的概念，除了1和它本身外，不能被其他自然数整除
+
+def findPrimeNumber(num):
+    for i in range(1,num+1):
+        if i &gt; 1:
+            for j in range(2,i):
+                if i%j == 0:
+                    break
+            else:
+                 print(i)
+
+findPrimeNumber(100)
+</code></pre>
+<p>2，冒泡排序</p>
+<pre><code class="python">#冒泡排序
+def bubbleSort(array):
+    for i in range(len(array)-1,0,-1):
+        for j in range(i):
+            if array[j] &gt; array[j+1]:
+                temp = array[j]
+                array[j] = array[j+1]
+                array[j+1] = temp
+        print(array)
+
+bubbleSort([54,26,100,17,77])
+</code></pre>
+<h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><p>1，list列表，索引从0开始，列表的数据项不需要具有相同的类型<br>2，tuple元组，只读列表<br>3，dist字典<br>4，set集合，是一个无序不重复的数组</p>
+<p>5，not XX 和 is None不是一回事，not XX代表其还是在内存分配空间了的<br>6，切片，切出一个子数组<br>7，生成器，只有用到的时候才去计算，不用的时候不算,用next/for来循环,非常省内存<br>8，迭代器，如果是Iterable,则可以用for来循环，如果是Iterator则说明是生成器</p>
+<pre><code class="python">#list/tuple基本操作
+li = [1,2,3,&#39;tete&#39;,[1,2,3],{1:&#39;one&#39;,2:&#39;two&#39;}]
+print(type(li))# class list
+
+# 元素访问
+print(li[0])
+#倒数第一个元素
+print(li[-1])
+
+# 查找元素位置
+print(li.index(&#39;tete&#39;)) #3
+print(li.index([1,2,3])) #4
+print(li.index(-1)) # error
+
+# 添加元素
+l_a = [1,2]
+l_a.append(4)
+l_a.append(5)
+#如果想要一次性加多个元素进去，就需要用extend,否则如果用append，会把其作为一个list，添加到原list中
+l_b = [6,7,8]
+l_a.extend(l_b)
+
+# 删除元素
+del(li[-1]) # del(list[index])
+
+# 判断容器是否为空
+
+l_a = []
+if not l_a:
+    print(&#39;Empty&#39;) # print this
+if l_a is None:
+    print(&#39;None&#39;)
+
+# 遍历
+for i in li:
+    print(i)
+for i in range(len(li)):
+    print(li[i])
+
+# 元组
+t = (1,2,3,&#39;456&#39;)
+t[0]=&#39;a&#39; # error,不可以修改
+
+# 字典
+d = {&#39;a&#39;:1,&#39;b&#39;:2,1:&#39;one&#39;,2:&#39;two&#39;}
+print(d[1]) #根据key来做访问
+# 判断元素是否存在，是判断key是否存在
+print(&#39;c&#39; in d) # false
+print(1 in d) # true
+# 添加
+# 删除
+del(d[2])
+# 遍历
+for key in d:
+    print(d[key])
+
+for key, value in d.items():
+    print(key,value)
+
+keys = d.keys()
+print(keys)
+
+# set
+s_a = set([1,2,2,3,4,5,6])
+s_b = set([4,5,6,7,8])
+print(s_a)# {1,2,3,4,5,6}
+
+# 判断元素是否存在
+print(5 in s_a)
+# 并集
+print(s_a | s_b) #{1，2，3，4，5，6，7，8}
+print(s_a.union(s_b))
+# 交集
+print(s_a &amp; s_b)
+print(s_a.intersection(s_b)) #生成一个新的set {4，5，6}
+# 差集(a - a&amp;b )
+pprint(s_a - s_b)
+print(s_a.difference(s_b)) #{1,2,3}
+# 对称差(A|B) - (A&amp;B)，把两个集合相同的元素去除
+print(s_a ^ s_b)
+print(s_a.symmetric_diff(s_b)) #{1,2,3,7,8}
+# 添加
+s_a.add(&#39;x&#39;)
+s_a.update([4,5,60,70])
+# 删除，因为set没有索引，要直接删值
+s_a.remove(70)
+# 遍历
+for i in s_a:
+    print i
+
+# 切片[start:end:step] &gt;= start * &lt; end
+li = list(range(10)) #[0,1,2,3,4,5,6,7,8,9]
+print(li[2:5]) # [3,4,5]
+print(li[:4]) # [0,1,2,3]
+print(li[0:10:3])#[0,3,6,9]
+print(li[5:-2])#[5,6,7]
+print(li[9:0:-1])#[9,8,7,6,5,4,3,2,1]
+print(li[9::-1])#[9,8,7,6,5,4,3,2,1,0]
+
+# 列表推导
+#生成10个偶数
+li = [i*2 for i in range(10)]
+
+#二维数组浅拷贝
+li_2d = [[0]*3]*3
+print(li_2d)
+li_2d[0][0] = 100
+print(li_2d)#这样写会每个元素的首元素变成100，因为*3这样写是浅拷贝，每个引用的是同一个空间
+
+#二维数组深拷贝
+li_2d = [[0]*3 for i in range(3)]
+li_2d[0][0] = 100
+
+s = {x for x in range(10) if x%2 == 0}
+print(s) #s=set
+
+d = {x:x%2 == 0 for x in range(10)}
+print(d)#d=dict
+
+
+# 生成器
+square_generator = (x*x for x in range(50000))
+print(next(square_generator))
+for i in range(10):
+    print(next(square_generator))
+
+# 迭代器
+from collections import Iterable
+from collections import Iterator
+
+print(isinstance([1,2,3],Iterable)) #true
+print(isinstance([1,2,3],Iterator)) #false
+print(isinstance({},Iterable))#true
+#
+
+</code></pre>
+<p>##<strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong>练习<strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></p>
+<pre><code class="python">#任意给定一个值，在一个数组中找到两个数，相加=给定值，返回这两个数的索引，如果没有，返回-1
+
+def find_two_sums(ls, target):
+    for i in range(len(ls) - 1):
+        for j in range(i+1, len(ls)):
+            if ls[i] + ls[j] == target:
+                return i, j
+
+    return -1, -1
+
+
+print(find_two_sums([1, 3, 2, 6, 18, 4, 2], 3))
+
+#螺旋矩阵，给定一个m*n要素的矩阵，按照螺旋顺序，返回该矩阵的所有要素
+
+#方法一，我自己写的一个笨方法，只用到上面学的内容，应该是符合所有常识人理解
+matrix2 = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+
+def myspiralmatrix(matrix):
+    if len(matrix) &lt; 1:
+        return []
+    #宽
+    m = len(matrix[0])
+    #长
+    n = len(matrix)
+    matrix3 = matrix
+    ls = []
+
+    #以横着读一批+竖着第一批作为一批，最多只有可能走m/n遍就能遍历完
+    if m &gt;= n:
+        t = n
+    else:
+        t = m
+
+    for tt in range(1, t + 1):
+
+        # 如果是奇数次遍历，那么就是顺时针读
+        if tt % 2 != 0:
+            #横：读出matrix第一个元素的所有值
+            ls.extend(matrix3[0][:m])
+            #竖：除了matrix第一个元素之外，遍历剩下n-1个元素，只读出来第m-1个
+            for k in range(1, n):
+                ls.append(matrix3[k][m - 1])
+
+            #重置数组，将下回要遍历的数组宽，长都-1，重新生成新的数组
+            m = m - 1
+            n = n - 1
+            tmp = matrix3
+            matrix3 = []
+            for em in range(1, n + 1):
+                matrix3.append(tmp[em][:m])
+
+        # 如果是偶数次遍历，那么就是逆时针读        
+        else:
+            # 逆序打印这个时候matrix的最后一行
+            ls.extend(matrix3[n - 1][m::-1])
+            # 逆序竖着打印除了最后一行元素之后的所有元素的第一个元素
+            for i in range(n - 1, 0, -1):
+                ls.append(matrix3[i - 1][0])
+            #重置数组，将下回要遍历的数组宽，长都-1，重新生成数组
+            m = m - 1
+            n = n - 1
+            tmp = matrix3
+            matrix3 = []
+            for em in range(0, n):
+                matrix3.append(tmp[em][1:])
+    return ls
+
+
+print(mySpiralOrder(matrix2))
+
+#方法二，LeetCode上面某个大神的写法：
+# 这里第一个matrix and是为了保证当所有元素都pop掉后，会返回一个空matrix,不会再做后面的pop和递归操作
+# matrix.pop()的操作是直接改在matrix上的，所以后面的递归是基于新的matrix上面
+# 后面的递归spiralOrder([*zip(*matrix)][::-1])生成的是一个剔除原先第一行元素后逆序的matrix
+
+def spiralOrder(matrix):
+    return matrix and [*matrix.pop(0)] + spiralOrder([*zip(*matrix)][::-1])
+
+
+
+#用栈实现队列：支持push(element),pop()和top()方法。pop和top都应该返回第一个元素的值
+
+
+# 矩阵转换，给定矩阵A，令矩阵B里每个元素B[i][j]的值等于A[0][0]到A[i][j]子矩阵元素的和
+# 解： 除了第一行和第一列，其余B矩阵里面所有的元素都可以表示为
+# B[i][j] = B[i][j-1] + B[i-1][j] - B[i-1][j-1] + A[i][j]
+
+def matrixTransform(A):
+    B = A
+    for i in range(1,len(A[0])):
+        B[0][i] += B[0][i-1]
+    for i in range(1,len(A),1):
+        B[i][0] += B[i-1][0]
+
+    for i in range(1,len(A),1):
+        for j in range(1, len(A[0]), 1):
+            B[i][j] += B[i-1][j] + B[i][j-1] - B[i-1][j-1]
+    return B
+
+
+</code></pre>
+<h2 id="容器补充知识点"><a href="#容器补充知识点" class="headerlink" title="容器补充知识点"></a>容器补充知识点</h2><p>1，<code>*list</code>的含义， <code>*</code> operator unpacks an argument list. It allows you to call a function with the list items as individual arguments.<br>    For instance, if <code>sys.argv</code> is [“./foo”, “bar”, “quux”], <code>main(*sys.argv)</code> = <code>main(&quot;./foo&quot;,&quot;bar&quot;,&quot;quux&quot;)</code><br>2，<code>zip</code> takes <code>n</code> number of iterables and returns list of tuples. <code>ith</code> element of the tuple is created using the <code>ith</code> element from each of the iterables.</p>
+<pre><code class="python">list_a = [1, 2, 3]
+list_b = [4, 5, 6]
+
+zipped = zip(a, b) # Output: Zip Object. &lt;zip at 0x4c10a30&gt;
+
+len(zipped) # TypeError: object of type &#39;zip&#39; has no len()
+
+zipped[0] # TypeError: &#39;zip&#39; object is not subscriptable
+
+list_c = list(zipped) #Output: [(1, 4), (2, 5), (3, 6)]
+
+list_d = list(zipped) # Output []... Output is empty list becuase by the above statement zip got exhausted.
+
+</code></pre>
+<pre><code class="python">matrix2 = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+print(*matrix2) # [1, 2, 3, 4] [5, 6, 7, 8] [9, 10, 11, 12] 这里不是一个list，是三个list对象
+print([*zip(matrix2)]) #[([1, 2, 3, 4],), ([5, 6, 7, 8],), ([9, 10, 11, 12],)]
+print([*zip(list(matrix2))]) #[([1, 2, 3, 4],), ([5, 6, 7, 8],), ([9, 10, 11, 12],)] 与上面相同，因为list(matrix2)还是只有一个对象
+print([zip(*matrix2)]) # [&lt;zip object at 0x00935350&gt;]
+print([*zip(*matrix2)]) #[(1, 5, 9), (2, 6, 10), (3, 7, 11), (4, 8, 12)]
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/concept/" rel="tag"># concept</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/26/net-design-pattern/" rel="next" title="net-design-pattern">
+                <i class="fa fa-chevron-left"></i> net-design-pattern
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/02/python-oop/" rel="prev" title="python-oop">
+                python-oop <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Spence">
+          <p class="site-author-name" itemprop="name">Spence</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串换行"><span class="nav-number">1.</span> <span class="nav-text">字符串换行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单引号与双引号"><span class="nav-number">2.</span> <span class="nav-text">单引号与双引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见字符串处理"><span class="nav-number">3.</span> <span class="nav-text">常见字符串处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件判断"><span class="nav-number">4.</span> <span class="nav-text">条件判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AND-OR"><span class="nav-number">5.</span> <span class="nav-text">AND/OR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环for-else"><span class="nav-number">6.</span> <span class="nav-text">循环for/else</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">7.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">8.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器"><span class="nav-number">9.</span> <span class="nav-text">容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器补充知识点"><span class="nav-number">10.</span> <span class="nav-text">容器补充知识点</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Spence</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

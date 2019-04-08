@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="concept,.NET,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="依赖倒置原则：怎么抽象1，上层和下层中间应该通过一个抽象层进行工作，抽象是稳定的，实现是多变的！所以定义抽象要谨慎2，每一层模块应该都要有抽象，有一个类cls,就要有一个ICls3，调用者左边为抽象，右边为具体实现 //caller {     AbstractPhone phone = new iPhone();     phone.Call(); } {     AbstractPhone p">
+<meta name="keywords" content="concept,.NET">
+<meta property="og:type" content="article">
+<meta property="og:title" content="net-design-pattern">
+<meta property="og:url" content="http://yoursite.com/2018/07/26/net-design-pattern/index.html">
+<meta property="og:site_name" content="Drill Learning">
+<meta property="og:description" content="依赖倒置原则：怎么抽象1，上层和下层中间应该通过一个抽象层进行工作，抽象是稳定的，实现是多变的！所以定义抽象要谨慎2，每一层模块应该都要有抽象，有一个类cls,就要有一个ICls3，调用者左边为抽象，右边为具体实现 //caller {     AbstractPhone phone = new iPhone();     phone.Call(); } {     AbstractPhone p">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-08T08:43:47.823Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="net-design-pattern">
+<meta name="twitter:description" content="依赖倒置原则：怎么抽象1，上层和下层中间应该通过一个抽象层进行工作，抽象是稳定的，实现是多变的！所以定义抽象要谨慎2，每一层模块应该都要有抽象，有一个类cls,就要有一个ICls3，调用者左边为抽象，右边为具体实现 //caller {     AbstractPhone phone = new iPhone();     phone.Call(); } {     AbstractPhone p">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/26/net-design-pattern/">
+
+
+
+
+
+  <title>net-design-pattern | Drill Learning</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Drill Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Spence</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/26/net-design-pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">net-design-pattern</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-26T18:03:17+08:00">
+                2018-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="依赖倒置原则：怎么抽象"><a href="#依赖倒置原则：怎么抽象" class="headerlink" title="依赖倒置原则：怎么抽象"></a>依赖倒置原则：怎么抽象</h2><p>1，上层和下层中间应该通过一个抽象层进行工作，抽象是稳定的，实现是多变的！所以定义抽象要谨慎<br>2，每一层模块应该都要有抽象，有一个类cls,就要有一个ICls<br>3，调用者左边为抽象，右边为具体实现</p>
+<pre><code class="c#">//caller
+{
+    AbstractPhone phone = new iPhone();
+    phone.Call();
+}
+{
+    AbstractPhone phone = new Lumia();
+    phone.Call();
+}
+
+//中间层，就相当于定义的一个规范
+public abstract class AbstractPhone
+{
+    public int Id {get;set;}
+    public string Branch {get;set;}
+    public abstract void Call();
+}
+
+//下层实现层
+public class iPhone:AbstractPhone
+{
+    public override void Call()
+    {
+        Console.WriteLine(&quot;This is iPhone calling!&quot;)
+    }
+}
+
+public class Lumia:AbstractPhone
+{
+    public override void Call()
+    {
+        Console.WriteLine(&quot;This is Lumia calling!&quot;);
+    }
+}
+
+</code></pre>
+<a id="more"></a>
+<p>其实中间层也可以写成一个泛型</p>
+<pre><code class="c#">public void Call&lt;T&gt;(T phone) where T : AbstractPhone
+{
+    Console.WriteLine(&quot;This is {0} calling&quot;, phone.Name);
+}
+</code></pre>
+<h2 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h2><p>划分接口的时候，首先不能大而全，也不能太碎，要按照一定的规则进行分组</p>
+<h2 id="设计模式-创建型设计模式，关注对象的创建"><a href="#设计模式-创建型设计模式，关注对象的创建" class="headerlink" title="设计模式-创建型设计模式，关注对象的创建"></a>设计模式-创建型设计模式，关注对象的创建</h2><h3 id="单例模式，就是保证类型只有一个实例，减少初始化的消耗"><a href="#单例模式，就是保证类型只有一个实例，减少初始化的消耗" class="headerlink" title="单例模式，就是保证类型只有一个实例，减少初始化的消耗"></a>单例模式，就是保证类型只有一个实例，减少初始化的消耗</h3><p>局限：<br>1，实例会常驻内存<br>2，实例中的变量，在多线程的情况下会被影响</p>
+<p>使用场景：数据库连接池</p>
+<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>1，构造函数私有化，保证不会被外部创建<br>2，对外提供一个公开方法提供这个对象<br>3，实例定义成一个静态变量，保证内存中就只有一个<br>4，注意了，如果class Singleton变成class Singleton<t>,就无法保证实例是单例的，因为解释器会在编译的时候动态生成类型</t></p>
+<pre><code class="c#">public class Singleton
+{
+    private Singleton()
+    {
+
+    }
+    //volatile保证多线程的时候值不会被多次修改
+    private static volatile Singleton _singleton = null;
+    private static object Singleton_Lock = new object();
+
+    public static Singleton CreateInstance()
+    {
+        if(_singleton == null)
+            _singleton = new Singleton();
+        return _singleton;
+    }
+}
+</code></pre>
+<p>如果多线程同时调用上面的CreateInstance，就无法保证只构造一次(假设一个构造函数要构造40s)，所以需要加一层Lock</p>
+<p>但是只加一次lock也不行，因为如果第二轮开5个线程让构造Singleton,则会发现第二轮的也在等待锁，而这个时候明明已经Singleton实例化好了的</p>
+<p>所以在lock外面会再加上一层if判断</p>
+<p><strong>经典的双if-lock:</strong></p>
+<pre><code class="c#">public static Singleton CreateInstance()
+{
+    if(_singleton is null)//保证对象初始化之后，不会再去等待锁
+    {
+        lock(Singleton_Lock)//保证只有一个线程进去
+        {
+            Thread.Sleep(1000);
+            Console.WriteLine(&quot;这里等待了1s的锁&quot;);
+            if(_singleton == null)//保证只会被实例化一次
+                _singleton = new Singleton();
+        }
+    }
+
+    return _singleton;
+}
+</code></pre>
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p>1，通过静态构造函数来返回实例,是由CLR来保证程序第一次使用这个类型前被调用且只调用一次</p>
+<pre><code class="c#">public class SingletonSecond
+{
+    private static volatile SingletonSecond _singletonSecond = null;
+    static SingletonSecond()
+    {
+        _singletonSecond = new SingletonSecond();
+        Console.WriteLine(&quot;SingletonSecond starts&quot;).
+    }
+}
+</code></pre>
+<h4 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h4><p>1，使用静态字段，在第一次使用这个类之前，也是由CLR保证的，初始化且只初始化一次</p>
+<pre><code class="c#">public class SingletonThird
+{
+    private SingletonThird()
+    {
+
+    }
+
+    private static SingletonThird _singletonThird = new SingletonThird();
+
+    public static SingletonThird CreateInstance()
+    {
+        return _singletonThird;
+    }
+}
+</code></pre>
+<h3 id="原型模式-解决对象重复创建的问题"><a href="#原型模式-解决对象重复创建的问题" class="headerlink" title="原型模式,解决对象重复创建的问题"></a>原型模式,解决对象重复创建的问题</h3><p>局限：<br>1，常驻内存<br>2，多线程的话，会在内存中创建多个实例，即使这个实例跟第一次创建的实例是一样的</p>
+<p>1，通过MemberwiseClone来clone新对象，避免重复创建对象<br>2，每次Clone的时候都是以第一次SingletonSecond静态构造函数构造的来copy，所以每次返回的是新的对象</p>
+<pre><code class="c#">public static SingletonSecond CreateInstancePrototype()
+{
+    SingletonSecond sp = (SingletonSecond)_singletonPrototype.MemberwiseClone();
+    return sp;
+}
+</code></pre>
+<h3 id="三大工厂-建造者模式"><a href="#三大工厂-建造者模式" class="headerlink" title="三大工厂+建造者模式"></a>三大工厂+建造者模式</h3><h4 id="简单工厂"><a href="#简单工厂" class="headerlink" title="简单工厂"></a>简单工厂</h4><p>局限：<br>1，细节没有消失，只是转移，并且矛盾都集中在了一个地方</p>
+<pre><code class="c#">{
+    //不好，左右两边都是具体实现
+    Human human = new Human();
+    player.PlayWar3(human);
+}
+{
+    //好，左边是抽象，右边是细节
+    IRace human = new Human();
+    player.PlayWar3(human);
+}
+{
+    //如何把右边也替换掉？简单工厂模式,就是帮忙完成对象的创建
+    IRace human  = ObjectFactory.CreateRace(RaceType.Human);
+    player.PlayWar3(human);
+}
+
+
+public static IRace CreateRace(RaceType raceType)
+{
+    IRace iRace = null;
+    switch(raceType)
+    {
+        case RaceType.Human:
+            iRace = new Human();
+            break;
+        case RaceType.Undead:
+            iRace = new Undead();
+            break;
+        default:
+            throw new Exception(&quot;Wrong race!&quot;);
+    }
+    return iRace;
+}
+
+//简单工厂的升级，用反射
+//这样写程序里面完全没有细节，细节都在config文件里面
+private static string IRaceTypeConfigReflection = ConfigurationManager.AppSettings[&quot;IRaceTypeConfigReflection&quot;];
+private static string DllName = IRaceTypeConfigReflection.Split(&#39;,&#39;)[1];
+private static string TypeName = IRaceTypeConfigReflection.Split(&#39;,&#39;)[0];
+///IOC的雏形
+public static IRace CreateRaceConfigReflection()
+{
+    Assembly assembly = Assembly.Load(DllName);
+    Type type = assembly.GetType(TypeName);
+    IRace iRace = Activator.CreateInstance(type) as IRace;
+    return iRace;
+}
+
+</code></pre>
+<h4 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h4><p>1，将职责单一化，一个工厂只负责一种实例的创建<br>2，创建的工厂作为一个中间层，把细节包了一层<br>3，这样写方便扩展,可以增加新的行为</p>
+<pre><code class="c#">{
+    IFactory factory = new HumanFactory();
+    //IFactory factory = new HumanFactoryAdvanced();
+    IRace race = factory.CreateRace();
+
+}
+public class HumanFactory: IFactory
+{
+    public virtual IRace CreateRace()
+    {
+        return new Human();
+    }
+}
+//这样写方便扩展,可以增加新的行为
+public class HumanFactoryAdvanced:HumanFactory
+{
+    public override IRace CreateRace()
+    {
+        Console.WriteLine(&quot;This is an extension.&quot;);
+        return new Human();
+    }
+}
+</code></pre>
+<h4 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h4><p>1，从外表来说是一个工厂去创建多个对象<br>2，适用于工厂里面的对象都紧密相连</p>
+<pre><code class="c#">public class HumanFactory:FactoryAbstract
+{
+    public override IRace CreateRace()
+    {
+        return new Human();
+    }
+    public override IArmy CreateArmy()
+    {
+        return new HumanArmy();
+    }
+    public override IHero CreateHero()
+    {
+        return new HumanHero();
+    }
+}
+
+public abstract class FactoryAbstract
+{
+    public abstract IRace CreateRace();
+    public abstract IArmy CreateArmy();
+    public abstract IHero CreateHero();
+}
+
+//caller
+{
+    FactoryAbstract humanFactory = new HumanFactory();
+    IRace race = humanFactory.CreateRace();
+    IArmy army = humanFactory.CreateArmy();
+    IHero hero = humanFactory.CreateHero();
+}
+</code></pre>
+<p><strong>经验之谈：在创建一个对象的时候，尽量不要直接去创建这个对象，而是通过一个中间层，这样细节的变化只会波及到工厂，只改工厂的就好，不会波及到上层</strong></p>
+<h2 id="设计模式-结构型设计模式：关注类与类之间的关系"><a href="#设计模式-结构型设计模式：关注类与类之间的关系" class="headerlink" title="设计模式-结构型设计模式：关注类与类之间的关系"></a>设计模式-结构型设计模式：关注类与类之间的关系</h2><p>纵向可以：继承–实现<br>横向可以：聚合，组合，关联，依赖（是指在方法里用了别的类）<br>核心：组合优于继承</p>
+<h3 id="适配器模式Adapter"><a href="#适配器模式Adapter" class="headerlink" title="适配器模式Adapter"></a>适配器模式Adapter</h3><p>是在项目重构升级的时候会用，之前的方法已经都稳固了，但是这个时候想要用第三方的方法，就把第三方的方法与我们的方法适配一下</p>
+<p>比方说我们之前定义了一个IHelper,里面定义了增删改查四个方法，并且已经有了MySqlHelper,OracleHelper</p>
+<p>这个时候我们想要用一个第三方软件提供的RedisUtility,这里面也定义了自己增删改查方法，但是第三方是不可能继承于我们的类IHelper的，这个时候我们就需要写一个适配方法</p>
+<h4 id="方法一：纵向"><a href="#方法一：纵向" class="headerlink" title="方法一：纵向"></a>方法一：纵向</h4><p>问题：侵入性很强<br>因为通过了继承，我多出了很多功能，我其实只需要IHelper的增删改查就好，但是这个时候我还拥有了RedisUtility里面的AddRedis之类的方法。并且如果RedisUtility什么时候也增加了Add方法，那么我们现在的方法就要改</p>
+<pre><code class="c#">
+public class RedisHelperClass: RedisUtility, IHelper
+{
+    public void Add&lt;T&gt;()
+    {
+        base.AddRedis&lt;T&gt;();
+    }
+    public void Delete&lt;T&gt;()
+    {
+        base.DeleteRedis&lt;T&gt;();
+    }
+    public void Update&lt;T&gt;()
+    {
+        base.UpdateRedis&lt;T&gt;();
+    }
+    public void Query&lt;T&gt;()
+    {
+        base.QueryRedis&lt;T&gt;();
+    }
+}
+
+//caller
+{
+    IHelper helper = new RedisHelperClass();
+    helper.Add&lt;Program&gt;();
+}
+</code></pre>
+<h4 id="方法二：组合"><a href="#方法二：组合" class="headerlink" title="方法二：组合"></a>方法二：组合</h4><p>另一种写法是组合，在类的内部内置了需要类的属性，字段</p>
+<p>组合的写法就比较灵活，不仅类里面可以有redisHelper，如果将来想要有Cache也可以直接加上去</p>
+<pre><code class="c#">public class RedisHelperObject: IHelper
+{
+    private RedisUtility _redisHelper = null;
+    public RedisHelperObject(RedisUtility redisHelper)//这里可能是一个抽象的接口注入进来
+    {
+        this._redisHelper = redisHelper;
+    }
+
+    public RedisHelperObject()
+    {
+        this._redisHelper = new RedisUtility();
+    }
+
+    public void Add&lt;T&gt;()
+    {
+        this._redisHelper.AddRedis&lt;T&gt;();
+    }
+
+    public void Delete&lt;T&gt;()
+    {
+        this._redisHelper.DeleteRedis&lt;T&gt;();
+    }
+
+    //...
+}
+</code></pre>
+<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><p>1，有一个真实的做事情的类<br>2，有一个接口<br>3，有一个代理的类，这个类继承于接口，也有方法的实现，但是到真正的实现是调用真实类来实现<br>4，代理只能传达原有逻辑，不能新增业务逻辑，就是包一层<br>5，真正调用的时候不再调用RealSubject，而是调用ProxySubject<br>6，这种模式可以让用户在真正使用的时候才去创建对象(DoSomething方法)。因为我在用的时候是调用的ProxySubject，这个构建不消耗资源</p>
+<pre><code class="c#">public class ProxySubject: ISubject
+{
+    //这个是单例代理
+    private static ISubject _iSubject = null;
+    private void Init()
+    {
+        _iSubject = new RealSubject();
+    }
+
+    //下面这个是缓存代理
+    private static bool _booleanResult = false;
+    private static bool _isInit = false;
+    private static Dictionary&lt;string,bool&gt; _cache=new Dictionary&lt;string,bool&gt;();
+
+    public bool GetSomething()
+    {
+
+        if(!_isInit)//缓存
+        {
+            _booleanResult = _iSubject.GetSomething();
+            _isInit = true;
+        }
+        return _booleanResult;
+    }
+
+    //这个是延迟代理，延迟构建RealSubject
+    public void DoSomething()
+    {
+        if(_iSubject == null)
+        {
+            this.Init();
+        }
+        _iSubject.DoSomething();
+    }
+}
+</code></pre>
+<h3 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h3><p>1，声明一个你需要用的变量<br>2，在构造函数中把你需要的变量初始化</p>
+<pre><code class="c#">public class BaseStudentDecorator: AbstractStudent
+{
+    //用的是组合的方式，通过构造函数初始化变量
+    private AbstractStudent _student = null;
+    public BaseStudentDecorator(AbstractStudent student)
+    {
+        this._student = student;
+    }
+
+    public override void Study()
+    {
+        this._student.Study();
+    }
+}
+
+public class StudentPayDecorator: BaseStudentDecorator
+{
+    public StudentPayDecorator(AbstractStudent student)
+    :base(student)
+    {
+
+    }
+
+    public override void Study()
+    {
+        Console.WriteLine(&quot;Pay&quot;);
+        base.Study();
+    }
+}
+
+//caller
+{
+    AbstractStudent student = new StudentVip()
+    {
+        Id = 381,
+        Name = &quot;Bird&quot;
+    };
+
+    //BaseStudentDecorator decorator = new BaseStudentDecorator();
+    //把左边BaseStudentDecorator换成AbstractDecorator
+    //AbstractStudent decorator = new BaseStudentDecorator();
+    //decorator.Study();
+    student = new BaseStudentDecorator(student);
+    student.Study();//输出的是vip学习
+
+    //StudentPayDecorator studentPayDecorator = new StudentPayDecorator(decorator);
+    //AbstractStudent studentPayDecorator = new StudentPayDecorator(decorator);
+    //studentPayDecorator.Study();
+
+    //也可以写成如下，这个时候的student为BaseStudentDecorator
+    student = new StudentPayDecorator(student);
+    student.Study();//输出先是pay，然后BaseStudentDecorator的Study,即输出vip学习
+
+    //所以之后如果你想给一个对象加一些行为，都可以像这样写
+    //AOP的雏形
+    student = new BaseStudentDecorator(student);
+    student = new StudentRegDecorator(student);
+    student = new StudentPayDecorator(student);
+    //最终打出来的是付费，注册，vip学习
+    student.Study();
+}
+</code></pre>
+<h2 id="设计模式-行为型设计模式：关注对象和行为的分离"><a href="#设计模式-行为型设计模式：关注对象和行为的分离" class="headerlink" title="设计模式-行为型设计模式：关注对象和行为的分离"></a>设计模式-行为型设计模式：关注对象和行为的分离</h2><p>通俗来讲，就是把方法写在哪里更适合<br>哪里变化 就封装哪里，让别人传进来，自己不去完成</p>
+<h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><pre><code class="c#">private List&lt;IObserver&gt; _observerList = new List&lt;IObserver&gt;();
+public void Add(IObserver observer)
+{
+    this._observerList.Add(observer);
+}
+public void Remove(IObserver observer)
+{
+    this._observerList.Remove(observer);
+}
+
+public void MiaoObserver()
+{
+    foreach(var observer in this._observerList)
+    {
+        observer.Action();
+    }
+}
+
+//上面这就类似于event,event就是委托的一个实例
+public event Action MiaoHandler;
+public void MiaoEvent()
+{
+    if(MiaoHandler != null)
+    {
+        foreach(Action item in this.MiaoHandler.GetInvocationList())
+        {
+            item.Invoke();
+        }
+        //this.MiaoHandler();
+    }
+}
+
+</code></pre>
+<h3 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h3><p>1，行为型设计模式经常会有这种Context类，用来表示上下文.因为行为经常是各种类乱跑的<br>2，下一个审批人不是由当前类来指定的，而是由调用者来指定的，所以当前类就不需要承担指定下一个类的</p>
+<pre><code class="c#">public class ApplyContext
+{
+    public int Id {get;set;}
+
+    public string Name {get;set;}
+
+    public int Hour {get;set;}
+
+    public string Description {get;set;}
+
+    public bool AuditResult{get;set;}
+
+    public string AuditRemark {get;set;}
+}
+
+public abstract class BaseAuditor
+{
+    protected BaseAuditor _nextAuditor {get;private set;}
+
+    public void SetNext(BaseAuditor nextAuditor)
+    {
+        this._nextAuditor = nextAuditor;
+    }
+
+    protected void AuditNext(ApplyContext context)
+    {
+        if(this._nextAuditor == null)
+        {
+            context.AuditResult = false;
+            context.AuditRemark = &quot;Denied!&quot;;
+        }
+        else
+        {
+            this._nextAuditor.Audit(context);
+        }
+    }
+
+    public string Name {get;set;}
+    public abstract void Audit(ApplyContext context);
+}
+
+public class PM : BaseAuditor
+{
+    public override void Audit(ApplyContext context)
+    {
+        context.AuditRemark += &quot;PM process...&quot;;
+        if(context.Hour &lt;= 8)
+        {
+            context.AuditResult = true;
+            context.AuditRemark = &quot;Enjoy!&quot;;
+        }
+        else
+        {
+            base.AuditNext(context);
+        }
+    }
+}
+
+public class AuditManager
+{
+    private static BaseAuditor AuditProcess = null;
+    static AuditorManager()
+    {
+        //甚至这一部分都可以改成简单工厂，用配置文件构建链表结构
+        PM pm = new PM()
+        {
+            Name = &quot;aa&quot;
+        };
+        Charge charge = new Charge()
+        {
+            Name = &quot;bb&quot;
+        };
+        Manager manager = new Manager()
+        {
+            Name = &quot;cc&quot;
+        };
+
+        pm.SetNext(charge);
+        charge.SetNext(manager);
+        AuditProcess = pm;
+    }
+
+    public static BaseAuditor GetAuditor()
+    {
+        return AuditProcess;
+    }
+}
+
+//caller
+{
+    //这一步还可以进一步封装，用一个类专门来返回process
+    PM pm = new PM()
+    {
+        Name = &quot;aa&quot;
+    };
+    Charge charge = new Charge()
+    {
+        Name = &quot;bb&quot;
+    };
+    Manager manager = new Manager()
+    {
+        Name = &quot;cc&quot;
+    };
+
+    pm.SetNext(charge);
+    charge.SetNext(manager);
+    pm.Audit(context);
+
+    //用专门的类来初始化，将对对象的依赖降到最低
+    BaseAuditor auditor = AuditorManager.GetAuditor();
+    auditor.Audit(context);
+}
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/concept/" rel="tag"># concept</a>
+          
+            <a href="/tags/NET/" rel="tag"># .NET</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/22/net-thread/" rel="next" title="net-thread">
+                <i class="fa fa-chevron-left"></i> net-thread
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/31/python-basics/" rel="prev" title="python-basics">
+                python-basics <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Spence">
+          <p class="site-author-name" itemprop="name">Spence</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖倒置原则：怎么抽象"><span class="nav-number">1.</span> <span class="nav-text">依赖倒置原则：怎么抽象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口隔离原则"><span class="nav-number">2.</span> <span class="nav-text">接口隔离原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式-创建型设计模式，关注对象的创建"><span class="nav-number">3.</span> <span class="nav-text">设计模式-创建型设计模式，关注对象的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单例模式，就是保证类型只有一个实例，减少初始化的消耗"><span class="nav-number">3.1.</span> <span class="nav-text">单例模式，就是保证类型只有一个实例，减少初始化的消耗</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一"><span class="nav-number">3.1.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二"><span class="nav-number">3.1.2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法三"><span class="nav-number">3.1.3.</span> <span class="nav-text">方法三</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型模式-解决对象重复创建的问题"><span class="nav-number">3.2.</span> <span class="nav-text">原型模式,解决对象重复创建的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三大工厂-建造者模式"><span class="nav-number">3.3.</span> <span class="nav-text">三大工厂+建造者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单工厂"><span class="nav-number">3.3.1.</span> <span class="nav-text">简单工厂</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工厂方法"><span class="nav-number">3.3.2.</span> <span class="nav-text">工厂方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象工厂"><span class="nav-number">3.3.3.</span> <span class="nav-text">抽象工厂</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式-结构型设计模式：关注类与类之间的关系"><span class="nav-number">4.</span> <span class="nav-text">设计模式-结构型设计模式：关注类与类之间的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#适配器模式Adapter"><span class="nav-number">4.1.</span> <span class="nav-text">适配器模式Adapter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一：纵向"><span class="nav-number">4.1.1.</span> <span class="nav-text">方法一：纵向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二：组合"><span class="nav-number">4.1.2.</span> <span class="nav-text">方法二：组合</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代理模式"><span class="nav-number">4.2.</span> <span class="nav-text">代理模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#装饰器模式"><span class="nav-number">4.3.</span> <span class="nav-text">装饰器模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式-行为型设计模式：关注对象和行为的分离"><span class="nav-number">5.</span> <span class="nav-text">设计模式-行为型设计模式：关注对象和行为的分离</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#观察者模式"><span class="nav-number">5.1.</span> <span class="nav-text">观察者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#责任链模式"><span class="nav-number">5.2.</span> <span class="nav-text">责任链模式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Spence</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

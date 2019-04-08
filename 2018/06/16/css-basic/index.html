@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="concept,css,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="布局(传统display+position+float)Display1,    block占一行    默认block的元素有：    div p ul ol li h1 h2 h3 h4 h5 h62,    inline只占其content的尺寸，如果没有content，就不会显示3，    inline-block是inline的布局，就是都挤在一行（对外的表现），对内表现为block,就">
+<meta name="keywords" content="concept,css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css-basic">
+<meta property="og:url" content="http://yoursite.com/2018/06/16/css-basic/index.html">
+<meta property="og:site_name" content="Drill Learning">
+<meta property="og:description" content="布局(传统display+position+float)Display1,    block占一行    默认block的元素有：    div p ul ol li h1 h2 h3 h4 h5 h62,    inline只占其content的尺寸，如果没有content，就不会显示3，    inline-block是inline的布局，就是都挤在一行（对外的表现），对内表现为block,就">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/absolute-inside-relative.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/absolute-inside-relative2.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/float1.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/float2.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/float3.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/float4.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/pseudo1.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/center.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/flex-concept.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/flex-direction.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/flex-justify-content.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/flex-align-items.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/flex-align-content.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/flex-order.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/flex-grow.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/flex-shrink.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/flex-example1.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/css_sign.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/css_plus.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/06/16/css-basic/css_wave.jpg">
+<meta property="og:updated_time" content="2019-04-08T08:43:47.729Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css-basic">
+<meta name="twitter:description" content="布局(传统display+position+float)Display1,    block占一行    默认block的元素有：    div p ul ol li h1 h2 h3 h4 h5 h62,    inline只占其content的尺寸，如果没有content，就不会显示3，    inline-block是inline的布局，就是都挤在一行（对外的表现），对内表现为block,就">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/16/css-basic/absolute-inside-relative.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/16/css-basic/">
+
+
+
+
+
+  <title>css-basic | Drill Learning</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Drill Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Spence</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/16/css-basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css-basic</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-16T21:34:41+08:00">
+                2018-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="布局-传统display-position-float"><a href="#布局-传统display-position-float" class="headerlink" title="布局(传统display+position+float)"></a>布局(传统display+position+float)</h1><h2 id="Display"><a href="#Display" class="headerlink" title="Display"></a>Display</h2><p>1,    <code>block</code>占一行<br>    默认<code>block</code>的元素有：<br>    <code>div p ul ol li h1 h2 h3 h4 h5 h6</code><br>2,    <code>inline</code>只占其content的尺寸，如果没有content，就不会显示<br>3，    <code>inline-block</code>是inline的布局，就是都挤在一行（对外的表现），对内表现为block,就是可以像block元素一样设置宽高等（盒模型数据）</p>
+<h2 id="Position"><a href="#Position" class="headerlink" title="Position"></a>Position</h2><p>1,    <code>static</code> 就是默认的元素定位<br>2,    <code>relative</code> 相对于<span style="color: red;font-weight: bold;">自己原本的位置</span>,比方说几次方这个东西，就可以用relative来做</p>
+<p>如果你不给Relative设置<code>top left bottom right</code>, 就相当于什么也没发生过，它就是默认的位置</p>
+<p>另外如果你设置了它为relative，就相当于给予了它<code>z-index</code>的能力</p>
+<pre><code class="css">.square {
+    position: relative;
+    top : -1px;
+    left : 1px;
+}
+</code></pre>
+<a id="more"></a>
+<p>3,    <code>absolute</code>    完全绝对定位，一样可以设置<code>top left bottom right</code>,但是这些值是以其找到的最近的非static父元素为基准。 如果没有这样的父元素， 它就会以<code>&lt;html&gt;</code>为父元素.</p>
+<p>关于<code>absolute</code>与<code>relative</code>:</p>
+<img src="/2018/06/16/css-basic/absolute-inside-relative.png">
+<img src="/2018/06/16/css-basic/absolute-inside-relative2.png">
+<p>4,    <code>fixed</code>    基于window的绝对定位，不随页面滚动发生改变</p>
+<h2 id="Margin缩写"><a href="#Margin缩写" class="headerlink" title="Margin缩写"></a>Margin缩写</h2><p>三种：</p>
+<pre><code>margin:    top right bottom left
+margin:    (top/bottom)    (right/left)
+margin: top    (right/left)    bottom
+</code></pre><h2 id="Float-amp-Clear"><a href="#Float-amp-Clear" class="headerlink" title="Float &amp; Clear"></a>Float &amp; Clear</h2><p>float元素只占自己元素的大小，如果只让一边float会发现原本应该另起一行的div会浮动到其左边</p>
+<img src="/2018/06/16/css-basic/float1.png">
+<p>如果第二个元素也变为float，父元素会消失</p>
+<img src="/2018/06/16/css-basic/float2.png">
+<p><code>Clear</code> property specifies what elements can float beside the cleared element and on which side.</p>
+<pre><code>* none    - Allows floating elements on both sides(default)
+* left/right    - No floating elements allowed on the left/right side
+* inherit    - Inherits the clear value of its parent
+</code></pre><p>如果一个元素float left，然后你定义clear to the left. Floated元素会集序float, 但是cleared 元素会显示在下方。</p>
+<img src="/2018/06/16/css-basic/float3.png">
+<p>如果一个floated元素比它的父节点要高,它就会<code>overflow</code>出去，如下：</p>
+<img src="/2018/06/16/css-basic/float4.jpg">
+<p>这个时候就要用<code>clearfix</code> <span style="color: red">来撑起父元素的高度</span></p>
+<pre><code class="css">.clearfix::after{
+    content:&quot;&quot;;
+    clear:both;
+    display:block;
+}
+</code></pre>
+<h2 id="Pseudo-elements-selector-pseudo-element"><a href="#Pseudo-elements-selector-pseudo-element" class="headerlink" title="Pseudo-elements(selector::pseudo-element)"></a>Pseudo-elements(selector::pseudo-element)</h2><p>可以被用作</p>
+<pre><code>*    Style the first letter, or line, of an element
+*    Insert content before, or after, the **content** of an element
+</code></pre><p><code>::before/::after</code> can be used to insert some content before/after the content of an element.</p>
+<pre><code class="css">h1::before{
+    content:url(smiley.gif);
+}
+</code></pre>
+<img src="/2018/06/16/css-basic/pseudo1.png">
+<h2 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h2><img src="/2018/06/16/css-basic/center.png">
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;
+            Container
+        &lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            body {
+            margin: 0px;
+            font-family: &#39;Open Sans&#39;, sans-serif;
+        }
+        .bg {
+            position: absolute;
+            height: 100%;
+            width:100%;
+        }
+        .centered {
+          position: fixed;
+          width: 100%;
+         top: 40%;
+        }
+
+        .centered div a div {
+            display: block;
+            width: 120px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .centered a {
+            text-decoration: none;
+        }
+
+
+        .in {
+            display: inline-block;
+            text-align: center;
+            margin: 0px 10px 0px;
+        }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;bg&quot;&gt;
+            &lt;div class=&quot;centered in&quot;&gt;
+                &lt;div class=&quot;in&quot;&gt;
+                    &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;
+                        &lt;img src=&quot;https://omni.annalect.com/static/i/ico/lg/digital-inventory.png&quot;&gt;
+                            &lt;div&gt;
+                                Campaign Reporting
+                            &lt;/div&gt;
+                        &lt;/img&gt;
+                    &lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;in&quot;&gt;
+                    &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;
+                        &lt;img src=&quot;https://omni.annalect.com/static/i/ico/lg/digital-inventory.png&quot;&gt;
+                            &lt;div&gt;
+                                Campaign Reporting
+                            &lt;/div&gt;
+                        &lt;/img&gt;
+                    &lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;in&quot;&gt;
+                    &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;
+                        &lt;img src=&quot;https://omni.annalect.com/static/i/ico/lg/digital-inventory.png&quot;&gt;
+                            &lt;div&gt;
+                                Campaign Reporting
+                            &lt;/div&gt;
+                        &lt;/img&gt;
+                    &lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h1 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h1><p>[Ref:<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html]" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html]</a></p>
+<p>Flex是Flexible Box的缩写，意思为“弹性布局”，为盒模型提供了很大的灵活性<br>任何一个容器都可以指定为Flex布局<br><strong>设为Flex布局以后，子元素的<code>float</code>,<code>clear</code>和<code>vertical-align</code>属性将失效</strong></p>
+<h2 id="flex基本概念"><a href="#flex基本概念" class="headerlink" title="flex基本概念"></a>flex基本概念</h2><p>container: 采用flex布局的元素，称为flex容器<br>flex-item: container里面所有的子元素自动成为容器成员<br>main axis: 水平主轴。主轴的开始位置（与边框的交叉点）称为<code>main start</code>,结束位置为<code>main end</code><br>cross axis: 垂直交叉轴。开始位置为<code>cross start</code>,结束位置为<code>cross end</code></p>
+<img src="/2018/06/16/css-basic/flex-concept.png">
+<h2 id="container属性"><a href="#container属性" class="headerlink" title="container属性"></a>container属性</h2><h3 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h3><p>决定主轴的方向，就是项目的排列方向</p>
+<pre><code class="css">.box {
+  flex-direction: row | row-reverse | column | column-reverse;
+}
+</code></pre>
+<pre><code>*   row(默认值)：主轴为水平方向，起点在左端
+*   row-reverse：主轴为水平方向，起点在右端
+*   column：主轴为垂直方向，起点在上沿
+*   column-reverse：主轴为垂直方向，起点在下沿
+</code></pre><img src="/2018/06/16/css-basic/flex-direction.png">
+<h3 id="flex-wrap属性"><a href="#flex-wrap属性" class="headerlink" title="flex-wrap属性"></a>flex-wrap属性</h3><p>默认情况下，项目都排在一条线（又称”轴线”）上。<code>flex-wrap</code>属性定义，如果一条轴线排不下，如何换行。</p>
+<pre><code class="css">.box{
+  flex-wrap: nowrap | wrap | wrap-reverse;
+}
+</code></pre>
+<pre><code>*   nowrap(默认)：不换行
+{%asset_img flex-nowrap.png%}
+*   wrap:换行，第一行在上方
+{%asset_img flex-wrap.jpg%}
+*   wrap-reverse:换行，第一行在下方
+{%asset_img flex-wrap-reverse.jpg%}
+</code></pre><h3 id="flex-flow属性"><a href="#flex-flow属性" class="headerlink" title="flex-flow属性"></a>flex-flow属性</h3><p>是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。</p>
+<pre><code class="css">.box {
+  flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;
+}
+</code></pre>
+<h3 id="justify-content属性"><a href="#justify-content属性" class="headerlink" title="justify-content属性"></a>justify-content属性</h3><p>justify-content属性定义了项目在主轴上的对齐方式。</p>
+<pre><code class="css">.box {
+  justify-content: flex-start | flex-end | center | space-between | space-around;
+}
+</code></pre>
+<img src="/2018/06/16/css-basic/flex-justify-content.png">
+<pre><code>*   flex-start（默认值）：左对齐
+*   flex-end：右对齐
+*   center： 居中
+*   space-between：两端对齐，项目之间的间隔都相等。
+*   space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+</code></pre><h3 id="align-items属性"><a href="#align-items属性" class="headerlink" title="align-items属性"></a>align-items属性</h3><p>align-items属性定义项目在交叉轴上如何对齐。</p>
+<pre><code class="css">.box {
+  align-items: flex-start | flex-end | center | baseline | stretch;
+}
+</code></pre>
+<img src="/2018/06/16/css-basic/flex-align-items.png">
+<pre><code>*   flex-start：交叉轴的起点对齐。
+*   flex-end：交叉轴的终点对齐。
+*   center：交叉轴的中点对齐。
+*   baseline: 项目的第一行文字的基线对齐。
+*   stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+</code></pre><h3 id="align-content属性"><a href="#align-content属性" class="headerlink" title="align-content属性"></a>align-content属性</h3><p>align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
+<pre><code class="css">.box {
+  align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+}
+</code></pre>
+<img src="/2018/06/16/css-basic/flex-align-content.png">
+<pre><code>*   flex-start：与交叉轴的起点对齐。
+*   flex-end：与交叉轴的终点对齐。
+*   center：与交叉轴的中点对齐。
+*   space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。
+*   space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
+*   stretch（默认值）：轴线占满整个交叉轴。
+</code></pre><p>##item属性</p>
+<h3 id="order属性"><a href="#order属性" class="headerlink" title="order属性"></a>order属性</h3><p>order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</p>
+<pre><code class="css">.item {
+  order: &lt;integer&gt;;
+}
+</code></pre>
+<img src="/2018/06/16/css-basic/flex-order.png">
+<h3 id="flex-grow属性"><a href="#flex-grow属性" class="headerlink" title="flex-grow属性"></a>flex-grow属性</h3><p>flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。<br>如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
+<pre><code class="css">.item {
+  flex-grow: &lt;number&gt;; /* default 0 */
+}
+</code></pre>
+<img src="/2018/06/16/css-basic/flex-grow.png">
+<h3 id="flex-shrink属性"><a href="#flex-shrink属性" class="headerlink" title="flex-shrink属性"></a>flex-shrink属性</h3><p>flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。<br>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
+<pre><code class="css">.item {
+  flex-shrink: &lt;number&gt;; /* default 1 */
+}
+</code></pre>
+<img src="/2018/06/16/css-basic/flex-shrink.jpg">
+<h3 id="flex-basic属性"><a href="#flex-basic属性" class="headerlink" title="flex-basic属性"></a>flex-basic属性</h3><p>flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。<br>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
+<pre><code class="css">.item {
+  flex-basis: &lt;length&gt; | auto; /* default auto */
+}
+</code></pre>
+<h3 id="flex属性"><a href="#flex属性" class="headerlink" title="flex属性"></a>flex属性</h3><p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</p>
+<pre><code class="css">.item {
+  flex: none | [ &lt;&#39;flex-grow&#39;&gt; &lt;&#39;flex-shrink&#39;&gt;? || &lt;&#39;flex-basis&#39;&gt; ]
+}
+</code></pre>
+<p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。</p>
+<p>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
+<h3 id="align-self属性"><a href="#align-self属性" class="headerlink" title="align-self属性"></a>align-self属性</h3><p>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
+<pre><code class="css">
+.item {
+  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}
+</code></pre>
+<p>##例子，用flex来垂直居中</p>
+<pre><code class="html">&lt;div class=&quot;parent&quot;&gt;
+  &lt;div&gt;Hello!&lt;/div&gt;
+  &lt;div&gt;&lt;p&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.&lt;/p&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;img src=&quot;https://davidwalsh.name/wp-content/themes/punky/images/logo.png&quot; style=&quot;display: inline;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="css">.parent {
+    height:100vh;//very important!
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+div&gt;p{
+    padding:1em;
+    box-sizing:border-box;
+    display:flex;
+    border:solid;
+    margin:10px;
+}
+</code></pre>
+<img src="/2018/06/16/css-basic/flex-example1.png">
+<h1 id="CSS-Units"><a href="#CSS-Units" class="headerlink" title="CSS Units"></a>CSS Units</h1><h2 id="Absolute-Lengths"><a href="#Absolute-Lengths" class="headerlink" title="Absolute Lengths"></a>Absolute Lengths</h2><table>
+<thead>
+<tr>
+<th>Units</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cm</td>
+<td>centimeters</td>
+</tr>
+<tr>
+<td>mm</td>
+<td>milimeters</td>
+</tr>
+<tr>
+<td>in</td>
+<td>inches (1in = 96px = 2.54cm)</td>
+</tr>
+<tr>
+<td>px *</td>
+<td>pixels (1px = 1/96th of 1in)</td>
+</tr>
+<tr>
+<td>pt</td>
+<td>points (1pt = 1/72 of 1in)</td>
+</tr>
+<tr>
+<td>pc</td>
+<td>picas (1pc = 12 pt)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Relative-Lengths"><a href="#Relative-Lengths" class="headerlink" title="Relative Lengths"></a>Relative Lengths</h2><table>
+<thead>
+<tr>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>em</td>
+<td>Relative to the font-size of the element (2em means 2 times the size of the current font)</td>
+</tr>
+<tr>
+<td>ex</td>
+<td>Relative to the x-height of the current font (rarely used)</td>
+</tr>
+<tr>
+<td>ch</td>
+<td>Relative to width of the “0” (zero)</td>
+</tr>
+<tr>
+<td>rem</td>
+<td>Relative to font-size of the root element</td>
+</tr>
+<tr>
+<td>vw</td>
+<td>Relative to 1% of the width of the viewport*</td>
+</tr>
+<tr>
+<td>vh</td>
+<td>Relative to 1% of the height of the viewport*</td>
+</tr>
+<tr>
+<td>vmin</td>
+<td>Relative to 1% of viewport’s* smaller dimension</td>
+</tr>
+<tr>
+<td>vmax</td>
+<td>Relative to 1% of viewport’s* larger dimension</td>
+</tr>
+<tr>
+<td>%</td>
+<td>Relative to the parent element</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a>Selector</h1><pre><code class="html">&lt;div id=&quot;container&quot;&gt;            
+   &lt;p&gt;First&lt;/p&gt;
+    &lt;div&gt;
+        &lt;p&gt;Child Paragraph&lt;/p&gt;
+    &lt;/div&gt;
+   &lt;p&gt;Second&lt;/p&gt;
+   &lt;p&gt;Third&lt;/p&gt;      
+&lt;/div&gt;
+</code></pre>
+<h3 id="Space"><a href="#Space" class="headerlink" title="Space"></a>Space</h3><p>Descendant selector.<br>Target <strong>all p tags</strong> within container div.<br>例</p>
+<pre><code class="css">div#container p{
+    font-weight:bold;
+}
+</code></pre>
+<h3 id="‘-gt-’Sign"><a href="#‘-gt-’Sign" class="headerlink" title="‘&gt;’Sign"></a>‘&gt;’Sign</h3><p>Target elements which are <strong>DIRECT</strong> children of a particular element.</p>
+<pre><code class="css">div#container &gt; p {
+  border: 1px solid black;
+}
+</code></pre>
+<p>This will target all P element within container div, but <strong>not children of child div</strong></p>
+<img src="/2018/06/16/css-basic/css_sign.jpg">
+<h3 id="‘-’-Sign"><a href="#‘-’-Sign" class="headerlink" title="‘+’ Sign"></a>‘+’ Sign</h3><p>This is adjacent sibling combinator. It combines two sequences of simple selectors having the same parent and the second one must come <strong>IMMEDIATELY</strong> after the first. 只会影响到第二个simbling</p>
+<pre><code class="css">div + p {  
+   color: green;  
+} 
+</code></pre>
+<p>只会选择div后面紧连着的第一个p，且这个div和p是同级的（共享同一个父亲），也就是说包着<code>Child Paragraph</code>的div，和<code>second</code>的p是同级的</p>
+<img src="/2018/06/16/css-basic/css_plus.jpg">
+<h3 id="‘-’Sign"><a href="#‘-’Sign" class="headerlink" title="‘~’Sign"></a>‘~’Sign</h3><p>Similar to ‘+’ but the difference is that the second selector <strong>does NOT</strong> have to immediately follow the first one. It will select all elements that is preceded by the former selector.</p>
+<pre><code class="css">div ~ p{
+    background-color:blue;
+}
+</code></pre>
+<img src="/2018/06/16/css-basic/css_wave.jpg">
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/concept/" rel="tag"># concept</a>
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/14/linux-basic/" rel="next" title="linux-basic">
+                <i class="fa fa-chevron-left"></i> linux-basic
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/20/shell-basic/" rel="prev" title="Shell 基本语法">
+                Shell 基本语法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Spence">
+          <p class="site-author-name" itemprop="name">Spence</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#布局-传统display-position-float"><span class="nav-number">1.</span> <span class="nav-text">布局(传统display+position+float)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Display"><span class="nav-number">1.1.</span> <span class="nav-text">Display</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Position"><span class="nav-number">1.2.</span> <span class="nav-text">Position</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Margin缩写"><span class="nav-number">1.3.</span> <span class="nav-text">Margin缩写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Float-amp-Clear"><span class="nav-number">1.4.</span> <span class="nav-text">Float &amp; Clear</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pseudo-elements-selector-pseudo-element"><span class="nav-number">1.5.</span> <span class="nav-text">Pseudo-elements(selector::pseudo-element)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#居中"><span class="nav-number">1.6.</span> <span class="nav-text">居中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flex布局"><span class="nav-number">2.</span> <span class="nav-text">Flex布局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#flex基本概念"><span class="nav-number">2.1.</span> <span class="nav-text">flex基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#container属性"><span class="nav-number">2.2.</span> <span class="nav-text">container属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-direction"><span class="nav-number">2.2.1.</span> <span class="nav-text">flex-direction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-wrap属性"><span class="nav-number">2.2.2.</span> <span class="nav-text">flex-wrap属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-flow属性"><span class="nav-number">2.2.3.</span> <span class="nav-text">flex-flow属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#justify-content属性"><span class="nav-number">2.2.4.</span> <span class="nav-text">justify-content属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#align-items属性"><span class="nav-number">2.2.5.</span> <span class="nav-text">align-items属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#align-content属性"><span class="nav-number">2.2.6.</span> <span class="nav-text">align-content属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#order属性"><span class="nav-number">2.2.7.</span> <span class="nav-text">order属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-grow属性"><span class="nav-number">2.2.8.</span> <span class="nav-text">flex-grow属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-shrink属性"><span class="nav-number">2.2.9.</span> <span class="nav-text">flex-shrink属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-basic属性"><span class="nav-number">2.2.10.</span> <span class="nav-text">flex-basic属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex属性"><span class="nav-number">2.2.11.</span> <span class="nav-text">flex属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#align-self属性"><span class="nav-number">2.2.12.</span> <span class="nav-text">align-self属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS-Units"><span class="nav-number">3.</span> <span class="nav-text">CSS Units</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Absolute-Lengths"><span class="nav-number">3.1.</span> <span class="nav-text">Absolute Lengths</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relative-Lengths"><span class="nav-number">3.2.</span> <span class="nav-text">Relative Lengths</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Selector"><span class="nav-number">4.</span> <span class="nav-text">Selector</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Space"><span class="nav-number">4.0.1.</span> <span class="nav-text">Space</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#‘-gt-’Sign"><span class="nav-number">4.0.2.</span> <span class="nav-text">‘&gt;’Sign</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#‘-’-Sign"><span class="nav-number">4.0.3.</span> <span class="nav-text">‘+’ Sign</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#‘-’Sign"><span class="nav-number">4.0.4.</span> <span class="nav-text">‘~’Sign</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Spence</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="concept,.NET,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="代码编译成机器码的过程注意在变成exe/dll之后还会有一层CLR/JIT，才会编译成机器码  为什么要有二次编译：兼容性，不同的平台。32位64位/linux,windows在不同环境下编译的方法不同 想用同一种高级语言通用于所有的平台 反射调用带参数的构造函数：Assembly assemly = Assembly.Load(&amp;quot;Test.DB.SqlServer&amp;quot;); //">
+<meta name="keywords" content="concept,.NET">
+<meta property="og:type" content="article">
+<meta property="og:title" content="net-reflection">
+<meta property="og:url" content="http://yoursite.com/2018/06/07/net-reflection/index.html">
+<meta property="og:site_name" content="Drill Learning">
+<meta property="og:description" content="代码编译成机器码的过程注意在变成exe/dll之后还会有一层CLR/JIT，才会编译成机器码  为什么要有二次编译：兼容性，不同的平台。32位64位/linux,windows在不同环境下编译的方法不同 想用同一种高级语言通用于所有的平台 反射调用带参数的构造函数：Assembly assemly = Assembly.Load(&amp;quot;Test.DB.SqlServer&amp;quot;); //">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/06/07/net-reflection/20180607145635.png">
+<meta property="og:updated_time" content="2019-04-08T08:43:47.823Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="net-reflection">
+<meta name="twitter:description" content="代码编译成机器码的过程注意在变成exe/dll之后还会有一层CLR/JIT，才会编译成机器码  为什么要有二次编译：兼容性，不同的平台。32位64位/linux,windows在不同环境下编译的方法不同 想用同一种高级语言通用于所有的平台 反射调用带参数的构造函数：Assembly assemly = Assembly.Load(&amp;quot;Test.DB.SqlServer&amp;quot;); //">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/07/net-reflection/20180607145635.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/07/net-reflection/">
+
+
+
+
+
+  <title>net-reflection | Drill Learning</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Drill Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Spence</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/07/net-reflection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">net-reflection</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-07T14:54:29+08:00">
+                2018-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="代码编译成机器码的过程"><a href="#代码编译成机器码的过程" class="headerlink" title="代码编译成机器码的过程"></a>代码编译成机器码的过程</h3><p><span style="color: red">注意在变成exe/dll之后还会有一层CLR/JIT，才会编译成机器码</span></p>
+<img src="/2018/06/07/net-reflection/20180607145635.png">
+<p>为什么要有二次编译：<br>兼容性，不同的平台。32位64位/linux,windows在不同环境下编译的方法不同</p>
+<p>想用同一种高级语言通用于所有的平台</p>
+<h4 id="反射调用带参数的构造函数："><a href="#反射调用带参数的构造函数：" class="headerlink" title="反射调用带参数的构造函数："></a>反射调用带参数的构造函数：</h4><pre><code class="c#">Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;); //以前需要依靠一个类，现在相当于只依赖于一串字符串
+Type testType = assemly.GetType(&quot;Test.DB.SqlServer.ReflectionTest&quot;); //注意传的时候需要加上前方的namespace
+object oTest1 = Activator.CreateInstance(testType);//默认调用无参构造函数
+object oTest2 = Activator.CreateInstance(testType,new object[]{895,&quot;霉霉&quot;});//调用参数第一个是int类型，第二个是string类型的构造函数
+</code></pre>
+<h4 id="反射调用Generic类型"><a href="#反射调用Generic类型" class="headerlink" title="反射调用Generic类型:"></a>反射调用Generic类型:</h4><pre><code class="c#">//Generic Class
+namespace Test.DB.SqlServer
+{
+    public class GenericClass&lt;T,W,X&gt;
+    {
+        public void Show(T t, W w, X x)
+        {
+            Console.WriteLine(&quot;t.type={0},w.type={1},x.type={2}&quot;, t.GetType().Name,w.GetType().Name,x.GetType().Name);
+        }
+    }
+}
+
+
+Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;); 
+Type genericType = assemly.GetType(&quot;Test.DB.SqlServer.GenericClass`3&quot;);//因为泛型有占位符，所以要写占位符
+Type realGenericType = genericType.MakeGeneric(typeof(int),typeof(string),typeof(Program)); //用genericType是无法生成实例的，因为这个时候还没有参数类型，必须要定义好才能用，所以要调用MakeGeneric方法，用realGenericType生成占位符
+object oGeneric = Activator.CreateInstance(realGenericType);
+</code></pre>
+<h4 id="反射调用Singleton单例"><a href="#反射调用Singleton单例" class="headerlink" title="反射调用Singleton单例"></a>反射调用Singleton单例</h4><p>单力模式的意思就是保证程序运行的时候只会对这个类实例化一次</p>
+<h5 id="构造函数种类及执行顺序"><a href="#构造函数种类及执行顺序" class="headerlink" title="构造函数种类及执行顺序"></a>构造函数种类及执行顺序</h5><ol>
+<li>默认构造函数，如果没有为类指定任何构造函数，编译器会自动为类创建一个无参构造函数</li>
+<li>静态构造函数，不能访问实例成员，只能用来初始化一些静态字段或者属性，<strong>仅在第一次调用类的任何成员时自动执行，不带反问修饰符，不带任何参数，且每个类只能有一个静态构造函数</strong></li>
+<li>私有构造函数，将构造函数声明为私有，则不能通过new()在外部代码中实例话，可以这样实例：<br><code>`</code>c#<br>public class Demo<br>{<br>private Demo(){}<br>public static Demo NewDemo()<br>{<br> return new Demo();<br>}<br>}</li>
+</ol>
+<pre><code>4. **构造函数的执行顺序**
+    **子类静态构造 -&gt; 父类静态构造 -&gt; 父类构造 -&gt; 子类构造**
+
+
+单例模式
+通常使用的情况是&lt;span style=&quot;color: red&quot;&gt;不能在外面调用单例模式的私有构造函数的&lt;/span&gt;
+但是通过反射的方法是可以&lt;span style=&quot;color:red; font-weight: bold;&quot;&gt;调用单例模式的私有构造函数&lt;/span&gt;!
+
+```c#
+
+namespace Test.DB.SqlServer
+{
+    public sealed class Singleton
+    {
+        private static Singleton _Singleton = null;
+        //构造函数首先要私有化，别人不能调用它，只能它自己调用
+        private Singleton()
+        {
+            Console.WriteLine(&quot;Singleton被构造&quot;);
+        }
+
+        //静态构造函数首先会被调用，这个时候会调用私有构造函数
+        //由于静态构造函数只会被调用一次，所以这个类也就只会被实例化一次
+        static Singleton()
+        {
+            _Singleton = new Singleton();
+        }
+
+
+        public stati Singleton GetInstance()
+        {
+            return _Singleton;
+        }
+    }
+}
+
+
+Type singletonType = assemly.GetType(&quot;Test.DB.SqlServer.Singleton&quot;);
+
+//反射是可以直接去访问单例模式的私有构造函数，下面这个方法会调用单例模式的私有构造函数
+//并且还可以实例化多个单例
+object oSingleton1 = Activator.CreateInstance(singletonType, true);
+object oSingleton2 = Activator.CreateInstance(singletonType, true);
+</code></pre><h4 id="反射不强制转换也能调用方法，-Reflection-Method-gt-MVC"><a href="#反射不强制转换也能调用方法，-Reflection-Method-gt-MVC" class="headerlink" title="反射不强制转换也能调用方法， Reflection + Method -&gt; MVC"></a>反射不强制转换也能调用方法， Reflection + Method -&gt; MVC</h4><pre><code class="c#">Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;);
+Type testType = assemly.GetType(&quot;Test.DB.SqlServer.ReflectionTest&quot;);
+object oTest1 = Activator.CreateInstance(testType);
+
+MethodInfo method = testType.GetMethod(&quot;Show1&quot;); //以前写的具体方法也都换成了字符串
+method.Invoke(oTest1,new object[]{1332}); //调用含参数的方法
+{
+    method.Invoke(null,null);//调用无参数的静态方法，也可以写成method.Invoke(oTest1,null);    
+}
+{
+    MethodInfo method = testType.GetMethod(&quot;Show3&quot;,new Type[]{}); //重载方法没有参数的
+}
+{
+    MethodInfo method = testType.GetMethod(&quot;Show3&quot;, new Type[]{typeof(int)}); //重载方法有一个int类型的参数
+}
+{
+    MethodInfo method = testType.GetMethod(&quot;Show4&quot;,BindingFlags.Instance | BindingFlags.NonPublic); //调用私有方法
+}
+
+public class GenericMethod
+{
+    public void Show&lt;T,W,X&gt;(T t, W w, X x)
+    {
+        Console.WriteLine(&quot;XXX&quot;);
+    }
+}
+
+{
+    Type genericType = assemly.GetType(&quot;Test.DB.SqlServer.GenericMethod&quot;);
+    object oGeneric = Activator.CreateInstance(genericType); // 因为GenericMethod只是个普通类型，不是泛型类型
+    MethodInfo method = genericType.GetMethod(&quot;Show&quot;); //泛型方法不需要使用占位符
+    MethodInfo methodNew = method.MakeGeneric(typeof(int),typeof(string),typeof(int)); //记得这里要重新生成一个MethodInfo
+    methodNew.Invoke(oGeneric, new object[]{10,&quot;test&quot;,10});
+}
+
+</code></pre>
+<h4 id="反射调用属性和字段-Reflection-Property-gt-O-RM"><a href="#反射调用属性和字段-Reflection-Property-gt-O-RM" class="headerlink" title="反射调用属性和字段 Reflection + Property -&gt; O/RM"></a>反射调用属性和字段 Reflection + Property -&gt; O/RM</h4><pre><code class="c#"> Type type = typeof(People);
+ object oPeople = Activator.CreateInstance(type);
+ foreach(var item in type.GetProperties()){ // 反射可以动态给对象属性赋值/获取值
+     Console.WriteLine(item.Name);
+     Console.WriteLine(item.GetValue(oPeople));
+     if(item.Name.Equals(&quot;Id&quot;))
+         item.SetValue(oPeople,1234);
+     else if(item.Name.Equals(&quot;Name&quot;))
+         item.SetValue(oPeople,&quot;ttt&quot;);
+     Console.WriteLine(item.GetValue(oPeople))
+ }
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/concept/" rel="tag"># concept</a>
+          
+            <a href="/tags/NET/" rel="tag"># .NET</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/05/net-generic/" rel="next" title=".net-generic">
+                <i class="fa fa-chevron-left"></i> .net-generic
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/14/linux-basic/" rel="prev" title="linux-basic">
+                linux-basic <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Spence">
+          <p class="site-author-name" itemprop="name">Spence</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码编译成机器码的过程"><span class="nav-number">1.</span> <span class="nav-text">代码编译成机器码的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#反射调用带参数的构造函数："><span class="nav-number">1.1.</span> <span class="nav-text">反射调用带参数的构造函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射调用Generic类型"><span class="nav-number">1.2.</span> <span class="nav-text">反射调用Generic类型:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射调用Singleton单例"><span class="nav-number">1.3.</span> <span class="nav-text">反射调用Singleton单例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#构造函数种类及执行顺序"><span class="nav-number">1.3.1.</span> <span class="nav-text">构造函数种类及执行顺序</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射不强制转换也能调用方法，-Reflection-Method-gt-MVC"><span class="nav-number">1.4.</span> <span class="nav-text">反射不强制转换也能调用方法， Reflection + Method -&gt; MVC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射调用属性和字段-Reflection-Property-gt-O-RM"><span class="nav-number">1.5.</span> <span class="nav-text">反射调用属性和字段 Reflection + Property -&gt; O/RM</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Spence</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

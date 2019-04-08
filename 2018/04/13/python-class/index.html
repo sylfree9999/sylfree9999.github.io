@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="concept,python,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="class继承class Animal(Object)：     def cry(self):         print(&amp;quot;Animal shouts&amp;quot;)  class Dog(Animal):     def cry(self):         print(&amp;quot;Wang wang&amp;quot;)  &amp;gt;&amp;gt;&amp;gt; dog = Dog() &amp;gt;&amp;gt;&amp;">
+<meta name="keywords" content="concept,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python class">
+<meta property="og:url" content="http://yoursite.com/2018/04/13/python-class/index.html">
+<meta property="og:site_name" content="Drill Learning">
+<meta property="og:description" content="class继承class Animal(Object)：     def cry(self):         print(&amp;quot;Animal shouts&amp;quot;)  class Dog(Animal):     def cry(self):         print(&amp;quot;Wang wang&amp;quot;)  &amp;gt;&amp;gt;&amp;gt; dog = Dog() &amp;gt;&amp;gt;&amp;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-08T08:43:47.839Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python class">
+<meta name="twitter:description" content="class继承class Animal(Object)：     def cry(self):         print(&amp;quot;Animal shouts&amp;quot;)  class Dog(Animal):     def cry(self):         print(&amp;quot;Wang wang&amp;quot;)  &amp;gt;&amp;gt;&amp;gt; dog = Dog() &amp;gt;&amp;gt;&amp;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/13/python-class/">
+
+
+
+
+
+  <title>python class | Drill Learning</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Drill Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Spence</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/13/python-class/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python class</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-13T17:16:07+08:00">
+                2018-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="class继承"><a href="#class继承" class="headerlink" title="class继承"></a>class继承</h2><pre><code class="python">class Animal(Object)：
+    def cry(self):
+        print(&quot;Animal shouts&quot;)
+
+class Dog(Animal):
+    def cry(self):
+        print(&quot;Wang wang&quot;)
+
+&gt;&gt;&gt; dog = Dog()
+&gt;&gt;&gt; dog.cry() //覆盖了父类Animal的cry()方法
+Wang wang
+
+</code></pre>
+<h2 id="class访问限制"><a href="#class访问限制" class="headerlink" title="class访问限制"></a>class访问限制</h2><p>私有变量，可以把属性的名称前加上<strong>两个</strong>下划线<code>__</code></p>
+<pre><code class="python">class Student(object):
+    def __init__(self, name, score):
+        self.__name = name
+        self.__score = score
+
+    def get_name(self):
+        return self.__name
+</code></pre>
+<p>但是以<code>__</code>开头<code>__</code>结尾的，是<span style="color: red; font-weight: bold;">特殊变量</span>, 特殊变量可以直接访问，不是private变量</p>
+<p>如果变量名前面只有<strong>一个</strong>下划线<code>_</code>，这样的实例变量外部可以访问，但是by convention, 虽然可以方位，但请把我视为私有变量，不要随意访问</p>
+<p><strong>注意！！！</strong></p>
+<pre><code class="python">&gt;&gt;&gt; bart = Student(&#39;Bart Simpson&#39;, 59)
+&gt;&gt;&gt; bart.get_name()
+&#39;Bart Simpson&#39;
+&gt;&gt;&gt; bart.__name = &#39;New Name&#39; # 这里设置__name变量, 是相当于新加了一个__name变量，而真正的变量已经被Python解释器变为_Student__name
+&gt;&gt;&gt; bart.__name
+&#39;New Name&#39;
+&gt;&gt;&gt; bart.get_name() # get_name()内部返回self.__name
+&#39;Bart Simpson&#39;
+</code></pre>
+<h2 id="获得一个对象的所有属性和方法"><a href="#获得一个对象的所有属性和方法" class="headerlink" title="获得一个对象的所有属性和方法"></a>获得一个对象的所有属性和方法</h2><pre><code class="python">&gt;&gt;&gt; dir(&#39;ABC&#39;)
+[&#39;__add__&#39;, &#39;__class__&#39;,..., &#39;__subclasshook__&#39;, &#39;capitalize&#39;, &#39;casefold&#39;,..., &#39;zfill&#39;]
+&gt;&gt;&gt; len(&#39;ABC&#39;) #内部相当于调用了该对象的__len__()方法
+3
+&gt;&gt;&gt; &#39;ABC&#39;.__len__()
+3
+</code></pre>
+<h2 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h2><p>实例绑定属性通过<code>self</code>变量：</p>
+<pre><code class="python">class Student(object):
+    def __init__(self, name):
+        self.name = name
+
+s = Student(&#39;Bob&#39;)
+s.score = 90
+</code></pre>
+<p>类属性直接在类下面定义,这个属性可以被所有类的实例访问到</p>
+<pre><code class="python">class Student(object):
+    name = &#39;Student&#39;
+
+&gt;&gt;&gt; s = Student() # 创建实例s
+&gt;&gt;&gt; print(s.name) # 打印name属性，因为实例并没有name属性，所以会继续查找class的name属性
+Student
+&gt;&gt;&gt; print(Student.name) # 打印类的name属性
+Student
+&gt;&gt;&gt; s.name = &#39;Michael&#39; # 给实例绑定name属性
+&gt;&gt;&gt; print(s.name) # 由于实例属性优先级比类属性高，因此，它会屏蔽掉类的name属性
+Michael
+&gt;&gt;&gt; print(Student.name) # 但是类属性并未消失，用Student.name仍然可以访问
+Student
+&gt;&gt;&gt; del s.name # 如果删除实例的name属性
+&gt;&gt;&gt; print(s.name) # 再次调用s.name，由于实例的name属性没有找到，类的name属性就显示出来了
+Student
+</code></pre>
+<h2 id="staticmethod和-classmethod"><a href="#staticmethod和-classmethod" class="headerlink" title="@staticmethod和@classmethod"></a>@staticmethod和@classmethod</h2><p>一般是用类方法需要先实例化一个对象再调用方法<br>但是使用了@staticmethod以及@classmethod，可以直接<code>类名.方法名()</code>调用</p>
+<p>它们的区别：</p>
+<ul>
+<li>@classmethod处理仅跟这个类相关的方法，跟instance无关。当@classmethod被调用的时候，是把这个class作为第一个参数传进去，而不是这个类的实例。也就是说你可以直接在这个@classmethod里面用类属性，而非从一个类实例里面使用</li>
+</ul>
+<ul>
+<li>@staticmethod，当调用这个方法的时候，我们<strong>甚至不用把类传进去</strong>，也就是说我们可以把这个方法放到类里面，但是这个方法其实根本不需要这个类或者实例，比方说设置一些环境参数，更改别的类的属性之类的。</li>
+</ul>
+<pre><code class="python">
+class Kls(object):
+    def __init__(self, data):
+        self.data = data
+
+    def printd(self):
+        print(self.data)
+
+    @staticmethod
+        def smethod(*arg):
+            print(&#39;Static:&#39;, arg)
+
+    @classmethod
+        def cmethod(*arg):
+            print(&#39;Class:&#39;, arg)
+
+&gt;&gt;&gt; ik = Kls(23)
+&gt;&gt;&gt; ik.printd()
+23
+&gt;&gt;&gt; ik.smethod()
+Static: ()
+&gt;&gt;&gt; ik.cmethod()
+Class: (&lt;class &#39;__main__.Kls&#39;&gt;,)
+&gt;&gt;&gt; Kls.printd()
+TypeError: unbound method printd() must be called with Kls instance as first argument (got nothing instead)
+&gt;&gt;&gt; Kls.smethod()
+Static: ()
+&gt;&gt;&gt; Kls.cmethod()
+Class: (&lt;class &#39;__main__.Kls&#39;&gt;,)
+
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/concept/" rel="tag"># concept</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/13/python-open/" rel="next" title="python open() 文件操作">
+                <i class="fa fa-chevron-left"></i> python open() 文件操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/16/python-pip3-install-error/" rel="prev" title="Python pip3 fatal error in launcher">
+                Python pip3 fatal error in launcher <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Spence">
+          <p class="site-author-name" itemprop="name">Spence</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#class继承"><span class="nav-number">1.</span> <span class="nav-text">class继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#class访问限制"><span class="nav-number">2.</span> <span class="nav-text">class访问限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获得一个对象的所有属性和方法"><span class="nav-number">3.</span> <span class="nav-text">获得一个对象的所有属性和方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例属性和类属性"><span class="nav-number">4.</span> <span class="nav-text">实例属性和类属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#staticmethod和-classmethod"><span class="nav-number">5.</span> <span class="nav-text">@staticmethod和@classmethod</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Spence</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

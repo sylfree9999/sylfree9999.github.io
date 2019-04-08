@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Ubuntu,Shiny,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="Install Pythonsudo apt-get update sudo apt-get -y upgrade #type python3 check if python3 is installed sudo apt-get install -y python3-pip sudo apt-get install -y build-essential libssl-dev libffi-dev">
+<meta name="keywords" content="Ubuntu,Shiny">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Install R Shiny Server in Ubuntu">
+<meta property="og:url" content="http://yoursite.com/2018/05/09/ubuntu-install-shiny-server/index.html">
+<meta property="og:site_name" content="Drill Learning">
+<meta property="og:description" content="Install Pythonsudo apt-get update sudo apt-get -y upgrade #type python3 check if python3 is installed sudo apt-get install -y python3-pip sudo apt-get install -y build-essential libssl-dev libffi-dev">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-08T08:43:47.854Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Install R Shiny Server in Ubuntu">
+<meta name="twitter:description" content="Install Pythonsudo apt-get update sudo apt-get -y upgrade #type python3 check if python3 is installed sudo apt-get install -y python3-pip sudo apt-get install -y build-essential libssl-dev libffi-dev">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/09/ubuntu-install-shiny-server/">
+
+
+
+
+
+  <title>Install R Shiny Server in Ubuntu | Drill Learning</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Drill Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Spence</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/09/ubuntu-install-shiny-server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Install R Shiny Server in Ubuntu</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-09T16:36:38+08:00">
+                2018-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>Install Python<pre><code>sudo apt-get update
+sudo apt-get -y upgrade
+#type python3 check if python3 is installed
+sudo apt-get install -y python3-pip
+sudo apt-get install -y build-essential libssl-dev libffi-dev python3-dev
+sudo apt-get install -y liblzma-dev  libblas-dev gfortran
+nano ~/.bashrc
+#type on the top of the file
+alias python=python3
+source ~/.bashrc
+</code></pre></li>
+</ul>
+<ul>
+<li>Install Java<br><code>`</code><br>sudo apt-get install -y default-jre<br>sudo apt-get install -y default-jdk<br>sudo add-apt-repository ppa:webupd8team/java<br>sudo apt-get update<br>sudo apt-get install oracle-java8-installer</li>
+</ul>
+<p>or<br>wget <a href="http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz?AuthParam=1530518840_9e538c86b030b30acb4afc0f47a60454" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz?AuthParam=1530518840_9e538c86b030b30acb4afc0f47a60454</a></p>
+<p>mkdir /apps/<br>tar -zxvf jdk-8u171-linux-x64.tar.gz -C /apps/<br>vi /etc/profile<br>export JAVA_HOME=/apps/jdk1.8.0_171<br>export PATH=$PATH:$JAVA_HOME/bin<br>source /etc/profile</p>
+<pre><code>
+* Setting JAVA_HOME
+</code></pre><p>sudo update-alternatives –config java<br>sudo nano /etc/environment<br>JAVA_HOME=”/usr/lib/jvm/java-8-oracle”<br>source /etc/environment<br>echo $JAVA_HOME</p>
+<pre><code>
+
+* Install R from source and X11
+</code></pre><p>sudo apt-get install -y libcurl4-openssl-dev</p>
+<p>#install x11<br>sudo apt-get install -y xvfb xauth xfonts-base</p>
+<p>#Xvfb :0 -ac -screen 0 1960x2000x24 &amp;</p>
+<p>#then set Sys.setenv(“DISPLAY”=”:0”) on top of ui.R</p>
+<p>#install cairo<br>sudo apt-get -y build-dep cairo<br>sudo apt-get install -y libcairo2-dev</p>
+<pre><code>#### If you choose to use cairo, put `options(bitmapType=&#39;cairo&#39;)` on top of the server.R or put it in the Rprofile so that all sessions will read this configuration. [https://stackoverflow.com/questions/17243648/cant-display-png]
+
+</code></pre><p>sudo apt-get install libbz2-dev<br>wget <a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/src/base/R-3/R-3.5.0.tar.gz" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/CRAN/src/base/R-3/R-3.5.0.tar.gz</a><br>tar xzvf R-3.5.0.tar.gz<br>cd R-3.5.0<br>sudo -s<br>./configure –with-readline=no –with-libtiff –with-libjpeg –with-libpng –with-x –with-cairo<br>make<br>make check<br>make install</p>
+<pre><code>Check capabilities:
+```R
+R
+capabilities()
+</code></pre><ul>
+<li>Rprofile<br>At startup, R will source the <strong>RProfile.site</strong> file.<br>Then look for a .Rprofile file to source in the current working directory.<br>Not found, it will look for on in ~/.Rprofile.</li>
+</ul>
+<p>[<a href="https://www.r-bloggers.com/fun-with-rprofile-and-customizing-r-startup/]" target="_blank" rel="noopener">https://www.r-bloggers.com/fun-with-rprofile-and-customizing-r-startup/]</a></p>
+<pre><code>In the absence of any command-line flags being used, when R starts up, it will “source” (run) the site-wide R startup configuration file/script if it exists. In a fresh install of R, this will rarely exist, but if it does, it will usually be in ‘/Library/Frameworks/R.framework/Resources/etc/’ on OS X, ‘C:Program FilesRR-***etc’ on Windows, or ‘/etc/R/’ on Debian. Next, it will check for a .Rprofile hidden file in the current working directory (the directory where R is started on the command-line) to source. Failing that, it will check your home directory for the .Rprofile hidden file.
+</code></pre><p>There are two special functions you can put:</p>
+<pre><code>* **.First()** will run at the start of the R session
+* **.Last()** will run at the end of the session
+</code></pre><p>You can check if you have a site-wide R configuration script by running<br><span style="color: red">Create RProfile.site under R.home/etc/</span></p>
+<pre><code class="R">R.home(component = &quot;home&quot;)
+</code></pre>
+<p>in the R console and then checking for the presence of Rprofile.site in that directory. The presence of the user-defined R configuration can be checked for in the directory of whichever path</p>
+<pre><code class="R">path.expand(&quot;~&quot;)
+</code></pre>
+<p>Sample Rprofile.site file</p>
+<pre><code># Things you might want to change
+# options(papersize=&quot;a4&quot;) 
+# options(editor=&quot;notepad&quot;) 
+# options(pager=&quot;internal&quot;)
+
+# R interactive prompt 
+# options(prompt=&quot;&gt; &quot;)
+# options(continue=&quot;+ &quot;) 
+
+# to prefer Compiled HTML help 
+options(chmhelp=TRUE) 
+# to prefer HTML help 
+# options(htmlhelp=TRUE) 
+
+# General options 
+options(tab.width = 2) 
+options(width = 130)
+options(graphics.record=TRUE) 
+options(bitmapType=&#39;cairo&#39;)
+
+#.First &lt;- function(){
+# #library(Hmisc)
+# #library(R2HTML)
+# cat(&quot;\nWelcome at&quot;, date(), &quot;\n&quot;) 
+#}
+
+#.Last &lt;- function(){ 
+# cat(&quot;\nGoodbye at &quot;, date(), &quot;\n&quot;)
+#}
+</code></pre><ul>
+<li>In order to use shinyjs, install V8<pre><code>cd /usr/local/lib/R
+sudo mkdir site-library
+sudo chmod o+w site-library
+sudo apt-get install -y libv8-3.14-dev
+R
+chooseCRANmirror(81)
+install.packges(&quot;V8&quot;)
+</code></pre></li>
+</ul>
+<ul>
+<li>Install R Packages for Shiny<br><code>`</code><br>sudo apt-get install -y libxml2-dev</li>
+</ul>
+<p>sudo su - -c “R -e \”install.packages(c(‘shiny’,’shinydashboard’,’shinyjs’,’quanteda’, ‘dygraphs’, ‘rhandsontable’,’keras’,’DEoptim’,’RSQLite’,’reshape2’,’mlbench’,’future’,’promises’,’shinyWidgets’,’devtools’,’Hmisc’,’XML’,’DT’,’V8’,’shinyBS’), repos=’<a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/&#39;)\&quot;&quot;" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/CRAN/&#39;)\&quot;&quot;</a></p>
+<p>install.packages(c(‘shiny’,’shinydashboard’,’shinyjs’,’quanteda’, ‘dygraphs’, ‘rhandsontable’,’keras’,’DEoptim’,’RSQLite’,’reshape2’,’mlbench’,’future’,’promises’,’shinyWidgets’,’devtools’,’Hmisc’,’XML’,’DT’,’V8’,’shinyBS’),repos=’<a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/&#39;" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/CRAN/&#39;</a>)</p>
+<p>sudo apt-get install unzip</p>
+<p>R<br>library(devtools)<br>options(unzip=”internal”)<br>devtools::install_github(‘madlogos/recharts’)</p>
+<p>install.packages(‘rredis’)</p>
+<p>sudo su - -c “R -e \”devtools::install_github(‘lchiffon/REmap’)\””</p>
+<pre><code>
+* Install keras(h5py),tensorflow
+</code></pre><p>sudo apt-get install -y python-virtualenv<br>sudo pip3 install tensorflow -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a><br>sudo pip3 install keras -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
+<pre><code>* Install Shiny Server, check this page[https://www.rstudio.com/products/shiny/download-server/] for the newest package
+</code></pre><p>sudo apt-get install gdebi-core<br>wget <a href="https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.7.907-amd64.deb" target="_blank" rel="noopener">https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.7.907-amd64.deb</a><br>sudo gdebi shiny-server-1.5.7.907-amd64.deb</p>
+<pre><code>
+* Shiny Server Management
+</code></pre><p>start shiny-server / sudo systemctl start shiny-server.service<br>stop shiny-server  / sudo systemctl stop shiny-server.service<br>restart shiny-server / sudo systemctl restart shiny-server.service<br>status shiny-server  / sudo systemctl status shiny-server.service<br>sudo reload shiny-server /sudo systemctl reload shiny-server.service</p>
+<pre><code>
+* Shiny config file
+    *    conf: `/etc/shiny-server/shiny-server.conf`
+    *    site: `/srv/shiny-server/`
+    *    log:  `/var/log/shiny-server.log` or `/var/log/shiny-server/*.log`
+
+## Deploy App 
+
+[https://www.linode.com/docs/development/r/how-to-deploy-rshiny-server-on-ubuntu-and-debian/#deploy-your-app]
+
+By default, Shiny Server uses /srv/shiny-server/ as its site directory. Any Shiny apps in this directory will be served automatically.
+
+Copy the example app directory into /srv/shiny-server/:
+</code></pre><p>sudo cp -r Example/ /srv/shiny-server/</p>
+<pre><code>In a web browser, navigate to the app’s address. Replace example.com with your Linode’s public IP address or FQDN:
+</code></pre><p>example.com:3838/Example</p>
+<pre><code>
+Create a symbolic link to the actual file system
+&lt;span style=&quot;color:red&quot;&gt;sudo ln -s /opt/shiny-server/actually_file_location /srv/shiny-server/symbolic_file&lt;/span&gt;
+
+
+## Configure Shiny Server
+Shiny Server’s configuration file is stored at `/etc/shiny-server/shiny-server.conf`:
+
+</code></pre><h1 id="Instruct-Shiny-Server-to-run-applications-as-the-user-“shiny”"><a href="#Instruct-Shiny-Server-to-run-applications-as-the-user-“shiny”" class="headerlink" title="Instruct Shiny Server to run applications as the user “shiny”"></a>Instruct Shiny Server to run applications as the user “shiny”</h1><p>run_as shiny;</p>
+<h1 id="Define-a-server-that-listens-on-port-3838"><a href="#Define-a-server-that-listens-on-port-3838" class="headerlink" title="Define a server that listens on port 3838"></a>Define a server that listens on port 3838</h1><p>server {<br>  listen 3838;</p>
+<h1 id="Define-a-location-at-the-base-URL"><a href="#Define-a-location-at-the-base-URL" class="headerlink" title="Define a location at the base URL"></a>Define a location at the base URL</h1><p>  location / {</p>
+<pre><code># Host the directory of Shiny Apps stored in this directory
+site_dir /srv/shiny-server;
+
+# Log all Shiny output to files in this directory
+log_dir /var/log/shiny-server;
+
+# When a user visits the base URL rather than a particular application,
+# an index of the applications available in this directory will be shown.
+directory_index on;
+</code></pre><p>  }<br>}<br><code>`</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+          
+            <a href="/tags/Shiny/" rel="tag"># Shiny</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/18/r-concepts/" rel="next" title="R Concepts">
+                <i class="fa fa-chevron-left"></i> R Concepts
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/14/concurrent-async-concept/" rel="prev" title="同步、异步、回调、阻塞、非阻塞、线程、进程、协程">
+                同步、异步、回调、阻塞、非阻塞、线程、进程、协程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Spence">
+          <p class="site-author-name" itemprop="name">Spence</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Instruct-Shiny-Server-to-run-applications-as-the-user-“shiny”"><span class="nav-number">1.</span> <span class="nav-text">Instruct Shiny Server to run applications as the user “shiny”</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Define-a-server-that-listens-on-port-3838"><span class="nav-number">2.</span> <span class="nav-text">Define a server that listens on port 3838</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Define-a-location-at-the-base-URL"><span class="nav-number">3.</span> <span class="nav-text">Define a location at the base URL</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Spence</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

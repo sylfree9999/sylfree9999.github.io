@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="concept,linux,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="CUTCUT命令可以从一个文本文件或者文本流中提取文本echo $PATH | cut -d &amp;#39;:&amp;#39; -f 2,3将PATH变量取出，返回第二，第三个路径echo $PATH | cut -d &amp;#39;:&amp;#39; -f 1-3,5取1~3和第五个 SORT对FILE参数制定的文件中的行排序，并将结果写到标准输出  [root@ip-172-31-7-202 ec2-user]#">
+<meta name="keywords" content="concept,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux文本处理sed,awk,cut,sort">
+<meta property="og:url" content="http://yoursite.com/2018/06/20/linux-file-processing-commands/index.html">
+<meta property="og:site_name" content="Drill Learning">
+<meta property="og:description" content="CUTCUT命令可以从一个文本文件或者文本流中提取文本echo $PATH | cut -d &amp;#39;:&amp;#39; -f 2,3将PATH变量取出，返回第二，第三个路径echo $PATH | cut -d &amp;#39;:&amp;#39; -f 1-3,5取1~3和第五个 SORT对FILE参数制定的文件中的行排序，并将结果写到标准输出  [root@ip-172-31-7-202 ec2-user]#">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-08T08:43:47.808Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux文本处理sed,awk,cut,sort">
+<meta name="twitter:description" content="CUTCUT命令可以从一个文本文件或者文本流中提取文本echo $PATH | cut -d &amp;#39;:&amp;#39; -f 2,3将PATH变量取出，返回第二，第三个路径echo $PATH | cut -d &amp;#39;:&amp;#39; -f 1-3,5取1~3和第五个 SORT对FILE参数制定的文件中的行排序，并将结果写到标准输出  [root@ip-172-31-7-202 ec2-user]#">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/20/linux-file-processing-commands/">
+
+
+
+
+
+  <title>Linux文本处理sed,awk,cut,sort | Drill Learning</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Drill Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Spence</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/20/linux-file-processing-commands/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux文本处理sed,awk,cut,sort</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-20T18:14:58+08:00">
+                2018-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="CUT"><a href="#CUT" class="headerlink" title="CUT"></a>CUT</h2><p>CUT命令可以从一个文本文件或者文本流中提取文本<br><code>echo $PATH | cut -d &#39;:&#39; -f 2,3</code>将PATH变量取出，返回第二，第三个路径<br><code>echo $PATH | cut -d &#39;:&#39; -f 1-3,5</code>取1~3和第五个</p>
+<h2 id="SORT"><a href="#SORT" class="headerlink" title="SORT"></a>SORT</h2><p>对FILE参数制定的文件中的行排序，并将结果写到标准输出</p>
+<pre><code>
+[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+
+[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+ec2-user:x:500:500:EC2 Default User:/home/ec2-user:/bin/bash
+
+[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort -t &#39;:&#39; -k 3 //以：为分隔符，以第三列字符串模式为排序标准
+root:x:0:0:root:/root:/bin/bash
+uucp:x:10:14:uucp:/var/spool/uucp:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+bin:x:1:1:bin:/bin:/sbin/nologin
+
+[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort -t &#39;:&#39; -k 3n //以第三列数字模式排序
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+
+[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort -t &#39;:&#39; -k 3nr //倒序排列
+nfsnobody:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin
+ec2-user:x:500:500:EC2 Default User:/home/ec2-user:/bin/bash
+saslauth:x:499:76:&quot;Saslauthd user&quot;:/var/empty/saslauth:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+
+[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort -t &#39;:&#39; -k 7 -u //去重
+root:x:0:0:root:/root:/bin/bash
+sync:x:5:0:sync:/sbin:/bin/sync
+halt:x:7:0:halt:/sbin:/sbin/halt
+bin:x:1:1:bin:/bin:/sbin/nologin
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+</code></pre><h2 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h2><p>uniq只能去重排序过的文件</p>
+<pre><code>cat testfile | sort | uniq -c //-c显示重复次数
+1 friend
+3 hello
+2 world
+</code></pre><p>取出处于ESTABLISHED状态的端口号</p>
+<pre><code>netstat -an | grep &#39;:4001\|:4002\|:4003\|:4004&#39; | grep ESTABLISHED | awk {&#39;print $4&#39;} | uniq | cut -d &#39;:&#39; -f 2 
+</code></pre><h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><h3 id="删除：d命令"><a href="#删除：d命令" class="headerlink" title="删除：d命令"></a>删除：d命令</h3><p><code>sed -i &#39;2d&#39; example</code> 删除example文件的第二行并写会原文件，不建议刚开始就用-i写回文件，调试完了以后再加-i<br><code>sed &#39;2,$d&#39; example</code> 删除example文件的第二行到末尾所有行，正则中$表示末尾，^表示开头<br><code>sed &#39;$d&#39; example</code> 删除example文件的最后一行<br><code>sed &#39;/test/&#39;d example</code> 删除example文件所有包含test的行,//代表模式</p>
+<h3 id="替换：s命令"><a href="#替换：s命令" class="headerlink" title="替换：s命令"></a>替换：s命令</h3><p><code>sed &#39;s/test/mytest/g&#39; example</code> 在整行范围内把test替换成mytest，如果没有g标记，则只有每行第一个匹配的test会被替换成mytest<br><code>sed -n &#39;s/^test/mytest/p&#39; example</code> (-n)选项和p标志一起使用表示只打印那些发生替换的行。也就是说如果某一行开头的test被替换成mytest，就打印它。<br><code>sed &#39;s/^192.168.0.1/&amp;localhost/&#39; example</code> &amp;符号表示替换字符串被找到的部分再加上新的。所有以192.168.0.1开头的行都会被替换成它自己加localhost，即192.168.0.1localhost。<br><code>sed -n &#39;s/\(love\)able/\1rs/p&#39; example</code> love被标记为1，所有loveable会被替换成lovers，且替换的行会被打印出来，\1代表第一组    </p>
+<h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><p><code>last -n 5 | awk &#39;{print $1}&#39;</code> 打印出第一列的登录人名<br>awk工作流程：读入有’\n’换行符分割的一条记录，然后将记录按指定的域分隔符划分域，填充域，$0表示所有域，$1表示第一个域，$n表示第n个域。<br>默认域分隔符是”空白键”或者”[tab]键”,所以$1表示登录用户，$3表示登录用户ip,以此类推</p>
+<p><code>cat /etc/passwd | awk -F &#39;:&#39; &#39;{print $1&quot;\t&quot;$7}&#39;</code>指定分隔符,且账户与shell之间以tab键分割</p>
+<p><code>cat /etc/passwd | awk -F &#39;:&#39; &#39;BEGIN {print &quot;name,shell&quot;} {print $1&quot;,&quot;$7} END {print &quot;endtest,/bin/bash&quot;}&#39;</code><br>awk还可以分Begin 中间 End三个部分</p>
+<p><code>lxc list | awk &#39;NR &gt; 2 { print $6}&#39;</code>去除首行，拿取第6列</p>
+<pre><code>[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | awk -F &#39;:&#39; &#39;BEGIN {print &quot;name,shell&quot;} {print $1&quot;,&quot;$7} END {print &quot;endtest,/bin/bash&quot;}&#39;
+name,shell
+root,/bin/bash
+bin,/sbin/nologin
+daemon,/sbin/nologin
+adm,/sbin/nologin
+lp,/sbin/nologin
+sync,/bin/sync
+shutdown,/sbin/shutdown
+halt,/sbin/halt
+mail,/sbin/nologin
+uucp,/sbin/nologin
+operator,/sbin/nologin
+games,/sbin/nologin
+gopher,/sbin/nologin
+ftp,/sbin/nologin
+nobody,/sbin/nologin
+rpc,/sbin/nologin
+ntp,/sbin/nologin
+saslauth,/sbin/nologin
+mailnull,/sbin/nologin
+smmsp,/sbin/nologin
+rpcuser,/sbin/nologin
+nfsnobody,/sbin/nologin
+sshd,/sbin/nologin
+dbus,/sbin/nologin
+ec2-user,/bin/bash
+mysql,/bin/bash
+endtest,/bin/bash
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/concept/" rel="tag"># concept</a>
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/20/shell-basic/" rel="next" title="Shell 基本语法">
+                <i class="fa fa-chevron-left"></i> Shell 基本语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/21/net-attribute/" rel="prev" title="net-attribute">
+                net-attribute <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Spence">
+          <p class="site-author-name" itemprop="name">Spence</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CUT"><span class="nav-number">1.</span> <span class="nav-text">CUT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SORT"><span class="nav-number">2.</span> <span class="nav-text">SORT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uniq"><span class="nav-number">3.</span> <span class="nav-text">uniq</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sed"><span class="nav-number">4.</span> <span class="nav-text">sed</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#删除：d命令"><span class="nav-number">4.1.</span> <span class="nav-text">删除：d命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换：s命令"><span class="nav-number">4.2.</span> <span class="nav-text">替换：s命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk"><span class="nav-number">5.</span> <span class="nav-text">awk</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Spence</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
