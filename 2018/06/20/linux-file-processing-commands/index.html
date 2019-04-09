@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="CUTCUT命令可以从一个文本文件或者文本流中提取文本echo $PATH | cut -d &amp;#39;:&amp;#39; -f 2,3将PATH变量取出，返回第二，第三个路径echo $PATH | cut -d &amp;#39;:&amp;#39; -f 1-3,5取1~3和第五个 SORT对FILE参数制定的文件中的行排序，并将结果写到标准输出  [root@ip-172-31-7-202 ec2-user]#">
+<meta name="description" content="CUTCUT命令可以从一个文本文件或者文本流中提取文本echo $PATH | cut -d &amp;#39;:&amp;#39; -f 2,3将PATH变量取出，返回第二，第三个路径echo $PATH | cut -d &amp;#39;:&amp;#39; -f 1-3,5取1~3和第五个 SORT对FILE参数制定的文件中的行排序，并将结果写到标准输出1234567891011121314151617181920212">
 <meta name="keywords" content="concept,linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux文本处理sed,awk,cut,sort">
 <meta property="og:url" content="http://yoursite.com/2018/06/20/linux-file-processing-commands/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="CUTCUT命令可以从一个文本文件或者文本流中提取文本echo $PATH | cut -d &amp;#39;:&amp;#39; -f 2,3将PATH变量取出，返回第二，第三个路径echo $PATH | cut -d &amp;#39;:&amp;#39; -f 1-3,5取1~3和第五个 SORT对FILE参数制定的文件中的行排序，并将结果写到标准输出  [root@ip-172-31-7-202 ec2-user]#">
+<meta property="og:description" content="CUTCUT命令可以从一个文本文件或者文本流中提取文本echo $PATH | cut -d &amp;#39;:&amp;#39; -f 2,3将PATH变量取出，返回第二，第三个路径echo $PATH | cut -d &amp;#39;:&amp;#39; -f 1-3,5取1~3和第五个 SORT对FILE参数制定的文件中的行排序，并将结果写到标准输出1234567891011121314151617181920212">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux文本处理sed,awk,cut,sort">
-<meta name="twitter:description" content="CUTCUT命令可以从一个文本文件或者文本流中提取文本echo $PATH | cut -d &amp;#39;:&amp;#39; -f 2,3将PATH变量取出，返回第二，第三个路径echo $PATH | cut -d &amp;#39;:&amp;#39; -f 1-3,5取1~3和第五个 SORT对FILE参数制定的文件中的行排序，并将结果写到标准输出  [root@ip-172-31-7-202 ec2-user]#">
+<meta name="twitter:description" content="CUTCUT命令可以从一个文本文件或者文本流中提取文本echo $PATH | cut -d &amp;#39;:&amp;#39; -f 2,3将PATH变量取出，返回第二，第三个路径echo $PATH | cut -d &amp;#39;:&amp;#39; -f 1-3,5取1~3和第五个 SORT对FILE参数制定的文件中的行排序，并将结果写到标准输出1234567891011121314151617181920212">
 
 
 
@@ -331,91 +331,16 @@
 
       
         <h2 id="CUT"><a href="#CUT" class="headerlink" title="CUT"></a>CUT</h2><p>CUT命令可以从一个文本文件或者文本流中提取文本<br><code>echo $PATH | cut -d &#39;:&#39; -f 2,3</code>将PATH变量取出，返回第二，第三个路径<br><code>echo $PATH | cut -d &#39;:&#39; -f 1-3,5</code>取1~3和第五个</p>
-<h2 id="SORT"><a href="#SORT" class="headerlink" title="SORT"></a>SORT</h2><p>对FILE参数制定的文件中的行排序，并将结果写到标准输出</p>
-<pre><code>
-[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd
-root:x:0:0:root:/root:/bin/bash
-bin:x:1:1:bin:/bin:/sbin/nologin
-daemon:x:2:2:daemon:/sbin:/sbin/nologin
-adm:x:3:4:adm:/var/adm:/sbin/nologin
-lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
-sync:x:5:0:sync:/sbin:/bin/sync
-
-[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort
-adm:x:3:4:adm:/var/adm:/sbin/nologin
-bin:x:1:1:bin:/bin:/sbin/nologin
-daemon:x:2:2:daemon:/sbin:/sbin/nologin
-dbus:x:81:81:System message bus:/:/sbin/nologin
-ec2-user:x:500:500:EC2 Default User:/home/ec2-user:/bin/bash
-
-[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort -t &#39;:&#39; -k 3 //以：为分隔符，以第三列字符串模式为排序标准
-root:x:0:0:root:/root:/bin/bash
-uucp:x:10:14:uucp:/var/spool/uucp:/sbin/nologin
-operator:x:11:0:operator:/root:/sbin/nologin
-bin:x:1:1:bin:/bin:/sbin/nologin
-
-[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort -t &#39;:&#39; -k 3n //以第三列数字模式排序
-root:x:0:0:root:/root:/bin/bash
-bin:x:1:1:bin:/bin:/sbin/nologin
-daemon:x:2:2:daemon:/sbin:/sbin/nologin
-adm:x:3:4:adm:/var/adm:/sbin/nologin
-lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
-
-[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort -t &#39;:&#39; -k 3nr //倒序排列
-nfsnobody:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin
-ec2-user:x:500:500:EC2 Default User:/home/ec2-user:/bin/bash
-saslauth:x:499:76:&quot;Saslauthd user&quot;:/var/empty/saslauth:/sbin/nologin
-nobody:x:99:99:Nobody:/:/sbin/nologin
-
-[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort -t &#39;:&#39; -k 7 -u //去重
-root:x:0:0:root:/root:/bin/bash
-sync:x:5:0:sync:/sbin:/bin/sync
-halt:x:7:0:halt:/sbin:/sbin/halt
-bin:x:1:1:bin:/bin:/sbin/nologin
-shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
-</code></pre><h2 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h2><p>uniq只能去重排序过的文件</p>
-<pre><code>cat testfile | sort | uniq -c //-c显示重复次数
-1 friend
-3 hello
-2 world
-</code></pre><p>取出处于ESTABLISHED状态的端口号</p>
-<pre><code>netstat -an | grep &#39;:4001\|:4002\|:4003\|:4004&#39; | grep ESTABLISHED | awk {&#39;print $4&#39;} | uniq | cut -d &#39;:&#39; -f 2 
-</code></pre><h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><h3 id="删除：d命令"><a href="#删除：d命令" class="headerlink" title="删除：d命令"></a>删除：d命令</h3><p><code>sed -i &#39;2d&#39; example</code> 删除example文件的第二行并写会原文件，不建议刚开始就用-i写回文件，调试完了以后再加-i<br><code>sed &#39;2,$d&#39; example</code> 删除example文件的第二行到末尾所有行，正则中$表示末尾，^表示开头<br><code>sed &#39;$d&#39; example</code> 删除example文件的最后一行<br><code>sed &#39;/test/&#39;d example</code> 删除example文件所有包含test的行,//代表模式</p>
+<h2 id="SORT"><a href="#SORT" class="headerlink" title="SORT"></a>SORT</h2><p>对FILE参数制定的文件中的行排序，并将结果写到标准输出<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[root<span class="variable">@ip</span>-<span class="number">172</span>-<span class="number">31</span>-<span class="number">7</span>-<span class="number">202</span> ec2-user]<span class="comment"># cat /etc/passwd</span></span><br><span class="line"><span class="symbol">root:</span><span class="symbol">x:</span><span class="number">0</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:root</span><span class="symbol">:/root</span><span class="symbol">:/bin/bash</span></span><br><span class="line"><span class="symbol">bin:</span><span class="symbol">x:</span><span class="number">1</span><span class="symbol">:</span><span class="number">1</span><span class="symbol">:bin</span><span class="symbol">:/bin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">daemon:</span><span class="symbol">x:</span><span class="number">2</span><span class="symbol">:</span><span class="number">2</span><span class="symbol">:daemon</span><span class="symbol">:/sbin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">adm:</span><span class="symbol">x:</span><span class="number">3</span><span class="symbol">:</span><span class="number">4</span><span class="symbol">:adm</span><span class="symbol">:/var/adm</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">lp:</span><span class="symbol">x:</span><span class="number">4</span><span class="symbol">:</span><span class="number">7</span><span class="symbol">:lp</span><span class="symbol">:/var/spool/lpd</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">sync:</span><span class="symbol">x:</span><span class="number">5</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:sync</span><span class="symbol">:/sbin</span><span class="symbol">:/bin/sync</span></span><br><span class="line"></span><br><span class="line">[root<span class="variable">@ip</span>-<span class="number">172</span>-<span class="number">31</span>-<span class="number">7</span>-<span class="number">202</span> ec2-user]<span class="comment"># cat /etc/passwd | sort</span></span><br><span class="line"><span class="symbol">adm:</span><span class="symbol">x:</span><span class="number">3</span><span class="symbol">:</span><span class="number">4</span><span class="symbol">:adm</span><span class="symbol">:/var/adm</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">bin:</span><span class="symbol">x:</span><span class="number">1</span><span class="symbol">:</span><span class="number">1</span><span class="symbol">:bin</span><span class="symbol">:/bin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">daemon:</span><span class="symbol">x:</span><span class="number">2</span><span class="symbol">:</span><span class="number">2</span><span class="symbol">:daemon</span><span class="symbol">:/sbin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">dbus:</span><span class="symbol">x:</span><span class="number">81</span><span class="symbol">:</span><span class="number">81</span><span class="symbol">:System</span> message <span class="symbol">bus:</span>/<span class="symbol">:/sbin/nologin</span></span><br><span class="line">ec2-<span class="symbol">user:</span><span class="symbol">x:</span><span class="number">500</span><span class="symbol">:</span><span class="number">500</span><span class="symbol">:EC2</span> Default <span class="symbol">User:</span>/home/ec2-<span class="symbol">user:</span>/bin/bash</span><br><span class="line"></span><br><span class="line">[root<span class="variable">@ip</span>-<span class="number">172</span>-<span class="number">31</span>-<span class="number">7</span>-<span class="number">202</span> ec2-user]<span class="comment"># cat /etc/passwd | sort -t ':' -k 3 //以：为分隔符，以第三列字符串模式为排序标准</span></span><br><span class="line"><span class="symbol">root:</span><span class="symbol">x:</span><span class="number">0</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:root</span><span class="symbol">:/root</span><span class="symbol">:/bin/bash</span></span><br><span class="line"><span class="symbol">uucp:</span><span class="symbol">x:</span><span class="number">10</span><span class="symbol">:</span><span class="number">14</span><span class="symbol">:uucp</span><span class="symbol">:/var/spool/uucp</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">operator:</span><span class="symbol">x:</span><span class="number">11</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:operator</span><span class="symbol">:/root</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">bin:</span><span class="symbol">x:</span><span class="number">1</span><span class="symbol">:</span><span class="number">1</span><span class="symbol">:bin</span><span class="symbol">:/bin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"></span><br><span class="line">[root<span class="variable">@ip</span>-<span class="number">172</span>-<span class="number">31</span>-<span class="number">7</span>-<span class="number">202</span> ec2-user]<span class="comment"># cat /etc/passwd | sort -t ':' -k 3n //以第三列数字模式排序</span></span><br><span class="line"><span class="symbol">root:</span><span class="symbol">x:</span><span class="number">0</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:root</span><span class="symbol">:/root</span><span class="symbol">:/bin/bash</span></span><br><span class="line"><span class="symbol">bin:</span><span class="symbol">x:</span><span class="number">1</span><span class="symbol">:</span><span class="number">1</span><span class="symbol">:bin</span><span class="symbol">:/bin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">daemon:</span><span class="symbol">x:</span><span class="number">2</span><span class="symbol">:</span><span class="number">2</span><span class="symbol">:daemon</span><span class="symbol">:/sbin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">adm:</span><span class="symbol">x:</span><span class="number">3</span><span class="symbol">:</span><span class="number">4</span><span class="symbol">:adm</span><span class="symbol">:/var/adm</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">lp:</span><span class="symbol">x:</span><span class="number">4</span><span class="symbol">:</span><span class="number">7</span><span class="symbol">:lp</span><span class="symbol">:/var/spool/lpd</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"></span><br><span class="line">[root<span class="variable">@ip</span>-<span class="number">172</span>-<span class="number">31</span>-<span class="number">7</span>-<span class="number">202</span> ec2-user]<span class="comment"># cat /etc/passwd | sort -t ':' -k 3nr //倒序排列</span></span><br><span class="line"><span class="symbol">nfsnobody:</span><span class="symbol">x:</span><span class="number">65534</span><span class="symbol">:</span><span class="number">65534</span><span class="symbol">:Anonymous</span> NFS <span class="symbol">User:</span>/var/lib/<span class="symbol">nfs:</span>/sbin/nologin</span><br><span class="line">ec2-<span class="symbol">user:</span><span class="symbol">x:</span><span class="number">500</span><span class="symbol">:</span><span class="number">500</span><span class="symbol">:EC2</span> Default <span class="symbol">User:</span>/home/ec2-<span class="symbol">user:</span>/bin/bash</span><br><span class="line"><span class="symbol">saslauth:</span><span class="symbol">x:</span><span class="number">499</span><span class="symbol">:</span><span class="number">76</span><span class="symbol">:<span class="string">"Saslauthd user"</span></span><span class="symbol">:/var/empty/saslauth</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">nobody:</span><span class="symbol">x:</span><span class="number">99</span><span class="symbol">:</span><span class="number">99</span><span class="symbol">:Nobody</span><span class="symbol">:/</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"></span><br><span class="line">[root<span class="variable">@ip</span>-<span class="number">172</span>-<span class="number">31</span>-<span class="number">7</span>-<span class="number">202</span> ec2-user]<span class="comment"># cat /etc/passwd | sort -t ':' -k 7 -u //去重</span></span><br><span class="line"><span class="symbol">root:</span><span class="symbol">x:</span><span class="number">0</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:root</span><span class="symbol">:/root</span><span class="symbol">:/bin/bash</span></span><br><span class="line"><span class="symbol">sync:</span><span class="symbol">x:</span><span class="number">5</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:sync</span><span class="symbol">:/sbin</span><span class="symbol">:/bin/sync</span></span><br><span class="line"><span class="symbol">halt:</span><span class="symbol">x:</span><span class="number">7</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:halt</span><span class="symbol">:/sbin</span><span class="symbol">:/sbin/halt</span></span><br><span class="line"><span class="symbol">bin:</span><span class="symbol">x:</span><span class="number">1</span><span class="symbol">:</span><span class="number">1</span><span class="symbol">:bin</span><span class="symbol">:/bin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">shutdown:</span><span class="symbol">x:</span><span class="number">6</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:shutdown</span><span class="symbol">:/sbin</span><span class="symbol">:/sbin/shutdown</span></span><br></pre></td></tr></table></figure></div></p>
+<h2 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h2><p>uniq只能去重排序过的文件<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LSL"><figure class="iseeu highlight /lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat testfile | sort | uniq -c <span class="comment">//-c显示重复次数</span></span><br><span class="line"><span class="number">1</span> friend</span><br><span class="line"><span class="number">3</span> hello</span><br><span class="line"><span class="number">2</span> world</span><br></pre></td></tr></table></figure></div></p>
+<p>取出处于ESTABLISHED状态的端口号<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="COQ"><figure class="iseeu highlight /coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -an | <span class="type">grep</span> ':<span class="number">4001</span>\|<span class="type">:4002</span>\|<span class="type">:4003</span>\|<span class="type">:4004</span>' | <span class="type">grep</span> ESTABLISHED | <span class="type">awk</span> &#123;'print $<span class="number">4</span>'&#125; | <span class="type">uniq</span> | <span class="type">cut</span> -d ':' -f <span class="number">2</span></span><br></pre></td></tr></table></figure></div></p>
+<h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><h3 id="删除：d命令"><a href="#删除：d命令" class="headerlink" title="删除：d命令"></a>删除：d命令</h3><p><code>sed -i &#39;2d&#39; example</code> 删除example文件的第二行并写会原文件，不建议刚开始就用-i写回文件，调试完了以后再加-i<br><code>sed &#39;2,$d&#39; example</code> 删除example文件的第二行到末尾所有行，正则中$表示末尾，^表示开头<br><code>sed &#39;$d&#39; example</code> 删除example文件的最后一行<br><code>sed &#39;/test/&#39;d example</code> 删除example文件所有包含test的行,//代表模式</p>
 <h3 id="替换：s命令"><a href="#替换：s命令" class="headerlink" title="替换：s命令"></a>替换：s命令</h3><p><code>sed &#39;s/test/mytest/g&#39; example</code> 在整行范围内把test替换成mytest，如果没有g标记，则只有每行第一个匹配的test会被替换成mytest<br><code>sed -n &#39;s/^test/mytest/p&#39; example</code> (-n)选项和p标志一起使用表示只打印那些发生替换的行。也就是说如果某一行开头的test被替换成mytest，就打印它。<br><code>sed &#39;s/^192.168.0.1/&amp;localhost/&#39; example</code> &amp;符号表示替换字符串被找到的部分再加上新的。所有以192.168.0.1开头的行都会被替换成它自己加localhost，即192.168.0.1localhost。<br><code>sed -n &#39;s/\(love\)able/\1rs/p&#39; example</code> love被标记为1，所有loveable会被替换成lovers，且替换的行会被打印出来，\1代表第一组    </p>
 <h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><p><code>last -n 5 | awk &#39;{print $1}&#39;</code> 打印出第一列的登录人名<br>awk工作流程：读入有’\n’换行符分割的一条记录，然后将记录按指定的域分隔符划分域，填充域，$0表示所有域，$1表示第一个域，$n表示第n个域。<br>默认域分隔符是”空白键”或者”[tab]键”,所以$1表示登录用户，$3表示登录用户ip,以此类推</p>
 <p><code>cat /etc/passwd | awk -F &#39;:&#39; &#39;{print $1&quot;\t&quot;$7}&#39;</code>指定分隔符,且账户与shell之间以tab键分割</p>
 <p><code>cat /etc/passwd | awk -F &#39;:&#39; &#39;BEGIN {print &quot;name,shell&quot;} {print $1&quot;,&quot;$7} END {print &quot;endtest,/bin/bash&quot;}&#39;</code><br>awk还可以分Begin 中间 End三个部分</p>
 <p><code>lxc list | awk &#39;NR &gt; 2 { print $6}&#39;</code>去除首行，拿取第6列</p>
-<pre><code>[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | awk -F &#39;:&#39; &#39;BEGIN {print &quot;name,shell&quot;} {print $1&quot;,&quot;$7} END {print &quot;endtest,/bin/bash&quot;}&#39;
-name,shell
-root,/bin/bash
-bin,/sbin/nologin
-daemon,/sbin/nologin
-adm,/sbin/nologin
-lp,/sbin/nologin
-sync,/bin/sync
-shutdown,/sbin/shutdown
-halt,/sbin/halt
-mail,/sbin/nologin
-uucp,/sbin/nologin
-operator,/sbin/nologin
-games,/sbin/nologin
-gopher,/sbin/nologin
-ftp,/sbin/nologin
-nobody,/sbin/nologin
-rpc,/sbin/nologin
-ntp,/sbin/nologin
-saslauth,/sbin/nologin
-mailnull,/sbin/nologin
-smmsp,/sbin/nologin
-rpcuser,/sbin/nologin
-nfsnobody,/sbin/nologin
-sshd,/sbin/nologin
-dbus,/sbin/nologin
-ec2-user,/bin/bash
-mysql,/bin/bash
-endtest,/bin/bash
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="AUTOHOTKEY"><figure class="iseeu highlight /autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | awk -F ':</span>' 'BEGIN &#123;print <span class="string">"name,shell"</span>&#125; &#123;print $<span class="number">1</span><span class="string">","</span>$<span class="number">7</span>&#125; END &#123;print <span class="string">"endtest,/bin/bash"</span>&#125;'</span><br><span class="line"><span class="built_in">name,</span>shell</span><br><span class="line"><span class="built_in">root,</span>/bin/bash</span><br><span class="line"><span class="built_in">bin,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">daemon,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">adm,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">lp,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">sync,</span>/bin/sync</span><br><span class="line"><span class="built_in">shutdown,</span>/sbin/shutdown</span><br><span class="line"><span class="built_in">halt,</span>/sbin/halt</span><br><span class="line"><span class="built_in">mail,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">uucp,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">operator,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">games,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">gopher,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">ftp,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">nobody,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">rpc,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">ntp,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">saslauth,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">mailnull,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">smmsp,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">rpcuser,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">nfsnobody,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">sshd,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">dbus,</span>/sbin/nologin</span><br><span class="line">ec2-user,/bin/bash</span><br><span class="line"><span class="built_in">mysql,</span>/bin/bash</span><br><span class="line"><span class="built_in">endtest,</span>/bin/bash</span><br></pre></td></tr></table></figure></div>
       
     </div>
     
@@ -534,7 +459,7 @@ endtest,/bin/bash
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -547,7 +472,7 @@ endtest,/bin/bash
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

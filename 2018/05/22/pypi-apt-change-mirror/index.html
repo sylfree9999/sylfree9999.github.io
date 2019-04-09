@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Pypi 临时使用 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package  设默认   没有的话就创建一个以下文件，把 index-url改成tuna,例如 *    Linux: `~/.config/pip/pip.conf` *    Windows 10: `%APPDATA%\pip\pip.ini` *">
+<meta name="description" content="Pypi 临时使用 1pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package  设默认   没有的话就创建一个以下文件，把 index-url改成tuna,例如 *    Linux: `~/.config/pip/pip.conf` *    Windows 10: `%APPDATA%\pip\pip.ini`">
 <meta name="keywords" content="linux,practice">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pypi apt-get 更换镜像">
 <meta property="og:url" content="http://yoursite.com/2018/05/22/pypi-apt-change-mirror/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="Pypi 临时使用 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package  设默认   没有的话就创建一个以下文件，把 index-url改成tuna,例如 *    Linux: `~/.config/pip/pip.conf` *    Windows 10: `%APPDATA%\pip\pip.ini` *">
+<meta property="og:description" content="Pypi 临时使用 1pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package  设默认   没有的话就创建一个以下文件，把 index-url改成tuna,例如 *    Linux: `~/.config/pip/pip.conf` *    Windows 10: `%APPDATA%\pip\pip.ini`">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pypi apt-get 更换镜像">
-<meta name="twitter:description" content="Pypi 临时使用 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package  设默认   没有的话就创建一个以下文件，把 index-url改成tuna,例如 *    Linux: `~/.config/pip/pip.conf` *    Windows 10: `%APPDATA%\pip\pip.ini` *">
+<meta name="twitter:description" content="Pypi 临时使用 1pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package  设默认   没有的话就创建一个以下文件，把 index-url改成tuna,例如 *    Linux: `~/.config/pip/pip.conf` *    Windows 10: `%APPDATA%\pip\pip.ini`">
 
 
 
@@ -332,8 +332,8 @@
       
         <h3 id="Pypi"><a href="#Pypi" class="headerlink" title="Pypi"></a>Pypi</h3><ul>
 <li><p>临时使用</p>
-<pre><code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
-</code></pre></li>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> -i https://pypi.tuna.tsinghua.edu.cn/simple <span class="keyword">some</span>-<span class="keyword">package</span></span><br></pre></td></tr></table></figure></div>
+</li>
 <li><p>设默认</p>
 </li>
 </ul>
@@ -341,28 +341,15 @@
 <pre><code>*    Linux: `~/.config/pip/pip.conf`
 *    Windows 10: `%APPDATA%\pip\pip.ini`
 *    Mac OS: `$HOME/Library/Application Support/pip/pip.conf`
-</code></pre><pre><code>[global]
-index-url = https://pypi.tuna.tsinghua.edu.cn/simple
-</code></pre><p>如果pip和pip3并存，只需要修改<code>~/.pip/pip.conf</code></p>
+</code></pre><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="VIM"><figure class="iseeu highlight /vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"><span class="built_in">index</span>-url = http<span class="variable">s:</span>//pypi.tuna.tsinghua.edu.<span class="keyword">cn</span>/simple</span><br></pre></td></tr></table></figure></div>
+<p>如果pip和pip3并存，只需要修改<code>~/.pip/pip.conf</code></p>
 <h3 id="Apt-get"><a href="#Apt-get" class="headerlink" title="Apt-get"></a>Apt-get</h3><p>Ubuntu的软件源配置文件为<code>/etc/apt/sources.list</code></p>
 <ul>
 <li>给系统的list备份</li>
 <li>整个修改sources.list的文件为下文档：</li>
 </ul>
-<pre><code># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse
-
-# 预发布软件源，不建议启用
-# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse
-</code></pre><ul>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="VIM"><figure class="iseeu highlight /vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 默认注释了源码镜像以提高 apt <span class="keyword">update</span> 速度，如有需要可自行取消注释</span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ xenial main restricted universe multiverse</span><br><span class="line"># <span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ xenial main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line"># <span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"># <span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ xenial-security main restricted universe multiverse</span><br><span class="line"># <span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ xenial-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"># 预发布软件源，不建议启用</span><br><span class="line"># <span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ xenial-proposed main restricted universe multiverse</span><br><span class="line"># <span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ xenial-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure></div>
+<ul>
 <li>修改完毕记得 <code>sudo apt-get update</code></li>
 </ul>
 
@@ -484,7 +471,7 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -497,7 +484,7 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

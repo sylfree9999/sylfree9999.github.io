@@ -337,35 +337,19 @@
 <li>nohup， 让进程忽略HUP信号</li>
 </ol>
 <p>nohup，标准输出和标准错误缺省会被重定向到nohup.out文件中。<br>一般我们可在结尾加上<code>&amp;</code>来将命令同时放入后台运行</p>
-<pre><code>[root@pvcent107 ~]# nohup ping www.ibm.com &amp;
-[1] 3059
-nohup: appending output to `nohup.out&#39;
-[root@pvcent107 ~]# ps -ef |grep 3059
-root      3059   984  0 21:06 pts/3    00:00:00 ping www.ibm.com
-root      3067   984  0 21:06 pts/3    00:00:00 grep 3059
-[root@pvcent107 ~]#
-
-</code></pre><ol>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@pvcent107 ~]# nohup<span class="built_in"> ping </span>www.ibm.com &amp;</span><br><span class="line">[1] 3059</span><br><span class="line">nohup: appending output <span class="keyword">to</span> `nohup.out'</span><br><span class="line">[root@pvcent107 ~]# ps -ef |grep 3059</span><br><span class="line">root      3059   984  0 21:06 pts/3    00:00:00<span class="built_in"> ping </span>www.ibm.com</span><br><span class="line">root      3067   984  0 21:06 pts/3    00:00:00 grep 3059</span><br><span class="line">[root@pvcent107 ~]#</span><br></pre></td></tr></table></figure></div>
+<ol>
 <li>setsid</li>
 </ol>
 <p>如果进程不属于接受HUP信号的终端的子进程，就要用setsid.</p>
-<pre><code>[root@pvcent107 ~]# setsid ping www.ibm.com
-[root@pvcent107 ~]# ps -ef |grep www.ibm.com
-root     31094     1  0 07:28 ?        00:00:00 ping www.ibm.com
-root     31102 29217  0 07:29 pts/4    00:00:00 grep www.ibm.com
-[root@pvcent107 ~]#
-
-</code></pre><p>注意的是我们的进程31094其父进程为1（<code>即为init进程ID</code>），<strong>并不是当前终端的进程ID</strong></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@pvcent107 ~]# setsid<span class="built_in"> ping </span>www.ibm.com</span><br><span class="line">[root@pvcent107 ~]# ps -ef |grep www.ibm.com</span><br><span class="line">root     31094     1  0 07:28 ?        00:00:00<span class="built_in"> ping </span>www.ibm.com</span><br><span class="line">root     31102 29217  0 07:29 pts/4    00:00:00 grep www.ibm.com</span><br><span class="line">[root@pvcent107 ~]#</span><br></pre></td></tr></table></figure></div>
+<p>注意的是我们的进程31094其父进程为1（<code>即为init进程ID</code>），<strong>并不是当前终端的进程ID</strong></p>
 <ol>
 <li>&amp;</li>
 </ol>
 <p>将<code>&amp;</code>也放入<code>()</code>,所提交的作业不会出现在作业列表中，就是无法通过jobs来查看。<br>subshell示例:</p>
-<pre><code>[root@pvcent107 ~]# (ping www.ibm.com &amp;)
-[root@pvcent107 ~]# ps -ef |grep www.ibm.com
-root     16270     1  0 14:13 pts/4    00:00:00 ping www.ibm.com
-root     16278 15362  0 14:13 pts/4    00:00:00 grep www.ibm.com
-[root@pvcent107 ~]#
-</code></pre><p>新提交的进程父ID为1（init进程ID）</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LESS"><figure class="iseeu highlight /less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[root@pvcent107 ~]</span># (ping www.ibm.com &amp;)</span><br><span class="line"><span class="selector-attr">[root@pvcent107 ~]</span># <span class="selector-tag">ps</span> <span class="selector-tag">-ef</span> |<span class="selector-tag">grep</span> <span class="selector-tag">www</span><span class="selector-class">.ibm</span><span class="selector-class">.com</span></span><br><span class="line"><span class="selector-tag">root</span>     <span class="selector-tag">16270</span>     <span class="selector-tag">1</span>  <span class="selector-tag">0</span> <span class="selector-tag">14</span><span class="selector-pseudo">:13</span> <span class="selector-tag">pts</span>/<span class="selector-tag">4</span>    <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">ping</span> <span class="selector-tag">www</span><span class="selector-class">.ibm</span><span class="selector-class">.com</span></span><br><span class="line"><span class="selector-tag">root</span>     <span class="selector-tag">16278</span> <span class="selector-tag">15362</span>  <span class="selector-tag">0</span> <span class="selector-tag">14</span><span class="selector-pseudo">:13</span> <span class="selector-tag">pts</span>/<span class="selector-tag">4</span>    <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">grep</span> <span class="selector-tag">www</span><span class="selector-class">.ibm</span><span class="selector-class">.com</span></span><br><span class="line"><span class="selector-attr">[root@pvcent107 ~]</span>#</span><br></pre></td></tr></table></figure></div>
+<p>新提交的进程父ID为1（init进程ID）</p>
 
       
     </div>
@@ -485,7 +469,7 @@ root     16278 15362  0 14:13 pts/4    00:00:00 grep www.ibm.com
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -498,7 +482,7 @@ root     16278 15362  0 14:13 pts/4    00:00:00 grep www.ibm.com
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

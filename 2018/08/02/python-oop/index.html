@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="创建类1，类中函数的第一个参数必须是self,它是为了指代它所存在的类2，构造函数用init表示 #创建类 class Foo:      name = &amp;#39;Jan&amp;#39;     #类里面的函数,类中第一个参数必须是self，指代本类的东西     def bar(self):         pass      def hello(self, name):         print(">
+<meta name="description" content="创建类1，类中函数的第一个参数必须是self,它是为了指代它所存在的类2，构造函数用init表示123456789101112131415161718192021#创建类class Foo:	name = &apos;Jan&apos;	#类里面的函数,类中第一个参数必须是self，指代本类的东西	def bar(self):		pass	def hello(self, name):		print(&apos;self nam">
 <meta name="keywords" content="concept,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python-oop">
 <meta property="og:url" content="http://yoursite.com/2018/08/02/python-oop/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="创建类1，类中函数的第一个参数必须是self,它是为了指代它所存在的类2，构造函数用init表示 #创建类 class Foo:      name = &amp;#39;Jan&amp;#39;     #类里面的函数,类中第一个参数必须是self，指代本类的东西     def bar(self):         pass      def hello(self, name):         print(">
+<meta property="og:description" content="创建类1，类中函数的第一个参数必须是self,它是为了指代它所存在的类2，构造函数用init表示123456789101112131415161718192021#创建类class Foo:	name = &apos;Jan&apos;	#类里面的函数,类中第一个参数必须是self，指代本类的东西	def bar(self):		pass	def hello(self, name):		print(&apos;self nam">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-oop">
-<meta name="twitter:description" content="创建类1，类中函数的第一个参数必须是self,它是为了指代它所存在的类2，构造函数用init表示 #创建类 class Foo:      name = &amp;#39;Jan&amp;#39;     #类里面的函数,类中第一个参数必须是self，指代本类的东西     def bar(self):         pass      def hello(self, name):         print(">
+<meta name="twitter:description" content="创建类1，类中函数的第一个参数必须是self,它是为了指代它所存在的类2，构造函数用init表示123456789101112131415161718192021#创建类class Foo:	name = &apos;Jan&apos;	#类里面的函数,类中第一个参数必须是self，指代本类的东西	def bar(self):		pass	def hello(self, name):		print(&apos;self nam">
 
 
 
@@ -330,286 +330,38 @@
       
 
       
-        <h2 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h2><p>1，类中函数的第一个参数必须是self,它是为了指代它所存在的类<br>2，构造函数用<strong>init</strong>表示</p>
-<pre><code class="python">#创建类
-class Foo:
-
-    name = &#39;Jan&#39;
-    #类里面的函数,类中第一个参数必须是self，指代本类的东西
-    def bar(self):
-        pass
-
-    def hello(self, name):
-        print(&#39;self name {0}&#39;.format(self.name)) #指Jan
-        print(&#39;I am {0}&#39;.format(name))
-
-    def __init__(self): #其职责就是在模型创建初期完成一些动作
-        self.name = &quot;Jan2&quot;
-
-obj=Foo()
-obj.bar()
-obj.hello(&#39;july&#39;)
-
-obj1 = Foo()
-obj2 = Foo()
-</code></pre>
-<h2 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h2><p>1，直接在构造函数中用self.xx赋值会导致xx外界也能访问<br>2，<code>self.__name = name</code>,这样写就是告诉python <code>__name</code>不能被外界访问<br>3，如果既要保证安全，又要能被外部更改呢？用getter+setter<br>4，python中，如果变量名类似<code>__x__</code>,以双下划线开头和结尾的，是特殊变量，特殊变量可以直接访问，不是private变量<br>5，如果变量名是以一个下划线开头的<code>_x</code>，这样的实例变量外部是可以访问的，但是按照约定俗称的规定，这类变量<strong>虽然可以访问，但是请视为私有变量，不要随意访问</strong></p>
-<pre><code class="python">class Student:
-    def __init__(self,name,age):
-        self.name = name #用self赋值在类中别的方法也能直接访问的到
-        self.age = age
-        self.__name = name
-        self.__age = age
-
-    def detail(self):
-        print(self.name)
-        print(self.age)
-        print(self.__name)
-        print(self.__age)
-
-    def get_name(self):
-        return self.__name
-
-    def set_name(self,name):
-        self.__name = name
-
-LiLei = Student(&#39;LiLei&#39;,12)
-LiLei.age = 20 #外界可以更改，访问age
-Lilei.__age = 20 #不能被更改
-</code></pre>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><pre><code class="python">class PrimaryStudent(Student):
-    def lol(self):
-        print(&quot;lalalala&quot;)
-
-class CollegeStudent(Student):
-    #这里改写了父类的构造函数
-    def __init__(self,name,age,gender):
-        self.__name = name
-        self.__age = age
-        self.__gender = gender
-
-    def gender_detail(self):
-        print(self.__gender)
-
-obj1 = PrimaryStudent(&#39;向往&#39;,7)
-obj1.lol()
-obj1.detail()#继承爸爸的方法
-</code></pre>
-<h2 id="python-类属性和实例属性"><a href="#python-类属性和实例属性" class="headerlink" title="python 类属性和实例属性"></a>python 类属性和实例属性</h2><pre><code class="python">class A():
-    a = 10
-# scenario1
-obj1 = A()
-obj2 = A()
-print(obj1.a,obj2.a,A.a)
-
-# scenario2
-obj1.a += 2
-print(obj1.a,obj2.a,A.a)
-
-# scenario3
-A.a += 3
-print(obj1.a,obj2.a,A.a)
-</code></pre>
+        <h2 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h2><p>1，类中函数的第一个参数必须是self,它是为了指代它所存在的类<br>2，构造函数用<strong>init</strong>表示<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></span><br><span class="line"></span><br><span class="line">	name = <span class="string">'Jan'</span></span><br><span class="line">	<span class="comment">#类里面的函数,类中第一个参数必须是self，指代本类的东西</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">bar</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(self, name)</span>:</span></span><br><span class="line">		print(<span class="string">'self name &#123;0&#125;'</span>.format(self.name)) <span class="comment">#指Jan</span></span><br><span class="line">		print(<span class="string">'I am &#123;0&#125;'</span>.format(name))</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span> <span class="comment">#其职责就是在模型创建初期完成一些动作</span></span><br><span class="line">		self.name = <span class="string">"Jan2"</span></span><br><span class="line"></span><br><span class="line">obj=Foo()</span><br><span class="line">obj.bar()</span><br><span class="line">obj.hello(<span class="string">'july'</span>)</span><br><span class="line"></span><br><span class="line">obj1 = Foo()</span><br><span class="line">obj2 = Foo()</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h2><p>1，直接在构造函数中用self.xx赋值会导致xx外界也能访问<br>2，<code>self.__name = name</code>,这样写就是告诉python <code>__name</code>不能被外界访问<br>3，如果既要保证安全，又要能被外部更改呢？用getter+setter<br>4，python中，如果变量名类似<code>__x__</code>,以双下划线开头和结尾的，是特殊变量，特殊变量可以直接访问，不是private变量<br>5，如果变量名是以一个下划线开头的<code>_x</code>，这样的实例变量外部是可以访问的，但是按照约定俗称的规定，这类变量<strong>虽然可以访问，但是请视为私有变量，不要随意访问</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name,age)</span>:</span></span><br><span class="line">		self.name = name <span class="comment">#用self赋值在类中别的方法也能直接访问的到</span></span><br><span class="line">		self.age = age</span><br><span class="line">		self.__name = name</span><br><span class="line">		self.__age = age</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">detail</span><span class="params">(self)</span>:</span></span><br><span class="line">		print(self.name)</span><br><span class="line">		print(self.age)</span><br><span class="line">		print(self.__name)</span><br><span class="line">		print(self.__age)</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">get_name</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> self.__name</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">set_name</span><span class="params">(self,name)</span>:</span></span><br><span class="line">		self.__name = name</span><br><span class="line"></span><br><span class="line">LiLei = Student(<span class="string">'LiLei'</span>,<span class="number">12</span>)</span><br><span class="line">LiLei.age = <span class="number">20</span> <span class="comment">#外界可以更改，访问age</span></span><br><span class="line">Lilei.__age = <span class="number">20</span> <span class="comment">#不能被更改</span></span><br></pre></td></tr></table></figure></div></p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrimaryStudent</span><span class="params">(Student)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">lol</span><span class="params">(self)</span>:</span></span><br><span class="line">		print(<span class="string">"lalalala"</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CollegeStudent</span><span class="params">(Student)</span>:</span></span><br><span class="line">	<span class="comment">#这里改写了父类的构造函数</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name,age,gender)</span>:</span></span><br><span class="line">		self.__name = name</span><br><span class="line">		self.__age = age</span><br><span class="line">		self.__gender = gender</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">gender_detail</span><span class="params">(self)</span>:</span></span><br><span class="line">		print(self.__gender)</span><br><span class="line"></span><br><span class="line">obj1 = PrimaryStudent(<span class="string">'向往'</span>,<span class="number">7</span>)</span><br><span class="line">obj1.lol()</span><br><span class="line">obj1.detail()<span class="comment">#继承爸爸的方法</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="python-类属性和实例属性"><a href="#python-类属性和实例属性" class="headerlink" title="python 类属性和实例属性"></a>python 类属性和实例属性</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">()</span>:</span></span><br><span class="line">	a = <span class="number">10</span></span><br><span class="line"><span class="comment"># scenario1</span></span><br><span class="line">obj1 = A()</span><br><span class="line">obj2 = A()</span><br><span class="line">print(obj1.a,obj2.a,A.a)</span><br><span class="line"></span><br><span class="line"><span class="comment"># scenario2</span></span><br><span class="line">obj1.a += <span class="number">2</span></span><br><span class="line">print(obj1.a,obj2.a,A.a)</span><br><span class="line"></span><br><span class="line"><span class="comment"># scenario3</span></span><br><span class="line">A.a += <span class="number">3</span></span><br><span class="line">print(obj1.a,obj2.a,A.a)</span><br></pre></td></tr></table></figure></div>
 <p>情形1的结果是：<code>10 10 10</code>；<br>情形2的结果是：<code>12 10 10</code>；<br>情形3的结果是：<code>12 13 13</code>；</p>
 <p><strong>为什么呢？</strong><br>在python中， <code>A</code>属于类对象，<code>obj1</code>属于实例对象，从对象的角度上来说，<code>A</code>与<code>obj1</code>是两个无关的对象，但是，Python通过下面的查找树建立了对象<code>A</code>与实例对象<code>obj1</code>,<code>obj2</code>之间的关系</p>
-<pre><code>        A
-        |
-    ---------
-    |        |
-    obj1    obj2    
-</code></pre><p>当调用<code>A.a</code>的时候，直接从<code>A</code>获取属性<code>a</code><br>在scenario1中调用<code>obj1.a</code>,python按照从<code>obj1</code>到<code>A</code>的顺序自下到上查找属性<code>a</code><br>注意的是<strong>在这个时候，<code>obj1</code>是没有属性<code>a</code>的</strong>，所以python到Class <code>A</code>中找，找到并返回</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ASCIIDOC"><figure class="iseeu highlight /asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">	A</span></span><br><span class="line"><span class="code">	|</span></span><br><span class="line">---------</span><br><span class="line">|		|</span><br><span class="line">obj1	obj2</span><br></pre></td></tr></table></figure></div>
+<p>当调用<code>A.a</code>的时候，直接从<code>A</code>获取属性<code>a</code><br>在scenario1中调用<code>obj1.a</code>,python按照从<code>obj1</code>到<code>A</code>的顺序自下到上查找属性<code>a</code><br>注意的是<strong>在这个时候，<code>obj1</code>是没有属性<code>a</code>的</strong>，所以python到Class <code>A</code>中找，找到并返回</p>
 <p>在scenario2中<code>obj1.a += 2</code>包含了<strong>属性获取以及属性设置</strong>两个操作<br>属性的获取和上面一样，按照查找规则进行，即这个时候找到了类<code>A</code>的属性<code>a</code><br>但是当进行属性的设置时，<strong><code>obj1</code>这个实例对象没有属性<code>a</code>，因此会自身动态添加一个属性<code>a</code></strong><br>自此，类<code>A</code>和实例<code>obj1</code>都有自己的一个属性</p>
 <p>那么，在scenario3中，再次调用<code>obj1.a</code>的时候，按照<strong>就近原则</strong>，找到的时实例对象的<code>a</code>，所以返回12，对于<code>obj2.a</code>由于一开始没有自己的实例对象<code>a</code>,所以返回的时类<code>A</code>的<code>a</code>，也就是13</p>
-<p>可以验证，如果手动删除<code>obj1.a</code>，那么当再次调用<code>obj1.a</code>的时候，返回的会是13</p>
-<pre><code class="python">del obj1.a
-print(obj1.a)
-</code></pre>
-<h2 id="python-装饰器"><a href="#python-装饰器" class="headerlink" title="python 装饰器"></a>python 装饰器</h2><p>1，主要用于AOP<br>2，简单版，等同于<code>use_logging(foo())</code></p>
-<pre><code class="python">def use_logging(func):
-
-    def wrapper():
-        logging.warn(&quot;%s is running&quot; % func.__name__)
-        return func()
-    return wrapper
-
-@use_logging
-def foo():
-    print(&quot;i am foo&quot;)
-
-foo()
-</code></pre>
-<p>3，带业务函数参数*args,**kwargs</p>
-<pre><code class="python">def wrapper(*args, **kwargs):
-        logging.warn(&quot;%s is running&quot; % func.__name__)
-        return func(*args, **kwargs)
-    return wrapper
-</code></pre>
-<p>4，装饰器本身带参数<br>这种写法本质上就是把原本real_decorator这个装饰器再在外面包一层装饰器</p>
-<pre><code class="python">def makeHtmlTag(tag,*args,**kwds):
-    def real_decorator(fn):
-        css_class = &quot; class &#39;{0}&#39;&quot;.format(kwds[&quot;css_class&quot;]) if &quot;css_class&quot; in kwds else &quot;&quot;
-
-        def wrapped(*args, **kwds):
-            return &quot;&lt;&quot;+tag+css_class+&quot;&gt;&quot;+fn(*args,**kwds)+&quot;&lt;/&quot;+tag+&quot;&gt;&quot;
-        return wrapped
-    return real_decorator
-
-@makeHtmlTag(tag=&quot;b&quot;, css_class=&quot;bold_css&quot;)
-@makeHtmlTag(tag=&quot;i&quot;, css_class=&quot;italic_css&quot;)
-def hello(*s,**kwds):
-    return &quot;hello world!{0}{1}&quot;.format(s,kwds)
-
-print(hello(&#39;spencer&#39;,&#39;shao&#39;,name=&quot;ss&quot;,surname=&quot;shao&quot;))
-#结果为：&lt;b class &#39;bold_css&#39;&gt;&lt;i class &#39;italic_css&#39;&gt;hello world!(&#39;spencer&#39;, &#39;shao&#39;){&#39;name&#39;: &#39;ss&#39;, &#39;surname&#39;: &#39;shao&#39;}&lt;/i&gt;&lt;/b&gt;
-</code></pre>
+<p>可以验证，如果手动删除<code>obj1.a</code>，那么当再次调用<code>obj1.a</code>的时候，返回的会是13<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> obj1.a</span><br><span class="line">print(obj1.a)</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="python-装饰器"><a href="#python-装饰器" class="headerlink" title="python 装饰器"></a>python 装饰器</h2><p>1，主要用于AOP<br>2，简单版，等同于<code>use_logging(foo())</code><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">use_logging</span><span class="params">(func)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">()</span>:</span></span><br><span class="line">        logging.warn(<span class="string">"%s is running"</span> % func.__name__)</span><br><span class="line">        <span class="keyword">return</span> func()</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="meta">@use_logging</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"i am foo"</span>)</span><br><span class="line"></span><br><span class="line">foo()</span><br></pre></td></tr></table></figure></div></p>
+<p>3，带业务函数参数*args,**kwargs<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        logging.warn(<span class="string">"%s is running"</span> % func.__name__)</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br></pre></td></tr></table></figure></div></p>
+<p>4，装饰器本身带参数<br>这种写法本质上就是把原本real_decorator这个装饰器再在外面包一层装饰器<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">makeHtmlTag</span><span class="params">(tag,*args,**kwds)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">real_decorator</span><span class="params">(fn)</span>:</span></span><br><span class="line">        css_class = <span class="string">" class '&#123;0&#125;'"</span>.format(kwds[<span class="string">"css_class"</span>]) <span class="keyword">if</span> <span class="string">"css_class"</span> <span class="keyword">in</span> kwds <span class="keyword">else</span> <span class="string">""</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapped</span><span class="params">(*args, **kwds)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">"&lt;"</span>+tag+css_class+<span class="string">"&gt;"</span>+fn(*args,**kwds)+<span class="string">"&lt;/"</span>+tag+<span class="string">"&gt;"</span></span><br><span class="line">        <span class="keyword">return</span> wrapped</span><br><span class="line">    <span class="keyword">return</span> real_decorator</span><br><span class="line"></span><br><span class="line"><span class="meta">@makeHtmlTag(tag="b", css_class="bold_css")</span></span><br><span class="line"><span class="meta">@makeHtmlTag(tag="i", css_class="italic_css")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(*s,**kwds)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello world!&#123;0&#125;&#123;1&#125;"</span>.format(s,kwds)</span><br><span class="line"></span><br><span class="line">print(hello(<span class="string">'spencer'</span>,<span class="string">'shao'</span>,name=<span class="string">"ss"</span>,surname=<span class="string">"shao"</span>))</span><br><span class="line"><span class="comment">#结果为：&lt;b class 'bold_css'&gt;&lt;i class 'italic_css'&gt;hello world!('spencer', 'shao')&#123;'name': 'ss', 'surname': 'shao'&#125;&lt;/i&gt;&lt;/b&gt;</span></span><br></pre></td></tr></table></figure></div></p>
 <p>5，类装饰器<br>注意，这里调用顺序会先是decorator的init函数，</p>
-<pre><code class="python">class makeHtmlTagClass(object):
-    def __init__(self, tag, css_class=&quot;&quot;):
-        print(&quot;inside makeHtmlTagDecorator.__init.__()&quot;)
-        self._tag = tag
-        self._css_class = &quot; class &#39;{0}&#39;&quot;.format(css_class) if css_class != &quot;&quot; else &quot;&quot;
-
-    def __call__(self, fn):
-        def wrapped(*args, **kwargs):
-            print(&quot;inside makeHtmlTagDecorator.__call__()&quot;)
-            return &quot;&lt;&quot;+self._tag+self._css_class+&quot;&gt;&quot;+fn(*args,**kwargs)+&quot;&lt;/&quot;+self._tag+&quot;&gt;&quot;
-        return wrapped
-
-
-@makeHtmlTagClass(tag=&quot;b&quot;, css_class=&quot;bold_css&quot;)
-@makeHtmlTagClass(tag=&quot;i&quot;, css_class=&quot;italic_css&quot;)
-def hello(name):
-    return &quot;Hello, {}&quot;.format(name)
-print(&quot;Finished decorating hello()&quot;)
-
-print(hello(&quot;Baby&quot;))
-
-#输出结果顺序为：
-#inside makeHtmlTagDecorator.__init.__()
-#inside makeHtmlTagDecorator.__init.__()
-#Finished decorating hello()
-#inside makeHtmlTagDecorator.__call__()
-#inside makeHtmlTagDecorator.__call__()
-#&lt;b class &#39;bold_css&#39;&gt;&lt;i class &#39;italic_css&#39;&gt;Hello, Baby&lt;/i&gt;&lt;/b&gt;
-
-</code></pre>
-<p>6，装饰器副作用<br>原本的函数变成了一个wrapper函数，所以会丢失原本函数的一些元信息，比方说<strong>name</strong>, __doc__之类<br>这个时候可以用Python的functools</p>
-<pre><code class="python">from functools import wraps
-def hello(fn):
-    @wraps(fn)
-    def wrapper():
-        print(&quot;Hi,{0}&quot;.format(fn.__name__))
-        fn()
-        print(&quot;Bye,{0}&quot;.format(fn.__name__))
-    return wrapper
-
-@hello
-def foo():
-    print(&quot;Foo&quot;)
-
-foo()
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">makeHtmlTagClass</span><span class="params">(object)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, tag, css_class=<span class="string">""</span>)</span>:</span></span><br><span class="line">		print(<span class="string">"inside makeHtmlTagDecorator.__init.__()"</span>)</span><br><span class="line">		self._tag = tag</span><br><span class="line">		self._css_class = <span class="string">" class '&#123;0&#125;'"</span>.format(css_class) <span class="keyword">if</span> css_class != <span class="string">""</span> <span class="keyword">else</span> <span class="string">""</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, fn)</span>:</span></span><br><span class="line">		<span class="function"><span class="keyword">def</span> <span class="title">wrapped</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">			print(<span class="string">"inside makeHtmlTagDecorator.__call__()"</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="string">"&lt;"</span>+self._tag+self._css_class+<span class="string">"&gt;"</span>+fn(*args,**kwargs)+<span class="string">"&lt;/"</span>+self._tag+<span class="string">"&gt;"</span></span><br><span class="line">		<span class="keyword">return</span> wrapped</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@makeHtmlTagClass(tag="b", css_class="bold_css")</span></span><br><span class="line"><span class="meta">@makeHtmlTagClass(tag="i", css_class="italic_css")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(name)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">"Hello, &#123;&#125;"</span>.format(name)</span><br><span class="line">print(<span class="string">"Finished decorating hello()"</span>)</span><br><span class="line"></span><br><span class="line">print(hello(<span class="string">"Baby"</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">#输出结果顺序为：</span></span><br><span class="line"><span class="comment">#inside makeHtmlTagDecorator.__init.__()</span></span><br><span class="line"><span class="comment">#inside makeHtmlTagDecorator.__init.__()</span></span><br><span class="line"><span class="comment">#Finished decorating hello()</span></span><br><span class="line"><span class="comment">#inside makeHtmlTagDecorator.__call__()</span></span><br><span class="line"><span class="comment">#inside makeHtmlTagDecorator.__call__()</span></span><br><span class="line"><span class="comment">#&lt;b class 'bold_css'&gt;&lt;i class 'italic_css'&gt;Hello, Baby&lt;/i&gt;&lt;/b&gt;</span></span><br></pre></td></tr></table></figure></div>
+<p>6，装饰器副作用<br>原本的函数变成了一个wrapper函数，所以会丢失原本函数的一些元信息，比方说<strong>name</strong>, __doc__之类<br>这个时候可以用Python的functools<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> wraps</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(fn)</span>:</span></span><br><span class="line"><span class="meta">	@wraps(fn)</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">()</span>:</span></span><br><span class="line">		print(<span class="string">"Hi,&#123;0&#125;"</span>.format(fn.__name__))</span><br><span class="line">		fn()</span><br><span class="line">		print(<span class="string">"Bye,&#123;0&#125;"</span>.format(fn.__name__))</span><br><span class="line">	<span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="meta">@hello</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">	print(<span class="string">"Foo"</span>)</span><br><span class="line"></span><br><span class="line">foo()</span><br></pre></td></tr></table></figure></div></p>
 <h2 id="slots"><a href="#slots" class="headerlink" title="slots"></a><strong>slots</strong></h2><p>1，可以限制class实例能够添加哪些属性<br>2，__slots__只对当前类的实力起作用，对继承的子类不求作用</p>
 <h2 id="property"><a href="#property" class="headerlink" title="property"></a>property</h2><h2 id="类的特殊方法和定制"><a href="#类的特殊方法和定制" class="headerlink" title="类的特殊方法和定制"></a>类的特殊方法和定制</h2><h3 id="str"><a href="#str" class="headerlink" title="str"></a><strong>str</strong></h3><p>1，返回用户看到的字符串<br>2，convert an object to a string<br>3，与toString()十分类似，也可以override这个方法</p>
-<pre><code class="python">class MyClass:
-    def __init__(self, name):
-        self.name = name
-
-    def __str__(self):
-        return &quot;Hello&quot; + self.name
-
-print(MyClass(&#39;Tome&#39;)) # Hello Tome 
-# 如果没有def __str__，则默认打印的是&lt;__main__.MyClass object at 0x109afb190&gt;
-</code></pre>
-<h3 id="str-与repr"><a href="#str-与repr" class="headerlink" title="str()与repr()"></a>str()与repr()</h3><p>1，Example of str()</p>
-<pre><code class="python">s = &#39;Hello, Geeks.&#39;
-print str(s)
-print str(2.0/11.0)
-</code></pre>
-<p>output:</p>
-<pre><code>Hello, Geeks.
-0.181818181818
-</code></pre><p>2，Example of repr()</p>
-<pre><code class="python">s = &#39;Hello, Geeks.&#39;
-print repr(s)
-print repr(2.0/11.0)
-</code></pre>
-<p>output:</p>
-<pre><code>&#39;Hello, Geeks.&#39;
-0.18181818181818182
-</code></pre><p>3，Difference:<br>    <strong> str() is used for creating output for end users/ repr() is mainly used for debugging and development
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">		self.name = name</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Hello"</span> + self.name</span><br><span class="line"></span><br><span class="line">print(MyClass(<span class="string">'Tome'</span>)) <span class="comment"># Hello Tome </span></span><br><span class="line"><span class="comment"># 如果没有def __str__，则默认打印的是&lt;__main__.MyClass object at 0x109afb190&gt;</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="str-与repr"><a href="#str-与repr" class="headerlink" title="str()与repr()"></a>str()与repr()</h3><p>1，Example of str()<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'Hello, Geeks.'</span></span><br><span class="line"><span class="keyword">print</span> str(s)</span><br><span class="line"><span class="keyword">print</span> str(<span class="number">2.0</span>/<span class="number">11.0</span>)</span><br></pre></td></tr></table></figure></div></p>
+<p>output:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="AUTOHOTKEY"><figure class="iseeu highlight /autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Hello,</span> Geeks.</span><br><span class="line"><span class="number">0.181818181818</span></span><br></pre></td></tr></table></figure></div></p>
+<p>2，Example of repr()<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'Hello, Geeks.'</span></span><br><span class="line"><span class="keyword">print</span> repr(s)</span><br><span class="line"><span class="keyword">print</span> repr(<span class="number">2.0</span>/<span class="number">11.0</span>)</span><br></pre></td></tr></table></figure></div></p>
+<p>output:<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">'Hello, Geeks.'</span><br><span class="line"><span class="number">0.18181818181818182</span></span><br></pre></td></tr></table></figure></p>
+<p>3，Difference:<br>    <strong> str() is used for creating output for end users/ repr() is mainly used for debugging and development
     </strong> repr() shows a representation that has all information about the object/ str() is sued to show a representation that is useful for printing the object<br>    ** Both of them can be overriden for any class and there are minor differences.If both are defined, function defined in <strong>str</strong> is used.</p>
 <h3 id="iter"><a href="#iter" class="headerlink" title="iter"></a><strong>iter</strong></h3><p>1，如果一个类想要被用于<code>for ... in</code>循环，就必须实现一个<code>__iter__()</code>方法，该方法返回一个迭代对象，在<code>def __iter__(self)</code>里实力本身就是迭代对象，所以返回自己<code>self</code>即可，主要是在<code>__next__</code>里面写逻辑，知道遇到<code>StopIteration</code>错误时退出循环</p>
-<pre><code class="python">class Fib100:
-    def __init__(self):
-        self._1, self._2 = 0, 1
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        self._1, self._2 = self._2, self._1 + self._2
-        if self._1 &gt; 100:
-            raise StopIteration()
-        return self._1
-
-for i in Fib100():
-    print(i)
-</code></pre>
-<h3 id="getitem"><a href="#getitem" class="headerlink" title="getitem"></a><strong>getitem</strong></h3><p>1，如果想实现下标访问，就需要实现<code>__getitem__</code></p>
-<pre><code class="python">class Fib(object):
-    def __getitem__(self, n):
-        a, b = 1, 1
-        for x in range(n):
-            a, b = b, a + b
-        return a
-
-f = Fib()
-f[0]
-</code></pre>
-<h3 id="call"><a href="#call" class="headerlink" title="call"></a><strong>call</strong></h3><pre><code class="python">class MyClass:
-    def __call__(self):
-        print(&quot;U can call cls() directly&quot;)
-
-cls = MyClass()
-cls()
-
-print(callable(cls))
-print(callable(max))
-</code></pre>
-<h2 id="元类MetaClass"><a href="#元类MetaClass" class="headerlink" title="元类MetaClass"></a>元类MetaClass</h2><p>1，python是动态语言，是在运行时编译的<br>2，用<code>type</code>动态生成一个类,第二个参数是继承自什么，一定要显式写成元组类型</p>
-<pre><code class="python">def init(self, name):
-    self.name = name
-
-def say_hello(self):
-    print(&#39;Hello {0}&#39;.format(self.name))
-
-Hello = type(&#39;Hello&#39;,(object, ), dict(__init__ = init, hello = say_hello))
-
-h = Hello(&#39;Tom&#39;)
-h.hello()
-</code></pre>
-<p>3，metaclass就是为了控制类的创建过程，就是告诉用户我这个class有哪些方法，存在attrs的表里面，attrs就是函数和方法的一个表</p>
-<pre><code class="python">def add(self, value):
-    self.append(value)
-
-class ListMetaClass(type):
-    def __new__(cls, name, bases, attrs):
-        attrs[&#39;add&#39;] = add
-        attrs[&#39;name&#39;] = &#39;Jerry&#39;
-        return type.__new__(cls, name, bases, attrs)
-
-class MyList(list, metaclass = ListMetaClass):
-    pass
-
-mli = MyList()
-mli.add(1)
-mli.add(2)
-
-print(mli.name) # Jerry
-print(mli) # [1,2]
-
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fib100</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">		self._1, self._2 = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__next__</span><span class="params">(self)</span>:</span></span><br><span class="line">		self._1, self._2 = self._2, self._1 + self._2</span><br><span class="line">		<span class="keyword">if</span> self._1 &gt; <span class="number">100</span>:</span><br><span class="line">			<span class="keyword">raise</span> StopIteration()</span><br><span class="line">		<span class="keyword">return</span> self._1</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> Fib100():</span><br><span class="line">	print(i)</span><br></pre></td></tr></table></figure></div>
+<h3 id="getitem"><a href="#getitem" class="headerlink" title="getitem"></a><strong>getitem</strong></h3><p>1，如果想实现下标访问，就需要实现<code>__getitem__</code><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fib</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        a, b = <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> range(n):</span><br><span class="line">            a, b = b, a + b</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">f = Fib()</span><br><span class="line">f[<span class="number">0</span>]</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="call"><a href="#call" class="headerlink" title="call"></a><strong>call</strong></h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self)</span>:</span></span><br><span class="line">		print(<span class="string">"U can call cls() directly"</span>)</span><br><span class="line"></span><br><span class="line">cls = MyClass()</span><br><span class="line">cls()</span><br><span class="line"></span><br><span class="line">print(callable(cls))</span><br><span class="line">print(callable(max))</span><br></pre></td></tr></table></figure></div>
+<h2 id="元类MetaClass"><a href="#元类MetaClass" class="headerlink" title="元类MetaClass"></a>元类MetaClass</h2><p>1，python是动态语言，是在运行时编译的<br>2，用<code>type</code>动态生成一个类,第二个参数是继承自什么，一定要显式写成元组类型<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">(self, name)</span>:</span></span><br><span class="line">	self.name = name</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">say_hello</span><span class="params">(self)</span>:</span></span><br><span class="line">	print(<span class="string">'Hello &#123;0&#125;'</span>.format(self.name))</span><br><span class="line"></span><br><span class="line">Hello = type(<span class="string">'Hello'</span>,(object, ), dict(__init__ = init, hello = say_hello))</span><br><span class="line"></span><br><span class="line">h = Hello(<span class="string">'Tom'</span>)</span><br><span class="line">h.hello()</span><br></pre></td></tr></table></figure></div></p>
+<p>3，metaclass就是为了控制类的创建过程，就是告诉用户我这个class有哪些方法，存在attrs的表里面，attrs就是函数和方法的一个表<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, value)</span>:</span></span><br><span class="line">	self.append(value)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListMetaClass</span><span class="params">(type)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, name, bases, attrs)</span>:</span></span><br><span class="line">		attrs[<span class="string">'add'</span>] = add</span><br><span class="line">		attrs[<span class="string">'name'</span>] = <span class="string">'Jerry'</span></span><br><span class="line">		<span class="keyword">return</span> type.__new__(cls, name, bases, attrs)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyList</span><span class="params">(list, metaclass = ListMetaClass)</span>:</span></span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">mli = MyList()</span><br><span class="line">mli.add(<span class="number">1</span>)</span><br><span class="line">mli.add(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">print(mli.name) <span class="comment"># Jerry</span></span><br><span class="line">print(mli) <span class="comment"># [1,2]</span></span><br></pre></td></tr></table></figure></div></p>
 
       
     </div>
@@ -729,7 +481,7 @@ print(mli) # [1,2]
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -742,7 +494,7 @@ print(mli) # [1,2]
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

@@ -260,6 +260,256 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/26/net-design-pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/26/net-design-pattern/" itemprop="url">net-design-pattern</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-26T18:03:17+08:00">
+                2018-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="依赖倒置原则：怎么抽象"><a href="#依赖倒置原则：怎么抽象" class="headerlink" title="依赖倒置原则：怎么抽象"></a>依赖倒置原则：怎么抽象</h2><p>1，上层和下层中间应该通过一个抽象层进行工作，抽象是稳定的，实现是多变的！所以定义抽象要谨慎<br>2，每一层模块应该都要有抽象，有一个类cls,就要有一个ICls<br>3，调用者左边为抽象，右边为具体实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">//caller</span><br><span class="line">&#123;</span><br><span class="line">	AbstractPhone phone = new iPhone();</span><br><span class="line">	phone.Call();</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">	AbstractPhone phone = new Lumia();</span><br><span class="line">	phone.Call();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//中间层，就相当于定义的一个规范</span><br><span class="line">public abstract class AbstractPhone</span><br><span class="line">&#123;</span><br><span class="line">	public int Id &#123;get;set;&#125;</span><br><span class="line">	public string Branch &#123;get;set;&#125;</span><br><span class="line">	public abstract void Call();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//下层实现层</span><br><span class="line">public class iPhone:AbstractPhone</span><br><span class="line">&#123;</span><br><span class="line">	public override void Call()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;This is iPhone calling!&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Lumia:AbstractPhone</span><br><span class="line">&#123;</span><br><span class="line">	public override void Call()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;This is Lumia calling!&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/26/net-design-pattern/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/22/net-thread/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/22/net-thread/" itemprop="url">net-thread</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-22T21:57:15+08:00">
+                2018-07-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Thread-NET-1-0-Basic"><a href="#Thread-NET-1-0-Basic" class="headerlink" title="Thread (.NET 1.0) Basic"></a>Thread (.NET 1.0) Basic</h2><p>1，    前台线程thread.Start();进程退出后还会继续执行，直到执行结束。且前台线程只有这种形式，后面的ThreadPool,Async都是后台线程<br>2，    后台线程thread.IsBackground=true;进程退出后还会继续执行，直到执行结束。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">private void btnThreads_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine($&quot;*************btnThreads_Click Start &#123;Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)&#125;&quot;);</span><br><span class="line"></span><br><span class="line">	ThreadStart threadStart = new ThreadStart(()=&gt;</span><br><span class="line">		&#123;</span><br><span class="line">			Thread.Sleep(5000);</span><br><span class="line">			this.DoSomething(&quot;btnThreads_Click&quot;);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">	Thread thread = new Thread(threadStart);</span><br><span class="line">	</span><br><span class="line">	thread.IsBackground=true;//这样就会改成后台线程，这样进程退出后，线程也会一起推出</span><br><span class="line">	thread.Start();//默认是前台线程，进程退出后还会继续执行，直到执行结束。</span><br><span class="line"></span><br><span class="line">	//thread.Join();//做等待用的，执行thread的这个线程会等待thread线程</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/22/net-thread/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/17/net-async/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -330,30 +580,7 @@
 
       
         
-          <h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><p>异步多线程：多线程是说的CLR线程，异步是说IO线程<br>要用异步多线程必须要用Delegate委托</p>
-<pre><code class="c#">private void btnAsync_Click(object sender, EventArgs e)
-{
-    //同步调用，必须DoSomethingLong结束后才会走下一步
-    Action&lt;string&gt; act = new Action&lt;string&gt;(this.DoSomethingLong);
-    act.Invoke(&quot;this.DoSomethingLong&quot;);
-
-    //异步调用，会启动一个线程；现象是直接进入下一行，不会等待
-    act.BeginInvoke(&quot;this.DoSomethingLong&quot;,null,null);
-}
-
-private void DoSomethingLong(string name)
-{
-    Console.WriteLine($&quot;********DoSomethingLong Start {Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)}&quot;);
-    long lResult = 0;
-    for(int i=0; i&lt;1000000;i++)
-    {
-        lResult += i;
-    }
-    Thread.Sleep(2000);
-
-    Console.WriteLine($&quot;********DoSomethingLong End {Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)}&quot;);
-}
-</code></pre>
+          <h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><p>异步多线程：多线程是说的CLR线程，异步是说IO线程<br>要用异步多线程必须要用Delegate委托<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">private void btnAsync_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">	//同步调用，必须DoSomethingLong结束后才会走下一步</span><br><span class="line">	Action&lt;string&gt; act = new Action&lt;string&gt;(this.DoSomethingLong);</span><br><span class="line">	act.Invoke(&quot;this.DoSomethingLong&quot;);</span><br><span class="line"></span><br><span class="line">	//异步调用，会启动一个线程；现象是直接进入下一行，不会等待</span><br><span class="line">	act.BeginInvoke(&quot;this.DoSomethingLong&quot;,null,null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void DoSomethingLong(string name)</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine($&quot;********DoSomethingLong Start &#123;Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)&#125;&quot;);</span><br><span class="line">	long lResult = 0;</span><br><span class="line">	for(int i=0; i&lt;1000000;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		lResult += i;</span><br><span class="line">	&#125;</span><br><span class="line">	Thread.Sleep(2000);</span><br><span class="line"></span><br><span class="line">	Console.WriteLine($&quot;********DoSomethingLong End &#123;Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)&#125;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/17/net-async/#more" rel="contents">
@@ -478,13 +705,7 @@ private void DoSomethingLong(string name)
       
         
           <p>ENV: UBUNTU</p>
-<h2 id="Add-a-non-root-user"><a href="#Add-a-non-root-user" class="headerlink" title="Add a non root user"></a>Add a non root user</h2><pre><code class="shell">adduser lxduser
-usermod -aG sudo lxduser
-##disable password authentication
-sudo nano /etc/ssh/sshd_config
-PasswordAuthentication no
-sudo systemctl reload sshd
-</code></pre>
+<h2 id="Add-a-non-root-user"><a href="#Add-a-non-root-user" class="headerlink" title="Add a non root user"></a>Add a non root user</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">adduser lxduser</span><br><span class="line">usermod -aG sudo lxduser</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#disable password authentication</span></span></span><br><span class="line">sudo nano /etc/ssh/sshd_config</span><br><span class="line">PasswordAuthentication no</span><br><span class="line">sudo systemctl reload sshd</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/02/lxd-ubuntu/#more" rel="contents">
@@ -610,13 +831,7 @@ sudo systemctl reload sshd
         
           
             <p>表达式目录树Expression<br>编译之后不是生成的方法，不是一个委托</p>
-<pre><code class="c#">Func&lt;int,int,int&gt; func = (m,n) =&gt; m*n+2;
-Expression&lt;Func&lt;int,int,int&gt;&gt; exp = (m,n)=&gt; m*n+2;
-
-int iResult1 = func.Invoke(12,23);
-int iResult2 = exp.Compile().Invoke(12,23);
-</code></pre>
-
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;int,int,int&gt; func = (m,n) =&gt; m*n+2;</span><br><span class="line">Expression&lt;Func&lt;int,int,int&gt;&gt; exp = (m,n)=&gt; m*n+2;</span><br><span class="line"></span><br><span class="line">int iResult1 = func.Invoke(12,23);</span><br><span class="line">int iResult2 = exp.Compile().Invoke(12,23);</span><br></pre></td></tr></table></figure></div>
           
         
       
@@ -735,67 +950,7 @@ int iResult2 = exp.Compile().Invoke(12,23);
       
         
           
-            <h2 id="linq-to-Object-是翻译成object，在内存里面"><a href="#linq-to-Object-是翻译成object，在内存里面" class="headerlink" title="linq to Object, 是翻译成object，在内存里面"></a>linq to Object, 是翻译成object，在内存里面</h2><pre><code class="c#">
-//分页的功能
-var list = studentList.Where(s=&gt;s.Age&lt;30)
-            .Select(s =&gt; new
-            {
-                Id = s.Id,
-                ClassId = s.ClassId,
-                IdName = s.Id + s.Name,
-                ClassName = s.ClassId == 2? &quot;Advanced&quot;:&quot;Other&quot;
-            })
-            .OrderBy(s=&gt;s.Id)
-            .OrderByDescending(s=&gt;s.ClassId)
-            .Skip(2) //跳过几条
-            .Take(3); //获取几条
-
-//group
-{
-    var list = from s in studentList
-                where s.Age &lt; 30
-                group s by s.ClassId into sg
-                select new
-                {
-                    key = sg.Key, //sg.Key就是s.ClassId
-                    maxAge = sg.Max(t=&gt;t.Age)
-                };
-
-                //groupby new {s.ClassId,s.Age}
-}
-
-//inner join
-{
-    var list = from s in studentList
-                join c in classList on s.ClassId equals c.Id
-                select new
-                {
-                    Name = s.Name,
-                    ClassName = c.ClassName
-                };
-}
-
-//left join
-{
-    var list  = from s in studentList
-                join c in classList on s.ClassId equals c.Id
-                into scList
-                from sc in scList.DefaultIfEmpty()
-                select new
-                {
-                    Name = s.Name,
-                    ClassName = sc==null?&quot;无班级&quot;:sc.ClassName
-                }
-}
-
-//left Join
-{
-    var list = studentList.Join(classList, s=&gt;s.ClassId, c=&gt;c.Id, (s,c)=&gt;new{
-            Name = s.Name,
-            ClassName = c.ClassName
-        }).DefaultIfEmpty();
-}
-</code></pre>
+            <h2 id="linq-to-Object-是翻译成object，在内存里面"><a href="#linq-to-Object-是翻译成object，在内存里面" class="headerlink" title="linq to Object, 是翻译成object，在内存里面"></a>linq to Object, 是翻译成object，在内存里面</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//分页的功能</span><br><span class="line">var list = studentList.Where(s=&gt;s.Age&lt;30)</span><br><span class="line">			.Select(s =&gt; new</span><br><span class="line">			&#123;</span><br><span class="line">				Id = s.Id,</span><br><span class="line">				ClassId = s.ClassId,</span><br><span class="line">				IdName = s.Id + s.Name,</span><br><span class="line">				ClassName = s.ClassId == 2? &quot;Advanced&quot;:&quot;Other&quot;</span><br><span class="line">			&#125;)</span><br><span class="line">			.OrderBy(s=&gt;s.Id)</span><br><span class="line">			.OrderByDescending(s=&gt;s.ClassId)</span><br><span class="line">			.Skip(2) //跳过几条</span><br><span class="line">			.Take(3); //获取几条</span><br><span class="line"></span><br><span class="line">//group</span><br><span class="line">&#123;</span><br><span class="line">	var list = from s in studentList</span><br><span class="line">				where s.Age &lt; 30</span><br><span class="line">				group s by s.ClassId into sg</span><br><span class="line">				select new</span><br><span class="line">				&#123;</span><br><span class="line">					key = sg.Key, //sg.Key就是s.ClassId</span><br><span class="line">					maxAge = sg.Max(t=&gt;t.Age)</span><br><span class="line">				&#125;;</span><br><span class="line"></span><br><span class="line">				//groupby new &#123;s.ClassId,s.Age&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//inner join</span><br><span class="line">&#123;</span><br><span class="line">	var list = from s in studentList</span><br><span class="line">				join c in classList on s.ClassId equals c.Id</span><br><span class="line">				select new</span><br><span class="line">				&#123;</span><br><span class="line">					Name = s.Name,</span><br><span class="line">					ClassName = c.ClassName</span><br><span class="line">				&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//left join</span><br><span class="line">&#123;</span><br><span class="line">	var list  = from s in studentList</span><br><span class="line">				join c in classList on s.ClassId equals c.Id</span><br><span class="line">				into scList</span><br><span class="line">				from sc in scList.DefaultIfEmpty()</span><br><span class="line">				select new</span><br><span class="line">				&#123;</span><br><span class="line">					Name = s.Name,</span><br><span class="line">					ClassName = sc==null?&quot;无班级&quot;:sc.ClassName</span><br><span class="line">				&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//left Join</span><br><span class="line">&#123;</span><br><span class="line">	var list = studentList.Join(classList, s=&gt;s.ClassId, c=&gt;c.Id, (s,c)=&gt;new&#123;</span><br><span class="line">			Name = s.Name,</span><br><span class="line">			ClassName = c.ClassName</span><br><span class="line">		&#125;).DefaultIfEmpty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
           
         
@@ -916,56 +1071,10 @@ var list = studentList.Where(s=&gt;s.Age&lt;30)
         
           
             <p>迭代器<br><span style="color: red">注意！yield是写在while里面的，且返回的是result!不是results!</span></p>
-<p>yield 是一个状态机，只有在真正调用的时候才会进到方法里面调用</p>
-<pre><code class="c#">//一次性把所有数据都计算好
-public IEnumerable&lt;int&gt; CommonMethod()
-{
-    List&lt;int&gt; results = new List&lt;int&gt;();
-    int counter = 0;
-    int result = 1;
-
-    while(counter++ &lt; 10)
-    {
-        Thread.Sleep(1000);
-        Console.WriteLine($&quot;获取{counter}次数据&quot;);
-        result = result * 2;
-        results.Add(result);
-    }
-    return results;
-}
-
-//按需获取 
-public IEnumerable&lt;int&gt; YieldMethod()
-{
-    int counter = 0;
-    int result = 1;
-    while(counter++ &lt; 10)
-    {
-        Thread.Sleep(1000);
-        Console.WriteLine($&quot;获取{counter}次数据&quot;);
-        result = result * 2;
-        yield return results;
-    }
-}
-
-//caller
-IEnumerable&lt;int&gt; intListCommon = show.CommonMethod();//返回的是最终的结果
-IEnumerable&lt;int&gt; intListYield = show.YieldMethod();//这个时候返回的是一个状态机，不是最终的结果
-
-
-//只有在调用item的时候，才会真正走进去，且每次循环后是从while开始的！
-foreach(var item in intListYield)
-{
-
-}
-</code></pre>
+<p>yield 是一个状态机，只有在真正调用的时候才会进到方法里面调用<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">//一次性把所有数据都计算好</span><br><span class="line">public IEnumerable&lt;int&gt; CommonMethod()</span><br><span class="line">&#123;</span><br><span class="line">	List&lt;int&gt; results = new List&lt;int&gt;();</span><br><span class="line">	int counter = 0;</span><br><span class="line">	int result = 1;</span><br><span class="line"></span><br><span class="line">	while(counter++ &lt; 10)</span><br><span class="line">	&#123;</span><br><span class="line">		Thread.Sleep(1000);</span><br><span class="line">		Console.WriteLine($&quot;获取&#123;counter&#125;次数据&quot;);</span><br><span class="line">		result = result * 2;</span><br><span class="line">		results.Add(result);</span><br><span class="line">	&#125;</span><br><span class="line">	return results;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//按需获取 </span><br><span class="line">public IEnumerable&lt;int&gt; YieldMethod()</span><br><span class="line">&#123;</span><br><span class="line">	int counter = 0;</span><br><span class="line">	int result = 1;</span><br><span class="line">	while(counter++ &lt; 10)</span><br><span class="line">	&#123;</span><br><span class="line">		Thread.Sleep(1000);</span><br><span class="line">		Console.WriteLine($&quot;获取&#123;counter&#125;次数据&quot;);</span><br><span class="line">		result = result * 2;</span><br><span class="line">		yield return results;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//caller</span><br><span class="line">IEnumerable&lt;int&gt; intListCommon = show.CommonMethod();//返回的是最终的结果</span><br><span class="line">IEnumerable&lt;int&gt; intListYield = show.YieldMethod();//这个时候返回的是一个状态机，不是最终的结果</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//只有在调用item的时候，才会真正走进去，且每次循环后是从while开始的！</span><br><span class="line">foreach(var item in intListYield)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <h2 id="linq"><a href="#linq" class="headerlink" title="linq"></a>linq</h2><p>.NET里面linq其实也是用的yield方式实现的，只有在真正使用的时候才会去执行逻辑代码</p>
-<p>比方说</p>
-<pre><code class="c#">var itemList = studentList.Where(x=&gt;x.Age &lt; 30);
-</code></pre>
-<p>但是如果用了ToList()，就会之u姐去执行逻辑代码</p>
-<pre><code class="c#">var itemList2 = studentList.Where(x=&gt;x.Age&gt;30).ToList();
-</code></pre>
+<p>比方说<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var itemList = studentList.Where(x=&gt;x.Age &lt; 30);</span><br></pre></td></tr></table></figure></div></p>
+<p>但是如果用了ToList()，就会之u姐去执行逻辑代码<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var itemList2 = studentList.Where(x=&gt;x.Age&gt;30).ToList();</span><br></pre></td></tr></table></figure></div></p>
 
           
         
@@ -1208,81 +1317,16 @@ foreach(var item in intListYield)
       
         
           
-            <h2 id="自己建yum源【centos系统】"><a href="#自己建yum源【centos系统】" class="headerlink" title="自己建yum源【centos系统】"></a>自己建yum源【centos系统】</h2><p>1，启一个httpd web service，不需要装tomcat这类，只需要一个静态的服务器即可<br>2，检查httpd service <code>service httpd status</code><br>3，在<code>/var/www/html</code>下面创建一个目录挂载cdrom<br>4，挂载目录指令为<br>    <code>mount -t iso9660 -o ro /dev/cdrom /mnt/cdrom</code><br>41，如果iso盘中没有<code>repodata</code>,即没有dependecy link文件，需要手动创建<br>    <code>createrepo /mnt/cdromlocal</code><br>42，    创建完<code>repodata</code>后，需要再生成一个iso文件<br>    <code>mkisofs -o /mnt/example.iso /mnt/cdromlocal/</code><br>5，设置重启自动挂载<br>    <code>vi /etc/fstab</code><br>    在文件尾部追加<br>    <code>/dev/cdrom        /mnt/cdrom        iso9660        defaults        0        0</code><br>6，在httpd html文件夹下面新建一个文件夹比方说叫centos，软链接指向这个mnt目录即可，假设mnt目录为/mnt/cdrom<br>    <code>ln -s /mnt/cdrom /var/www/html/centos</code><br>7，更改centos repo.d文件，指向这个yum源<br>    <code>vi /etc/yum.repos.d/xxx.repo</code></p>
-<pre><code>```
-[base]
-name=CentOS-Local
-baseurl=http://192.168.X.X/centos
-gpgcheck=1
-enabled=1   #很重要，1才启用
-gpgkey=file:///mnt/cdrom/rpm-gpg/RPM-GPG-KEY-CentOS-6
-```
-</code></pre><p>8，常用yum命令<br>    <code>yum clean all</code>    清除所有缓冲数据<br>    <code>yum repolist</code>    列出可用的yum源<br>    <code>yum deplist httpd</code>    列出一个包所依赖的包<br>    <code>yum remove httpd</code>    删除一个包</p>
+            <h2 id="自己建yum源【centos系统】"><a href="#自己建yum源【centos系统】" class="headerlink" title="自己建yum源【centos系统】"></a>自己建yum源【centos系统】</h2><p>1，启一个httpd web service，不需要装tomcat这类，只需要一个静态的服务器即可<br>2，检查httpd service <code>service httpd status</code><br>3，在<code>/var/www/html</code>下面创建一个目录挂载cdrom<br>4，挂载目录指令为<br>    <code>mount -t iso9660 -o ro /dev/cdrom /mnt/cdrom</code><br>41，如果iso盘中没有<code>repodata</code>,即没有dependecy link文件，需要手动创建<br>    <code>createrepo /mnt/cdromlocal</code><br>42，    创建完<code>repodata</code>后，需要再生成一个iso文件<br>    <code>mkisofs -o /mnt/example.iso /mnt/cdromlocal/</code><br>5，设置重启自动挂载<br>    <code>vi /etc/fstab</code><br>    在文件尾部追加<br>    <code>/dev/cdrom        /mnt/cdrom        iso9660        defaults        0        0</code><br>6，在httpd html文件夹下面新建一个文件夹比方说叫centos，软链接指向这个mnt目录即可，假设mnt目录为/mnt/cdrom<br>    <code>ln -s /mnt/cdrom /var/www/html/centos</code><br>7，更改centos repo.d文件，指向这个yum源<br>    <code>vi /etc/yum.repos.d/xxx.repo</code><br>    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="INI"><figure class="iseeu highlight /ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[base]</span></span><br><span class="line"><span class="attr">name</span>=CentOS-Local</span><br><span class="line"><span class="attr">baseurl</span>=http://<span class="number">192.168</span>.X.X/centos</span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="number">1</span>   #很重要，<span class="number">1</span>才启用</span><br><span class="line"><span class="attr">gpgkey</span>=file:///mnt/cdrom/rpm-gpg/RPM-GPG-KEY-CentOS-<span class="number">6</span></span><br></pre></td></tr></table></figure></div></p>
+<p>8，常用yum命令<br>    <code>yum clean all</code>    清除所有缓冲数据<br>    <code>yum repolist</code>    列出可用的yum源<br>    <code>yum deplist httpd</code>    列出一个包所依赖的包<br>    <code>yum remove httpd</code>    删除一个包</p>
 <h2 id="准备一个boot-sh脚本"><a href="#准备一个boot-sh脚本" class="headerlink" title="准备一个boot.sh脚本"></a>准备一个boot.sh脚本</h2><p><code>ssh-keygen -f</code>    查看pem对应的private key</p>
 <p>ssh登陆所用的key pair存在.ssh/authorized_keys文件中，如果不小心删掉了，可以把private key的内容copy到authorized_keys文件，然后+空格+pem的名称，比如<code>ssh-rsa XXXXXX linuxAAAA</code>,之后再更改文件权限<code>chmod 600 .ssh/authorized_keys</code></p>
 <p><code>ssh-keygen -f publickey.pem &gt;&gt; authorized.keys</code>或者可以用这个命令写进去前半段key的内容</p>
 <p><code>ssh-keygen -R hostname</code>    删除known_hosts</p>
 <p><code>sudo yum install expect</code>    模拟用户输入密码，yes等信息</p>
-<pre><code class="bash">#!/bin/bash
-SERVERS=&quot;node-3.itcast.cn node-4.itcast.cn&quot;
-PASSWORD=123456
-BASE_SERVER=172.16.203.100
-
-#auto_ssh_copy_id() {
-#    expect -c &quot;set timeout -1;
-#        spawn ssh-copy-id $1;
-#        expect {
-#            *(yes/no)* {send -- #yes\r;exp_continue;}
-#            *assword:* {send -- $2\r;exp_continue;}
-#            eof        {exit 0;}
-#        }&quot;;
-#}
-#
-#ssh_copy_id_to_all() {
-#    for SERVER in $SERVERS
-#    do
-#        auto_ssh_copy_id $SERVER $PASSWORD
-#    done
-#}
-#
-
-auto_ssh_login() {
-    expect -c &quot;set timeout -1;
-        spawn ssh -i /home/ec2-user/linuxSS.pem ec2-user@$1;
-        expect {
-            *(yes/no)* {send -- yes\r;exp_continue;}
-            eof        {exit 0;}
-        }&quot;;
-}
-
-ssh_login_to_all() {
-        for SERVER in $SERVERS
-        do
-                auto_ssh_login $SERVER
-        done
-}
-
-ssh_login_to_all
-
-
-for SERVER in $SERVERS
-do
-       scp -i linuxSS.pem install.sh ec2-user@$SERVER:/home/ec2-user
-       ssh -i linuxSS.pem ec2-user@$SERVER &quot;sudo chmod u+x /home/ec2-user/install.sh;echo lalalal &gt;&gt; /home/ec2-use$
-done
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">SERVERS=<span class="string">"node-3.itcast.cn node-4.itcast.cn"</span></span><br><span class="line">PASSWORD=123456</span><br><span class="line">BASE_SERVER=172.16.203.100</span><br><span class="line"></span><br><span class="line"><span class="comment">#auto_ssh_copy_id() &#123;</span></span><br><span class="line"><span class="comment">#    expect -c "set timeout -1;</span></span><br><span class="line"><span class="comment">#        spawn ssh-copy-id $1;</span></span><br><span class="line"><span class="comment">#        expect &#123;</span></span><br><span class="line"><span class="comment">#            *(yes/no)* &#123;send -- #yes\r;exp_continue;&#125;</span></span><br><span class="line"><span class="comment">#            *assword:* &#123;send -- $2\r;exp_continue;&#125;</span></span><br><span class="line"><span class="comment">#            eof        &#123;exit 0;&#125;</span></span><br><span class="line"><span class="comment">#        &#125;";</span></span><br><span class="line"><span class="comment">#&#125;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#ssh_copy_id_to_all() &#123;</span></span><br><span class="line"><span class="comment">#    for SERVER in $SERVERS</span></span><br><span class="line"><span class="comment">#    do</span></span><br><span class="line"><span class="comment">#        auto_ssh_copy_id $SERVER $PASSWORD</span></span><br><span class="line"><span class="comment">#    done</span></span><br><span class="line"><span class="comment">#&#125;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">auto_ssh_login</span></span>() &#123;</span><br><span class="line">    expect -c <span class="string">"set timeout -1;</span></span><br><span class="line"><span class="string">        spawn ssh -i /home/ec2-user/linuxSS.pem ec2-user@<span class="variable">$1</span>;</span></span><br><span class="line"><span class="string">        expect &#123;</span></span><br><span class="line"><span class="string">            *(yes/no)* &#123;send -- yes\r;exp_continue;&#125;</span></span><br><span class="line"><span class="string">            eof        &#123;exit 0;&#125;</span></span><br><span class="line"><span class="string">        &#125;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">ssh_login_to_all</span></span>() &#123;</span><br><span class="line">        <span class="keyword">for</span> SERVER <span class="keyword">in</span> <span class="variable">$SERVERS</span></span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">                auto_ssh_login <span class="variable">$SERVER</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ssh_login_to_all</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> SERVER <span class="keyword">in</span> <span class="variable">$SERVERS</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">       scp -i linuxSS.pem install.sh ec2-user@<span class="variable">$SERVER</span>:/home/ec2-user</span><br><span class="line">       ssh -i linuxSS.pem ec2-user@<span class="variable">$SERVER</span> <span class="string">"sudo chmod u+x /home/ec2-user/install.sh;echo lalalal &gt;&gt; /home/ec2-use$</span></span><br><span class="line"><span class="string">done</span></span><br></pre></td></tr></table></figure></div>
 <h2 id="Install-sh"><a href="#Install-sh" class="headerlink" title="Install.sh"></a>Install.sh</h2><p>如果用<code>echo</code>来写入到/etc/profile中，换行符不好弄<br><code>&lt;&lt;</code>类似于文件的重定向，就是写个文件进去，<code>EOF</code>就是文件的标志，末尾也要写个EOF进去，就相当于追加一个文件到/etc/profile的末尾</p>
-<pre><code class="bash">#!/bin/bash
-
-BASE_SERVER=172.16.203.100
-yum install -y wget
-wget $BASE_SERVER/soft/jdk-XXXX.tar.gz
-tar -zxvf jdk-XXXX.tar.gz -C /usr/local
-cat &gt;&gt; /etc/profile &lt;&lt; EOF
-export JAVA_HOME=/usr/local/jdkXXX
-export PATH=\$PATH:\$JAVA_HOME/bin
-EOF
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">BASE_SERVER=172.16.203.100</span><br><span class="line">yum install -y wget</span><br><span class="line">wget <span class="variable">$BASE_SERVER</span>/soft/jdk-XXXX.tar.gz</span><br><span class="line">tar -zxvf jdk-XXXX.tar.gz -C /usr/<span class="built_in">local</span></span><br><span class="line">cat &gt;&gt; /etc/profile &lt;&lt; EOF</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdkXXX</span><br><span class="line"><span class="built_in">export</span> PATH=\<span class="variable">$PATH</span>:\<span class="variable">$JAVA_HOME</span>/bin</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure></div>
 
           
         
@@ -1437,271 +1481,6 @@ EOF
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/25/sublimetext-usage/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/25/sublimetext-usage/" itemprop="url">sublimetext-usage</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T10:42:29+08:00">
-                2018-06-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Allow-Alt-Drag-in-windows"><a href="#Allow-Alt-Drag-in-windows" class="headerlink" title="Allow Alt+Drag in windows"></a>Allow Alt+Drag in windows</h2><p>I created a file “C:\Users\XX\AppData\Roaming\Sublime Text 3\Packages\User\Default (Windows).sublime-mousemap”, and put this in it:</p>
-<pre><code>[
-  {
-    &quot;button&quot;: &quot;button1&quot;,&quot;modifiers&quot;: [&quot;alt&quot;],
-    &quot;press_command&quot;: &quot;drag_select&quot;,
-    &quot;press_args&quot;: {&quot;by&quot;: &quot;columns&quot;}
-  },
-]
-</code></pre><p>restart Sublime</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/25/net-EventIOSerialize/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/25/net-EventIOSerialize/" itemprop="url">net-EventIOSerialize</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T10:00:51+08:00">
-                2018-06-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="EVENT"><a href="#EVENT" class="headerlink" title="EVENT"></a>EVENT</h2><p>假如现在有一个猫类型，它叫一声会引发一连串反应，诸如</p>
-<pre><code class="c#">public class Cat
-{
-    public void Miao()
-    {
-        new Neighbor().Awake();
-        new Dog().Bark();
-        new Mouse().Run();
-        new Baby().Cry();
-    }
-}
-</code></pre>
-<p>这样的写法会导致耦合性高，不易扩展，增加，减少或者调整顺序都会变得比较困难，最好是猫叫一声-&gt;触发一系列的动作</p>
-<p><strong>用委托的方法实现</strong></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/25/net-EventIOSerialize/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1750,7 +1529,7 @@ EOF
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1763,7 +1542,7 @@ EOF
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

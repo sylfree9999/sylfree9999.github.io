@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="转载补充自http://seanlook.com/2015/05/17/nginx-location-rewrite/ location  = / {   # 精确匹配 / ，主机名后面不能带任何字符串   [ configuration A ] }  location  / {   # 因为所有的地址都以 / 开头，所以这条规则将匹配到所有请求   # 但是正则和最长字符串会优先匹配   [ c">
+<meta name="description" content="转载补充自http://seanlook.com/2015/05/17/nginx-location-rewrite/ 123456789101112131415161718192021location  = / &amp;#123;  # 精确匹配 / ，主机名后面不能带任何字符串  [ configuration A ]&amp;#125;location  / &amp;#123;  # 因为所有的地址都以 / 开">
 <meta name="keywords" content="concept,nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx location匹配">
 <meta property="og:url" content="http://yoursite.com/2018/03/14/nginx-location/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="转载补充自http://seanlook.com/2015/05/17/nginx-location-rewrite/ location  = / {   # 精确匹配 / ，主机名后面不能带任何字符串   [ configuration A ] }  location  / {   # 因为所有的地址都以 / 开头，所以这条规则将匹配到所有请求   # 但是正则和最长字符串会优先匹配   [ c">
+<meta property="og:description" content="转载补充自http://seanlook.com/2015/05/17/nginx-location-rewrite/ 123456789101112131415161718192021location  = / &amp;#123;  # 精确匹配 / ，主机名后面不能带任何字符串  [ configuration A ]&amp;#125;location  / &amp;#123;  # 因为所有的地址都以 / 开">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx location匹配">
-<meta name="twitter:description" content="转载补充自http://seanlook.com/2015/05/17/nginx-location-rewrite/ location  = / {   # 精确匹配 / ，主机名后面不能带任何字符串   [ configuration A ] }  location  / {   # 因为所有的地址都以 / 开头，所以这条规则将匹配到所有请求   # 但是正则和最长字符串会优先匹配   [ c">
+<meta name="twitter:description" content="转载补充自http://seanlook.com/2015/05/17/nginx-location-rewrite/ 123456789101112131415161718192021location  = / &amp;#123;  # 精确匹配 / ，主机名后面不能带任何字符串  [ configuration A ]&amp;#125;location  / &amp;#123;  # 因为所有的地址都以 / 开">
 
 
 
@@ -331,29 +331,7 @@
 
       
         <p>转载补充自<a href="http://seanlook.com/2015/05/17/nginx-location-rewrite/" target="_blank" rel="noopener">http://seanlook.com/2015/05/17/nginx-location-rewrite/</a></p>
-<pre><code class="nginx">location  = / {
-  # 精确匹配 / ，主机名后面不能带任何字符串
-  [ configuration A ]
-}
-
-location  / {
-  # 因为所有的地址都以 / 开头，所以这条规则将匹配到所有请求
-  # 但是正则和最长字符串会优先匹配
-  [ configuration B ]
-}
-
-location ^~ /images/ {
-  # 匹配任何以 /images/ 开头的地址，匹配符合以后，停止往下搜索正则，采用这一条。
-  [ configuration D ]
-}
-
-location ~* \.(gif|jpg|jpeg)$ {
-  # 匹配所有以 gif,jpg或jpeg 结尾的请求
-  # 然而，所有请求 /images/ 下的图片会被 config D 处理，因为 ^~ 到达不了这一条正则
-  [ configuration E ]
-}
-
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="NGINX"><figure class="iseeu highlight /nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span>  = / &#123;</span><br><span class="line">  <span class="comment"># 精确匹配 / ，主机名后面不能带任何字符串</span></span><br><span class="line">  [ configuration A ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">location</span>  / &#123;</span><br><span class="line">  <span class="comment"># 因为所有的地址都以 / 开头，所以这条规则将匹配到所有请求</span></span><br><span class="line">  <span class="comment"># 但是正则和最长字符串会优先匹配</span></span><br><span class="line">  [ configuration B ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">location</span><span class="regexp"> ^~</span> /images/ &#123;</span><br><span class="line">  <span class="comment"># 匹配任何以 /images/ 开头的地址，匹配符合以后，停止往下搜索正则，采用这一条。</span></span><br><span class="line">  [ configuration D ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~* \.(gif|jpg|jpeg)$</span> &#123;</span><br><span class="line">  <span class="comment"># 匹配所有以 gif,jpg或jpeg 结尾的请求</span></span><br><span class="line">  <span class="comment"># 然而，所有请求 /images/ 下的图片会被 config D 处理，因为 ^~ 到达不了这一条正则</span></span><br><span class="line">  [ configuration E ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <ul>
 <li>以<code>=</code>开头表示精确匹配<br>如A中只匹配根目录结尾的请求，后面不能带任何字符串</li>
 <li><code>^~</code>开头表示uri以某个常规字符串开头，<span style="color: red"><strong>不是正则匹配</strong></span></li>
@@ -482,7 +460,7 @@ location ~* \.(gif|jpg|jpeg)$ {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -495,7 +473,7 @@ location ~* \.(gif|jpg|jpeg)$ {
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

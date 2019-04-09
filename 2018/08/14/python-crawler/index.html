@@ -94,19 +94,19 @@
 
 
 
-<meta name="description" content="XPath路径表达式*    nodename选取此节点的所有子节点 *    /从根节点选取 *    //从匹配的当前节点选择文档中的节点，而不考虑他们的位置 *    . 选取当前节点 *    .. 选取当前节点的父节点 *    @选取属性 &amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt; &amp;lt;bookstore&amp;gt;     &amp;lt;book&amp;gt;">
+<meta name="description" content="XPath路径表达式*    nodename选取此节点的所有子节点 *    /从根节点选取 *    //从匹配的当前节点选择文档中的节点，而不考虑他们的位置 *    . 选取当前节点 *    .. 选取当前节点的父节点 *    @选取属性 1234567891011&amp;lt;?xml version=&quot;1.0&quot;?&amp;gt;&amp;lt;bookstore&amp;gt;	&amp;lt;book&amp;gt;		&amp;l">
 <meta name="keywords" content="practice,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python-crawler">
 <meta property="og:url" content="http://yoursite.com/2018/08/14/python-crawler/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="XPath路径表达式*    nodename选取此节点的所有子节点 *    /从根节点选取 *    //从匹配的当前节点选择文档中的节点，而不考虑他们的位置 *    . 选取当前节点 *    .. 选取当前节点的父节点 *    @选取属性 &amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt; &amp;lt;bookstore&amp;gt;     &amp;lt;book&amp;gt;">
+<meta property="og:description" content="XPath路径表达式*    nodename选取此节点的所有子节点 *    /从根节点选取 *    //从匹配的当前节点选择文档中的节点，而不考虑他们的位置 *    . 选取当前节点 *    .. 选取当前节点的父节点 *    @选取属性 1234567891011&amp;lt;?xml version=&quot;1.0&quot;?&amp;gt;&amp;lt;bookstore&amp;gt;	&amp;lt;book&amp;gt;		&amp;l">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/08/14/python-crawler/scrapy_architecture_02.png">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-crawler">
-<meta name="twitter:description" content="XPath路径表达式*    nodename选取此节点的所有子节点 *    /从根节点选取 *    //从匹配的当前节点选择文档中的节点，而不考虑他们的位置 *    . 选取当前节点 *    .. 选取当前节点的父节点 *    @选取属性 &amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt; &amp;lt;bookstore&amp;gt;     &amp;lt;book&amp;gt;">
+<meta name="twitter:description" content="XPath路径表达式*    nodename选取此节点的所有子节点 *    /从根节点选取 *    //从匹配的当前节点选择文档中的节点，而不考虑他们的位置 *    . 选取当前节点 *    .. 选取当前节点的父节点 *    @选取属性 1234567891011&amp;lt;?xml version=&quot;1.0&quot;?&amp;gt;&amp;lt;bookstore&amp;gt;	&amp;lt;book&amp;gt;		&amp;l">
 <meta name="twitter:image" content="http://yoursite.com/2018/08/14/python-crawler/scrapy_architecture_02.png">
 
 
@@ -338,18 +338,7 @@
 *    . 选取当前节点
 *    .. 选取当前节点的父节点
 *    @选取属性
-</code></pre><pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;bookstore&gt;
-    &lt;book&gt;
-        &lt;title lang=&quot;eng&quot;&gt;Harry Potter&lt;/title&gt;
-        &lt;price&gt;29.99&lt;/price&gt;
-    &lt;/book&gt;
-    &lt;book&gt;
-        &lt;title lang=&quot;eng&quot;&gt;Learn XML&lt;/title&gt;
-        &lt;price&gt;75&lt;/price&gt;
-    &lt;/book&gt;
-&lt;/bookstore&gt;
-</code></pre>
+</code></pre><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">bookstore</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">book</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span> <span class="attr">lang</span>=<span class="string">"eng"</span>&gt;</span>Harry Potter<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">price</span>&gt;</span>29.99<span class="tag">&lt;/<span class="name">price</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">book</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">book</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span> <span class="attr">lang</span>=<span class="string">"eng"</span>&gt;</span>Learn XML<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">price</span>&gt;</span>75<span class="tag">&lt;/<span class="name">price</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">book</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bookstore</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
 <a id="more"></a>
 <p>例子</p>
 <pre><code>*    bookstore 选取bookstore元素的所有子节点
@@ -380,47 +369,8 @@
 *    ？ 匹配前一个字符0次或1次
 *    ^ 匹配字符串开头
 *    $ 匹配字符串结束    *    
-</code></pre><h2 id="用selenium模拟用户打开浏览器然后抓数据"><a href="#用selenium模拟用户打开浏览器然后抓数据" class="headerlink" title="用selenium模拟用户打开浏览器然后抓数据"></a>用selenium模拟用户打开浏览器然后抓数据</h2><h3 id="包含如果网页有惰性加载的情况，需要scroll到页面最底部"><a href="#包含如果网页有惰性加载的情况，需要scroll到页面最底部" class="headerlink" title="包含如果网页有惰性加载的情况，需要scroll到页面最底部"></a>包含如果网页有惰性加载的情况，需要scroll到页面最底部</h3><pre><code class="python">from selenium import webdriver
-import time
-
-browser = webdriver.Chrome()
-browser.set_page_load_timeout(30)
-browser.get(&#39;http://www.17huo.com/search.html?sq=2&amp;keyword=%E7%BE%8A%E6%AF%9B&#39;)
-page_info = browser.find_element_by_css_selector(&#39;body &gt; div.wrap &gt; div.pagem.product_list_pager &gt; div&#39;)
-# print(page_info.text)
-pages = int((page_info.text.split(&#39;，&#39;)[0]).split(&#39; &#39;)[1])
-for page in range(pages):
-    if page &gt; 2:
-        break
-    url = &#39;http://www.17huo.com/?mod=search&amp;sq=2&amp;keyword=%E7%BE%8A%E6%AF%9B&amp;page=&#39; + str(page + 1)
-    browser.get(url)
-    browser.execute_script(&quot;window.scrollTo(0, document.body.scrollHeight);&quot;)
-    time.sleep(3)   # 不然会load不完整
-    goods = browser.find_element_by_css_selector(&#39;body &gt; div.wrap &gt; div:nth-child(2) &gt; div.p_main &gt; ul&#39;).find_elements_by_tag_name(&#39;li&#39;)
-    print(&#39;%d页有%d件商品&#39; % ((page + 1), len(goods)))
-    for good in goods:
-        try:
-            title = good.find_element_by_css_selector(&#39;a:nth-child(1) &gt; p:nth-child(2)&#39;).text
-            price = good.find_element_by_css_selector(&#39;div &gt; a &gt; span&#39;).text
-            print(title, price)
-        except:
-            print(good.text)
-</code></pre>
-<h2 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h2><h3 id="用Requests"><a href="#用Requests" class="headerlink" title="用Requests"></a>用Requests</h3><pre><code class="python">import requests
-from PIL import Image
-from io import BytesIO
-
-r = requests.get(&#39;https://images.unsplash.com/photo-1504714146340-959ca07e1f38?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=2c5ef407d31cf63f60bd7782132ee877&amp;auto=format&amp;fit=crop&amp;w=925&amp;q=80&#39;)
-image = Image.open(BytesIO(r.content))
-image.save(&#39;scenary.png&#39;)
-
-#原始数据处理,例stream数据，一点点读出来，而不是一次性读出来
-r = requests.get(&#39;https://images.unsplash.com/photo-1504714146340-959ca07e1f38?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=2c5ef407d31cf63f60bd7782132ee877&amp;auto=format&amp;fit=crop&amp;w=925&amp;q=80&#39;, stream = True)
-with open(&#39;scenary2.png&#39;, &#39;wb+&#39;) as f:
-    for chunk in r.iter_content(1024):
-        f.write(chunk)
-
-</code></pre>
+</code></pre><h2 id="用selenium模拟用户打开浏览器然后抓数据"><a href="#用selenium模拟用户打开浏览器然后抓数据" class="headerlink" title="用selenium模拟用户打开浏览器然后抓数据"></a>用selenium模拟用户打开浏览器然后抓数据</h2><h3 id="包含如果网页有惰性加载的情况，需要scroll到页面最底部"><a href="#包含如果网页有惰性加载的情况，需要scroll到页面最底部" class="headerlink" title="包含如果网页有惰性加载的情况，需要scroll到页面最底部"></a>包含如果网页有惰性加载的情况，需要scroll到页面最底部</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.set_page_load_timeout(<span class="number">30</span>)</span><br><span class="line">browser.get(<span class="string">'http://www.17huo.com/search.html?sq=2&amp;keyword=%E7%BE%8A%E6%AF%9B'</span>)</span><br><span class="line">page_info = browser.find_element_by_css_selector(<span class="string">'body &gt; div.wrap &gt; div.pagem.product_list_pager &gt; div'</span>)</span><br><span class="line"><span class="comment"># print(page_info.text)</span></span><br><span class="line">pages = int((page_info.text.split(<span class="string">'，'</span>)[<span class="number">0</span>]).split(<span class="string">' '</span>)[<span class="number">1</span>])</span><br><span class="line"><span class="keyword">for</span> page <span class="keyword">in</span> range(pages):</span><br><span class="line">    <span class="keyword">if</span> page &gt; <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    url = <span class="string">'http://www.17huo.com/?mod=search&amp;sq=2&amp;keyword=%E7%BE%8A%E6%AF%9B&amp;page='</span> + str(page + <span class="number">1</span>)</span><br><span class="line">    browser.get(url)</span><br><span class="line">    browser.execute_script(<span class="string">"window.scrollTo(0, document.body.scrollHeight);"</span>)</span><br><span class="line">    time.sleep(<span class="number">3</span>)   <span class="comment"># 不然会load不完整</span></span><br><span class="line">    goods = browser.find_element_by_css_selector(<span class="string">'body &gt; div.wrap &gt; div:nth-child(2) &gt; div.p_main &gt; ul'</span>).find_elements_by_tag_name(<span class="string">'li'</span>)</span><br><span class="line">    print(<span class="string">'%d页有%d件商品'</span> % ((page + <span class="number">1</span>), len(goods)))</span><br><span class="line">    <span class="keyword">for</span> good <span class="keyword">in</span> goods:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            title = good.find_element_by_css_selector(<span class="string">'a:nth-child(1) &gt; p:nth-child(2)'</span>).text</span><br><span class="line">            price = good.find_element_by_css_selector(<span class="string">'div &gt; a &gt; span'</span>).text</span><br><span class="line">            print(title, price)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            print(good.text)</span><br></pre></td></tr></table></figure></div>
+<h2 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h2><h3 id="用Requests"><a href="#用Requests" class="headerlink" title="用Requests"></a>用Requests</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"></span><br><span class="line">r = requests.get(<span class="string">'https://images.unsplash.com/photo-1504714146340-959ca07e1f38?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=2c5ef407d31cf63f60bd7782132ee877&amp;auto=format&amp;fit=crop&amp;w=925&amp;q=80'</span>)</span><br><span class="line">image = Image.open(BytesIO(r.content))</span><br><span class="line">image.save(<span class="string">'scenary.png'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#原始数据处理,例stream数据，一点点读出来，而不是一次性读出来</span></span><br><span class="line">r = requests.get(<span class="string">'https://images.unsplash.com/photo-1504714146340-959ca07e1f38?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=2c5ef407d31cf63f60bd7782132ee877&amp;auto=format&amp;fit=crop&amp;w=925&amp;q=80'</span>, stream = <span class="keyword">True</span>)</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'scenary2.png'</span>, <span class="string">'wb+'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> chunk <span class="keyword">in</span> r.iter_content(<span class="number">1024</span>):</span><br><span class="line">        f.write(chunk)</span><br></pre></td></tr></table></figure></div>
 <h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a>Scrapy</h2><h3 id="Architecture-Overview"><a href="#Architecture-Overview" class="headerlink" title="Architecture Overview"></a>Architecture Overview</h3><img src="/2018/08/14/python-crawler/scrapy_architecture_02.png">
 <pre><code>1. Engine从Spider那里拿到初始Url
 2. Engine把Requests丢给Scheduler,Scheduler返回下一个需要爬的requests
@@ -432,102 +382,10 @@ with open(&#39;scenary2.png&#39;, &#39;wb+&#39;) as f:
 8. Engine把Scraped Items传给Item Pipelines,在ItemPipelines里面可以保存到数据库，对数据清洗等等。然后Engines再问Schedule是否还有需要Requests的东西
 9. 从Step1循环，直至没有新的Requests
 </code></pre><h3 id="User-Login"><a href="#User-Login" class="headerlink" title="User Login"></a>User Login</h3><h4 id="注意点一，start-requests-方法必须返回一个iterable"><a href="#注意点一，start-requests-方法必须返回一个iterable" class="headerlink" title="注意点一，start_requests()方法必须返回一个iterable."></a>注意点一，start_requests()方法必须返回一个iterable.</h4><p>Scrapy calls it only once, so it is safe to implement <code>start_requests()</code> as a generator.</p>
-<h4 id="注意点二，用FormRequest可以通过HTTP-POST方式发送数据"><a href="#注意点二，用FormRequest可以通过HTTP-POST方式发送数据" class="headerlink" title="注意点二，用FormRequest可以通过HTTP POST方式发送数据"></a>注意点二，用FormRequest可以通过HTTP POST方式发送数据</h4><pre><code class="python">return [FormRequest(url=&quot;http://www.example.com/post/action&quot;,
-                    formdata={&#39;name&#39;: &#39;John Doe&#39;, &#39;age&#39;: &#39;27&#39;},
-                    callback=self.after_post)]
-</code></pre>
-<h4 id="注意点三，FormRequest-from-response-可以模拟用户登陆"><a href="#注意点三，FormRequest-from-response-可以模拟用户登陆" class="headerlink" title="注意点三，FormRequest.from_response()可以模拟用户登陆"></a>注意点三，FormRequest.from_response()可以模拟用户登陆</h4><pre><code class="python">import scrapy
-
-class LoginSpider(scrapy.Spider):
-    name = &#39;example.com&#39;
-    start_urls = [&#39;http://www.example.com/users/login.php&#39;]
-
-    def parse(self, response):
-        return scrapy.FormRequest.from_response(
-            response,
-            formdata={&#39;username&#39;: &#39;john&#39;, &#39;password&#39;: &#39;secret&#39;},
-            callback=self.after_login
-        )
-
-    def after_login(self, response):
-        # check login succeed before going on
-        if &quot;authentication failed&quot; in response.body:
-            self.logger.error(&quot;Login failed&quot;)
-            return
-
-        # continue scraping with authenticated session...
-</code></pre>
+<h4 id="注意点二，用FormRequest可以通过HTTP-POST方式发送数据"><a href="#注意点二，用FormRequest可以通过HTTP-POST方式发送数据" class="headerlink" title="注意点二，用FormRequest可以通过HTTP POST方式发送数据"></a>注意点二，用FormRequest可以通过HTTP POST方式发送数据</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> [FormRequest(url=<span class="string">"http://www.example.com/post/action"</span>,</span><br><span class="line">                    formdata=&#123;<span class="string">'name'</span>: <span class="string">'John Doe'</span>, <span class="string">'age'</span>: <span class="string">'27'</span>&#125;,</span><br><span class="line">                    callback=self.after_post)]</span><br></pre></td></tr></table></figure></div>
+<h4 id="注意点三，FormRequest-from-response-可以模拟用户登陆"><a href="#注意点三，FormRequest-from-response-可以模拟用户登陆" class="headerlink" title="注意点三，FormRequest.from_response()可以模拟用户登陆"></a>注意点三，FormRequest.from_response()可以模拟用户登陆</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    name = <span class="string">'example.com'</span></span><br><span class="line">    start_urls = [<span class="string">'http://www.example.com/users/login.php'</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> scrapy.FormRequest.from_response(</span><br><span class="line">            response,</span><br><span class="line">            formdata=&#123;<span class="string">'username'</span>: <span class="string">'john'</span>, <span class="string">'password'</span>: <span class="string">'secret'</span>&#125;,</span><br><span class="line">            callback=self.after_login</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">after_login</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        <span class="comment"># check login succeed before going on</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">"authentication failed"</span> <span class="keyword">in</span> response.body:</span><br><span class="line">            self.logger.error(<span class="string">"Login failed"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># continue scraping with authenticated session...</span></span><br></pre></td></tr></table></figure></div>
 <h4 id="注意点四，scrapy-FormRequest的meta作用，是向response传递数据"><a href="#注意点四，scrapy-FormRequest的meta作用，是向response传递数据" class="headerlink" title="注意点四，scrapy.FormRequest的meta作用，是向response传递数据"></a>注意点四，scrapy.FormRequest的meta作用，是向response传递数据</h4><h4 id="注意点五，dont-filter-True意味着如果需要多次提交表单，且url一样，那么就让爬虫继续爬，否则爬虫会有去重机制不会再爬这个页面"><a href="#注意点五，dont-filter-True意味着如果需要多次提交表单，且url一样，那么就让爬虫继续爬，否则爬虫会有去重机制不会再爬这个页面" class="headerlink" title="注意点五，dont_filter=True意味着如果需要多次提交表单，且url一样，那么就让爬虫继续爬，否则爬虫会有去重机制不会再爬这个页面"></a>注意点五，dont_filter=True意味着如果需要多次提交表单，且url一样，那么就让爬虫继续爬，否则爬虫会有去重机制不会再爬这个页面</h4><p>示例：登陆然后爬数据</p>
-<p>例：</p>
-<pre><code class="python">import scrapy
-from PIL import Image
-from urllib.request import urlretrieve
-
-
-class MovieCommentSpider(scrapy.Spider):
-    name = &#39;movie_comment&#39;
-    allowed_domains = [&#39;accounts.douban.com&#39;, &#39;douban.com&#39;]
-    headers = {
-        &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0&quot;
-    }
-
-    def start_requests(self):
-        return [scrapy.FormRequest(&quot;https://accounts.douban.com/login&quot;
-                                  , headers=self.headers
-                                  , meta={&quot;cookiejar&quot;: 1},
-                                  callback=self.parse_before_login)]
-
-    def parse_before_login(self, response):
-        captcha_id = response.xpath(&#39;//input[@name=&quot;captcha-id&quot;]/@value&#39;).extract_first()
-        captcha_image_url = response.xpath(&#39;//img[@id=&quot;captcha_image&quot;]/@src&#39;).extract_first()
-        if captcha_image_url is None:
-            formdata = {
-                &quot;source&quot;: &quot;index_nav&quot;,
-                &quot;form_email&quot;: &quot;************@yahoo.com.cn&quot;,
-                &quot;form_password&quot;: &quot;***************&quot;,
-            }
-        else:
-
-            save_image_path = &quot;D:\\captcha.jpeg&quot;
-            # 将图片验证码下载到本地
-            urlretrieve(captcha_image_url, save_image_path)
-            # 打开图片，以便我们识别图中验证码
-            try:
-                im = Image.open(&#39;captcha.jpeg&#39;)
-                im.show()
-            except:
-                pass
-            # 手动输入验证码
-            captcha_solution = input(&#39;**********Please input capture:*************&#39;)
-            formdata = {
-                &quot;source&quot;: &quot;None&quot;,
-                &quot;redir&quot;: &quot;https://www.douban.com&quot;,
-                &quot;form_email&quot;: &quot;******************@yahoo.com.cn&quot;,
-                # 此处请填写密码
-                &quot;form_password&quot;: &quot;*****************&quot;,
-                &quot;captcha-solution&quot;: captcha_solution,
-                &quot;captcha-id&quot;: captcha_id,
-                &quot;login&quot;: &quot;登录&quot;,
-            }
-
-        # 提交表单
-        return scrapy.FormRequest.from_response(response
-                                                , meta={&quot;cookiejar&quot;: response.meta[&quot;cookiejar&quot;]}
-                                                , headers=self.headers
-                                                , formdata=formdata
-                                                , callback=self.parse_after_login)
-
-    def parse_after_login(self, response):
-        &#39;&#39;&#39;
-        验证登录是否成功
-        &#39;&#39;&#39;
-        account = response.xpath(&#39;//a[@class=&quot;bn-more&quot;]/span/text()&#39;).extract_first()
-        if account is None:
-            print(&quot;Login Failed&quot;)
-        else:
-            print(&quot;Login Success,Current account is {0}&quot;.format(account))
-
-</code></pre>
+<p>例：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlretrieve</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MovieCommentSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    name = <span class="string">'movie_comment'</span></span><br><span class="line">    allowed_domains = [<span class="string">'accounts.douban.com'</span>, <span class="string">'douban.com'</span>]</span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start_requests</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> [scrapy.FormRequest(<span class="string">"https://accounts.douban.com/login"</span></span><br><span class="line">                                  , headers=self.headers</span><br><span class="line">                                  , meta=&#123;<span class="string">"cookiejar"</span>: <span class="number">1</span>&#125;,</span><br><span class="line">                                  callback=self.parse_before_login)]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse_before_login</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        captcha_id = response.xpath(<span class="string">'//input[@name="captcha-id"]/@value'</span>).extract_first()</span><br><span class="line">        captcha_image_url = response.xpath(<span class="string">'//img[@id="captcha_image"]/@src'</span>).extract_first()</span><br><span class="line">        <span class="keyword">if</span> captcha_image_url <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            formdata = &#123;</span><br><span class="line">                <span class="string">"source"</span>: <span class="string">"index_nav"</span>,</span><br><span class="line">                <span class="string">"form_email"</span>: <span class="string">"************@yahoo.com.cn"</span>,</span><br><span class="line">                <span class="string">"form_password"</span>: <span class="string">"***************"</span>,</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line">            save_image_path = <span class="string">"D:\\captcha.jpeg"</span></span><br><span class="line">            <span class="comment"># 将图片验证码下载到本地</span></span><br><span class="line">            urlretrieve(captcha_image_url, save_image_path)</span><br><span class="line">            <span class="comment"># 打开图片，以便我们识别图中验证码</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                im = Image.open(<span class="string">'captcha.jpeg'</span>)</span><br><span class="line">                im.show()</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="comment"># 手动输入验证码</span></span><br><span class="line">            captcha_solution = input(<span class="string">'**********Please input capture:*************'</span>)</span><br><span class="line">            formdata = &#123;</span><br><span class="line">                <span class="string">"source"</span>: <span class="string">"None"</span>,</span><br><span class="line">                <span class="string">"redir"</span>: <span class="string">"https://www.douban.com"</span>,</span><br><span class="line">                <span class="string">"form_email"</span>: <span class="string">"******************@yahoo.com.cn"</span>,</span><br><span class="line">                <span class="comment"># 此处请填写密码</span></span><br><span class="line">                <span class="string">"form_password"</span>: <span class="string">"*****************"</span>,</span><br><span class="line">                <span class="string">"captcha-solution"</span>: captcha_solution,</span><br><span class="line">                <span class="string">"captcha-id"</span>: captcha_id,</span><br><span class="line">                <span class="string">"login"</span>: <span class="string">"登录"</span>,</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 提交表单</span></span><br><span class="line">        <span class="keyword">return</span> scrapy.FormRequest.from_response(response</span><br><span class="line">                                                , meta=&#123;<span class="string">"cookiejar"</span>: response.meta[<span class="string">"cookiejar"</span>]&#125;</span><br><span class="line">                                                , headers=self.headers</span><br><span class="line">                                                , formdata=formdata</span><br><span class="line">                                                , callback=self.parse_after_login)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse_after_login</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        验证登录是否成功</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        account = response.xpath(<span class="string">'//a[@class="bn-more"]/span/text()'</span>).extract_first()</span><br><span class="line">        <span class="keyword">if</span> account <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            print(<span class="string">"Login Failed"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"Login Success,Current account is &#123;0&#125;"</span>.format(account))</span><br></pre></td></tr></table></figure></div></p>
 
       
     </div>
@@ -647,7 +505,7 @@ class MovieCommentSpider(scrapy.Spider):
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -660,7 +518,7 @@ class MovieCommentSpider(scrapy.Spider):
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

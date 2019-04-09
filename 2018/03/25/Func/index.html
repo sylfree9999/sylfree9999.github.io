@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Func&amp;lt;T1,T2,...,Tn,Tr&amp;gt; represents a function that takes (T1, T2, ..., Tn) and returns Tr E.g., you have function: double sqr(double s){     return x*x; } You could save it as some kind of a funct">
+<meta name="description" content="Func&amp;lt;T1,T2,...,Tn,Tr&amp;gt; represents a function that takes (T1, T2, ..., Tn) and returns Tr E.g., you have function:123double sqr(double s)&amp;#123;	return x*x;&amp;#125; You could save it as some kind of">
 <meta name="keywords" content="c#,concept">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Func">
 <meta property="og:url" content="http://yoursite.com/2018/03/25/Func/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="Func&amp;lt;T1,T2,...,Tn,Tr&amp;gt; represents a function that takes (T1, T2, ..., Tn) and returns Tr E.g., you have function: double sqr(double s){     return x*x; } You could save it as some kind of a funct">
+<meta property="og:description" content="Func&amp;lt;T1,T2,...,Tn,Tr&amp;gt; represents a function that takes (T1, T2, ..., Tn) and returns Tr E.g., you have function:123double sqr(double s)&amp;#123;	return x*x;&amp;#125; You could save it as some kind of">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Func">
-<meta name="twitter:description" content="Func&amp;lt;T1,T2,...,Tn,Tr&amp;gt; represents a function that takes (T1, T2, ..., Tn) and returns Tr E.g., you have function: double sqr(double s){     return x*x; } You could save it as some kind of a funct">
+<meta name="twitter:description" content="Func&amp;lt;T1,T2,...,Tn,Tr&amp;gt; represents a function that takes (T1, T2, ..., Tn) and returns Tr E.g., you have function:123double sqr(double s)&amp;#123;	return x*x;&amp;#125; You could save it as some kind of">
 
 
 
@@ -331,17 +331,10 @@
 
       
         <p><code>Func&lt;T1,T2,...,Tn,Tr&gt;</code> represents a function that takes <code>(T1, T2, ..., Tn)</code> and returns <code>Tr</code></p>
-<p>E.g., you have function:</p>
-<pre><code>double sqr(double s){
-    return x*x;
-}
-</code></pre><p>You could save it as some kind of a function-variable:</p>
-<pre><code>Func&lt;double, double&gt; f1 = sqr;
-Func&lt;double, double&gt; f2 = x=&gt; x*x;
-</code></pre><p>And then use exactly as you would use sqr:</p>
-<pre><code>f1(2);
-f2(f1(4))
-</code></pre><p>.</p>
+<p>E.g., you have function:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PERL"><figure class="iseeu highlight /perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">double <span class="keyword">s</span><span class="string">qr(double s)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">x</span>*<span class="keyword">x</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>You could save it as some kind of a function-variable:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LLVM"><figure class="iseeu highlight /llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;<span class="keyword">double</span>, <span class="keyword">double</span>&gt; f<span class="number">1</span> = sqr<span class="comment">;</span></span><br><span class="line"><span class="comment">Func&lt;double, double&gt; f2 = x=&gt; x*x;</span></span><br></pre></td></tr></table></figure></div></p>
+<p>And then use exactly as you would use sqr:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LISP"><figure class="iseeu highlight /lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f1(<span class="number">2</span>)<span class="comment">;</span></span><br><span class="line">f2(<span class="name">f1</span>(<span class="number">4</span>))</span><br></pre></td></tr></table></figure></div></p>
+<p>.</p>
 
       
     </div>
@@ -452,7 +445,7 @@ f2(f1(4))
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -465,7 +458,7 @@ f2(f1(4))
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

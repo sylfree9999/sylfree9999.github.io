@@ -94,19 +94,19 @@
 
 
 
-<meta name="description" content="代码编译成机器码的过程注意在变成exe/dll之后还会有一层CLR/JIT，才会编译成机器码  为什么要有二次编译：兼容性，不同的平台。32位64位/linux,windows在不同环境下编译的方法不同 想用同一种高级语言通用于所有的平台 反射调用带参数的构造函数：Assembly assemly = Assembly.Load(&amp;quot;Test.DB.SqlServer&amp;quot;); //">
+<meta name="description" content="代码编译成机器码的过程注意在变成exe/dll之后还会有一层CLR/JIT，才会编译成机器码  为什么要有二次编译：兼容性，不同的平台。32位64位/linux,windows在不同环境下编译的方法不同 想用同一种高级语言通用于所有的平台 反射调用带参数的构造函数：1234Assembly assemly = Assembly.Load(&amp;quot;Test.DB.SqlServer&amp;quot;)">
 <meta name="keywords" content="concept,.NET">
 <meta property="og:type" content="article">
 <meta property="og:title" content="net-reflection">
 <meta property="og:url" content="http://yoursite.com/2018/06/07/net-reflection/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="代码编译成机器码的过程注意在变成exe/dll之后还会有一层CLR/JIT，才会编译成机器码  为什么要有二次编译：兼容性，不同的平台。32位64位/linux,windows在不同环境下编译的方法不同 想用同一种高级语言通用于所有的平台 反射调用带参数的构造函数：Assembly assemly = Assembly.Load(&amp;quot;Test.DB.SqlServer&amp;quot;); //">
+<meta property="og:description" content="代码编译成机器码的过程注意在变成exe/dll之后还会有一层CLR/JIT，才会编译成机器码  为什么要有二次编译：兼容性，不同的平台。32位64位/linux,windows在不同环境下编译的方法不同 想用同一种高级语言通用于所有的平台 反射调用带参数的构造函数：1234Assembly assemly = Assembly.Load(&amp;quot;Test.DB.SqlServer&amp;quot;)">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/06/07/net-reflection/20180607145635.png">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="net-reflection">
-<meta name="twitter:description" content="代码编译成机器码的过程注意在变成exe/dll之后还会有一层CLR/JIT，才会编译成机器码  为什么要有二次编译：兼容性，不同的平台。32位64位/linux,windows在不同环境下编译的方法不同 想用同一种高级语言通用于所有的平台 反射调用带参数的构造函数：Assembly assemly = Assembly.Load(&amp;quot;Test.DB.SqlServer&amp;quot;); //">
+<meta name="twitter:description" content="代码编译成机器码的过程注意在变成exe/dll之后还会有一层CLR/JIT，才会编译成机器码  为什么要有二次编译：兼容性，不同的平台。32位64位/linux,windows在不同环境下编译的方法不同 想用同一种高级语言通用于所有的平台 反射调用带参数的构造函数：1234Assembly assemly = Assembly.Load(&amp;quot;Test.DB.SqlServer&amp;quot;)">
 <meta name="twitter:image" content="http://yoursite.com/2018/06/07/net-reflection/20180607145635.png">
 
 
@@ -336,127 +336,22 @@
 <img src="/2018/06/07/net-reflection/20180607145635.png">
 <p>为什么要有二次编译：<br>兼容性，不同的平台。32位64位/linux,windows在不同环境下编译的方法不同</p>
 <p>想用同一种高级语言通用于所有的平台</p>
-<h4 id="反射调用带参数的构造函数："><a href="#反射调用带参数的构造函数：" class="headerlink" title="反射调用带参数的构造函数："></a>反射调用带参数的构造函数：</h4><pre><code class="c#">Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;); //以前需要依靠一个类，现在相当于只依赖于一串字符串
-Type testType = assemly.GetType(&quot;Test.DB.SqlServer.ReflectionTest&quot;); //注意传的时候需要加上前方的namespace
-object oTest1 = Activator.CreateInstance(testType);//默认调用无参构造函数
-object oTest2 = Activator.CreateInstance(testType,new object[]{895,&quot;霉霉&quot;});//调用参数第一个是int类型，第二个是string类型的构造函数
-</code></pre>
-<h4 id="反射调用Generic类型"><a href="#反射调用Generic类型" class="headerlink" title="反射调用Generic类型:"></a>反射调用Generic类型:</h4><pre><code class="c#">//Generic Class
-namespace Test.DB.SqlServer
-{
-    public class GenericClass&lt;T,W,X&gt;
-    {
-        public void Show(T t, W w, X x)
-        {
-            Console.WriteLine(&quot;t.type={0},w.type={1},x.type={2}&quot;, t.GetType().Name,w.GetType().Name,x.GetType().Name);
-        }
-    }
-}
-
-
-Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;); 
-Type genericType = assemly.GetType(&quot;Test.DB.SqlServer.GenericClass`3&quot;);//因为泛型有占位符，所以要写占位符
-Type realGenericType = genericType.MakeGeneric(typeof(int),typeof(string),typeof(Program)); //用genericType是无法生成实例的，因为这个时候还没有参数类型，必须要定义好才能用，所以要调用MakeGeneric方法，用realGenericType生成占位符
-object oGeneric = Activator.CreateInstance(realGenericType);
-</code></pre>
+<h4 id="反射调用带参数的构造函数："><a href="#反射调用带参数的构造函数：" class="headerlink" title="反射调用带参数的构造函数："></a>反射调用带参数的构造函数：</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;); //以前需要依靠一个类，现在相当于只依赖于一串字符串</span><br><span class="line">Type testType = assemly.GetType(&quot;Test.DB.SqlServer.ReflectionTest&quot;); //注意传的时候需要加上前方的namespace</span><br><span class="line">object oTest1 = Activator.CreateInstance(testType);//默认调用无参构造函数</span><br><span class="line">object oTest2 = Activator.CreateInstance(testType,new object[]&#123;895,&quot;霉霉&quot;&#125;);//调用参数第一个是int类型，第二个是string类型的构造函数</span><br></pre></td></tr></table></figure></div>
+<h4 id="反射调用Generic类型"><a href="#反射调用Generic类型" class="headerlink" title="反射调用Generic类型:"></a>反射调用Generic类型:</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//Generic Class</span><br><span class="line">namespace Test.DB.SqlServer</span><br><span class="line">&#123;</span><br><span class="line">	public class GenericClass&lt;T,W,X&gt;</span><br><span class="line">	&#123;</span><br><span class="line">		public void Show(T t, W w, X x)</span><br><span class="line">		&#123;</span><br><span class="line">			Console.WriteLine(&quot;t.type=&#123;0&#125;,w.type=&#123;1&#125;,x.type=&#123;2&#125;&quot;, t.GetType().Name,w.GetType().Name,x.GetType().Name);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;); </span><br><span class="line">Type genericType = assemly.GetType(&quot;Test.DB.SqlServer.GenericClass`3&quot;);//因为泛型有占位符，所以要写占位符</span><br><span class="line">Type realGenericType = genericType.MakeGeneric(typeof(int),typeof(string),typeof(Program)); //用genericType是无法生成实例的，因为这个时候还没有参数类型，必须要定义好才能用，所以要调用MakeGeneric方法，用realGenericType生成占位符</span><br><span class="line">object oGeneric = Activator.CreateInstance(realGenericType);</span><br></pre></td></tr></table></figure></div>
 <h4 id="反射调用Singleton单例"><a href="#反射调用Singleton单例" class="headerlink" title="反射调用Singleton单例"></a>反射调用Singleton单例</h4><p>单力模式的意思就是保证程序运行的时候只会对这个类实例化一次</p>
 <h5 id="构造函数种类及执行顺序"><a href="#构造函数种类及执行顺序" class="headerlink" title="构造函数种类及执行顺序"></a>构造函数种类及执行顺序</h5><ol>
 <li>默认构造函数，如果没有为类指定任何构造函数，编译器会自动为类创建一个无参构造函数</li>
 <li>静态构造函数，不能访问实例成员，只能用来初始化一些静态字段或者属性，<strong>仅在第一次调用类的任何成员时自动执行，不带反问修饰符，不带任何参数，且每个类只能有一个静态构造函数</strong></li>
-<li>私有构造函数，将构造函数声明为私有，则不能通过new()在外部代码中实例话，可以这样实例：<br><code>`</code>c#<br>public class Demo<br>{<br>private Demo(){}<br>public static Demo NewDemo()<br>{<br> return new Demo();<br>}<br>}</li>
+<li><p>私有构造函数，将构造函数声明为私有，则不能通过new()在外部代码中实例话，可以这样实例：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Demo</span><br><span class="line">&#123;</span><br><span class="line">	private Demo()&#123;&#125;</span><br><span class="line">	public static Demo NewDemo()</span><br><span class="line">	&#123;</span><br><span class="line">		return new Demo();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>构造函数的执行顺序</strong><br> <strong>子类静态构造 -&gt; 父类静态构造 -&gt; 父类构造 -&gt; 子类构造</strong></p>
+</li>
 </ol>
-<pre><code>4. **构造函数的执行顺序**
-    **子类静态构造 -&gt; 父类静态构造 -&gt; 父类构造 -&gt; 子类构造**
-
-
-单例模式
-通常使用的情况是&lt;span style=&quot;color: red&quot;&gt;不能在外面调用单例模式的私有构造函数的&lt;/span&gt;
-但是通过反射的方法是可以&lt;span style=&quot;color:red; font-weight: bold;&quot;&gt;调用单例模式的私有构造函数&lt;/span&gt;!
-
-```c#
-
-namespace Test.DB.SqlServer
-{
-    public sealed class Singleton
-    {
-        private static Singleton _Singleton = null;
-        //构造函数首先要私有化，别人不能调用它，只能它自己调用
-        private Singleton()
-        {
-            Console.WriteLine(&quot;Singleton被构造&quot;);
-        }
-
-        //静态构造函数首先会被调用，这个时候会调用私有构造函数
-        //由于静态构造函数只会被调用一次，所以这个类也就只会被实例化一次
-        static Singleton()
-        {
-            _Singleton = new Singleton();
-        }
-
-
-        public stati Singleton GetInstance()
-        {
-            return _Singleton;
-        }
-    }
-}
-
-
-Type singletonType = assemly.GetType(&quot;Test.DB.SqlServer.Singleton&quot;);
-
-//反射是可以直接去访问单例模式的私有构造函数，下面这个方法会调用单例模式的私有构造函数
-//并且还可以实例化多个单例
-object oSingleton1 = Activator.CreateInstance(singletonType, true);
-object oSingleton2 = Activator.CreateInstance(singletonType, true);
-</code></pre><h4 id="反射不强制转换也能调用方法，-Reflection-Method-gt-MVC"><a href="#反射不强制转换也能调用方法，-Reflection-Method-gt-MVC" class="headerlink" title="反射不强制转换也能调用方法， Reflection + Method -&gt; MVC"></a>反射不强制转换也能调用方法， Reflection + Method -&gt; MVC</h4><pre><code class="c#">Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;);
-Type testType = assemly.GetType(&quot;Test.DB.SqlServer.ReflectionTest&quot;);
-object oTest1 = Activator.CreateInstance(testType);
-
-MethodInfo method = testType.GetMethod(&quot;Show1&quot;); //以前写的具体方法也都换成了字符串
-method.Invoke(oTest1,new object[]{1332}); //调用含参数的方法
-{
-    method.Invoke(null,null);//调用无参数的静态方法，也可以写成method.Invoke(oTest1,null);    
-}
-{
-    MethodInfo method = testType.GetMethod(&quot;Show3&quot;,new Type[]{}); //重载方法没有参数的
-}
-{
-    MethodInfo method = testType.GetMethod(&quot;Show3&quot;, new Type[]{typeof(int)}); //重载方法有一个int类型的参数
-}
-{
-    MethodInfo method = testType.GetMethod(&quot;Show4&quot;,BindingFlags.Instance | BindingFlags.NonPublic); //调用私有方法
-}
-
-public class GenericMethod
-{
-    public void Show&lt;T,W,X&gt;(T t, W w, X x)
-    {
-        Console.WriteLine(&quot;XXX&quot;);
-    }
-}
-
-{
-    Type genericType = assemly.GetType(&quot;Test.DB.SqlServer.GenericMethod&quot;);
-    object oGeneric = Activator.CreateInstance(genericType); // 因为GenericMethod只是个普通类型，不是泛型类型
-    MethodInfo method = genericType.GetMethod(&quot;Show&quot;); //泛型方法不需要使用占位符
-    MethodInfo methodNew = method.MakeGeneric(typeof(int),typeof(string),typeof(int)); //记得这里要重新生成一个MethodInfo
-    methodNew.Invoke(oGeneric, new object[]{10,&quot;test&quot;,10});
-}
-
-</code></pre>
-<h4 id="反射调用属性和字段-Reflection-Property-gt-O-RM"><a href="#反射调用属性和字段-Reflection-Property-gt-O-RM" class="headerlink" title="反射调用属性和字段 Reflection + Property -&gt; O/RM"></a>反射调用属性和字段 Reflection + Property -&gt; O/RM</h4><pre><code class="c#"> Type type = typeof(People);
- object oPeople = Activator.CreateInstance(type);
- foreach(var item in type.GetProperties()){ // 反射可以动态给对象属性赋值/获取值
-     Console.WriteLine(item.Name);
-     Console.WriteLine(item.GetValue(oPeople));
-     if(item.Name.Equals(&quot;Id&quot;))
-         item.SetValue(oPeople,1234);
-     else if(item.Name.Equals(&quot;Name&quot;))
-         item.SetValue(oPeople,&quot;ttt&quot;);
-     Console.WriteLine(item.GetValue(oPeople))
- }
-</code></pre>
-
+<p>单例模式<br>通常使用的情况是<span style="color: red">不能在外面调用单例模式的私有构造函数的</span><br>但是通过反射的方法是可以<span style="color:red; font-weight: bold;">调用单例模式的私有构造函数</span>!</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">namespace Test.DB.SqlServer</span><br><span class="line">&#123;</span><br><span class="line">	public sealed class Singleton</span><br><span class="line">	&#123;</span><br><span class="line">		private static Singleton _Singleton = null;</span><br><span class="line">		//构造函数首先要私有化，别人不能调用它，只能它自己调用</span><br><span class="line">		private Singleton()</span><br><span class="line">		&#123;</span><br><span class="line">			Console.WriteLine(&quot;Singleton被构造&quot;);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		//静态构造函数首先会被调用，这个时候会调用私有构造函数</span><br><span class="line">		//由于静态构造函数只会被调用一次，所以这个类也就只会被实例化一次</span><br><span class="line">		static Singleton()</span><br><span class="line">		&#123;</span><br><span class="line">			_Singleton = new Singleton();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		public stati Singleton GetInstance()</span><br><span class="line">		&#123;</span><br><span class="line">			return _Singleton;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Type singletonType = assemly.GetType(&quot;Test.DB.SqlServer.Singleton&quot;);</span><br><span class="line"></span><br><span class="line">//反射是可以直接去访问单例模式的私有构造函数，下面这个方法会调用单例模式的私有构造函数</span><br><span class="line">//并且还可以实例化多个单例</span><br><span class="line">object oSingleton1 = Activator.CreateInstance(singletonType, true);</span><br><span class="line">object oSingleton2 = Activator.CreateInstance(singletonType, true);</span><br></pre></td></tr></table></figure></div>
+<h4 id="反射不强制转换也能调用方法，-Reflection-Method-gt-MVC"><a href="#反射不强制转换也能调用方法，-Reflection-Method-gt-MVC" class="headerlink" title="反射不强制转换也能调用方法， Reflection + Method -&gt; MVC"></a>反射不强制转换也能调用方法， Reflection + Method -&gt; MVC</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;);</span><br><span class="line">Type testType = assemly.GetType(&quot;Test.DB.SqlServer.ReflectionTest&quot;);</span><br><span class="line">object oTest1 = Activator.CreateInstance(testType);</span><br><span class="line"></span><br><span class="line">MethodInfo method = testType.GetMethod(&quot;Show1&quot;); //以前写的具体方法也都换成了字符串</span><br><span class="line">method.Invoke(oTest1,new object[]&#123;1332&#125;); //调用含参数的方法</span><br><span class="line">&#123;</span><br><span class="line">	method.Invoke(null,null);//调用无参数的静态方法，也可以写成method.Invoke(oTest1,null);	</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">	MethodInfo method = testType.GetMethod(&quot;Show3&quot;,new Type[]&#123;&#125;); //重载方法没有参数的</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">	MethodInfo method = testType.GetMethod(&quot;Show3&quot;, new Type[]&#123;typeof(int)&#125;); //重载方法有一个int类型的参数</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">	MethodInfo method = testType.GetMethod(&quot;Show4&quot;,BindingFlags.Instance | BindingFlags.NonPublic); //调用私有方法</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class GenericMethod</span><br><span class="line">&#123;</span><br><span class="line">	public void Show&lt;T,W,X&gt;(T t, W w, X x)</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;XXX&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	Type genericType = assemly.GetType(&quot;Test.DB.SqlServer.GenericMethod&quot;);</span><br><span class="line">	object oGeneric = Activator.CreateInstance(genericType); // 因为GenericMethod只是个普通类型，不是泛型类型</span><br><span class="line">	MethodInfo method = genericType.GetMethod(&quot;Show&quot;); //泛型方法不需要使用占位符</span><br><span class="line">	MethodInfo methodNew = method.MakeGeneric(typeof(int),typeof(string),typeof(int)); //记得这里要重新生成一个MethodInfo</span><br><span class="line">	methodNew.Invoke(oGeneric, new object[]&#123;10,&quot;test&quot;,10&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h4 id="反射调用属性和字段-Reflection-Property-gt-O-RM"><a href="#反射调用属性和字段-Reflection-Property-gt-O-RM" class="headerlink" title="反射调用属性和字段 Reflection + Property -&gt; O/RM"></a>反射调用属性和字段 Reflection + Property -&gt; O/RM</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Type type = typeof(People);</span><br><span class="line">object oPeople = Activator.CreateInstance(type);</span><br><span class="line">foreach(var item in type.GetProperties())&#123; // 反射可以动态给对象属性赋值/获取值</span><br><span class="line">	Console.WriteLine(item.Name);</span><br><span class="line">	Console.WriteLine(item.GetValue(oPeople));</span><br><span class="line">	if(item.Name.Equals(&quot;Id&quot;))</span><br><span class="line">		item.SetValue(oPeople,1234);</span><br><span class="line">	else if(item.Name.Equals(&quot;Name&quot;))</span><br><span class="line">		item.SetValue(oPeople,&quot;ttt&quot;);</span><br><span class="line">	Console.WriteLine(item.GetValue(oPeople))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
       
     </div>
     
@@ -575,7 +470,7 @@ public class GenericMethod
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -588,7 +483,7 @@ public class GenericMethod
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

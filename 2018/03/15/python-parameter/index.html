@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="可变参数*args  变的是个数 在函数调用的时候自动组装为一个tuple 传入的时候直接传值即可   关键字参数**kwargs  在函数调用的时候自动组装为一个dictionary 传入的时候必须是以含参数名的形式传递    def func(a, b, c=0, *args, **kwargs):     print (&amp;#39;a=&amp;#39;, a, &amp;#39;b=&amp;#39;, b, &amp;">
+<meta name="description" content="可变参数*args  变的是个数 在函数调用的时候自动组装为一个tuple 传入的时候直接传值即可   关键字参数**kwargs  在函数调用的时候自动组装为一个dictionary 传入的时候必须是以含参数名的形式传递    1234567def func(a, b, c=0, *args, **kwargs):	print (&apos;a=&apos;, a, &apos;b=&apos;, b, &apos;c=&apos;, c, &apos;args">
 <meta name="keywords" content="concept,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 可变参数，关键字参数">
 <meta property="og:url" content="http://yoursite.com/2018/03/15/python-parameter/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="可变参数*args  变的是个数 在函数调用的时候自动组装为一个tuple 传入的时候直接传值即可   关键字参数**kwargs  在函数调用的时候自动组装为一个dictionary 传入的时候必须是以含参数名的形式传递    def func(a, b, c=0, *args, **kwargs):     print (&amp;#39;a=&amp;#39;, a, &amp;#39;b=&amp;#39;, b, &amp;">
+<meta property="og:description" content="可变参数*args  变的是个数 在函数调用的时候自动组装为一个tuple 传入的时候直接传值即可   关键字参数**kwargs  在函数调用的时候自动组装为一个dictionary 传入的时候必须是以含参数名的形式传递    1234567def func(a, b, c=0, *args, **kwargs):	print (&apos;a=&apos;, a, &apos;b=&apos;, b, &apos;c=&apos;, c, &apos;args">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 可变参数，关键字参数">
-<meta name="twitter:description" content="可变参数*args  变的是个数 在函数调用的时候自动组装为一个tuple 传入的时候直接传值即可   关键字参数**kwargs  在函数调用的时候自动组装为一个dictionary 传入的时候必须是以含参数名的形式传递    def func(a, b, c=0, *args, **kwargs):     print (&amp;#39;a=&amp;#39;, a, &amp;#39;b=&amp;#39;, b, &amp;">
+<meta name="twitter:description" content="可变参数*args  变的是个数 在函数调用的时候自动组装为一个tuple 传入的时候直接传值即可   关键字参数**kwargs  在函数调用的时候自动组装为一个dictionary 传入的时候必须是以含参数名的形式传递    1234567def func(a, b, c=0, *args, **kwargs):	print (&apos;a=&apos;, a, &apos;b=&apos;, b, &apos;c=&apos;, c, &apos;args">
 
 
 
@@ -345,15 +345,7 @@
 </ul>
 </li>
 </ul>
-<pre><code class="python">def func(a, b, c=0, *args, **kwargs):
-    print (&#39;a=&#39;, a, &#39;b=&#39;, b, &#39;c=&#39;, c, &#39;args=&#39;, args, &#39;kwargs=&#39;, kwargs)
-
-if __name__ == &#39;__main__&#39;:
-    func(1,2,3,spence,shao,name=&#39;spence&#39;,gender=&#39;male&#39;)
-
-&gt;&gt;&gt;a=1,b=2,c=3,args=(spence,shao),kwargs={&#39;name&#39;:&#39;spence&#39;,&#39;gender&#39;:&#39;male&#39;}
-</code></pre>
-
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(a, b, c=<span class="number">0</span>, *args, **kwargs)</span>:</span></span><br><span class="line">	<span class="keyword">print</span> (<span class="string">'a='</span>, a, <span class="string">'b='</span>, b, <span class="string">'c='</span>, c, <span class="string">'args='</span>, args, <span class="string">'kwargs='</span>, kwargs)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	func(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,spence,shao,name=<span class="string">'spence'</span>,gender=<span class="string">'male'</span>)</span><br><span class="line"> </span><br><span class="line">&gt;&gt;&gt;a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>,args=(spence,shao),kwargs=&#123;<span class="string">'name'</span>:<span class="string">'spence'</span>,<span class="string">'gender'</span>:<span class="string">'male'</span>&#125;</span><br></pre></td></tr></table></figure></div>
       
     </div>
     
@@ -463,7 +455,7 @@ if __name__ == &#39;__main__&#39;:
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -476,7 +468,7 @@ if __name__ == &#39;__main__&#39;:
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

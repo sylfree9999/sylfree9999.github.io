@@ -353,15 +353,8 @@
 <p>As you see in the diagram below ResolveRequestCache needs to know the routes to choose from, and this needs to have static route collection already created.</p>
 <img src="/2018/03/26/asp-net-mvc-lifecycle/register-routes.png">
 <h2 id="HttpHandlers"><a href="#HttpHandlers" class="headerlink" title="HttpHandlers"></a>HttpHandlers</h2><p>HttpHandlers are classes that implement <code>IHttpHandler</code> and generate a response to <code>HttpRequest</code>. There could be httpHandler re-assignment in a life cycle of a request but only on http handler executes and provides response.</p>
-<h3 id="Create-HttpHandler"><a href="#Create-HttpHandler" class="headerlink" title="Create HttpHandler:"></a>Create HttpHandler:</h3><pre><code>public class SampleHttlHandler : IHttpHandler
-{
-    public book IsReusable { get{ return false;}}
-    public void ProcessRequest (HttpContext context)
-    {
-        context.Response.Write(&quot;&lt;b&gt;This is the response from HttpHandler&lt;/b&gt;&quot;)
-    }
-}
-</code></pre><h2 id="HttpModules"><a href="#HttpModules" class="headerlink" title="HttpModules"></a>HttpModules</h2><p>HttpModules are classes that implement <code>IHttpModule</code> interface and are designed to respond to Life cycle events. In a given Http Life cycle, multiple http modules <strong>can respond to one single request and can also hook into multiple life cycle events</strong>. So they are not tied to any specific event, rather they can act at several places during the life cycle and expose multiple development possibilities.</p>
+<h3 id="Create-HttpHandler"><a href="#Create-HttpHandler" class="headerlink" title="Create HttpHandler:"></a>Create HttpHandler:</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SampleHttlHandler</span> : <span class="title">IHttpHandler</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span> book IsReusable &#123; <span class="keyword">get</span>&#123; <span class="keyword">return</span> <span class="literal">false</span>;&#125;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ProcessRequest</span> (<span class="params">HttpContext context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		context.Response.Write(<span class="string">"&lt;b&gt;This is the response from HttpHandler&lt;/b&gt;"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="HttpModules"><a href="#HttpModules" class="headerlink" title="HttpModules"></a>HttpModules</h2><p>HttpModules are classes that implement <code>IHttpModule</code> interface and are designed to respond to Life cycle events. In a given Http Life cycle, multiple http modules <strong>can respond to one single request and can also hook into multiple life cycle events</strong>. So they are not tied to any specific event, rather they can act at several places during the life cycle and expose multiple development possibilities.</p>
 <p>Features such as <span style="background-color: #FFFF00"><strong>Logging and Authentication</strong></span> are best examples of wrapping things up in a HttpModule. </p>
 
       
@@ -480,7 +473,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -493,7 +486,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

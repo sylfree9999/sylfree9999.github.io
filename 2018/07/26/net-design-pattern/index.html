@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="依赖倒置原则：怎么抽象1，上层和下层中间应该通过一个抽象层进行工作，抽象是稳定的，实现是多变的！所以定义抽象要谨慎2，每一层模块应该都要有抽象，有一个类cls,就要有一个ICls3，调用者左边为抽象，右边为具体实现 //caller {     AbstractPhone phone = new iPhone();     phone.Call(); } {     AbstractPhone p">
+<meta name="description" content="依赖倒置原则：怎么抽象1，上层和下层中间应该通过一个抽象层进行工作，抽象是稳定的，实现是多变的！所以定义抽象要谨慎2，每一层模块应该都要有抽象，有一个类cls,就要有一个ICls3，调用者左边为抽象，右边为具体实现 12345678910111213141516171819202122232425262728293031323334//caller&amp;#123;	AbstractPhone phon">
 <meta name="keywords" content="concept,.NET">
 <meta property="og:type" content="article">
 <meta property="og:title" content="net-design-pattern">
 <meta property="og:url" content="http://yoursite.com/2018/07/26/net-design-pattern/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="依赖倒置原则：怎么抽象1，上层和下层中间应该通过一个抽象层进行工作，抽象是稳定的，实现是多变的！所以定义抽象要谨慎2，每一层模块应该都要有抽象，有一个类cls,就要有一个ICls3，调用者左边为抽象，右边为具体实现 //caller {     AbstractPhone phone = new iPhone();     phone.Call(); } {     AbstractPhone p">
+<meta property="og:description" content="依赖倒置原则：怎么抽象1，上层和下层中间应该通过一个抽象层进行工作，抽象是稳定的，实现是多变的！所以定义抽象要谨慎2，每一层模块应该都要有抽象，有一个类cls,就要有一个ICls3，调用者左边为抽象，右边为具体实现 12345678910111213141516171819202122232425262728293031323334//caller&amp;#123;	AbstractPhone phon">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="net-design-pattern">
-<meta name="twitter:description" content="依赖倒置原则：怎么抽象1，上层和下层中间应该通过一个抽象层进行工作，抽象是稳定的，实现是多变的！所以定义抽象要谨慎2，每一层模块应该都要有抽象，有一个类cls,就要有一个ICls3，调用者左边为抽象，右边为具体实现 //caller {     AbstractPhone phone = new iPhone();     phone.Call(); } {     AbstractPhone p">
+<meta name="twitter:description" content="依赖倒置原则：怎么抽象1，上层和下层中间应该通过一个抽象层进行工作，抽象是稳定的，实现是多变的！所以定义抽象要谨慎2，每一层模块应该都要有抽象，有一个类cls,就要有一个ICls3，调用者左边为抽象，右边为具体实现 12345678910111213141516171819202122232425262728293031323334//caller&amp;#123;	AbstractPhone phon">
 
 
 
@@ -331,541 +331,38 @@
 
       
         <h2 id="依赖倒置原则：怎么抽象"><a href="#依赖倒置原则：怎么抽象" class="headerlink" title="依赖倒置原则：怎么抽象"></a>依赖倒置原则：怎么抽象</h2><p>1，上层和下层中间应该通过一个抽象层进行工作，抽象是稳定的，实现是多变的！所以定义抽象要谨慎<br>2，每一层模块应该都要有抽象，有一个类cls,就要有一个ICls<br>3，调用者左边为抽象，右边为具体实现</p>
-<pre><code class="c#">//caller
-{
-    AbstractPhone phone = new iPhone();
-    phone.Call();
-}
-{
-    AbstractPhone phone = new Lumia();
-    phone.Call();
-}
-
-//中间层，就相当于定义的一个规范
-public abstract class AbstractPhone
-{
-    public int Id {get;set;}
-    public string Branch {get;set;}
-    public abstract void Call();
-}
-
-//下层实现层
-public class iPhone:AbstractPhone
-{
-    public override void Call()
-    {
-        Console.WriteLine(&quot;This is iPhone calling!&quot;)
-    }
-}
-
-public class Lumia:AbstractPhone
-{
-    public override void Call()
-    {
-        Console.WriteLine(&quot;This is Lumia calling!&quot;);
-    }
-}
-
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">//caller</span><br><span class="line">&#123;</span><br><span class="line">	AbstractPhone phone = new iPhone();</span><br><span class="line">	phone.Call();</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">	AbstractPhone phone = new Lumia();</span><br><span class="line">	phone.Call();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//中间层，就相当于定义的一个规范</span><br><span class="line">public abstract class AbstractPhone</span><br><span class="line">&#123;</span><br><span class="line">	public int Id &#123;get;set;&#125;</span><br><span class="line">	public string Branch &#123;get;set;&#125;</span><br><span class="line">	public abstract void Call();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//下层实现层</span><br><span class="line">public class iPhone:AbstractPhone</span><br><span class="line">&#123;</span><br><span class="line">	public override void Call()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;This is iPhone calling!&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Lumia:AbstractPhone</span><br><span class="line">&#123;</span><br><span class="line">	public override void Call()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;This is Lumia calling!&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <a id="more"></a>
-<p>其实中间层也可以写成一个泛型</p>
-<pre><code class="c#">public void Call&lt;T&gt;(T phone) where T : AbstractPhone
-{
-    Console.WriteLine(&quot;This is {0} calling&quot;, phone.Name);
-}
-</code></pre>
+<p>其实中间层也可以写成一个泛型<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public void Call&lt;T&gt;(T phone) where T : AbstractPhone</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(&quot;This is &#123;0&#125; calling&quot;, phone.Name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <h2 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h2><p>划分接口的时候，首先不能大而全，也不能太碎，要按照一定的规则进行分组</p>
 <h2 id="设计模式-创建型设计模式，关注对象的创建"><a href="#设计模式-创建型设计模式，关注对象的创建" class="headerlink" title="设计模式-创建型设计模式，关注对象的创建"></a>设计模式-创建型设计模式，关注对象的创建</h2><h3 id="单例模式，就是保证类型只有一个实例，减少初始化的消耗"><a href="#单例模式，就是保证类型只有一个实例，减少初始化的消耗" class="headerlink" title="单例模式，就是保证类型只有一个实例，减少初始化的消耗"></a>单例模式，就是保证类型只有一个实例，减少初始化的消耗</h3><p>局限：<br>1，实例会常驻内存<br>2，实例中的变量，在多线程的情况下会被影响</p>
 <p>使用场景：数据库连接池</p>
-<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>1，构造函数私有化，保证不会被外部创建<br>2，对外提供一个公开方法提供这个对象<br>3，实例定义成一个静态变量，保证内存中就只有一个<br>4，注意了，如果class Singleton变成class Singleton<t>,就无法保证实例是单例的，因为解释器会在编译的时候动态生成类型</t></p>
-<pre><code class="c#">public class Singleton
-{
-    private Singleton()
-    {
-
-    }
-    //volatile保证多线程的时候值不会被多次修改
-    private static volatile Singleton _singleton = null;
-    private static object Singleton_Lock = new object();
-
-    public static Singleton CreateInstance()
-    {
-        if(_singleton == null)
-            _singleton = new Singleton();
-        return _singleton;
-    }
-}
-</code></pre>
+<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>1，构造函数私有化，保证不会被外部创建<br>2，对外提供一个公开方法提供这个对象<br>3，实例定义成一个静态变量，保证内存中就只有一个<br>4，注意了，如果class Singleton变成class Singleton<t>,就无法保证实例是单例的，因为解释器会在编译的时候动态生成类型<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton</span><br><span class="line">&#123;</span><br><span class="line">	private Singleton()</span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	//volatile保证多线程的时候值不会被多次修改</span><br><span class="line">	private static volatile Singleton _singleton = null;</span><br><span class="line">	private static object Singleton_Lock = new object();</span><br><span class="line"></span><br><span class="line">	public static Singleton CreateInstance()</span><br><span class="line">	&#123;</span><br><span class="line">		if(_singleton == null)</span><br><span class="line">			_singleton = new Singleton();</span><br><span class="line">		return _singleton;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></t></p>
 <p>如果多线程同时调用上面的CreateInstance，就无法保证只构造一次(假设一个构造函数要构造40s)，所以需要加一层Lock</p>
 <p>但是只加一次lock也不行，因为如果第二轮开5个线程让构造Singleton,则会发现第二轮的也在等待锁，而这个时候明明已经Singleton实例化好了的</p>
 <p>所以在lock外面会再加上一层if判断</p>
-<p><strong>经典的双if-lock:</strong></p>
-<pre><code class="c#">public static Singleton CreateInstance()
-{
-    if(_singleton is null)//保证对象初始化之后，不会再去等待锁
-    {
-        lock(Singleton_Lock)//保证只有一个线程进去
-        {
-            Thread.Sleep(1000);
-            Console.WriteLine(&quot;这里等待了1s的锁&quot;);
-            if(_singleton == null)//保证只会被实例化一次
-                _singleton = new Singleton();
-        }
-    }
-
-    return _singleton;
-}
-</code></pre>
-<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p>1，通过静态构造函数来返回实例,是由CLR来保证程序第一次使用这个类型前被调用且只调用一次</p>
-<pre><code class="c#">public class SingletonSecond
-{
-    private static volatile SingletonSecond _singletonSecond = null;
-    static SingletonSecond()
-    {
-        _singletonSecond = new SingletonSecond();
-        Console.WriteLine(&quot;SingletonSecond starts&quot;).
-    }
-}
-</code></pre>
-<h4 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h4><p>1，使用静态字段，在第一次使用这个类之前，也是由CLR保证的，初始化且只初始化一次</p>
-<pre><code class="c#">public class SingletonThird
-{
-    private SingletonThird()
-    {
-
-    }
-
-    private static SingletonThird _singletonThird = new SingletonThird();
-
-    public static SingletonThird CreateInstance()
-    {
-        return _singletonThird;
-    }
-}
-</code></pre>
+<p><strong>经典的双if-lock:</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static Singleton CreateInstance()</span><br><span class="line">&#123;</span><br><span class="line">	if(_singleton is null)//保证对象初始化之后，不会再去等待锁</span><br><span class="line">	&#123;</span><br><span class="line">		lock(Singleton_Lock)//保证只有一个线程进去</span><br><span class="line">		&#123;</span><br><span class="line">			Thread.Sleep(1000);</span><br><span class="line">			Console.WriteLine(&quot;这里等待了1s的锁&quot;);</span><br><span class="line">			if(_singleton == null)//保证只会被实例化一次</span><br><span class="line">				_singleton = new Singleton();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	return _singleton;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p>1，通过静态构造函数来返回实例,是由CLR来保证程序第一次使用这个类型前被调用且只调用一次<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class SingletonSecond</span><br><span class="line">&#123;</span><br><span class="line">	private static volatile SingletonSecond _singletonSecond = null;</span><br><span class="line">	static SingletonSecond()</span><br><span class="line">	&#123;</span><br><span class="line">		_singletonSecond = new SingletonSecond();</span><br><span class="line">		Console.WriteLine(&quot;SingletonSecond starts&quot;).</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h4 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h4><p>1，使用静态字段，在第一次使用这个类之前，也是由CLR保证的，初始化且只初始化一次<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class SingletonThird</span><br><span class="line">&#123;</span><br><span class="line">	private SingletonThird()</span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static SingletonThird _singletonThird = new SingletonThird();</span><br><span class="line"></span><br><span class="line">	public static SingletonThird CreateInstance()</span><br><span class="line">	&#123;</span><br><span class="line">		return _singletonThird;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <h3 id="原型模式-解决对象重复创建的问题"><a href="#原型模式-解决对象重复创建的问题" class="headerlink" title="原型模式,解决对象重复创建的问题"></a>原型模式,解决对象重复创建的问题</h3><p>局限：<br>1，常驻内存<br>2，多线程的话，会在内存中创建多个实例，即使这个实例跟第一次创建的实例是一样的</p>
-<p>1，通过MemberwiseClone来clone新对象，避免重复创建对象<br>2，每次Clone的时候都是以第一次SingletonSecond静态构造函数构造的来copy，所以每次返回的是新的对象</p>
-<pre><code class="c#">public static SingletonSecond CreateInstancePrototype()
-{
-    SingletonSecond sp = (SingletonSecond)_singletonPrototype.MemberwiseClone();
-    return sp;
-}
-</code></pre>
-<h3 id="三大工厂-建造者模式"><a href="#三大工厂-建造者模式" class="headerlink" title="三大工厂+建造者模式"></a>三大工厂+建造者模式</h3><h4 id="简单工厂"><a href="#简单工厂" class="headerlink" title="简单工厂"></a>简单工厂</h4><p>局限：<br>1，细节没有消失，只是转移，并且矛盾都集中在了一个地方</p>
-<pre><code class="c#">{
-    //不好，左右两边都是具体实现
-    Human human = new Human();
-    player.PlayWar3(human);
-}
-{
-    //好，左边是抽象，右边是细节
-    IRace human = new Human();
-    player.PlayWar3(human);
-}
-{
-    //如何把右边也替换掉？简单工厂模式,就是帮忙完成对象的创建
-    IRace human  = ObjectFactory.CreateRace(RaceType.Human);
-    player.PlayWar3(human);
-}
-
-
-public static IRace CreateRace(RaceType raceType)
-{
-    IRace iRace = null;
-    switch(raceType)
-    {
-        case RaceType.Human:
-            iRace = new Human();
-            break;
-        case RaceType.Undead:
-            iRace = new Undead();
-            break;
-        default:
-            throw new Exception(&quot;Wrong race!&quot;);
-    }
-    return iRace;
-}
-
-//简单工厂的升级，用反射
-//这样写程序里面完全没有细节，细节都在config文件里面
-private static string IRaceTypeConfigReflection = ConfigurationManager.AppSettings[&quot;IRaceTypeConfigReflection&quot;];
-private static string DllName = IRaceTypeConfigReflection.Split(&#39;,&#39;)[1];
-private static string TypeName = IRaceTypeConfigReflection.Split(&#39;,&#39;)[0];
-///IOC的雏形
-public static IRace CreateRaceConfigReflection()
-{
-    Assembly assembly = Assembly.Load(DllName);
-    Type type = assembly.GetType(TypeName);
-    IRace iRace = Activator.CreateInstance(type) as IRace;
-    return iRace;
-}
-
-</code></pre>
-<h4 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h4><p>1，将职责单一化，一个工厂只负责一种实例的创建<br>2，创建的工厂作为一个中间层，把细节包了一层<br>3，这样写方便扩展,可以增加新的行为</p>
-<pre><code class="c#">{
-    IFactory factory = new HumanFactory();
-    //IFactory factory = new HumanFactoryAdvanced();
-    IRace race = factory.CreateRace();
-
-}
-public class HumanFactory: IFactory
-{
-    public virtual IRace CreateRace()
-    {
-        return new Human();
-    }
-}
-//这样写方便扩展,可以增加新的行为
-public class HumanFactoryAdvanced:HumanFactory
-{
-    public override IRace CreateRace()
-    {
-        Console.WriteLine(&quot;This is an extension.&quot;);
-        return new Human();
-    }
-}
-</code></pre>
-<h4 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h4><p>1，从外表来说是一个工厂去创建多个对象<br>2，适用于工厂里面的对象都紧密相连</p>
-<pre><code class="c#">public class HumanFactory:FactoryAbstract
-{
-    public override IRace CreateRace()
-    {
-        return new Human();
-    }
-    public override IArmy CreateArmy()
-    {
-        return new HumanArmy();
-    }
-    public override IHero CreateHero()
-    {
-        return new HumanHero();
-    }
-}
-
-public abstract class FactoryAbstract
-{
-    public abstract IRace CreateRace();
-    public abstract IArmy CreateArmy();
-    public abstract IHero CreateHero();
-}
-
-//caller
-{
-    FactoryAbstract humanFactory = new HumanFactory();
-    IRace race = humanFactory.CreateRace();
-    IArmy army = humanFactory.CreateArmy();
-    IHero hero = humanFactory.CreateHero();
-}
-</code></pre>
+<p>1，通过MemberwiseClone来clone新对象，避免重复创建对象<br>2，每次Clone的时候都是以第一次SingletonSecond静态构造函数构造的来copy，所以每次返回的是新的对象<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static SingletonSecond CreateInstancePrototype()</span><br><span class="line">&#123;</span><br><span class="line">	SingletonSecond sp = (SingletonSecond)_singletonPrototype.MemberwiseClone();</span><br><span class="line">	return sp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="三大工厂-建造者模式"><a href="#三大工厂-建造者模式" class="headerlink" title="三大工厂+建造者模式"></a>三大工厂+建造者模式</h3><h4 id="简单工厂"><a href="#简单工厂" class="headerlink" title="简单工厂"></a>简单工厂</h4><p>局限：<br>1，细节没有消失，只是转移，并且矛盾都集中在了一个地方<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	//不好，左右两边都是具体实现</span><br><span class="line">	Human human = new Human();</span><br><span class="line">	player.PlayWar3(human);</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">	//好，左边是抽象，右边是细节</span><br><span class="line">	IRace human = new Human();</span><br><span class="line">	player.PlayWar3(human);</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">	//如何把右边也替换掉？简单工厂模式,就是帮忙完成对象的创建</span><br><span class="line">	IRace human  = ObjectFactory.CreateRace(RaceType.Human);</span><br><span class="line">	player.PlayWar3(human);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public static IRace CreateRace(RaceType raceType)</span><br><span class="line">&#123;</span><br><span class="line">	IRace iRace = null;</span><br><span class="line">	switch(raceType)</span><br><span class="line">	&#123;</span><br><span class="line">		case RaceType.Human:</span><br><span class="line">			iRace = new Human();</span><br><span class="line">			break;</span><br><span class="line">		case RaceType.Undead:</span><br><span class="line">			iRace = new Undead();</span><br><span class="line">			break;</span><br><span class="line">		default:</span><br><span class="line">			throw new Exception(&quot;Wrong race!&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	return iRace;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//简单工厂的升级，用反射</span><br><span class="line">//这样写程序里面完全没有细节，细节都在config文件里面</span><br><span class="line">private static string IRaceTypeConfigReflection = ConfigurationManager.AppSettings[&quot;IRaceTypeConfigReflection&quot;];</span><br><span class="line">private static string DllName = IRaceTypeConfigReflection.Split(&apos;,&apos;)[1];</span><br><span class="line">private static string TypeName = IRaceTypeConfigReflection.Split(&apos;,&apos;)[0];</span><br><span class="line">///IOC的雏形</span><br><span class="line">public static IRace CreateRaceConfigReflection()</span><br><span class="line">&#123;</span><br><span class="line">	Assembly assembly = Assembly.Load(DllName);</span><br><span class="line">	Type type = assembly.GetType(TypeName);</span><br><span class="line">	IRace iRace = Activator.CreateInstance(type) as IRace;</span><br><span class="line">	return iRace;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h4 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h4><p>1，将职责单一化，一个工厂只负责一种实例的创建<br>2，创建的工厂作为一个中间层，把细节包了一层<br>3，这样写方便扩展,可以增加新的行为<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	IFactory factory = new HumanFactory();</span><br><span class="line">	//IFactory factory = new HumanFactoryAdvanced();</span><br><span class="line">	IRace race = factory.CreateRace();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">public class HumanFactory: IFactory</span><br><span class="line">&#123;</span><br><span class="line">	public virtual IRace CreateRace()</span><br><span class="line">	&#123;</span><br><span class="line">		return new Human();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//这样写方便扩展,可以增加新的行为</span><br><span class="line">public class HumanFactoryAdvanced:HumanFactory</span><br><span class="line">&#123;</span><br><span class="line">	public override IRace CreateRace()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;This is an extension.&quot;);</span><br><span class="line">		return new Human();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h4 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h4><p>1，从外表来说是一个工厂去创建多个对象<br>2，适用于工厂里面的对象都紧密相连<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public class HumanFactory:FactoryAbstract</span><br><span class="line">&#123;</span><br><span class="line">	public override IRace CreateRace()</span><br><span class="line">	&#123;</span><br><span class="line">		return new Human();</span><br><span class="line">	&#125;</span><br><span class="line">	public override IArmy CreateArmy()</span><br><span class="line">	&#123;</span><br><span class="line">		return new HumanArmy();</span><br><span class="line">	&#125;</span><br><span class="line">	public override IHero CreateHero()</span><br><span class="line">	&#123;</span><br><span class="line">		return new HumanHero();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public abstract class FactoryAbstract</span><br><span class="line">&#123;</span><br><span class="line">	public abstract IRace CreateRace();</span><br><span class="line">	public abstract IArmy CreateArmy();</span><br><span class="line">	public abstract IHero CreateHero();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//caller</span><br><span class="line">&#123;</span><br><span class="line">	FactoryAbstract humanFactory = new HumanFactory();</span><br><span class="line">	IRace race = humanFactory.CreateRace();</span><br><span class="line">	IArmy army = humanFactory.CreateArmy();</span><br><span class="line">	IHero hero = humanFactory.CreateHero();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <p><strong>经验之谈：在创建一个对象的时候，尽量不要直接去创建这个对象，而是通过一个中间层，这样细节的变化只会波及到工厂，只改工厂的就好，不会波及到上层</strong></p>
 <h2 id="设计模式-结构型设计模式：关注类与类之间的关系"><a href="#设计模式-结构型设计模式：关注类与类之间的关系" class="headerlink" title="设计模式-结构型设计模式：关注类与类之间的关系"></a>设计模式-结构型设计模式：关注类与类之间的关系</h2><p>纵向可以：继承–实现<br>横向可以：聚合，组合，关联，依赖（是指在方法里用了别的类）<br>核心：组合优于继承</p>
 <h3 id="适配器模式Adapter"><a href="#适配器模式Adapter" class="headerlink" title="适配器模式Adapter"></a>适配器模式Adapter</h3><p>是在项目重构升级的时候会用，之前的方法已经都稳固了，但是这个时候想要用第三方的方法，就把第三方的方法与我们的方法适配一下</p>
 <p>比方说我们之前定义了一个IHelper,里面定义了增删改查四个方法，并且已经有了MySqlHelper,OracleHelper</p>
 <p>这个时候我们想要用一个第三方软件提供的RedisUtility,这里面也定义了自己增删改查方法，但是第三方是不可能继承于我们的类IHelper的，这个时候我们就需要写一个适配方法</p>
-<h4 id="方法一：纵向"><a href="#方法一：纵向" class="headerlink" title="方法一：纵向"></a>方法一：纵向</h4><p>问题：侵入性很强<br>因为通过了继承，我多出了很多功能，我其实只需要IHelper的增删改查就好，但是这个时候我还拥有了RedisUtility里面的AddRedis之类的方法。并且如果RedisUtility什么时候也增加了Add方法，那么我们现在的方法就要改</p>
-<pre><code class="c#">
-public class RedisHelperClass: RedisUtility, IHelper
-{
-    public void Add&lt;T&gt;()
-    {
-        base.AddRedis&lt;T&gt;();
-    }
-    public void Delete&lt;T&gt;()
-    {
-        base.DeleteRedis&lt;T&gt;();
-    }
-    public void Update&lt;T&gt;()
-    {
-        base.UpdateRedis&lt;T&gt;();
-    }
-    public void Query&lt;T&gt;()
-    {
-        base.QueryRedis&lt;T&gt;();
-    }
-}
-
-//caller
-{
-    IHelper helper = new RedisHelperClass();
-    helper.Add&lt;Program&gt;();
-}
-</code></pre>
+<h4 id="方法一：纵向"><a href="#方法一：纵向" class="headerlink" title="方法一：纵向"></a>方法一：纵向</h4><p>问题：侵入性很强<br>因为通过了继承，我多出了很多功能，我其实只需要IHelper的增删改查就好，但是这个时候我还拥有了RedisUtility里面的AddRedis之类的方法。并且如果RedisUtility什么时候也增加了Add方法，那么我们现在的方法就要改<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class RedisHelperClass: RedisUtility, IHelper</span><br><span class="line">&#123;</span><br><span class="line">	public void Add&lt;T&gt;()</span><br><span class="line">	&#123;</span><br><span class="line">		base.AddRedis&lt;T&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">	public void Delete&lt;T&gt;()</span><br><span class="line">	&#123;</span><br><span class="line">		base.DeleteRedis&lt;T&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">	public void Update&lt;T&gt;()</span><br><span class="line">	&#123;</span><br><span class="line">		base.UpdateRedis&lt;T&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">	public void Query&lt;T&gt;()</span><br><span class="line">	&#123;</span><br><span class="line">		base.QueryRedis&lt;T&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//caller</span><br><span class="line">&#123;</span><br><span class="line">	IHelper helper = new RedisHelperClass();</span><br><span class="line">	helper.Add&lt;Program&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <h4 id="方法二：组合"><a href="#方法二：组合" class="headerlink" title="方法二：组合"></a>方法二：组合</h4><p>另一种写法是组合，在类的内部内置了需要类的属性，字段</p>
 <p>组合的写法就比较灵活，不仅类里面可以有redisHelper，如果将来想要有Cache也可以直接加上去</p>
-<pre><code class="c#">public class RedisHelperObject: IHelper
-{
-    private RedisUtility _redisHelper = null;
-    public RedisHelperObject(RedisUtility redisHelper)//这里可能是一个抽象的接口注入进来
-    {
-        this._redisHelper = redisHelper;
-    }
-
-    public RedisHelperObject()
-    {
-        this._redisHelper = new RedisUtility();
-    }
-
-    public void Add&lt;T&gt;()
-    {
-        this._redisHelper.AddRedis&lt;T&gt;();
-    }
-
-    public void Delete&lt;T&gt;()
-    {
-        this._redisHelper.DeleteRedis&lt;T&gt;();
-    }
-
-    //...
-}
-</code></pre>
-<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><p>1，有一个真实的做事情的类<br>2，有一个接口<br>3，有一个代理的类，这个类继承于接口，也有方法的实现，但是到真正的实现是调用真实类来实现<br>4，代理只能传达原有逻辑，不能新增业务逻辑，就是包一层<br>5，真正调用的时候不再调用RealSubject，而是调用ProxySubject<br>6，这种模式可以让用户在真正使用的时候才去创建对象(DoSomething方法)。因为我在用的时候是调用的ProxySubject，这个构建不消耗资源</p>
-<pre><code class="c#">public class ProxySubject: ISubject
-{
-    //这个是单例代理
-    private static ISubject _iSubject = null;
-    private void Init()
-    {
-        _iSubject = new RealSubject();
-    }
-
-    //下面这个是缓存代理
-    private static bool _booleanResult = false;
-    private static bool _isInit = false;
-    private static Dictionary&lt;string,bool&gt; _cache=new Dictionary&lt;string,bool&gt;();
-
-    public bool GetSomething()
-    {
-
-        if(!_isInit)//缓存
-        {
-            _booleanResult = _iSubject.GetSomething();
-            _isInit = true;
-        }
-        return _booleanResult;
-    }
-
-    //这个是延迟代理，延迟构建RealSubject
-    public void DoSomething()
-    {
-        if(_iSubject == null)
-        {
-            this.Init();
-        }
-        _iSubject.DoSomething();
-    }
-}
-</code></pre>
-<h3 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h3><p>1，声明一个你需要用的变量<br>2，在构造函数中把你需要的变量初始化</p>
-<pre><code class="c#">public class BaseStudentDecorator: AbstractStudent
-{
-    //用的是组合的方式，通过构造函数初始化变量
-    private AbstractStudent _student = null;
-    public BaseStudentDecorator(AbstractStudent student)
-    {
-        this._student = student;
-    }
-
-    public override void Study()
-    {
-        this._student.Study();
-    }
-}
-
-public class StudentPayDecorator: BaseStudentDecorator
-{
-    public StudentPayDecorator(AbstractStudent student)
-    :base(student)
-    {
-
-    }
-
-    public override void Study()
-    {
-        Console.WriteLine(&quot;Pay&quot;);
-        base.Study();
-    }
-}
-
-//caller
-{
-    AbstractStudent student = new StudentVip()
-    {
-        Id = 381,
-        Name = &quot;Bird&quot;
-    };
-
-    //BaseStudentDecorator decorator = new BaseStudentDecorator();
-    //把左边BaseStudentDecorator换成AbstractDecorator
-    //AbstractStudent decorator = new BaseStudentDecorator();
-    //decorator.Study();
-    student = new BaseStudentDecorator(student);
-    student.Study();//输出的是vip学习
-
-    //StudentPayDecorator studentPayDecorator = new StudentPayDecorator(decorator);
-    //AbstractStudent studentPayDecorator = new StudentPayDecorator(decorator);
-    //studentPayDecorator.Study();
-
-    //也可以写成如下，这个时候的student为BaseStudentDecorator
-    student = new StudentPayDecorator(student);
-    student.Study();//输出先是pay，然后BaseStudentDecorator的Study,即输出vip学习
-
-    //所以之后如果你想给一个对象加一些行为，都可以像这样写
-    //AOP的雏形
-    student = new BaseStudentDecorator(student);
-    student = new StudentRegDecorator(student);
-    student = new StudentPayDecorator(student);
-    //最终打出来的是付费，注册，vip学习
-    student.Study();
-}
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class RedisHelperObject: IHelper</span><br><span class="line">&#123;</span><br><span class="line">	private RedisUtility _redisHelper = null;</span><br><span class="line">	public RedisHelperObject(RedisUtility redisHelper)//这里可能是一个抽象的接口注入进来</span><br><span class="line">	&#123;</span><br><span class="line">		this._redisHelper = redisHelper;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public RedisHelperObject()</span><br><span class="line">	&#123;</span><br><span class="line">		this._redisHelper = new RedisUtility();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void Add&lt;T&gt;()</span><br><span class="line">	&#123;</span><br><span class="line">		this._redisHelper.AddRedis&lt;T&gt;();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void Delete&lt;T&gt;()</span><br><span class="line">	&#123;</span><br><span class="line">		this._redisHelper.DeleteRedis&lt;T&gt;();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><p>1，有一个真实的做事情的类<br>2，有一个接口<br>3，有一个代理的类，这个类继承于接口，也有方法的实现，但是到真正的实现是调用真实类来实现<br>4，代理只能传达原有逻辑，不能新增业务逻辑，就是包一层<br>5，真正调用的时候不再调用RealSubject，而是调用ProxySubject<br>6，这种模式可以让用户在真正使用的时候才去创建对象(DoSomething方法)。因为我在用的时候是调用的ProxySubject，这个构建不消耗资源<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public class ProxySubject: ISubject</span><br><span class="line">&#123;</span><br><span class="line">	//这个是单例代理</span><br><span class="line">	private static ISubject _iSubject = null;</span><br><span class="line">	private void Init()</span><br><span class="line">	&#123;</span><br><span class="line">		_iSubject = new RealSubject();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//下面这个是缓存代理</span><br><span class="line">	private static bool _booleanResult = false;</span><br><span class="line">	private static bool _isInit = false;</span><br><span class="line">	private static Dictionary&lt;string,bool&gt; _cache=new Dictionary&lt;string,bool&gt;();</span><br><span class="line"></span><br><span class="line">	public bool GetSomething()</span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		if(!_isInit)//缓存</span><br><span class="line">		&#123;</span><br><span class="line">			_booleanResult = _iSubject.GetSomething();</span><br><span class="line">			_isInit = true;</span><br><span class="line">		&#125;</span><br><span class="line">		return _booleanResult;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//这个是延迟代理，延迟构建RealSubject</span><br><span class="line">	public void DoSomething()</span><br><span class="line">	&#123;</span><br><span class="line">		if(_iSubject == null)</span><br><span class="line">		&#123;</span><br><span class="line">			this.Init();</span><br><span class="line">		&#125;</span><br><span class="line">		_iSubject.DoSomething();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h3><p>1，声明一个你需要用的变量<br>2，在构造函数中把你需要的变量初始化<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">public class BaseStudentDecorator: AbstractStudent</span><br><span class="line">&#123;</span><br><span class="line">	//用的是组合的方式，通过构造函数初始化变量</span><br><span class="line">	private AbstractStudent _student = null;</span><br><span class="line">	public BaseStudentDecorator(AbstractStudent student)</span><br><span class="line">	&#123;</span><br><span class="line">		this._student = student;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public override void Study()</span><br><span class="line">	&#123;</span><br><span class="line">		this._student.Study();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class StudentPayDecorator: BaseStudentDecorator</span><br><span class="line">&#123;</span><br><span class="line">	public StudentPayDecorator(AbstractStudent student)</span><br><span class="line">	:base(student)</span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public override void Study()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;Pay&quot;);</span><br><span class="line">		base.Study();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//caller</span><br><span class="line">&#123;</span><br><span class="line">	AbstractStudent student = new StudentVip()</span><br><span class="line">	&#123;</span><br><span class="line">		Id = 381,</span><br><span class="line">		Name = &quot;Bird&quot;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	//BaseStudentDecorator decorator = new BaseStudentDecorator();</span><br><span class="line">	//把左边BaseStudentDecorator换成AbstractDecorator</span><br><span class="line">	//AbstractStudent decorator = new BaseStudentDecorator();</span><br><span class="line">	//decorator.Study();</span><br><span class="line">	student = new BaseStudentDecorator(student);</span><br><span class="line">	student.Study();//输出的是vip学习</span><br><span class="line"></span><br><span class="line">	//StudentPayDecorator studentPayDecorator = new StudentPayDecorator(decorator);</span><br><span class="line">	//AbstractStudent studentPayDecorator = new StudentPayDecorator(decorator);</span><br><span class="line">	//studentPayDecorator.Study();</span><br><span class="line"></span><br><span class="line">	//也可以写成如下，这个时候的student为BaseStudentDecorator</span><br><span class="line">	student = new StudentPayDecorator(student);</span><br><span class="line">	student.Study();//输出先是pay，然后BaseStudentDecorator的Study,即输出vip学习</span><br><span class="line"></span><br><span class="line">	//所以之后如果你想给一个对象加一些行为，都可以像这样写</span><br><span class="line">	//AOP的雏形</span><br><span class="line">	student = new BaseStudentDecorator(student);</span><br><span class="line">	student = new StudentRegDecorator(student);</span><br><span class="line">	student = new StudentPayDecorator(student);</span><br><span class="line">	//最终打出来的是付费，注册，vip学习</span><br><span class="line">	student.Study();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <h2 id="设计模式-行为型设计模式：关注对象和行为的分离"><a href="#设计模式-行为型设计模式：关注对象和行为的分离" class="headerlink" title="设计模式-行为型设计模式：关注对象和行为的分离"></a>设计模式-行为型设计模式：关注对象和行为的分离</h2><p>通俗来讲，就是把方法写在哪里更适合<br>哪里变化 就封装哪里，让别人传进来，自己不去完成</p>
-<h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><pre><code class="c#">private List&lt;IObserver&gt; _observerList = new List&lt;IObserver&gt;();
-public void Add(IObserver observer)
-{
-    this._observerList.Add(observer);
-}
-public void Remove(IObserver observer)
-{
-    this._observerList.Remove(observer);
-}
-
-public void MiaoObserver()
-{
-    foreach(var observer in this._observerList)
-    {
-        observer.Action();
-    }
-}
-
-//上面这就类似于event,event就是委托的一个实例
-public event Action MiaoHandler;
-public void MiaoEvent()
-{
-    if(MiaoHandler != null)
-    {
-        foreach(Action item in this.MiaoHandler.GetInvocationList())
-        {
-            item.Invoke();
-        }
-        //this.MiaoHandler();
-    }
-}
-
-</code></pre>
-<h3 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h3><p>1，行为型设计模式经常会有这种Context类，用来表示上下文.因为行为经常是各种类乱跑的<br>2，下一个审批人不是由当前类来指定的，而是由调用者来指定的，所以当前类就不需要承担指定下一个类的</p>
-<pre><code class="c#">public class ApplyContext
-{
-    public int Id {get;set;}
-
-    public string Name {get;set;}
-
-    public int Hour {get;set;}
-
-    public string Description {get;set;}
-
-    public bool AuditResult{get;set;}
-
-    public string AuditRemark {get;set;}
-}
-
-public abstract class BaseAuditor
-{
-    protected BaseAuditor _nextAuditor {get;private set;}
-
-    public void SetNext(BaseAuditor nextAuditor)
-    {
-        this._nextAuditor = nextAuditor;
-    }
-
-    protected void AuditNext(ApplyContext context)
-    {
-        if(this._nextAuditor == null)
-        {
-            context.AuditResult = false;
-            context.AuditRemark = &quot;Denied!&quot;;
-        }
-        else
-        {
-            this._nextAuditor.Audit(context);
-        }
-    }
-
-    public string Name {get;set;}
-    public abstract void Audit(ApplyContext context);
-}
-
-public class PM : BaseAuditor
-{
-    public override void Audit(ApplyContext context)
-    {
-        context.AuditRemark += &quot;PM process...&quot;;
-        if(context.Hour &lt;= 8)
-        {
-            context.AuditResult = true;
-            context.AuditRemark = &quot;Enjoy!&quot;;
-        }
-        else
-        {
-            base.AuditNext(context);
-        }
-    }
-}
-
-public class AuditManager
-{
-    private static BaseAuditor AuditProcess = null;
-    static AuditorManager()
-    {
-        //甚至这一部分都可以改成简单工厂，用配置文件构建链表结构
-        PM pm = new PM()
-        {
-            Name = &quot;aa&quot;
-        };
-        Charge charge = new Charge()
-        {
-            Name = &quot;bb&quot;
-        };
-        Manager manager = new Manager()
-        {
-            Name = &quot;cc&quot;
-        };
-
-        pm.SetNext(charge);
-        charge.SetNext(manager);
-        AuditProcess = pm;
-    }
-
-    public static BaseAuditor GetAuditor()
-    {
-        return AuditProcess;
-    }
-}
-
-//caller
-{
-    //这一步还可以进一步封装，用一个类专门来返回process
-    PM pm = new PM()
-    {
-        Name = &quot;aa&quot;
-    };
-    Charge charge = new Charge()
-    {
-        Name = &quot;bb&quot;
-    };
-    Manager manager = new Manager()
-    {
-        Name = &quot;cc&quot;
-    };
-
-    pm.SetNext(charge);
-    charge.SetNext(manager);
-    pm.Audit(context);
-
-    //用专门的类来初始化，将对对象的依赖降到最低
-    BaseAuditor auditor = AuditorManager.GetAuditor();
-    auditor.Audit(context);
-}
-</code></pre>
+<h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">private List&lt;IObserver&gt; _observerList = new List&lt;IObserver&gt;();</span><br><span class="line">public void Add(IObserver observer)</span><br><span class="line">&#123;</span><br><span class="line">	this._observerList.Add(observer);</span><br><span class="line">&#125;</span><br><span class="line">public void Remove(IObserver observer)</span><br><span class="line">&#123;</span><br><span class="line">	this._observerList.Remove(observer);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void MiaoObserver()</span><br><span class="line">&#123;</span><br><span class="line">	foreach(var observer in this._observerList)</span><br><span class="line">	&#123;</span><br><span class="line">		observer.Action();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//上面这就类似于event,event就是委托的一个实例</span><br><span class="line">public event Action MiaoHandler;</span><br><span class="line">public void MiaoEvent()</span><br><span class="line">&#123;</span><br><span class="line">	if(MiaoHandler != null)</span><br><span class="line">	&#123;</span><br><span class="line">		foreach(Action item in this.MiaoHandler.GetInvocationList())</span><br><span class="line">		&#123;</span><br><span class="line">			item.Invoke();</span><br><span class="line">		&#125;</span><br><span class="line">		//this.MiaoHandler();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h3><p>1，行为型设计模式经常会有这种Context类，用来表示上下文.因为行为经常是各种类乱跑的<br>2，下一个审批人不是由当前类来指定的，而是由调用者来指定的，所以当前类就不需要承担指定下一个类的<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line">public class ApplyContext</span><br><span class="line">&#123;</span><br><span class="line">	public int Id &#123;get;set;&#125;</span><br><span class="line"></span><br><span class="line">	public string Name &#123;get;set;&#125;</span><br><span class="line"></span><br><span class="line">	public int Hour &#123;get;set;&#125;</span><br><span class="line"></span><br><span class="line">	public string Description &#123;get;set;&#125;</span><br><span class="line"></span><br><span class="line">	public bool AuditResult&#123;get;set;&#125;</span><br><span class="line"></span><br><span class="line">	public string AuditRemark &#123;get;set;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public abstract class BaseAuditor</span><br><span class="line">&#123;</span><br><span class="line">	protected BaseAuditor _nextAuditor &#123;get;private set;&#125;</span><br><span class="line"></span><br><span class="line">	public void SetNext(BaseAuditor nextAuditor)</span><br><span class="line">	&#123;</span><br><span class="line">		this._nextAuditor = nextAuditor;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	protected void AuditNext(ApplyContext context)</span><br><span class="line">	&#123;</span><br><span class="line">		if(this._nextAuditor == null)</span><br><span class="line">		&#123;</span><br><span class="line">			context.AuditResult = false;</span><br><span class="line">			context.AuditRemark = &quot;Denied!&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			this._nextAuditor.Audit(context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public string Name &#123;get;set;&#125;</span><br><span class="line">	public abstract void Audit(ApplyContext context);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class PM : BaseAuditor</span><br><span class="line">&#123;</span><br><span class="line">	public override void Audit(ApplyContext context)</span><br><span class="line">	&#123;</span><br><span class="line">		context.AuditRemark += &quot;PM process...&quot;;</span><br><span class="line">		if(context.Hour &lt;= 8)</span><br><span class="line">		&#123;</span><br><span class="line">			context.AuditResult = true;</span><br><span class="line">			context.AuditRemark = &quot;Enjoy!&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			base.AuditNext(context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class AuditManager</span><br><span class="line">&#123;</span><br><span class="line">	private static BaseAuditor AuditProcess = null;</span><br><span class="line">	static AuditorManager()</span><br><span class="line">	&#123;</span><br><span class="line">		//甚至这一部分都可以改成简单工厂，用配置文件构建链表结构</span><br><span class="line">		PM pm = new PM()</span><br><span class="line">		&#123;</span><br><span class="line">			Name = &quot;aa&quot;</span><br><span class="line">		&#125;;</span><br><span class="line">		Charge charge = new Charge()</span><br><span class="line">		&#123;</span><br><span class="line">			Name = &quot;bb&quot;</span><br><span class="line">		&#125;;</span><br><span class="line">		Manager manager = new Manager()</span><br><span class="line">		&#123;</span><br><span class="line">			Name = &quot;cc&quot;</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		pm.SetNext(charge);</span><br><span class="line">		charge.SetNext(manager);</span><br><span class="line">		AuditProcess = pm;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static BaseAuditor GetAuditor()</span><br><span class="line">	&#123;</span><br><span class="line">		return AuditProcess;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//caller</span><br><span class="line">&#123;</span><br><span class="line">	//这一步还可以进一步封装，用一个类专门来返回process</span><br><span class="line">	PM pm = new PM()</span><br><span class="line">	&#123;</span><br><span class="line">		Name = &quot;aa&quot;</span><br><span class="line">	&#125;;</span><br><span class="line">	Charge charge = new Charge()</span><br><span class="line">	&#123;</span><br><span class="line">		Name = &quot;bb&quot;</span><br><span class="line">	&#125;;</span><br><span class="line">	Manager manager = new Manager()</span><br><span class="line">	&#123;</span><br><span class="line">		Name = &quot;cc&quot;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	pm.SetNext(charge);</span><br><span class="line">	charge.SetNext(manager);</span><br><span class="line">	pm.Audit(context);</span><br><span class="line"></span><br><span class="line">	//用专门的类来初始化，将对对象的依赖降到最低</span><br><span class="line">	BaseAuditor auditor = AuditorManager.GetAuditor();</span><br><span class="line">	auditor.Audit(context);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 
       
     </div>
@@ -985,7 +482,7 @@ public class AuditManager
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -998,7 +495,7 @@ public class AuditManager
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

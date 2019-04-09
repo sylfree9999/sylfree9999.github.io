@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="##封装就是写类 封装的好处:  保护属性，通过访问修饰符(public, private(只能自己访问，子类都不行),internal(只能这个程序集里面访问),protected(只能自己和子类访问)) 接口不变，可以随便扩展 代码重用，任何只要用了这个类都可以调用这个方法  ##继承，就是可以用父类的 ##多态：同一个东东运行的时候会展现不同的形态  继承多态：//编译器编译的时候认为这三个">
+<meta name="description" content="##封装就是写类 封装的好处:  保护属性，通过访问修饰符(public, private(只能自己访问，子类都不行),internal(只能这个程序集里面访问),protected(只能自己和子类访问)) 接口不变，可以随便扩展 代码重用，任何只要用了这个类都可以调用这个方法  ##继承，就是可以用父类的 ##多态：同一个东东运行的时候会展现不同的形态  继承多态： 12345//编译器编译的时">
 <meta name="keywords" content=".NET,concet">
 <meta property="og:type" content="article">
 <meta property="og:title" content="net-oo">
 <meta property="og:url" content="http://yoursite.com/2018/06/22/net-oo/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="##封装就是写类 封装的好处:  保护属性，通过访问修饰符(public, private(只能自己访问，子类都不行),internal(只能这个程序集里面访问),protected(只能自己和子类访问)) 接口不变，可以随便扩展 代码重用，任何只要用了这个类都可以调用这个方法  ##继承，就是可以用父类的 ##多态：同一个东东运行的时候会展现不同的形态  继承多态：//编译器编译的时候认为这三个">
+<meta property="og:description" content="##封装就是写类 封装的好处:  保护属性，通过访问修饰符(public, private(只能自己访问，子类都不行),internal(只能这个程序集里面访问),protected(只能自己和子类访问)) 接口不变，可以随便扩展 代码重用，任何只要用了这个类都可以调用这个方法  ##继承，就是可以用父类的 ##多态：同一个东东运行的时候会展现不同的形态  继承多态： 12345//编译器编译的时">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="net-oo">
-<meta name="twitter:description" content="##封装就是写类 封装的好处:  保护属性，通过访问修饰符(public, private(只能自己访问，子类都不行),internal(只能这个程序集里面访问),protected(只能自己和子类访问)) 接口不变，可以随便扩展 代码重用，任何只要用了这个类都可以调用这个方法  ##继承，就是可以用父类的 ##多态：同一个东东运行的时候会展现不同的形态  继承多态：//编译器编译的时候认为这三个">
+<meta name="twitter:description" content="##封装就是写类 封装的好处:  保护属性，通过访问修饰符(public, private(只能自己访问，子类都不行),internal(只能这个程序集里面访问),protected(只能自己和子类访问)) 接口不变，可以随便扩展 代码重用，任何只要用了这个类都可以调用这个方法  ##继承，就是可以用父类的 ##多态：同一个东东运行的时候会展现不同的形态  继承多态： 12345//编译器编译的时">
 
 
 
@@ -340,110 +340,28 @@
 <p>##继承，就是可以用父类的</p>
 <p>##多态：同一个东东运行的时候会展现不同的形态</p>
 <ol>
-<li>继承多态：<pre><code class="c#">//编译器编译的时候认为这三个都是People类型
-//但在运行的时候people, student, teacher是三种不同的类型
-People people = new People();
-People student = new Student();
-People teacher = new Teacher();
-</code></pre>
+<li><p>继承多态：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//编译器编译的时候认为这三个都是People类型</span><br><span class="line">//但在运行的时候people, student, teacher是三种不同的类型</span><br><span class="line">People people = new People();</span><br><span class="line">People student = new Student();</span><br><span class="line">People teacher = new Teacher();</span><br></pre></td></tr></table></figure></div>
 </li>
-<li>编译时多态:<br> 声明，接口<br> 方法的重载(overload)也是多态<br> <span style="color: red;">普通方法的调用</span><pre><code> 注意：`Parent ins = new Child(); ins.Method();`会调用的是父类方法，因为这是编译时确定的！！！
+<li><p>编译时多态:<br> 声明，接口<br> 方法的重载(overload)也是多态<br> <span style="color: red;">普通方法的调用</span></p>
+<pre><code>注意：`Parent ins = new Child(); ins.Method();`会调用的是父类方法，因为这是编译时确定的！！！
 </code></pre></li>
 </ol>
 <ol>
 <li><p>运行时多态<br> 抽象方法与虚方法的区别：</p>
-<pre><code> 虚方法本身是一个普通方法，但是加了一个virtual，子类继承的时候可以覆写也可以不覆写
- 抽象方法没有方法体，必须在一个抽象类里面定义，子类继承后，必须显性的override掉这个抽象类
+<pre><code>虚方法本身是一个普通方法，但是加了一个virtual，子类继承的时候可以覆写也可以不覆写
+抽象方法没有方法体，必须在一个抽象类里面定义，子类继承后，必须显性的override掉这个抽象类
 </code></pre><p> 在override之前加<code>sealed</code>代表不想让它的子类再覆写</p>
 <p> <span style="color: red;"><code>new</code>这种写法尽量不要用！改成虚方法</span></p>
 </li>
 </ol>
-<pre><code class="c#">public abstract class ParentClass
-{
-    public int age = 70;
-
-    public void CommonMethod()
-    {
-        Console.WriteLine(&quot;ParentClass CommonMethod&quot;);
-    }
-
-    //虚方法本身是一个普通方法，但是加了一个virtual
-    //子类继承的时候可以覆写也可以不覆写
-    public virtual void VirtualMethod()
-    {
-        Console.WriteLine(&quot;ParentClass VirtualMethod&quot;);
-    }
-
-    public virtual void VirtualMethod(string name)
-    {
-        Console.WriteLine(&quot;ParentClass VirtualMethod with string name&quot;);
-    }
-
-    //抽象方法没有方法体，必须在一个抽象类里面定义
-    //子类继承后，必须显性的override掉这个抽象类
-    public abstract void AbstractMethod();
-}
-
-public class ChildClass: ParentClass
-{
-    public int age  = 18;
-
-    //这里隐藏父类的CommonMethod,并没有覆盖掉
-    public new void CommonMethod()
-    {
-        Console.WriteLine(&quot;ChildClass CommonMethod&quot;);
-    }
-
-    public override void VirtualMethod()
-    {
-        Console.WriteLine(&quot;ChildClass VirtualMethod&quot;);
-        base.VirtualMethod();
-    }
-
-    public override void AbstractMethod()
-    {
-        Console.WriteLine(&quot;ChildClass AbstractMethod&quot;);
-    }
-}
-
-//caller
-public static void Test()
-{
-    ParentClass instance = new ChildClass();
-    //父类，age=70
-    Console.WriteLint(instance.age);
-    //父类,编译的时候决定了普通方法的调用，只根据等号左边来看，ChildClass里面的new一点用都没有
-    instance.CommonMethod();
-    //子类，虽然最终调用的是父类，运行的时候决定了虚方法的调用
-    instance.VirtualMethod();
-    //子类,运行时决定了抽象方法的调用
-    instance.AbstractMethod();
-}
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">public abstract class ParentClass</span><br><span class="line">&#123;</span><br><span class="line">	public int age = 70;</span><br><span class="line"></span><br><span class="line">	public void CommonMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ParentClass CommonMethod&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//虚方法本身是一个普通方法，但是加了一个virtual</span><br><span class="line">	//子类继承的时候可以覆写也可以不覆写</span><br><span class="line">	public virtual void VirtualMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ParentClass VirtualMethod&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public virtual void VirtualMethod(string name)</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ParentClass VirtualMethod with string name&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//抽象方法没有方法体，必须在一个抽象类里面定义</span><br><span class="line">	//子类继承后，必须显性的override掉这个抽象类</span><br><span class="line">	public abstract void AbstractMethod();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class ChildClass: ParentClass</span><br><span class="line">&#123;</span><br><span class="line">	public int age  = 18;</span><br><span class="line"></span><br><span class="line">	//这里隐藏父类的CommonMethod,并没有覆盖掉</span><br><span class="line">	public new void CommonMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ChildClass CommonMethod&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public override void VirtualMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ChildClass VirtualMethod&quot;);</span><br><span class="line">		base.VirtualMethod();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public override void AbstractMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ChildClass AbstractMethod&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//caller</span><br><span class="line">public static void Test()</span><br><span class="line">&#123;</span><br><span class="line">	ParentClass instance = new ChildClass();</span><br><span class="line">	//父类，age=70</span><br><span class="line">	Console.WriteLint(instance.age);</span><br><span class="line">	//父类,编译的时候决定了普通方法的调用，只根据等号左边来看，ChildClass里面的new一点用都没有</span><br><span class="line">	instance.CommonMethod();</span><br><span class="line">	//子类，虽然最终调用的是父类，运行的时候决定了虚方法的调用</span><br><span class="line">	instance.VirtualMethod();</span><br><span class="line">	//子类,运行时决定了抽象方法的调用</span><br><span class="line">	instance.AbstractMethod();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>##接口抽象类</p>
 <p>什么方法适用于虚方法：<br>    大家都有默认实现，只有少部分不同，建议采用虚方法<br>其他用abstract方法：<br>    抽象方法就是约束一下，但是不提供实现，子类必须override，且必须在抽象类里面</p>
 <pre><code>**抽象类是不能实例化的**，只能这么用
 
-```c#
-BasePhone iphone = new iPhone();
-
-public abstract class BasePhone
-{
-
-}
-```
-</code></pre><p>除了可以用抽象类来约束，也可以用接口来约束,接口方法默认都是public，且不能放字段（可以放属性）</p>
-<pre><code class="c#">public interface IExtend
-{
-    void Online();
-    string Remark{get;set;}
-    event Action DoNothingHandle;
-    //索引器
-    string this[int index]{get;set;}
-    //string description; 不能
-    //delegate xxx;不能
-}
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BasePhone iphone = new iPhone();</span><br><span class="line"></span><br><span class="line">public abstract class BasePhone</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</code></pre><p>除了可以用抽象类来约束，也可以用接口来约束,接口方法默认都是public，且不能放字段（可以放属性）<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public interface IExtend</span><br><span class="line">&#123;</span><br><span class="line">	void Online();</span><br><span class="line">	string Remark&#123;get;set;&#125;</span><br><span class="line">	event Action DoNothingHandle;</span><br><span class="line">	//索引器</span><br><span class="line">	string this[int index]&#123;get;set;&#125;</span><br><span class="line">	//string description; 不能</span><br><span class="line">	//delegate xxx;不能</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <p>抽象类和接口区别，想约束东西的时候是用抽象类还是接口？</p>
 <ul>
 <li>抽象类可以包含一些已经实现的东西，然后可以再加上约束的功能，其主要是类，加上一点约束的功能，表明的主要是is a what</li>
@@ -560,7 +478,7 @@ public abstract class BasePhone
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -573,7 +491,7 @@ public abstract class BasePhone
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

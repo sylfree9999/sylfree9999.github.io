@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="class继承class Animal(Object)：     def cry(self):         print(&amp;quot;Animal shouts&amp;quot;)  class Dog(Animal):     def cry(self):         print(&amp;quot;Wang wang&amp;quot;)  &amp;gt;&amp;gt;&amp;gt; dog = Dog() &amp;gt;&amp;gt;&amp;">
+<meta name="description" content="class继承1234567891011class Animal(Object)：	def cry(self):		print(&quot;Animal shouts&quot;)class Dog(Animal):	def cry(self):		print(&quot;Wang wang&quot;)&amp;gt;&amp;gt;&amp;gt; dog = Dog()&amp;gt;&amp;gt;&amp;gt; dog.cry() //覆盖了父类Animal的cry()方">
 <meta name="keywords" content="concept,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python class">
 <meta property="og:url" content="http://yoursite.com/2018/04/13/python-class/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="class继承class Animal(Object)：     def cry(self):         print(&amp;quot;Animal shouts&amp;quot;)  class Dog(Animal):     def cry(self):         print(&amp;quot;Wang wang&amp;quot;)  &amp;gt;&amp;gt;&amp;gt; dog = Dog() &amp;gt;&amp;gt;&amp;">
+<meta property="og:description" content="class继承1234567891011class Animal(Object)：	def cry(self):		print(&quot;Animal shouts&quot;)class Dog(Animal):	def cry(self):		print(&quot;Wang wang&quot;)&amp;gt;&amp;gt;&amp;gt; dog = Dog()&amp;gt;&amp;gt;&amp;gt; dog.cry() //覆盖了父类Animal的cry()方">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python class">
-<meta name="twitter:description" content="class继承class Animal(Object)：     def cry(self):         print(&amp;quot;Animal shouts&amp;quot;)  class Dog(Animal):     def cry(self):         print(&amp;quot;Wang wang&amp;quot;)  &amp;gt;&amp;gt;&amp;gt; dog = Dog() &amp;gt;&amp;gt;&amp;">
+<meta name="twitter:description" content="class继承1234567891011class Animal(Object)：	def cry(self):		print(&quot;Animal shouts&quot;)class Dog(Animal):	def cry(self):		print(&quot;Wang wang&quot;)&amp;gt;&amp;gt;&amp;gt; dog = Dog()&amp;gt;&amp;gt;&amp;gt; dog.cry() //覆盖了父类Animal的cry()方">
 
 
 
@@ -330,73 +330,18 @@
       
 
       
-        <h2 id="class继承"><a href="#class继承" class="headerlink" title="class继承"></a>class继承</h2><pre><code class="python">class Animal(Object)：
-    def cry(self):
-        print(&quot;Animal shouts&quot;)
-
-class Dog(Animal):
-    def cry(self):
-        print(&quot;Wang wang&quot;)
-
-&gt;&gt;&gt; dog = Dog()
-&gt;&gt;&gt; dog.cry() //覆盖了父类Animal的cry()方法
-Wang wang
-
-</code></pre>
+        <h2 id="class继承"><a href="#class继承" class="headerlink" title="class继承"></a>class继承</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span><span class="params">(Object)</span>：</span></span><br><span class="line"><span class="class">	<span class="title">def</span> <span class="title">cry</span><span class="params">(self)</span>:</span></span><br><span class="line">		print(<span class="string">"Animal shouts"</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span><span class="params">(Animal)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">cry</span><span class="params">(self)</span>:</span></span><br><span class="line">		print(<span class="string">"Wang wang"</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dog = Dog()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dog.cry() //覆盖了父类Animal的cry()方法</span><br><span class="line">Wang wang</span><br></pre></td></tr></table></figure></div>
 <h2 id="class访问限制"><a href="#class访问限制" class="headerlink" title="class访问限制"></a>class访问限制</h2><p>私有变量，可以把属性的名称前加上<strong>两个</strong>下划线<code>__</code></p>
-<pre><code class="python">class Student(object):
-    def __init__(self, name, score):
-        self.__name = name
-        self.__score = score
-
-    def get_name(self):
-        return self.__name
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, score)</span>:</span></span><br><span class="line">		self.__name = name</span><br><span class="line">		self.__score = score</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">get_name</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> self.__name</span><br></pre></td></tr></table></figure></div>
 <p>但是以<code>__</code>开头<code>__</code>结尾的，是<span style="color: red; font-weight: bold;">特殊变量</span>, 特殊变量可以直接访问，不是private变量</p>
 <p>如果变量名前面只有<strong>一个</strong>下划线<code>_</code>，这样的实例变量外部可以访问，但是by convention, 虽然可以方位，但请把我视为私有变量，不要随意访问</p>
 <p><strong>注意！！！</strong></p>
-<pre><code class="python">&gt;&gt;&gt; bart = Student(&#39;Bart Simpson&#39;, 59)
-&gt;&gt;&gt; bart.get_name()
-&#39;Bart Simpson&#39;
-&gt;&gt;&gt; bart.__name = &#39;New Name&#39; # 这里设置__name变量, 是相当于新加了一个__name变量，而真正的变量已经被Python解释器变为_Student__name
-&gt;&gt;&gt; bart.__name
-&#39;New Name&#39;
-&gt;&gt;&gt; bart.get_name() # get_name()内部返回self.__name
-&#39;Bart Simpson&#39;
-</code></pre>
-<h2 id="获得一个对象的所有属性和方法"><a href="#获得一个对象的所有属性和方法" class="headerlink" title="获得一个对象的所有属性和方法"></a>获得一个对象的所有属性和方法</h2><pre><code class="python">&gt;&gt;&gt; dir(&#39;ABC&#39;)
-[&#39;__add__&#39;, &#39;__class__&#39;,..., &#39;__subclasshook__&#39;, &#39;capitalize&#39;, &#39;casefold&#39;,..., &#39;zfill&#39;]
-&gt;&gt;&gt; len(&#39;ABC&#39;) #内部相当于调用了该对象的__len__()方法
-3
-&gt;&gt;&gt; &#39;ABC&#39;.__len__()
-3
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart = Student(<span class="string">'Bart Simpson'</span>, <span class="number">59</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart.get_name()</span><br><span class="line"><span class="string">'Bart Simpson'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart.__name = <span class="string">'New Name'</span> <span class="comment"># 这里设置__name变量, 是相当于新加了一个__name变量，而真正的变量已经被Python解释器变为_Student__name</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart.__name</span><br><span class="line"><span class="string">'New Name'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart.get_name() <span class="comment"># get_name()内部返回self.__name</span></span><br><span class="line"><span class="string">'Bart Simpson'</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="获得一个对象的所有属性和方法"><a href="#获得一个对象的所有属性和方法" class="headerlink" title="获得一个对象的所有属性和方法"></a>获得一个对象的所有属性和方法</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dir(<span class="string">'ABC'</span>)</span><br><span class="line">[<span class="string">'__add__'</span>, <span class="string">'__class__'</span>,..., <span class="string">'__subclasshook__'</span>, <span class="string">'capitalize'</span>, <span class="string">'casefold'</span>,..., <span class="string">'zfill'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(<span class="string">'ABC'</span>) <span class="comment">#内部相当于调用了该对象的__len__()方法</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'ABC'</span>.__len__()</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></div>
 <h2 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h2><p>实例绑定属性通过<code>self</code>变量：</p>
-<pre><code class="python">class Student(object):
-    def __init__(self, name):
-        self.name = name
-
-s = Student(&#39;Bob&#39;)
-s.score = 90
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">s = Student(<span class="string">'Bob'</span>)</span><br><span class="line">s.score = <span class="number">90</span></span><br></pre></td></tr></table></figure></div>
 <p>类属性直接在类下面定义,这个属性可以被所有类的实例访问到</p>
-<pre><code class="python">class Student(object):
-    name = &#39;Student&#39;
-
-&gt;&gt;&gt; s = Student() # 创建实例s
-&gt;&gt;&gt; print(s.name) # 打印name属性，因为实例并没有name属性，所以会继续查找class的name属性
-Student
-&gt;&gt;&gt; print(Student.name) # 打印类的name属性
-Student
-&gt;&gt;&gt; s.name = &#39;Michael&#39; # 给实例绑定name属性
-&gt;&gt;&gt; print(s.name) # 由于实例属性优先级比类属性高，因此，它会屏蔽掉类的name属性
-Michael
-&gt;&gt;&gt; print(Student.name) # 但是类属性并未消失，用Student.name仍然可以访问
-Student
-&gt;&gt;&gt; del s.name # 如果删除实例的name属性
-&gt;&gt;&gt; print(s.name) # 再次调用s.name，由于实例的name属性没有找到，类的name属性就显示出来了
-Student
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line">    name = <span class="string">'Student'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = Student() <span class="comment"># 创建实例s</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(s.name) <span class="comment"># 打印name属性，因为实例并没有name属性，所以会继续查找class的name属性</span></span><br><span class="line">Student</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(Student.name) <span class="comment"># 打印类的name属性</span></span><br><span class="line">Student</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.name = <span class="string">'Michael'</span> <span class="comment"># 给实例绑定name属性</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(s.name) <span class="comment"># 由于实例属性优先级比类属性高，因此，它会屏蔽掉类的name属性</span></span><br><span class="line">Michael</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(Student.name) <span class="comment"># 但是类属性并未消失，用Student.name仍然可以访问</span></span><br><span class="line">Student</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> s.name <span class="comment"># 如果删除实例的name属性</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(s.name) <span class="comment"># 再次调用s.name，由于实例的name属性没有找到，类的name属性就显示出来了</span></span><br><span class="line">Student</span><br></pre></td></tr></table></figure></div>
 <h2 id="staticmethod和-classmethod"><a href="#staticmethod和-classmethod" class="headerlink" title="@staticmethod和@classmethod"></a>@staticmethod和@classmethod</h2><p>一般是用类方法需要先实例化一个对象再调用方法<br>但是使用了@staticmethod以及@classmethod，可以直接<code>类名.方法名()</code>调用</p>
 <p>它们的区别：</p>
 <ul>
@@ -405,38 +350,7 @@ Student
 <ul>
 <li>@staticmethod，当调用这个方法的时候，我们<strong>甚至不用把类传进去</strong>，也就是说我们可以把这个方法放到类里面，但是这个方法其实根本不需要这个类或者实例，比方说设置一些环境参数，更改别的类的属性之类的。</li>
 </ul>
-<pre><code class="python">
-class Kls(object):
-    def __init__(self, data):
-        self.data = data
-
-    def printd(self):
-        print(self.data)
-
-    @staticmethod
-        def smethod(*arg):
-            print(&#39;Static:&#39;, arg)
-
-    @classmethod
-        def cmethod(*arg):
-            print(&#39;Class:&#39;, arg)
-
-&gt;&gt;&gt; ik = Kls(23)
-&gt;&gt;&gt; ik.printd()
-23
-&gt;&gt;&gt; ik.smethod()
-Static: ()
-&gt;&gt;&gt; ik.cmethod()
-Class: (&lt;class &#39;__main__.Kls&#39;&gt;,)
-&gt;&gt;&gt; Kls.printd()
-TypeError: unbound method printd() must be called with Kls instance as first argument (got nothing instead)
-&gt;&gt;&gt; Kls.smethod()
-Static: ()
-&gt;&gt;&gt; Kls.cmethod()
-Class: (&lt;class &#39;__main__.Kls&#39;&gt;,)
-
-</code></pre>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Kls</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printd</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(self.data)</span><br><span class="line"> </span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">smethod</span><span class="params">(*arg)</span>:</span></span><br><span class="line">            print(<span class="string">'Static:'</span>, arg)</span><br><span class="line"> </span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">cmethod</span><span class="params">(*arg)</span>:</span></span><br><span class="line">            print(<span class="string">'Class:'</span>, arg)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ik = Kls(<span class="number">23</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ik.printd()</span><br><span class="line"><span class="number">23</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ik.smethod()</span><br><span class="line">Static: ()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ik.cmethod()</span><br><span class="line">Class: (&lt;class '__main__.Kls'&gt;,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Kls.printd()</span><br><span class="line">TypeError: unbound method printd() must be called <span class="keyword">with</span> Kls instance <span class="keyword">as</span> first argument (got nothing instead)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Kls.smethod()</span><br><span class="line">Static: ()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Kls.cmethod()</span><br><span class="line">Class: (&lt;class '__main__.Kls'&gt;,)</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -555,7 +469,7 @@ Class: (&lt;class &#39;__main__.Kls&#39;&gt;,)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -568,7 +482,7 @@ Class: (&lt;class &#39;__main__.Kls&#39;&gt;,)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

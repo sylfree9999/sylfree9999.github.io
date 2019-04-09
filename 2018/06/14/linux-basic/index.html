@@ -353,18 +353,12 @@
 <h3 id="常用命令-centos-6-7"><a href="#常用命令-centos-6-7" class="headerlink" title="常用命令[centos 6.7]"></a>常用命令[centos 6.7]</h3><h4 id="网络方面"><a href="#网络方面" class="headerlink" title="网络方面"></a>网络方面</h4><ol>
 <li><code>netstat -nltp</code><br>list all listening programs and their port</li>
 <li><code>setup</code><br>进入图形界面更改配置</li>
-<li><code>vi /etc/sysconfig/network</code><br>修改主机名<pre><code>NETWORKING=yes
-HOSTNAME=server1.itcast.cn
-</code></pre></li>
+<li><p><code>vi /etc/sysconfig/network</code><br>修改主机名</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="INI"><figure class="iseeu highlight /ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">NETWORKING</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">HOSTNAME</span>=server1.itcast.cn</span><br></pre></td></tr></table></figure></div>
+</li>
 <li><p><code>vi /etc/sysconfig/network-scripts/ifcfg-eth0</code><br>修改IP地址</p>
-<pre><code>DEVICE = &quot;eth0&quot;
-TYPE = &quot;Ethernet&quot;
-ONBOOT = &quot;yes&quot;  #是否网卡开机启用
-BOOTPROTO = &quot;static&quot;
-IPADDR = &quot;192.168.11.200&quot;
-NETMASK = &quot;255.255.255.0&quot;
-GATEWAY = &quot;192.168.11.2&quot;
-</code></pre><p><code>service network restart</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="MAKEFILE"><figure class="iseeu highlight /makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DEVICE = <span class="string">"eth0"</span></span><br><span class="line">TYPE = <span class="string">"Ethernet"</span></span><br><span class="line">ONBOOT = <span class="string">"yes"</span>  <span class="comment">#是否网卡开机启用</span></span><br><span class="line">BOOTPROTO = <span class="string">"static"</span></span><br><span class="line">IPADDR = <span class="string">"192.168.11.200"</span></span><br><span class="line">NETMASK = <span class="string">"255.255.255.0"</span></span><br><span class="line">GATEWAY = <span class="string">"192.168.11.2"</span></span><br></pre></td></tr></table></figure></div>
+<p><code>service network restart</code></p>
 </li>
 <li><p><code>vi /etc/hosts</code><br>修改ip地址和主机名的映射关系</p>
 </li>
@@ -378,12 +372,8 @@ GATEWAY = &quot;192.168.11.2&quot;
 <img src="/2018/06/14/linux-basic/vmware-net-04.png">
 </li>
 <li><p>添加iptables, open port</p>
-<pre><code>service iptables status
-service iptables start
-service iptables status 
-iptables -nL --line-numbers
-
-</code></pre><p><code>iptables -I INPUT -p tcp --dport 8080 -j ACCEPT</code><br>删除第八行rule：<br><code>iptables -D INPUT 8</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">service iptables status</span><br><span class="line">service iptables start</span><br><span class="line">service iptables status </span><br><span class="line">iptables -nL --line-numbers</span><br></pre></td></tr></table></figure></div>
+<p><code>iptables -I INPUT -p tcp --dport 8080 -j ACCEPT</code><br>删除第八行rule：<br><code>iptables -D INPUT 8</code></p>
 </li>
 </ol>
 <h4 id="日常操作命令"><a href="#日常操作命令" class="headerlink" title="日常操作命令"></a>日常操作命令</h4><p><code>pwd</code>    查看当前所在目录<br><code>date</code>    查看当前系统时间<br><code>who</code>     查看当前有谁在线，登陆了服务器<br><code>last</code>    查看最近的登陆历史记录<br><code>ls -al</code>    查看隐藏文件以及更详细的信息，以列表形式显示<br><code>mkdir -p aaa/bbb</code>    如果子目录没有，一并创建<br><code>touch filename</code>    创建文件<br><code>vi 编辑</code><br>    <code>A</code>    在该行的最后插入<br>    <code>a</code>    在该行最前面插入<br>    <code>gg</code>    直接跳到文件的首行<br>    <code>G</code>    直接跳到文件的末行<br>    <code>dd</code>    删除行，如果8dd，则一次性删除8行<br>    <code>yy</code>    复制当前行，3yy复制3行<br>    <code>p</code>    粘贴<br>    <code>/YOU</code>    查找文件中出现的YOU并定位到第一个找到的地方</p>
@@ -391,12 +381,8 @@ iptables -nL --line-numbers
 <p>d:    标识节点类型（d:文件夹    -：文件    l:链接）<br>r:可读<br>w:可写（删除文件并不代表你修改了这个文件，所以即使对这个文件没有写权限，也是可以删除的，删除其实是改变了父目录的内容，只要它上层directory有写权限，你就是可以删除的）<br>x:可执行（可不可以当一个程序来运行）<br>第一组rwx：    表示拥有者对它的权限<br>第二组rwx:    表示所属组对它的权限<br>第三组rwx：    上面用户之外的用户对它的权限</p>
 <p><code>chmod o-rw xx.file</code><br>让其他人没有read write的权限<br>也可以用二进制的方法来写：<br><code>chmod -R 700 xxxDirectory</code><br><code>chown -R angela:angela aaa/</code>更改所有者，必须用root才能改</p>
 <p>修改文件名<br><code>rename .repo .repo.bak *</code>    对当前目录下所有以.repo结尾的文件，改为以.repo.bak结尾的文件</p>
-<h5 id="基本用户管理"><a href="#基本用户管理" class="headerlink" title="基本用户管理"></a>基本用户管理</h5><p><code>useradd angela</code>    添加用户<br><code>passwd angela</code>    设置密码<br><code>vi /etc/sudoers</code> -&gt; 将用户加入到sudoers中</p>
-<pre><code>```
-root    ALL=(ALL)     ALL
-newuser    ALL=(ALL)     ALL
-```
-</code></pre><p><code>su angela</code>    切换到angela<br><code>exit</code>    退出angela</p>
+<h5 id="基本用户管理"><a href="#基本用户管理" class="headerlink" title="基本用户管理"></a>基本用户管理</h5><p><code>useradd angela</code>    添加用户<br><code>passwd angela</code>    设置密码<br><code>vi /etc/sudoers</code> -&gt; 将用户加入到sudoers中<br>    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ADA"><figure class="iseeu highlight /ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root	<span class="keyword">ALL</span>=(<span class="keyword">ALL</span>) 	<span class="keyword">ALL</span></span><br><span class="line">newuser	<span class="keyword">ALL</span>=(<span class="keyword">ALL</span>) 	<span class="keyword">ALL</span></span><br></pre></td></tr></table></figure></div></p>
+<p><code>su angela</code>    切换到angela<br><code>exit</code>    退出angela</p>
 <p><code>getent group admin</code>    查看所有admin group下面的用户<br><code>groups ming.ming</code>    查看mingming属于哪些group</p>
 <p><code>/etc/group</code>文件包含所有组,格式如下：<br>group_name:passwd:GID:user_list<br><code>/etc/shadow</code>和<code>/etc/passwd</code>系统存在的所有用户名</p>
 <h5 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h5><p><code>hostname</code>    查看主机名</p>
@@ -412,10 +398,8 @@ newuser    ALL=(ALL)     ALL
 <p><code>halt</code>    关机</p>
 <p><code>mkisofs -o /home/linuxlookup/example.iso /source/directory/</code>    生成iso文件</p>
 <p><code>createrepo /var/www/html/repo</code>    生成repodata链接文件，否则本地yum无法安装</p>
-<p>开机挂载光盘</p>
-<pre><code>vi /etc/fstab
-/dev/cdrom              /mnt/cdrom              iso9660 defaults        0 0
-</code></pre><p><code>ln -s /mnt/cdrom ./centos</code> 生成软链接</p>
+<p>开机挂载光盘<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="AWK"><figure class="iseeu highlight /awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>fstab</span><br><span class="line"><span class="regexp">/dev/</span>cdrom              <span class="regexp">/mnt/</span>cdrom              iso9660 defaults        <span class="number">0</span> <span class="number">0</span></span><br></pre></td></tr></table></figure></div></p>
+<p><code>ln -s /mnt/cdrom ./centos</code> 生成软链接</p>
 <h5 id="ssh免密登陆"><a href="#ssh免密登陆" class="headerlink" title="ssh免密登陆"></a>ssh免密登陆</h5><p><code>ssh-keygen</code>    生成密钥对</p>
 <p><code>ssh-copy-id 192.168.11.222</code> 就会自动把公钥copy到192.168.11.222这个机子的.ssh/authorized_keys文件夹中 </p>
 <h5 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h5><p><code>tail -10 install.log</code>    查看文件尾部的10行<br><code>tail -f install.log</code>    实时输出文件尾部内容，小f跟踪文件的唯一inode号，就算文件改名后，还是跟踪原来这个inode表示的文件<br><code>tail -F install.log</code>    大F按照文件名跟踪</p>
@@ -426,81 +410,14 @@ newuser    ALL=(ALL)     ALL
 <p><code>tar -xvf myfirstpackage.tar</code> 解包文件</p>
 <p><strong>一次性完成打包&amp;压缩</strong><br><code>tar -zcvf my.tar.gz directory/</code><br><code>tar -zxvf my.tar.gz -C d2/</code>     解压到指定目录下</p>
 <h5 id="安装文件"><a href="#安装文件" class="headerlink" title="安装文件"></a>安装文件</h5><p>0,    更改Mirror到清华<br>    yum [<a href="https://mirror.tuna.tsinghua.edu.cn/help/centos/]：" target="_blank" rel="noopener">https://mirror.tuna.tsinghua.edu.cn/help/centos/]：</a><br>    首先备份CentOS-Base.repo<br>    <code>sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak</code><br>    然后vi /etc/yum.repos.d/CentOS-Base.repo<br>    将下面的写到文件中(CentOS6):</p>
-<pre><code>    ```
-    # CentOS-Base.repo
-    #
-    # The mirror system uses the connecting IP address of the client and the
-    # update status of each mirror to pick mirrors that are updated to and
-    # geographically close to the client.  You should use this for CentOS updates
-    # unless you are manually picking other mirrors.
-    #
-    # If the mirrorlist= does not work for you, as a fall back you can try the
-    # remarked out baseurl= line instead.
-    #
-    #
-
-    [        base]
-    name=CentOS-$releasever - Base
-    baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/os/$basearch/
-    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os
-    gpgcheck=1
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-    #released updates
-    [updates]
-    name=CentOS-$releasever - Updates
-    baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/updates/$basearch/
-    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates
-    gpgcheck=1
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-    #additional packages that may be useful
-    [extras]
-    name=CentOS-$releasever - Extras
-    baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/extras/$basearch/
-    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras
-    gpgcheck=1
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-    #additional packages that extend functionality of existing packages
-    [centosplus]
-    name=CentOS-$releasever - Plus
-    baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/centosplus/$basearch/
-    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus
-    gpgcheck=1
-    enabled=0
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-    ```
+<pre><code><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="INI"><figure class="iseeu highlight /ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CentOS-Base.repo</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The mirror system uses the connecting IP address of the client and the</span></span><br><span class="line"><span class="comment"># update status of each mirror to pick mirrors that are updated to and</span></span><br><span class="line"><span class="comment"># geographically close to the client.  You should use this for CentOS updates</span></span><br><span class="line"><span class="comment"># unless you are manually picking other mirrors.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># If the mirrorlist= does not work for you, as a fall back you can try the</span></span><br><span class="line"><span class="comment"># remarked out baseurl= line instead.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="section">[		base]</span></span><br><span class="line"><span class="attr">name</span>=CentOS-<span class="variable">$releasever</span> - Base</span><br><span class="line"><span class="attr">baseurl</span>=https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="variable">$releasever</span>/os/<span class="variable">$basearch</span>/</span><br><span class="line"><span class="comment">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">gpgkey</span>=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-<span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#released updates</span></span><br><span class="line"><span class="section">[updates]</span></span><br><span class="line"><span class="attr">name</span>=CentOS-<span class="variable">$releasever</span> - Updates</span><br><span class="line"><span class="attr">baseurl</span>=https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="variable">$releasever</span>/updates/<span class="variable">$basearch</span>/</span><br><span class="line"><span class="comment">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">gpgkey</span>=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-<span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#additional packages that may be useful</span></span><br><span class="line"><span class="section">[extras]</span></span><br><span class="line"><span class="attr">name</span>=CentOS-<span class="variable">$releasever</span> - Extras</span><br><span class="line"><span class="attr">baseurl</span>=https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="variable">$releasever</span>/extras/<span class="variable">$basearch</span>/</span><br><span class="line"><span class="comment">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">gpgkey</span>=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-<span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#additional packages that extend functionality of existing packages</span></span><br><span class="line"><span class="section">[centosplus]</span></span><br><span class="line"><span class="attr">name</span>=CentOS-<span class="variable">$releasever</span> - Plus</span><br><span class="line"><span class="attr">baseurl</span>=https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="variable">$releasever</span>/centosplus/<span class="variable">$basearch</span>/</span><br><span class="line"><span class="comment">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="number">0</span></span><br><span class="line"><span class="attr">gpgkey</span>=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-<span class="number">7</span></span><br></pre></td></tr></table></figure></div>
 </code></pre><p>然后更新软件包缓存 <code>sudo yum makecache</code></p>
 <p>1,    在安装jdk的时候如果出现<code>/lib/ld-linux.so.2: bad ELF interpreter: No such file or directory</code></p>
-<pre><code>    ```
-    yum -y install glibc.i686
-    apt-get update
-    apt-get install ia32-libs
-    ```
-</code></pre><p>2,    更改环境变量</p>
-<pre><code>```
-vi /etc/profile
-:$ # to the end of the file
-o # append another line and goes into insert mode
-export PATH = /root/apps/jdkXXX
-export PATH=$PATH:$JAVA_HOME/bin
-:wq!
-source /etc/profile
-```
-</code></pre><p>3,    <code>yum</code>安装<br>    <code>yum list | grep XX</code> 列出所有可用的package和package组<br>    <code>yum clean all</code>    清除所有缓冲数据<br>    <code>yum deplist httpd</code>    列出一个包所有依赖的包<br>    <code>yum remove httpd</code>    删除httpd<br>    <code>yum repolist</code>    看一下现在的repo有哪些</p>
-<p>4-0，yum安装MySQL</p>
-<pre><code>```
-sudo yum install mysql-server
-sudo /sbin/chkconfig --levels 235 mysqld on
-sudo service mysqld start
-sudo mysql_secure_installation
-
-//登陆
-mysql -u root -pXXX
-```
-</code></pre><p>4-1，手动安装MySQL rpm包</p>
+<pre><code><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y <span class="keyword">install</span> glibc.i686</span><br><span class="line">apt-<span class="keyword">get</span> <span class="keyword">update</span></span><br><span class="line">apt-<span class="keyword">get</span> <span class="keyword">install</span> ia32-libs</span><br></pre></td></tr></table></figure></div>
+</code></pre><p>2,    更改环境变量<br>    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line">:$ # <span class="keyword">to</span> the end of the file</span><br><span class="line">o # append another line <span class="keyword">and</span> goes into insert mode</span><br><span class="line"><span class="builtin-name">export</span> PATH = /root/apps/jdkXXX</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$JAVA_HOME/bin</span><br><span class="line">:wq!</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure></div></p>
+<p>3,    <code>yum</code>安装<br>    <code>yum list | grep XX</code> 列出所有可用的package和package组<br>    <code>yum clean all</code>    清除所有缓冲数据<br>    <code>yum deplist httpd</code>    列出一个包所有依赖的包<br>    <code>yum remove httpd</code>    删除httpd<br>    <code>yum repolist</code>    看一下现在的repo有哪些</p>
+<p>4-0，yum安装MySQL<br>    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo yum <span class="keyword">install</span> mysql-<span class="keyword">server</span></span><br><span class="line">sudo /sbin/chkconfig <span class="comment">--levels 235 mysqld on</span></span><br><span class="line">sudo service mysqld <span class="keyword">start</span></span><br><span class="line">sudo mysql_secure_installation</span><br><span class="line"></span><br><span class="line">//登陆</span><br><span class="line">mysql -u root -pXXX</span><br></pre></td></tr></table></figure></div></p>
+<p>4-1，手动安装MySQL rpm包</p>
 <pre><code>0，查询rpm包
     `rpm -qa`
 
@@ -517,27 +434,16 @@ mysql -u root -pXXX
 5，卸载冲突的rpm包
     `rpm -e mysql-libs-5.1.73-5.el6_6.x86_64 --nodeps`
 6，再安装MySQL-client和MySQL-server
-    ```
-    rpm -ivh MySQL-client-5.5.48-1.linux2.6.x86_64.rpm
-    rpm -ivh MySQL-server-5.5.48-1.linux2.6.x86_64.rpm
-    ```
+    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="CSS"><figure class="iseeu highlight /css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">rpm</span> <span class="selector-tag">-ivh</span> <span class="selector-tag">MySQL-client-5</span><span class="selector-class">.5</span><span class="selector-class">.48-1</span><span class="selector-class">.linux2</span><span class="selector-class">.6</span><span class="selector-class">.x86_64</span><span class="selector-class">.rpm</span></span><br><span class="line"><span class="selector-tag">rpm</span> <span class="selector-tag">-ivh</span> <span class="selector-tag">MySQL-server-5</span><span class="selector-class">.5</span><span class="selector-class">.48-1</span><span class="selector-class">.linux2</span><span class="selector-class">.6</span><span class="selector-class">.x86_64</span><span class="selector-class">.rpm</span></span><br></pre></td></tr></table></figure></div>
+
 7，启动MySQL服务，然后初始化MySQL
-    ```
-    service mysqld start
-    /usr/bin/mysql_secure_installation
-    ```
+    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service mysqld <span class="keyword">start</span></span><br><span class="line">/usr/<span class="keyword">bin</span>/mysql_secure_installation</span><br></pre></td></tr></table></figure></div>
+
 8，测试MySQL
-    ```
-    mysql -u root -pXXXX
-    ```
+    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="EBNF"><figure class="iseeu highlight /ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mysql -u root -pXXXX</span></span><br></pre></td></tr></table></figure></div>
 </code></pre><p>5，安装tomcat<br>    <code>tar -zxvf apacheXXXXX</code><br>    <code>cd apacheXXX/bin</code><br>    <code>./startup.sh</code></p>
-<p>6，安装httpd服务器<br>    如果只是做简单的静态web服务器，不需要装tomcat,nginx这种，只要使用httpd就可以了</p>
-<pre><code>```
-sudo yum install httpd
-cd /var/www/html
-touch hello.html
-```
-然后访问的时候直接ip:port/hello.html就可以访问了
+<p>6，安装httpd服务器<br>    如果只是做简单的静态web服务器，不需要装tomcat,nginx这种，只要使用httpd就可以了<br>    <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install httpd</span><br><span class="line"><span class="keyword">cd</span> <span class="string">/var/www/html</span></span><br><span class="line">touch hello.html</span><br></pre></td></tr></table></figure></p>
+<pre><code>然后访问的时候直接ip:port/hello.html就可以访问了
 </code></pre>
       
     </div>
@@ -657,7 +563,7 @@ touch hello.html
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -670,7 +576,7 @@ touch hello.html
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

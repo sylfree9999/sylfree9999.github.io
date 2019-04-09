@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="EVENT假如现在有一个猫类型，它叫一声会引发一连串反应，诸如 public class Cat {     public void Miao()     {         new Neighbor().Awake();         new Dog().Bark();         new Mouse().Run();         new Baby().Cry();     } }">
+<meta name="description" content="EVENT假如现在有一个猫类型，它叫一声会引发一连串反应，诸如12345678910public class Cat&amp;#123;	public void Miao()	&amp;#123;		new Neighbor().Awake();		new Dog().Bark();		new Mouse().Run();		new Baby().Cry();	&amp;#125;&amp;#125; 这样的写法会导致耦合性高，">
 <meta name="keywords" content="concept,.NET">
 <meta property="og:type" content="article">
 <meta property="og:title" content="net-EventIOSerialize">
 <meta property="og:url" content="http://yoursite.com/2018/06/25/net-EventIOSerialize/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="EVENT假如现在有一个猫类型，它叫一声会引发一连串反应，诸如 public class Cat {     public void Miao()     {         new Neighbor().Awake();         new Dog().Bark();         new Mouse().Run();         new Baby().Cry();     } }">
+<meta property="og:description" content="EVENT假如现在有一个猫类型，它叫一声会引发一连串反应，诸如12345678910public class Cat&amp;#123;	public void Miao()	&amp;#123;		new Neighbor().Awake();		new Dog().Bark();		new Mouse().Run();		new Baby().Cry();	&amp;#125;&amp;#125; 这样的写法会导致耦合性高，">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="net-EventIOSerialize">
-<meta name="twitter:description" content="EVENT假如现在有一个猫类型，它叫一声会引发一连串反应，诸如 public class Cat {     public void Miao()     {         new Neighbor().Awake();         new Dog().Bark();         new Mouse().Run();         new Baby().Cry();     } }">
+<meta name="twitter:description" content="EVENT假如现在有一个猫类型，它叫一声会引发一连串反应，诸如12345678910public class Cat&amp;#123;	public void Miao()	&amp;#123;		new Neighbor().Awake();		new Dog().Bark();		new Mouse().Run();		new Baby().Cry();	&amp;#125;&amp;#125; 这样的写法会导致耦合性高，">
 
 
 
@@ -330,314 +330,22 @@
       
 
       
-        <h2 id="EVENT"><a href="#EVENT" class="headerlink" title="EVENT"></a>EVENT</h2><p>假如现在有一个猫类型，它叫一声会引发一连串反应，诸如</p>
-<pre><code class="c#">public class Cat
-{
-    public void Miao()
-    {
-        new Neighbor().Awake();
-        new Dog().Bark();
-        new Mouse().Run();
-        new Baby().Cry();
-    }
-}
-</code></pre>
+        <h2 id="EVENT"><a href="#EVENT" class="headerlink" title="EVENT"></a>EVENT</h2><p>假如现在有一个猫类型，它叫一声会引发一连串反应，诸如<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Cat</span><br><span class="line">&#123;</span><br><span class="line">	public void Miao()</span><br><span class="line">	&#123;</span><br><span class="line">		new Neighbor().Awake();</span><br><span class="line">		new Dog().Bark();</span><br><span class="line">		new Mouse().Run();</span><br><span class="line">		new Baby().Cry();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <p>这样的写法会导致耦合性高，不易扩展，增加，减少或者调整顺序都会变得比较困难，最好是猫叫一声-&gt;触发一系列的动作</p>
 <p><strong>用委托的方法实现</strong></p>
 <a id="more"></a>
-<pre><code class="c#">//这个MiaoEventHandler来指定一堆动作
-//委托MiaoEventHandler来定义动作，Cat就不管了，Cat就不依赖于里面的动作了
-public class Cat
-{
-    public Action MiaoEventHandler;
-
-    public void MiaoAction()
-    {
-        if(this.MiaoEventHandler != null)
-        {
-            this.MiaoEventHandler.Invoke();
-        }
-    }
-}
-
-
-
-//caller
-static void Main(string[] args)
-{
-    {
-        //Event
-        Cat cat = new Cat();
-        cat.Miao();
-        //委托的时候只能加方法名，而不是调用，所以不是Awake()
-
-        //带有参数的方法的调用，就可以用lambda来完成
-        //这就是多播委托的一种使用，注意，多播委托是不适用于带返回值的委托的，因为到最后只会取最后一个委托的返回值！
-        cat.MiaoEventHandler += () =&gt; new Neighbor().Awake(123);
-        cat.MiaoEventHandler += new Dog().Bark;
-        cat.MiaoEventHandler += new Mouse().Run;
-        cat.MiaoEventHandler += new Baby().Cry;
-        cat.MiaoAction();
-    }
-}
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//这个MiaoEventHandler来指定一堆动作</span><br><span class="line">//委托MiaoEventHandler来定义动作，Cat就不管了，Cat就不依赖于里面的动作了</span><br><span class="line">public class Cat</span><br><span class="line">&#123;</span><br><span class="line">	public Action MiaoEventHandler;</span><br><span class="line">	</span><br><span class="line">	public void MiaoAction()</span><br><span class="line">	&#123;</span><br><span class="line">		if(this.MiaoEventHandler != null)</span><br><span class="line">		&#123;</span><br><span class="line">			this.MiaoEventHandler.Invoke();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//caller</span><br><span class="line">static void Main(string[] args)</span><br><span class="line">&#123;</span><br><span class="line">	&#123;</span><br><span class="line">		//Event</span><br><span class="line">		Cat cat = new Cat();</span><br><span class="line">		cat.Miao();</span><br><span class="line">		//委托的时候只能加方法名，而不是调用，所以不是Awake()</span><br><span class="line"></span><br><span class="line">		//带有参数的方法的调用，就可以用lambda来完成</span><br><span class="line">		//这就是多播委托的一种使用，注意，多播委托是不适用于带返回值的委托的，因为到最后只会取最后一个委托的返回值！</span><br><span class="line">		cat.MiaoEventHandler += () =&gt; new Neighbor().Awake(123);</span><br><span class="line">		cat.MiaoEventHandler += new Dog().Bark;</span><br><span class="line">		cat.MiaoEventHandler += new Mouse().Run;</span><br><span class="line">		cat.MiaoEventHandler += new Baby().Cry;</span><br><span class="line">		cat.MiaoAction();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p><strong>用事件的方法实现</strong></p>
 <p>Event就是Action委托前面加event关键字，防止外部直接invoke和赋值，子类都没有办法Invoke</p>
 <p><strong>事件和委托的区别联系：</strong><br><span style="color: red">事件是委托的实例，委托是一个类型，而事件是一个实例，委托类型的实例</span><br>例：Student是一个类型，而Dashan是Student类型的一个实例</p>
-<pre><code class="c#">public event Action MiaoEventHandlerEvent;
-public void MiaoActionEvent()
-{
-    if(this.MiaoEventHandlerEvent != null)
-    {
-        this.MiaoEventHandlerEvent.Invoke();
-    }
-}
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public event Action MiaoEventHandlerEvent;</span><br><span class="line">public void MiaoActionEvent()</span><br><span class="line">&#123;</span><br><span class="line">	if(this.MiaoEventHandlerEvent != null)</span><br><span class="line">	&#123;</span><br><span class="line">		this.MiaoEventHandlerEvent.Invoke();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p><strong>为什么要有event?</strong><br>就是为了这个MiaoEventHandler不能在外部被调用被赋值</p>
-<p>在上面的那个例子，<code>MiaoEventHandler</code>是可以在中间被invoke和赋值的，比方说</p>
-<pre><code class="c#">cat.MiaoEventHandler += () =&gt; new Neighbor().Awake(123);
-cat.MiaoEventHandler += new Dog().Bark;
-
-//这样是可以的
-cat.MiaoEventHandler.Invoke();
-cat.MiaoEventHandler = null;
-
-cat.MiaoEventHandler += new Mouse().Run;
-cat.MiaoEventHandler += new Baby().Cry;
-</code></pre>
+<p>在上面的那个例子，<code>MiaoEventHandler</code>是可以在中间被invoke和赋值的，比方说<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cat.MiaoEventHandler += () =&gt; new Neighbor().Awake(123);</span><br><span class="line">cat.MiaoEventHandler += new Dog().Bark;</span><br><span class="line"></span><br><span class="line">//这样是可以的</span><br><span class="line">cat.MiaoEventHandler.Invoke();</span><br><span class="line">cat.MiaoEventHandler = null;</span><br><span class="line"></span><br><span class="line">cat.MiaoEventHandler += new Mouse().Run;</span><br><span class="line">cat.MiaoEventHandler += new Baby().Cry;</span><br></pre></td></tr></table></figure></div></p>
 <p><span style="color: red">但是如果用了Event，就不可以在中间被赋值，只能在Cat类的MiaoActionEvent里面去调用</span></p>
 <h2 id="EVENT的应用"><a href="#EVENT的应用" class="headerlink" title="EVENT的应用"></a>EVENT的应用</h2><p>事件的应用一定会有<br>1，事件的发布者，在这里用来Invoke事件<br>2，事件的订阅用户<br>3，事件的注册</p>
-<pre><code class="c#">//这个是事件的发布者，只有事件的发布者才能Invoke这个事件
-
-public class iPhone8
-{
-    //EventHandler&lt;PriceChangeEventArgs&gt;是事件的委托类型， PriceChange是事件名称
-    public event EventHandler&lt;PriceChangeEventArgs&gt; PriceChange;
-
-    protected virtual void OnPriceChanged(PriceChangeEventArgs e)
-    {
-        if (this.PriceChange != null)
-        {
-            this.PriceChange.Invoke(this, e);
-        }
-    }
-
-    private decimal price;
-    public decimal Price
-    {
-        get {return price;}
-        set 
-        {
-            if(price == value)
-                return;
-            decimal oldPrice = price;
-            price = value;
-            if(this.PriceChange != null)
-                this.OnPriceChanged(new PriceChangeEventArgs(oldPrice, price));
-        }
-    }
-
-}
-
-
-//EventHandler是框架帮我们定义的，专门用来作事件用
-//sender是事件的触发者, e的类型是泛型，也就是TEventArgs类型，一般这个类型在定义的时候必须继承于EventArgs
-public delegate void EventHandler&lt;TEventArgs&gt;(object sender, TEventArgs e);
-//EventArgs其实就是个空壳,但是你可以继承它之后自己自定义一些属性
-public class EventArgs
-{
-    public static readonly EventArgs Empty;
-    public EventArgs();
-}
-
-//PriceChangeEventArgs
-public class PriceChangeEventArgs: EventArgs
-{
-    public int Id {get;set;}
-    public readonly decimal OldPrice;
-    public readonly decimal NewPrice;
-
-    public PriceChangeEventArgs(decimal oldPrice, decimal newPrice)
-    {
-        OldPrice = oldPrice;
-        NewPrice = newPrice;
-    }
-}
-
-
-
-
-//事件订阅者
-public class Businessman
-{
-    public void Iphone8_PriceChange(object sender, PriceChangeEventArgs e)
-    {
-        Console.WriteLine(&quot;年终大促,iphone只卖&quot; + e.NewPrice + &quot;元！&quot;);
-    }
-}
-
-//事件的注册
-public class EventRegister
-{
-    private iPhone8 _iphone = null;
-
-    public void Init()
-    {
-        this._iphone = new iPhone8();
-        Businessman businessman = new Businessman();
-        this._iphone.PriceChange += businessman.Iphone8_PriceChange;
-    }
-
-    public void SetPrice(decimal price)
-    {
-        this._iphone.Price = price;
-    }
-}
-</code></pre>
-<h2 id="IO-Serialize"><a href="#IO-Serialize" class="headerlink" title="IO Serialize"></a>IO Serialize</h2><pre><code class="c#">
-//检查文件夹是否存在
-if(!Directory.Exists(LogPath))
-{
-    //一次性创建全部的子路径
-    DirectoryInfo directoryInfo = Directory.CreateDirectory(LogPath);
-    //原文件夹会没有
-    Directory.Move(LogPath, LogMovePath);
-    Directory.Delete(LogMovePath);
-}
-//不能用这个检查文件夹是否存在
-Directory directory = new DirectoryInfo(LogPath);
-FileInfo fileInfo = new FileInfo(Path.Combine(LogPath,&quot;info.txt&quot;));
-if(!File.Exists(Path.Combine(LogPath, &quot;info.txt&quot;)))
-{
-    Directory.CreateDirectory(LogPath);
-    //打开文件流（创建文件并写入）
-    using(FileStream fileStream = File.Create(fileName))
-    {
-        string name = &quot;111&quot;;
-        byte[] bytes = Encoding.Default.GetBytes(name);
-        fileStream.Write(bytes, 0 , bytes.Length);
-        fileStream.Flush();
-    }
-    //打开文件流（创建文件并写入）,这个File.Create会把之前的文件删掉，重新写
-    using(FileStream fileStream = File.Create(fileName))
-    {
-        StreamWriter sw = new StreamWriter(fileStream);
-        sw.Write(&quot;123&quot;);
-        sw.Flush();
-    }
-    //流写入器（创建/打开文件并写入）
-    using(StreamWriter sw = File.AppendText(fileName))
-    {
-        string msg = &quot;Today is a good day.&quot;;
-        sw.WriteLine(msg);
-        sw.Flush();
-    }
-    //流写入器(创建/打开文件并写入)
-    using(StreamWriter sw = File.AppendText(fileName))
-    {
-        string name = &quot;12312&quot;;
-        byte[] bytes = Encoding.Default.GetBytes(name);
-        sw.BaseStream.Write(bytes,0,bytes.Length);
-        sw.Flush();
-    }
-
-
-    //读取,
-    //一次性读所有的数据，不推荐
-    foreach(var result in File.ReadAllLines(fileName))
-    {
-        Console.WriteLine(result);
-    }
-
-    string sResult = File.ReadAllText(fileName);
-
-    Byte[] byteContent = File.ReadALlBytes(fileName);
-    string sResultByte = System.Text.Encoding.UTF8.GetString(byteContent);
-
-    //分批读取，比较好
-    using(FileStream stream = File.OpenRead(fileName))
-    {
-        int length = 5;
-        int result = 0;
-
-        do 
-        {
-            byte[] bytes = new byte[length];
-            result = stream.Read(bytes,0,5);
-            for(int i=0; i&lt; result; i++)
-            {
-                Console.WriteLine(bytes[i].TOString());
-            }
-        }
-        while(length == result);
-
-    }
-}
-
-//写日志
-public static void Log(string msg)
-{
-    StreamWriter sw = null;
-    try
-    {
-        string fileName = &quot;log.txt&quot;;
-        string totalPath = Path.Combine(LogPath, fileName);
-
-        if(!Directory.Exists(LogPath))
-        {
-            Directory.Create(LogPath);
-        }
-        sw = File.AppendText(totalPath);
-        sw.WriteLine(string.Format(&quot;{0}:{1}&quot;,DateTime.Now,msg));
-        sw.WriteLine(&quot;**************************************&quot;)；
-    }
-    catch(Exception ex)
-    {
-        Console.WriteLine(ex.Message);
-    }
-    finally
-    {
-        if(sw != null)
-        {
-            sw.Flush();
-            sw.Close();
-            sw.Dispose();
-        }
-    }
-}
-</code></pre>
-<h2 id="画验证码"><a href="#画验证码" class="headerlink" title="画验证码"></a>画验证码</h2><pre><code class="c#">public static void Drawing()
-{
-    Bitmap bitmapobj = new Bitmap(100, 100);
-    //在Bitmap上面创建一个新的Graphics对象
-    Graphics g = Graphics.FromImage(bitmapobj);
-    //创建绘画对象，如Pen,Brush等等
-    Pen redPen = new Pen(Color.Red,8);
-    g.Clear(Color.White);
-    //绘制图形
-    g.DrawLine(redPen,50,20,500,20);
-    //画椭圆
-    g.DrawEllipse(Pens.Black, new Rectangle(0,0,200,100));
-    //画弧线
-    g.DrawArc(Pens.Black,new Rectangle(0,0,100,100),60,180);
-    //画直线
-    g.DrawLine(Pens.Black,10,10,100,100);
-    //画矩形
-    g.DrawRectangle(Pens.Black,new Rectangle(0,0,100,200));
-    //画字符串
-    g.DrawString(&quot;I love coding&quot;,new Font(&quot;Arial&quot;,12),new SolidBrush(Color.Red),new PointF(10,10));
-
-    If(!Directory.Exists(ImagePath))
-    {
-        Directory.CreateDirectory(ImagePath);
-    }
-
-    bitmapobj.Save(ImagePath+&quot;pic1.jpg&quot;,ImageFormat.Jpeg);
-    bitmapobj.Dispose();//释放所有对象
-    g.Dispose();
-}
-</code></pre>
-
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">//这个是事件的发布者，只有事件的发布者才能Invoke这个事件</span><br><span class="line"></span><br><span class="line">public class iPhone8</span><br><span class="line">&#123;</span><br><span class="line">	//EventHandler&lt;PriceChangeEventArgs&gt;是事件的委托类型， PriceChange是事件名称</span><br><span class="line">	public event EventHandler&lt;PriceChangeEventArgs&gt; PriceChange;</span><br><span class="line"></span><br><span class="line">	protected virtual void OnPriceChanged(PriceChangeEventArgs e)</span><br><span class="line">	&#123;</span><br><span class="line">		if (this.PriceChange != null)</span><br><span class="line">		&#123;</span><br><span class="line">			this.PriceChange.Invoke(this, e);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private decimal price;</span><br><span class="line">	public decimal Price</span><br><span class="line">	&#123;</span><br><span class="line">		get &#123;return price;&#125;</span><br><span class="line">		set </span><br><span class="line">		&#123;</span><br><span class="line">			if(price == value)</span><br><span class="line">				return;</span><br><span class="line">			decimal oldPrice = price;</span><br><span class="line">			price = value;</span><br><span class="line">			if(this.PriceChange != null)</span><br><span class="line">				this.OnPriceChanged(new PriceChangeEventArgs(oldPrice, price));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//EventHandler是框架帮我们定义的，专门用来作事件用</span><br><span class="line">//sender是事件的触发者, e的类型是泛型，也就是TEventArgs类型，一般这个类型在定义的时候必须继承于EventArgs</span><br><span class="line">public delegate void EventHandler&lt;TEventArgs&gt;(object sender, TEventArgs e);</span><br><span class="line">//EventArgs其实就是个空壳,但是你可以继承它之后自己自定义一些属性</span><br><span class="line">public class EventArgs</span><br><span class="line">&#123;</span><br><span class="line">	public static readonly EventArgs Empty;</span><br><span class="line">	public EventArgs();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//PriceChangeEventArgs</span><br><span class="line">public class PriceChangeEventArgs: EventArgs</span><br><span class="line">&#123;</span><br><span class="line">	public int Id &#123;get;set;&#125;</span><br><span class="line">	public readonly decimal OldPrice;</span><br><span class="line">	public readonly decimal NewPrice;</span><br><span class="line"></span><br><span class="line">	public PriceChangeEventArgs(decimal oldPrice, decimal newPrice)</span><br><span class="line">	&#123;</span><br><span class="line">		OldPrice = oldPrice;</span><br><span class="line">		NewPrice = newPrice;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//事件订阅者</span><br><span class="line">public class Businessman</span><br><span class="line">&#123;</span><br><span class="line">	public void Iphone8_PriceChange(object sender, PriceChangeEventArgs e)</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;年终大促,iphone只卖&quot; + e.NewPrice + &quot;元！&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//事件的注册</span><br><span class="line">public class EventRegister</span><br><span class="line">&#123;</span><br><span class="line">	private iPhone8 _iphone = null;</span><br><span class="line"></span><br><span class="line">	public void Init()</span><br><span class="line">	&#123;</span><br><span class="line">		this._iphone = new iPhone8();</span><br><span class="line">		Businessman businessman = new Businessman();</span><br><span class="line">		this._iphone.PriceChange += businessman.Iphone8_PriceChange;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void SetPrice(decimal price)</span><br><span class="line">	&#123;</span><br><span class="line">		this._iphone.Price = price;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="IO-Serialize"><a href="#IO-Serialize" class="headerlink" title="IO Serialize"></a>IO Serialize</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//检查文件夹是否存在</span><br><span class="line">if(!Directory.Exists(LogPath))</span><br><span class="line">&#123;</span><br><span class="line">	//一次性创建全部的子路径</span><br><span class="line">	DirectoryInfo directoryInfo = Directory.CreateDirectory(LogPath);</span><br><span class="line">	//原文件夹会没有</span><br><span class="line">	Directory.Move(LogPath, LogMovePath);</span><br><span class="line">	Directory.Delete(LogMovePath);</span><br><span class="line">&#125;</span><br><span class="line">//不能用这个检查文件夹是否存在</span><br><span class="line">Directory directory = new DirectoryInfo(LogPath);</span><br><span class="line">FileInfo fileInfo = new FileInfo(Path.Combine(LogPath,&quot;info.txt&quot;));</span><br><span class="line">if(!File.Exists(Path.Combine(LogPath, &quot;info.txt&quot;)))</span><br><span class="line">&#123;</span><br><span class="line">	Directory.CreateDirectory(LogPath);</span><br><span class="line">	//打开文件流（创建文件并写入）</span><br><span class="line">	using(FileStream fileStream = File.Create(fileName))</span><br><span class="line">	&#123;</span><br><span class="line">		string name = &quot;111&quot;;</span><br><span class="line">		byte[] bytes = Encoding.Default.GetBytes(name);</span><br><span class="line">		fileStream.Write(bytes, 0 , bytes.Length);</span><br><span class="line">		fileStream.Flush();</span><br><span class="line">	&#125;</span><br><span class="line">	//打开文件流（创建文件并写入）,这个File.Create会把之前的文件删掉，重新写</span><br><span class="line">	using(FileStream fileStream = File.Create(fileName))</span><br><span class="line">	&#123;</span><br><span class="line">		StreamWriter sw = new StreamWriter(fileStream);</span><br><span class="line">		sw.Write(&quot;123&quot;);</span><br><span class="line">		sw.Flush();</span><br><span class="line">	&#125;</span><br><span class="line">	//流写入器（创建/打开文件并写入）</span><br><span class="line">	using(StreamWriter sw = File.AppendText(fileName))</span><br><span class="line">	&#123;</span><br><span class="line">		string msg = &quot;Today is a good day.&quot;;</span><br><span class="line">		sw.WriteLine(msg);</span><br><span class="line">		sw.Flush();</span><br><span class="line">	&#125;</span><br><span class="line">	//流写入器(创建/打开文件并写入)</span><br><span class="line">	using(StreamWriter sw = File.AppendText(fileName))</span><br><span class="line">	&#123;</span><br><span class="line">		string name = &quot;12312&quot;;</span><br><span class="line">		byte[] bytes = Encoding.Default.GetBytes(name);</span><br><span class="line">		sw.BaseStream.Write(bytes,0,bytes.Length);</span><br><span class="line">		sw.Flush();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//读取,</span><br><span class="line">	//一次性读所有的数据，不推荐</span><br><span class="line">	foreach(var result in File.ReadAllLines(fileName))</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(result);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	string sResult = File.ReadAllText(fileName);</span><br><span class="line"></span><br><span class="line">	Byte[] byteContent = File.ReadALlBytes(fileName);</span><br><span class="line">	string sResultByte = System.Text.Encoding.UTF8.GetString(byteContent);</span><br><span class="line"></span><br><span class="line">	//分批读取，比较好</span><br><span class="line">	using(FileStream stream = File.OpenRead(fileName))</span><br><span class="line">	&#123;</span><br><span class="line">		int length = 5;</span><br><span class="line">		int result = 0;</span><br><span class="line"></span><br><span class="line">		do </span><br><span class="line">		&#123;</span><br><span class="line">			byte[] bytes = new byte[length];</span><br><span class="line">			result = stream.Read(bytes,0,5);</span><br><span class="line">			for(int i=0; i&lt; result; i++)</span><br><span class="line">			&#123;</span><br><span class="line">				Console.WriteLine(bytes[i].TOString());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		while(length == result);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//写日志</span><br><span class="line">public static void Log(string msg)</span><br><span class="line">&#123;</span><br><span class="line">	StreamWriter sw = null;</span><br><span class="line">	try</span><br><span class="line">	&#123;</span><br><span class="line">		string fileName = &quot;log.txt&quot;;</span><br><span class="line">		string totalPath = Path.Combine(LogPath, fileName);</span><br><span class="line"></span><br><span class="line">		if(!Directory.Exists(LogPath))</span><br><span class="line">		&#123;</span><br><span class="line">			Directory.Create(LogPath);</span><br><span class="line">		&#125;</span><br><span class="line">		sw = File.AppendText(totalPath);</span><br><span class="line">		sw.WriteLine(string.Format(&quot;&#123;0&#125;:&#123;1&#125;&quot;,DateTime.Now,msg));</span><br><span class="line">		sw.WriteLine(&quot;**************************************&quot;)；</span><br><span class="line">	&#125;</span><br><span class="line">	catch(Exception ex)</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(ex.Message);</span><br><span class="line">	&#125;</span><br><span class="line">	finally</span><br><span class="line">	&#123;</span><br><span class="line">		if(sw != null)</span><br><span class="line">		&#123;</span><br><span class="line">			sw.Flush();</span><br><span class="line">			sw.Close();</span><br><span class="line">			sw.Dispose();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="画验证码"><a href="#画验证码" class="headerlink" title="画验证码"></a>画验证码</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public static void Drawing()</span><br><span class="line">&#123;</span><br><span class="line">	Bitmap bitmapobj = new Bitmap(100, 100);</span><br><span class="line">	//在Bitmap上面创建一个新的Graphics对象</span><br><span class="line">	Graphics g = Graphics.FromImage(bitmapobj);</span><br><span class="line">	//创建绘画对象，如Pen,Brush等等</span><br><span class="line">	Pen redPen = new Pen(Color.Red,8);</span><br><span class="line">	g.Clear(Color.White);</span><br><span class="line">	//绘制图形</span><br><span class="line">	g.DrawLine(redPen,50,20,500,20);</span><br><span class="line">	//画椭圆</span><br><span class="line">	g.DrawEllipse(Pens.Black, new Rectangle(0,0,200,100));</span><br><span class="line">	//画弧线</span><br><span class="line">	g.DrawArc(Pens.Black,new Rectangle(0,0,100,100),60,180);</span><br><span class="line">	//画直线</span><br><span class="line">	g.DrawLine(Pens.Black,10,10,100,100);</span><br><span class="line">	//画矩形</span><br><span class="line">	g.DrawRectangle(Pens.Black,new Rectangle(0,0,100,200));</span><br><span class="line">	//画字符串</span><br><span class="line">	g.DrawString(&quot;I love coding&quot;,new Font(&quot;Arial&quot;,12),new SolidBrush(Color.Red),new PointF(10,10));</span><br><span class="line"></span><br><span class="line">	If(!Directory.Exists(ImagePath))</span><br><span class="line">	&#123;</span><br><span class="line">		Directory.CreateDirectory(ImagePath);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	bitmapobj.Save(ImagePath+&quot;pic1.jpg&quot;,ImageFormat.Jpeg);</span><br><span class="line">	bitmapobj.Dispose();//释放所有对象</span><br><span class="line">	g.Dispose();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
       
     </div>
     
@@ -756,7 +464,7 @@ public static void Log(string msg)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -769,7 +477,7 @@ public static void Log(string msg)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

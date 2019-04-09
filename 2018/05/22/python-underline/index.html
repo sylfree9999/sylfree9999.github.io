@@ -343,13 +343,13 @@
 <li><strong>spam(2 leading underline and <strong>at most one trailing underline</strong>) will be replaced with `_classname</strong>spam<code>, where</code>classname` is the current class name.</li>
 <li>If you create a subclass of <code>A</code>, say <code>B</code> then you can’t easily override <code>A&#39;s</code> __method_name</li>
 </ul>
-<pre><code class="Python">&gt;&gt;&gt; class A(object):
-        def _internal_use(self):
-            pass
-        def __method_name(self):
-            pass
-&gt;&gt;&gt; dir(A())
-[&#39;_A__method_name&#39;,...,&#39;_internal_use&#39;]
+<pre><code class="Python"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span>
+        <span class="function"><span class="keyword">def</span> <span class="title">_internal_use</span><span class="params">(self)</span>:</span>
+            <span class="keyword">pass</span>
+        <span class="function"><span class="keyword">def</span> <span class="title">__method_name</span><span class="params">(self)</span>:</span>
+            <span class="keyword">pass</span>
+<span class="meta">&gt;&gt;&gt; </span>dir(A())
+[<span class="string">'_A__method_name'</span>,...,<span class="string">'_internal_use'</span>]
 </code></pre>
 <h3 id="双划线开头，双划线结尾"><a href="#双划线开头，双划线结尾" class="headerlink" title="双划线开头，双划线结尾"></a>双划线开头，双划线结尾</h3><ul>
 <li>Python自己的<code>魔术</code>对象, used by Python itself. 比方说<strong>init</strong>, <strong>del</strong>, <strong>add</strong>, <strong>getitem</strong> 以及全局的<strong>file</strong>, <strong>name</strong>等。 不要试图重写他们</li>
@@ -473,7 +473,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -486,7 +486,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

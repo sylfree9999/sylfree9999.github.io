@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="文件读写操作读文件方法一# 默认是只读 file1 = open(&amp;quot;test.txt&amp;quot;) # w是全部重写，a是append到最后 file2 = open(&amp;quot;output.txt&amp;quot;,&amp;quot;w&amp;quot;)  while True:     line = file1.readline()     file2.write(&amp;#39;&amp;quot;&amp;#39;">
+<meta name="description" content="文件读写操作读文件方法一12345678910111213# 默认是只读file1 = open(&quot;test.txt&quot;)# w是全部重写，a是append到最后file2 = open(&quot;output.txt&quot;,&quot;w&quot;)while True:	line = file1.readline()	file2.write(&apos;&quot;&apos; + line + &apos;&quot;&apos; + &quot;.&quot;)	if not line:		brea">
 <meta name="keywords" content="concept,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python-file">
 <meta property="og:url" content="http://yoursite.com/2018/08/03/python-file/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="文件读写操作读文件方法一# 默认是只读 file1 = open(&amp;quot;test.txt&amp;quot;) # w是全部重写，a是append到最后 file2 = open(&amp;quot;output.txt&amp;quot;,&amp;quot;w&amp;quot;)  while True:     line = file1.readline()     file2.write(&amp;#39;&amp;quot;&amp;#39;">
+<meta property="og:description" content="文件读写操作读文件方法一12345678910111213# 默认是只读file1 = open(&quot;test.txt&quot;)# w是全部重写，a是append到最后file2 = open(&quot;output.txt&quot;,&quot;w&quot;)while True:	line = file1.readline()	file2.write(&apos;&quot;&apos; + line + &apos;&quot;&apos; + &quot;.&quot;)	if not line:		brea">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-file">
-<meta name="twitter:description" content="文件读写操作读文件方法一# 默认是只读 file1 = open(&amp;quot;test.txt&amp;quot;) # w是全部重写，a是append到最后 file2 = open(&amp;quot;output.txt&amp;quot;,&amp;quot;w&amp;quot;)  while True:     line = file1.readline()     file2.write(&amp;#39;&amp;quot;&amp;#39;">
+<meta name="twitter:description" content="文件读写操作读文件方法一12345678910111213# 默认是只读file1 = open(&quot;test.txt&quot;)# w是全部重写，a是append到最后file2 = open(&quot;output.txt&quot;,&quot;w&quot;)while True:	line = file1.readline()	file2.write(&apos;&quot;&apos; + line + &apos;&quot;&apos; + &quot;.&quot;)	if not line:		brea">
 
 
 
@@ -330,40 +330,12 @@
       
 
       
-        <h2 id="文件读写操作"><a href="#文件读写操作" class="headerlink" title="文件读写操作"></a>文件读写操作</h2><h3 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h3><h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><pre><code class="python"># 默认是只读
-file1 = open(&quot;test.txt&quot;)
-# w是全部重写，a是append到最后
-file2 = open(&quot;output.txt&quot;,&quot;w&quot;)
-
-while True:
-    line = file1.readline()
-    file2.write(&#39;&quot;&#39; + line + &#39;&quot;&#39; + &quot;.&quot;)
-    if not line:
-        break
-
-file1.close()
-file2.close()
-</code></pre>
+        <h2 id="文件读写操作"><a href="#文件读写操作" class="headerlink" title="文件读写操作"></a>文件读写操作</h2><h3 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h3><h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认是只读</span></span><br><span class="line">file1 = open(<span class="string">"test.txt"</span>)</span><br><span class="line"><span class="comment"># w是全部重写，a是append到最后</span></span><br><span class="line">file2 = open(<span class="string">"output.txt"</span>,<span class="string">"w"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">	line = file1.readline()</span><br><span class="line">	file2.write(<span class="string">'"'</span> + line + <span class="string">'"'</span> + <span class="string">"."</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> line:</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">file1.close()</span><br><span class="line">file2.close()</span><br></pre></td></tr></table></figure></div>
 <p>读文件有3种方法：<br>1，read()将文本文件所有行读到一个字符串中<br>2，readline()是一行行读<br>3，readlines()是将文本文件中所有行读到一个List中，文本文件每一行是list的一个元素。</p>
-<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p>文件迭代器</p>
-<pre><code class="python">file2 = open(&quot;output.txt&quot;,&quot;w&quot;)
-for line in open(&quot;test.txt&quot;):
-    file2.write(&#39;&quot;&#39; + line + &#39;&quot;&#39; + &quot;.&quot;)
-file2.close()
-</code></pre>
-<h4 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h4><p>文件上下文管理器</p>
-<pre><code class="python">#用with.open自带关闭文本的功能
-with open(&#39;somefile.txt&#39;,&#39;r&#39;) as f:
-    data = f.read()
-    for line in f:
-        #处理每一行
-
-</code></pre>
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p>文件迭代器<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file2 = open(<span class="string">"output.txt"</span>,<span class="string">"w"</span>)</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">"test.txt"</span>):</span><br><span class="line">	file2.write(<span class="string">'"'</span> + line + <span class="string">'"'</span> + <span class="string">"."</span>)</span><br><span class="line">file2.close()</span><br></pre></td></tr></table></figure></div></p>
+<h4 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h4><p>文件上下文管理器<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#用with.open自带关闭文本的功能</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.txt'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	data = f.read()</span><br><span class="line">	<span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">		<span class="comment">#处理每一行</span></span><br></pre></td></tr></table></figure></div></p>
 <h2 id="二进制文件读写"><a href="#二进制文件读写" class="headerlink" title="二进制文件读写"></a>二进制文件读写</h2><p>python默认读取的都是文本文件。要是想要读取二进制文件，需要把刚刚的”r”/“w”改成”rb”</p>
-<p>任何非标准的文本文件（Python2-ASCII, Python3-unicode）你就需要用二进制读入这个文件，然后再有<code>.decode(&#39;...&#39;)</code>的方法来解码这个二进制文件</p>
-<pre><code class="python">f = open(&#39;ABC.jpg&#39;,&#39;rb&#39;)
-u = f.read().decode(&#39;ABC&#39;)
-</code></pre>
+<p>任何非标准的文本文件（Python2-ASCII, Python3-unicode）你就需要用二进制读入这个文件，然后再有<code>.decode(&#39;...&#39;)</code>的方法来解码这个二进制文件<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">'ABC.jpg'</span>,<span class="string">'rb'</span>)</span><br><span class="line">u = f.read().decode(<span class="string">'ABC'</span>)</span><br></pre></td></tr></table></figure></div></p>
 
       
     </div>
@@ -483,7 +455,7 @@ u = f.read().decode(&#39;ABC&#39;)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -496,7 +468,7 @@ u = f.read().decode(&#39;ABC&#39;)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

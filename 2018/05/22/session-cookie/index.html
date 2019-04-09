@@ -94,19 +94,19 @@
 
 
 
-<meta name="description" content="Session 和 Cookie的出现都是为了保存状态， 因为浏览器是无状态的 Cookie 是保存在客户端的，如果服务器的response里面有set_cookie,则客户端的服务器就会存这个值Cookie里面不能直接存敏感的值，所以有了Session, 服务器维护Session和Cookie的Mapping关系，但是Session也是可以存在客户端的 比方说 @main.route(&amp;quot">
+<meta name="description" content="Session 和 Cookie的出现都是为了保存状态， 因为浏览器是无状态的 Cookie 是保存在客户端的，如果服务器的response里面有set_cookie,则客户端的服务器就会存这个值Cookie里面不能直接存敏感的值，所以有了Session, 服务器维护Session和Cookie的Mapping关系，但是Session也是可以存在客户端的 比方说12345678910@main.r">
 <meta name="keywords" content="concept">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Session Cookie">
 <meta property="og:url" content="http://yoursite.com/2018/05/22/session-cookie/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="Session 和 Cookie的出现都是为了保存状态， 因为浏览器是无状态的 Cookie 是保存在客户端的，如果服务器的response里面有set_cookie,则客户端的服务器就会存这个值Cookie里面不能直接存敏感的值，所以有了Session, 服务器维护Session和Cookie的Mapping关系，但是Session也是可以存在客户端的 比方说 @main.route(&amp;quot">
+<meta property="og:description" content="Session 和 Cookie的出现都是为了保存状态， 因为浏览器是无状态的 Cookie 是保存在客户端的，如果服务器的response里面有set_cookie,则客户端的服务器就会存这个值Cookie里面不能直接存敏感的值，所以有了Session, 服务器维护Session和Cookie的Mapping关系，但是Session也是可以存在客户端的 比方说12345678910@main.r">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/05/22/session-cookie/20180522162224.png">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Session Cookie">
-<meta name="twitter:description" content="Session 和 Cookie的出现都是为了保存状态， 因为浏览器是无状态的 Cookie 是保存在客户端的，如果服务器的response里面有set_cookie,则客户端的服务器就会存这个值Cookie里面不能直接存敏感的值，所以有了Session, 服务器维护Session和Cookie的Mapping关系，但是Session也是可以存在客户端的 比方说 @main.route(&amp;quot">
+<meta name="twitter:description" content="Session 和 Cookie的出现都是为了保存状态， 因为浏览器是无状态的 Cookie 是保存在客户端的，如果服务器的response里面有set_cookie,则客户端的服务器就会存这个值Cookie里面不能直接存敏感的值，所以有了Session, 服务器维护Session和Cookie的Mapping关系，但是Session也是可以存在客户端的 比方说12345678910@main.r">
 <meta name="twitter:image" content="http://yoursite.com/2018/05/22/session-cookie/20180522162224.png">
 
 
@@ -334,18 +334,7 @@
       
         <p>Session 和 Cookie的出现都是为了保存状态， 因为浏览器是无状态的</p>
 <h2 id="Cookie-是保存在客户端的，如果服务器的response里面有set-cookie-则客户端的服务器就会存这个值"><a href="#Cookie-是保存在客户端的，如果服务器的response里面有set-cookie-则客户端的服务器就会存这个值" class="headerlink" title="Cookie 是保存在客户端的，如果服务器的response里面有set_cookie,则客户端的服务器就会存这个值"></a>Cookie 是保存在客户端的，如果服务器的response里面有set_cookie,则客户端的服务器就会存这个值</h2><h2 id="Cookie里面不能直接存敏感的值，所以有了Session-服务器维护Session和Cookie的Mapping关系，但是"><a href="#Cookie里面不能直接存敏感的值，所以有了Session-服务器维护Session和Cookie的Mapping关系，但是" class="headerlink" title="Cookie里面不能直接存敏感的值，所以有了Session, 服务器维护Session和Cookie的Mapping关系，但是"></a>Cookie里面不能直接存敏感的值，所以有了Session, 服务器维护Session和Cookie的Mapping关系，但是</h2><p><span style="color:red">Session也是可以存在客户端的</span></p>
-<p>比方说</p>
-<pre><code class="python">@main.route(&quot;/login&quot;, methods=[&#39;POST&#39;])
-def login():
-    form = request.form
-    u = User.validate_login(form)
-    if u is None:
-        return redirect(url_for(&#39;.index&#39;))
-    else:
-        # session 中写入 user_id
-        session[&#39;user_id&#39;] = u.id
-        return redirect(url_for(&#39;.profile&#39;))
-</code></pre>
+<p>比方说<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@main.route("/login", methods=['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">    form = request.form</span><br><span class="line">    u = User.validate_login(form)</span><br><span class="line">    <span class="keyword">if</span> u <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">'.index'</span>))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># session 中写入 user_id</span></span><br><span class="line">        session[<span class="string">'user_id'</span>] = u.id</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">'.profile'</span>))</span><br></pre></td></tr></table></figure></div></p>
 <img src="/2018/05/22/session-cookie/20180522162224.png">
 <p>不过比较好的方法是放在服务器中防止客户端丢失数据，比方说存储在服务的mongodb</p>
 
@@ -465,7 +454,7 @@ def login():
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -478,7 +467,7 @@ def login():
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

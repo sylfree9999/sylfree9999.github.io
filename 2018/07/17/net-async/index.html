@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Basic异步多线程：多线程是说的CLR线程，异步是说IO线程要用异步多线程必须要用Delegate委托 private void btnAsync_Click(object sender, EventArgs e) {     //同步调用，必须DoSomethingLong结束后才会走下一步     Action&amp;lt;string&amp;gt; act = new Action&amp;lt;string">
+<meta name="description" content="Basic异步多线程：多线程是说的CLR线程，异步是说IO线程要用异步多线程必须要用Delegate委托12345678910111213141516171819202122private void btnAsync_Click(object sender, EventArgs e)&amp;#123;	//同步调用，必须DoSomethingLong结束后才会走下一步	Action&amp;lt;string&amp;">
 <meta name="keywords" content="concept,.NET">
 <meta property="og:type" content="article">
 <meta property="og:title" content="net-async">
 <meta property="og:url" content="http://yoursite.com/2018/07/17/net-async/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="Basic异步多线程：多线程是说的CLR线程，异步是说IO线程要用异步多线程必须要用Delegate委托 private void btnAsync_Click(object sender, EventArgs e) {     //同步调用，必须DoSomethingLong结束后才会走下一步     Action&amp;lt;string&amp;gt; act = new Action&amp;lt;string">
+<meta property="og:description" content="Basic异步多线程：多线程是说的CLR线程，异步是说IO线程要用异步多线程必须要用Delegate委托12345678910111213141516171819202122private void btnAsync_Click(object sender, EventArgs e)&amp;#123;	//同步调用，必须DoSomethingLong结束后才会走下一步	Action&amp;lt;string&amp;">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="net-async">
-<meta name="twitter:description" content="Basic异步多线程：多线程是说的CLR线程，异步是说IO线程要用异步多线程必须要用Delegate委托 private void btnAsync_Click(object sender, EventArgs e) {     //同步调用，必须DoSomethingLong结束后才会走下一步     Action&amp;lt;string&amp;gt; act = new Action&amp;lt;string">
+<meta name="twitter:description" content="Basic异步多线程：多线程是说的CLR线程，异步是说IO线程要用异步多线程必须要用Delegate委托12345678910111213141516171819202122private void btnAsync_Click(object sender, EventArgs e)&amp;#123;	//同步调用，必须DoSomethingLong结束后才会走下一步	Action&amp;lt;string&amp;">
 
 
 
@@ -330,98 +330,10 @@
       
 
       
-        <h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><p>异步多线程：多线程是说的CLR线程，异步是说IO线程<br>要用异步多线程必须要用Delegate委托</p>
-<pre><code class="c#">private void btnAsync_Click(object sender, EventArgs e)
-{
-    //同步调用，必须DoSomethingLong结束后才会走下一步
-    Action&lt;string&gt; act = new Action&lt;string&gt;(this.DoSomethingLong);
-    act.Invoke(&quot;this.DoSomethingLong&quot;);
-
-    //异步调用，会启动一个线程；现象是直接进入下一行，不会等待
-    act.BeginInvoke(&quot;this.DoSomethingLong&quot;,null,null);
-}
-
-private void DoSomethingLong(string name)
-{
-    Console.WriteLine($&quot;********DoSomethingLong Start {Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)}&quot;);
-    long lResult = 0;
-    for(int i=0; i&lt;1000000;i++)
-    {
-        lResult += i;
-    }
-    Thread.Sleep(2000);
-
-    Console.WriteLine($&quot;********DoSomethingLong End {Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)}&quot;);
-}
-</code></pre>
+        <h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><p>异步多线程：多线程是说的CLR线程，异步是说IO线程<br>要用异步多线程必须要用Delegate委托<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">private void btnAsync_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">	//同步调用，必须DoSomethingLong结束后才会走下一步</span><br><span class="line">	Action&lt;string&gt; act = new Action&lt;string&gt;(this.DoSomethingLong);</span><br><span class="line">	act.Invoke(&quot;this.DoSomethingLong&quot;);</span><br><span class="line"></span><br><span class="line">	//异步调用，会启动一个线程；现象是直接进入下一行，不会等待</span><br><span class="line">	act.BeginInvoke(&quot;this.DoSomethingLong&quot;,null,null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void DoSomethingLong(string name)</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine($&quot;********DoSomethingLong Start &#123;Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)&#125;&quot;);</span><br><span class="line">	long lResult = 0;</span><br><span class="line">	for(int i=0; i&lt;1000000;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		lResult += i;</span><br><span class="line">	&#125;</span><br><span class="line">	Thread.Sleep(2000);</span><br><span class="line"></span><br><span class="line">	Console.WriteLine($&quot;********DoSomethingLong End &#123;Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)&#125;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <a id="more"></a>
-<h2 id="异步多线程如何控制顺序"><a href="#异步多线程如何控制顺序" class="headerlink" title="异步多线程如何控制顺序"></a>异步多线程如何控制顺序</h2><p>回调，这种方法十分稳定，一定会在委托执行完后再执行</p>
-<pre><code class="c#">private void btnAsync_Click(object sender, EventArgs e)
-{
-    Console.WriteLine($&quot;***********btnAsync_Click Startc {Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)}&quot;);
-
-    Action&lt;string&gt; act = this.DoSomethingLong;
-
-    //回调方法，一定会在DoSomethingLong之后调用
-    AsyncCallback callback=ar =&gt; Console.WriteLine($&quot;这里是BeginInvoke调用完成之后才执行的{Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)}&quot;);
-    //para asyncState会被保存在iAsyncResult的asyncState参数中
-    IAsyncResult iAsyncResult = act.BeginInvoke(&quot;btnAsync_Click&quot;,callback,&quot;asyncState&quot;);
-}
-</code></pre>
-<p>等待<br>1, while这里是主线程来做的，所以会卡界面<br>2, EndInvoke可以拿到之前委托的结果 </p>
-<pre><code class="c#">private void btnAsync_Click(object sender, EventArgs e)
-{
-    Console.WriteLine($&quot;***********btnAsync_Click Startc {Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)}&quot;);
-
-    Action&lt;string&gt; act = this.DoSomethingLong;
-    //para asyncState会被保存在iAsyncResult的asyncSta te参数中
-    IAsyncResult iAsyncResult = act.BeginInvoke(&quot;btnAsync_Click&quot;,null,null);
-    int i=1;
-    //1 卡界面，主线程会等待
-    //2 边等待边做事
-    //3 有误差，会等待200毫秒
-    while(!iAsyncResult.IsCompleted)
-    {
-        if(i &lt; 10)
-        {
-            Console.WriteLine(&quot;文件上传{0}%...请等待&quot;,i++ * 10);
-        }
-        else
-        {
-            Console.WriteLine(&quot;马上结束&quot;);
-        }
-        Thread.Sleep(200);
-        Console.WriteLine(&quot;这里是BeginInvoke调用完成之后才执行的&quot;);
-    }
-
-     //另外一种方式可以让异步变同步,不会有误差的，一直等待任务完成，这种方式不能在等待的过程中做别的事情
-    iAsyncResult.AsyncWaitHandle.WaitOne();
-    //最多等待1000毫秒，可以做超时控制
-    iAsyncResult.AsyncWaitHandle.WaitOne(1000);
-
-    {
-        Func&lt;int,string&gt; func = i =&gt; i.ToString();
-        iAsyncResult iAsyncResult = func.BeginInvoke(DateTime.Now.Year, ar=&gt;{
-                //这个就是传入的“Lalala”
-                Console.WriteLine(ar.AsyncState);
-            },&quot;Lalala&quot;);
-        //这个result就是func的返回值
-        string result = func.EndInvoke(iAsyncResult);
-    }
-
-    //对于每个异步调用，只能有一个EndInvoke
-    {
-        Func&lt;int,string&gt; func = i =&gt; i.ToString();
-        iAsyncResult iAsyncResult = func.BeginInvoke(DateTime.Now.Year, ar=&gt;{
-                string resultIn = func.EndInvoke(ar);
-                //这个就是传入的“Lalala”
-                Console.WriteLine($&quot;This is {ar.AsyncState} 的异步调用结果 {resultIn}&quot;);
-            },&quot;Lalala&quot;);
-        //这个result就是func的返回值
-
-    }
-}
-</code></pre>
+<h2 id="异步多线程如何控制顺序"><a href="#异步多线程如何控制顺序" class="headerlink" title="异步多线程如何控制顺序"></a>异步多线程如何控制顺序</h2><p>回调，这种方法十分稳定，一定会在委托执行完后再执行<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private void btnAsync_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine($&quot;***********btnAsync_Click Startc &#123;Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)&#125;&quot;);</span><br><span class="line"></span><br><span class="line">	Action&lt;string&gt; act = this.DoSomethingLong;</span><br><span class="line"></span><br><span class="line">    //回调方法，一定会在DoSomethingLong之后调用</span><br><span class="line">	AsyncCallback callback=ar =&gt; Console.WriteLine($&quot;这里是BeginInvoke调用完成之后才执行的&#123;Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)&#125;&quot;);</span><br><span class="line">	//para asyncState会被保存在iAsyncResult的asyncState参数中</span><br><span class="line">	IAsyncResult iAsyncResult = act.BeginInvoke(&quot;btnAsync_Click&quot;,callback,&quot;asyncState&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>等待<br>1, while这里是主线程来做的，所以会卡界面<br>2, EndInvoke可以拿到之前委托的结果<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">private void btnAsync_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine($&quot;***********btnAsync_Click Startc &#123;Thread.CurrentThread.ManagedThreadId.ToString(&quot;00&quot;)&#125;&quot;);</span><br><span class="line"></span><br><span class="line">	Action&lt;string&gt; act = this.DoSomethingLong;</span><br><span class="line">	//para asyncState会被保存在iAsyncResult的asyncSta te参数中</span><br><span class="line">	IAsyncResult iAsyncResult = act.BeginInvoke(&quot;btnAsync_Click&quot;,null,null);</span><br><span class="line">	int i=1;</span><br><span class="line">	//1 卡界面，主线程会等待</span><br><span class="line">	//2 边等待边做事</span><br><span class="line">	//3 有误差，会等待200毫秒</span><br><span class="line">	while(!iAsyncResult.IsCompleted)</span><br><span class="line">	&#123;</span><br><span class="line">		if(i &lt; 10)</span><br><span class="line">		&#123;</span><br><span class="line">			Console.WriteLine(&quot;文件上传&#123;0&#125;%...请等待&quot;,i++ * 10);</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			Console.WriteLine(&quot;马上结束&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		Thread.Sleep(200);</span><br><span class="line">		Console.WriteLine(&quot;这里是BeginInvoke调用完成之后才执行的&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	 //另外一种方式可以让异步变同步,不会有误差的，一直等待任务完成，这种方式不能在等待的过程中做别的事情</span><br><span class="line">	iAsyncResult.AsyncWaitHandle.WaitOne();</span><br><span class="line">	//最多等待1000毫秒，可以做超时控制</span><br><span class="line">	iAsyncResult.AsyncWaitHandle.WaitOne(1000);</span><br><span class="line"></span><br><span class="line">	&#123;</span><br><span class="line">		Func&lt;int,string&gt; func = i =&gt; i.ToString();</span><br><span class="line">		iAsyncResult iAsyncResult = func.BeginInvoke(DateTime.Now.Year, ar=&gt;&#123;</span><br><span class="line">				//这个就是传入的“Lalala”</span><br><span class="line">				Console.WriteLine(ar.AsyncState);</span><br><span class="line">			&#125;,&quot;Lalala&quot;);</span><br><span class="line">		//这个result就是func的返回值</span><br><span class="line">		string result = func.EndInvoke(iAsyncResult);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//对于每个异步调用，只能有一个EndInvoke</span><br><span class="line">	&#123;</span><br><span class="line">		Func&lt;int,string&gt; func = i =&gt; i.ToString();</span><br><span class="line">		iAsyncResult iAsyncResult = func.BeginInvoke(DateTime.Now.Year, ar=&gt;&#123;</span><br><span class="line">				string resultIn = func.EndInvoke(ar);</span><br><span class="line">				//这个就是传入的“Lalala”</span><br><span class="line">				Console.WriteLine($&quot;This is &#123;ar.AsyncState&#125; 的异步调用结果 &#123;resultIn&#125;&quot;);</span><br><span class="line">			&#125;,&quot;Lalala&quot;);</span><br><span class="line">		//这个result就是func的返回值</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 
       
     </div>
@@ -541,7 +453,7 @@ private void DoSomethingLong(string name)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -554,7 +466,7 @@ private void DoSomethingLong(string name)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

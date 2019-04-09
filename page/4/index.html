@@ -260,6 +260,317 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/05/net-generic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/05/net-generic/" itemprop="url">.net-generic</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T11:12:08+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h2><p>现在有类<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">public interface ISports</span><br><span class="line">    &#123;</span><br><span class="line">        void Pingpang();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public interface IWork</span><br><span class="line">    &#123;</span><br><span class="line">        void Work();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public class People</span><br><span class="line">    &#123;</span><br><span class="line">        public int Id &#123; get; set; &#125;</span><br><span class="line">        public string Name &#123; get; set; &#125;</span><br><span class="line"></span><br><span class="line">        public void Hi()</span><br><span class="line">        &#123; &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public class Chinese : People, ISports, IWork</span><br><span class="line">    &#123;</span><br><span class="line">        public void Tradition()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;仁义礼智信，温良恭俭让&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        public void SayHi()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;吃了么？&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public void Pingpang()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;打乒乓球...&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public void Work()</span><br><span class="line">        &#123;</span><br><span class="line">            throw new NotImplementedException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public class Hubei : Chinese</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        public Hubei(int id)</span><br><span class="line">        &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        public string Changjiang &#123; get; set; &#125;</span><br><span class="line">        public void Majiang()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;打麻将啦。。&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public class Japanese : ISports</span><br><span class="line">    &#123;</span><br><span class="line">        public int Id &#123; get; set; &#125;</span><br><span class="line">        public string Name &#123; get; set; &#125;</span><br><span class="line"></span><br><span class="line">        public void Pingpang()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;打乒乓球...&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        public void Hi()</span><br><span class="line">        &#123; &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>如果你现在有一个Generic Method:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class GenericMethod&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">	public static void Show&lt;T&gt;(T instance)&#123;</span><br><span class="line">		</span><br><span class="line">		People pInstance = (People) instance;</span><br><span class="line">		Console.WriteLine(pInstance.Id); //不会报错，但是这样做一点意义就没有了</span><br><span class="line"></span><br><span class="line">		Console.WriteLine(instance.Id); //会报错，没有Id</span><br><span class="line">		Console.WriteLint(instance.Name); //会报错，没有Name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="约束类型"><a href="#约束类型" class="headerlink" title="约束类型"></a>约束类型</h3><p>如果现在有一个<span style="color: red">基类约束</span></p>
+<ol>
+<li>基类约束，可以使用基类里面的属性和方法</li>
+<li>基类约束，要求类型参数必须是基类或者其子类，所以如果你调用GenericMethod.Show(japanese)就会报错，因为它不属于People类</li>
+<li>基类约束，如果where后面跟多个类型，这些类型属于and关系，必须同时满足才行</li>
+</ol>
+<p><strong>You can only put one class name and several interfaces to one ‘where’ constraint!</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where T1: Supplier, IConstractor, IComparable, new()</span><br></pre></td></tr></table></figure></div></p>
+<table>
+<thead>
+<tr>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T:struct</td>
+<td>类型参数必须是值类型。可以指定处Nullable以外的任何值类型</td>
+</tr>
+<tr>
+<td>T:class</td>
+<td>类型参数必须是引用类型，包括任何类、接口、委托或数组类型</td>
+</tr>
+<tr>
+<td>T:new()</td>
+<td>类型参数必须具有无参数的公共构造函数。当与其他约束一起使用时，new()约束必须最后指定。</td>
+</tr>
+<tr>
+<td>T:&lt;基类名&gt;</td>
+<td>类型参数必须是指定的基类或派生自指定的基类</td>
+</tr>
+<tr>
+<td>T:&lt;接口名称&gt;</td>
+<td>类型参数必须是指定的接口或实现指定的接口。可以指定多个接口约束。约束接口也可以是泛型的。</td>
+</tr>
+<tr>
+<td>T:U</td>
+<td>为T提供的类型参数必须是为U提供的参数或派生自为U提供的参数。这称为裸类型参数。</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public staic void Show&lt;T&gt;(T instance)</span><br><span class="line">where T: People</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(instance.Id); //不会报错，因为告诉了T是属于什么类型</span><br><span class="line">	Console.WriteLine(instance.Name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><span style="color: red">类型约束</span><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static T DoNothing&lt;T&gt;(T tParameter)</span><br><span class="line">//where T: ISpotrs //接口类型约束</span><br><span class="line">//where T: class // 引用类型约束</span><br><span class="line">//where T: struct // 值类型约束</span><br><span class="line">where T: new() //无参数构造函数约束</span><br><span class="line">&#123;</span><br><span class="line">	//return default(T);//会根据T的类型，产生一个默认值，可以应用于值类型约束的返回</span><br><span class="line"></span><br><span class="line">	//return null; //引用类型约束</span><br><span class="line"></span><br><span class="line">	T t = new T();</span><br><span class="line">	return t; //无参数构造函数返回</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>显示声明出来类型和用约束的区别</p>
+<ol>
+<li>用约束来写更加灵活，比方说其可以运用ISports或者new()的写法</li>
+<li>如果显式声明出来，就只能用People里面的方法</li>
+</ol>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void Show&lt;T&gt;(T instance)</span><br><span class="line">	where T: People, ISports, new() // and关系</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(instance.Id);</span><br><span class="line">	Console.WriteLine(instance.Name);</span><br><span class="line">	instance.Hi();</span><br><span class="line">	instance.Pingpang();</span><br><span class="line">	T t  = new T();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void ShowPeople(People instance)</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(instance.Id);</span><br><span class="line">	Console.WriteLine(instance.Name);</span><br><span class="line">	instance.Hi();</span><br><span class="line">	instance.Pingpang();//报错</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>无参数构造函数约束<br><span style="color: red">Hubei就不能使用，因为Hubei这个类里面没有定义无参构造函数</span><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hubei hb = new Hubei(1);</span><br><span class="line">GenericMethod.Show(hb);//报错</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="Covariant协变与Contravariant逆变"><a href="#Covariant协变与Contravariant逆变" class="headerlink" title="Covariant协变与Contravariant逆变"></a>Covariant协变与Contravariant逆变</h3><p>out -&gt; Covariant<br>in  -&gt; Contravariant</p>
+<p><span style="color: red">只能放在接口或者委托的泛型参数前面</span>，类和方法是不能用的，这个跟之前定义函数的in, out是两个概念</p>
+<p>协变与逆变只对引用类型有效，因为值类型没有什么父子关系</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Bird&#123;</span><br><span class="line">	public int Id &#123;get;set;&#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Sparrow: Bird&#123;</span><br><span class="line">	public string Name&#123;get;set;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>背景<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Bird bird1 = new Bird();</span><br><span class="line">Bird bird2 = new Sparrow(); //左边是父类，右边是子类</span><br><span class="line">Sparrow sparrow1 = new Sparrow();</span><br><span class="line">//Sparrow sparrow2 = new Bird();//错，不是所有的鸟都是麻雀</span><br><span class="line"></span><br><span class="line">List&lt;Bird&gt; birdList1 = new List&lt;Bird&gt;();</span><br><span class="line">List&lt;Bird&gt; birdList2 = new List&lt;Sparrow&gt;(); //错！！！！！！！！！一群麻雀是一群鸟这个竟然是错的，因为List&lt;T&gt;是一个泛型概念，List&lt;Sparrow&gt;与List&lt;Bird&gt;并没有父子关系</span><br><span class="line"></span><br><span class="line">//只能像下面这样写，把每一个Sparrow转换成Bird才可以，有点不和谐了对不对</span><br><span class="line">List&lt;Bird&gt; birdList3 = new List&lt;Sparrow&gt;().Select(c=&gt;(Bird)c).ToList();</span><br></pre></td></tr></table></figure></div></p>
+<p>协变</p>
+<p><strong>告诉编译器实例化的类型就是out T中T的子类</strong></p>
+<p>先看下IEnumerable的定义，这里面用了协变<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public interface IEnumerable&lt;out T&gt;: IEnumerable</span><br><span class="line">&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IEnumerable&lt;Bird&gt; birdList1 = new List&lt;Bird&gt;();</span><br><span class="line">IEnumerable&lt;Bird&gt; birdList2 = new List&lt;Sparrow&gt;(); //这个就没问题，协变的意思就是说告诉编译器，如果我实例化的类型是我out的子类，就没问题</span><br></pre></td></tr></table></figure></div>
+<p><strong>协变只能是返回结果</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public interface ICustomerListOut&lt;out T&gt;</span><br><span class="line">&#123;</span><br><span class="line">	T Get();</span><br><span class="line">	//void Show(T t);//报错，如果用了协变，只能作为返回结果，不能作为参数类型</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class CustomerListOut&lt;T&gt;: ICustomerListOut&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">	public T Get()</span><br><span class="line">	&#123;</span><br><span class="line">		return default(T);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>逆变 Constravariant</p>
+<p><strong>只能修饰传入参数</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public interface ICustomerListIn&lt;in T&gt;</span><br><span class="line">&#123;</span><br><span class="line">	//T Get(); //报错，只能坐参数，不能作返回值</span><br><span class="line">	void Show(T t);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class CustomerListIn&lt;T&gt;: ICustomerListIn&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">	public void Show(T t)&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>定义了逆变以后，我可以实现<span style="color: red">左边子类，右边父类的情况</span></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ICustomerListIn&lt;Sparrow&gt; customerList1 = new CustomerListIn&lt;Sparrow&gt;();</span><br><span class="line">ICustomerListIn&lt;Sparrow&gt; customerList2 = new CustomerListIn&lt;Bird&gt;(); //右边可以是父类！！！！！</span><br><span class="line"></span><br><span class="line">//因为定义的时候已经定义了customerList2一定是Sparrow类型，在show的时候已经要求了必须传入Sparrow类型</span><br><span class="line">customerList2.Show(new Sparrow());//Show这里要求必须传入的是Sparrow类型</span><br></pre></td></tr></table></figure></div>
+<h3 id="泛型类中的静态字段"><a href="#泛型类中的静态字段" class="headerlink" title="泛型类中的静态字段"></a>泛型类中的静态字段</h3><p>泛型：jit编译的时候指定具体类型，同一个泛型类，不同的参数类型，其实会变成不同的类型</p>
+<p>静态字段/静态构造函数：一个类型只会初始化一次，就在第一次调用的时候初始化，之后就常驻内存</p>
+<p>那么！！！！<br><span style="color: red">泛型+静态会怎么样？</span></p>
+<p>泛型类的静态字段，<strong>是独立的</strong><br>它会根据不同类型，产生不同的类，只有在不同类型第一次声明的时候会初始化，但是相同类型第二次用的时候就不会初始化！</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Console.WriteLine(GenericCache&lt;int&gt;.GetCache());</span><br><span class="line">Thread.Sleep(10);</span><br><span class="line">Console.WriteLine(GenericCache&lt;long&gt;.GetCache());//第一次进long的时候，仍然会初始化</span><br><span class="line">Thread.Sleep(10);</span><br><span class="line">Console.WriteLine(GenericCache&lt;int&gt;.GetCache());//这个时候就不会在初始化了，因为int类型的已经初始化过了</span><br></pre></td></tr></table></figure></div>
+<p>这里就牵扯到了泛型静态缓存<br><strong>泛型缓存的效率非常高</strong>，是直接在内存中缓存，CPU直接拿值<br>但是这个缓存没有办法清除，比字典寻址方法要快很多</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/01/openresy-auto-start-script/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/01/openresy-auto-start-script/" itemprop="url">Openresty Auto Start Script</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-01T11:54:26+08:00">
+                2018-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># chkconfig: 2345 55 25</span></span><br><span class="line"><span class="comment"># Description: Nginx init.d script, put in /etc/init.d, chmod +x /etc/init.d/nginx</span></span><br><span class="line"><span class="comment">#              For Debian, run: update-rc.d -f nginx defaults</span></span><br><span class="line"><span class="comment">#              For CentOS, run: chkconfig --add nginx</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">### BEGIN INIT INFO</span></span><br><span class="line"><span class="comment"># Provides:          nginx</span></span><br><span class="line"><span class="comment"># Required-Start:    $all</span></span><br><span class="line"><span class="comment"># Required-Stop:     $all</span></span><br><span class="line"><span class="comment"># Default-Start:     2 3 4 5</span></span><br><span class="line"><span class="comment"># Default-Stop:      0 1 6</span></span><br><span class="line"><span class="comment"># Short-Description: nginx init.d script</span></span><br><span class="line"><span class="comment"># Description:       OpenResty (aka. ngx_openresty) is a full-fledged web application server by bundling the standard Nginx core, lots of 3rd-party Nginx modules, as well as most of their external dependencies.</span></span><br><span class="line"><span class="comment">### END INIT INFO</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line">PATH=/usr/<span class="built_in">local</span>/sbin:/usr/<span class="built_in">local</span>/bin:/sbin:/bin:/usr/sbin:/usr/bin</span><br><span class="line">DESC=<span class="string">"Nginx Daemon"</span></span><br><span class="line">NAME=nginx</span><br><span class="line">PREFIX=/usr/<span class="built_in">local</span>/openresty/nginx</span><br><span class="line">DAEMON=<span class="variable">$PREFIX</span>/sbin/<span class="variable">$NAME</span></span><br><span class="line">CONF=<span class="variable">$PREFIX</span>/conf/<span class="variable">$NAME</span>.conf</span><br><span class="line">PID=<span class="variable">$PREFIX</span>/logs/<span class="variable">$NAME</span>.pid</span><br><span class="line">SCRIPT=/etc/init.d/<span class="variable">$NAME</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -x <span class="string">"<span class="variable">$DAEMON</span>"</span> ] || [ ! -f <span class="string">"<span class="variable">$CONF</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$DAEMON</span> has no permission to run. \033[0m"</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"\033[33m Or <span class="variable">$CONF</span> doesn't exist. \033[0m"</span></span><br><span class="line">    sleep 1</span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">do_start</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> [ -f <span class="variable">$PID</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$PID</span> already exists. \033[0m"</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$DESC</span> is already running or crashed. \033[0m"</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[32m <span class="variable">$DESC</span> Reopening <span class="variable">$CONF</span> ... \033[0m"</span></span><br><span class="line">        <span class="variable">$DAEMON</span> -s reopen -c <span class="variable">$CONF</span></span><br><span class="line">        sleep 1</span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[36m <span class="variable">$DESC</span> reopened. \033[0m"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[32m <span class="variable">$DESC</span> Starting <span class="variable">$CONF</span> ... \033[0m"</span></span><br><span class="line">        <span class="variable">$DAEMON</span> -c <span class="variable">$CONF</span></span><br><span class="line">        sleep 1</span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[36m <span class="variable">$DESC</span> started. \033[0m"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">do_stop</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> [ ! -f <span class="variable">$PID</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$PID</span> doesn't exist. \033[0m"</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$DESC</span> isn't running. \033[0m"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[32m <span class="variable">$DESC</span> Stopping <span class="variable">$CONF</span> ... \033[0m"</span></span><br><span class="line">        <span class="variable">$DAEMON</span> -s stop -c <span class="variable">$CONF</span></span><br><span class="line">        sleep 1</span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[36m <span class="variable">$DESC</span> stopped. \033[0m"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">do_reload</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> [ ! -f <span class="variable">$PID</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$PID</span> doesn't exist. \033[0m"</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$DESC</span> isn't running. \033[0m"</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[32m <span class="variable">$DESC</span> Starting <span class="variable">$CONF</span> ... \033[0m"</span></span><br><span class="line">        <span class="variable">$DAEMON</span> -c <span class="variable">$CONF</span></span><br><span class="line">        sleep 1</span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[36m <span class="variable">$DESC</span> started. \033[0m"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[32m <span class="variable">$DESC</span> Reloading <span class="variable">$CONF</span> ... \033[0m"</span></span><br><span class="line">        <span class="variable">$DAEMON</span> -s reload -c <span class="variable">$CONF</span></span><br><span class="line">        sleep 1</span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[36m <span class="variable">$DESC</span> reloaded. \033[0m"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">do_quit</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> [ ! -f <span class="variable">$PID</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$PID</span> doesn't exist. \033[0m"</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$DESC</span> isn't running. \033[0m"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[32m <span class="variable">$DESC</span> Quitting <span class="variable">$CONF</span> ... \033[0m"</span></span><br><span class="line">        <span class="variable">$DAEMON</span> -s quit -c <span class="variable">$CONF</span></span><br><span class="line">        sleep 1</span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[36m <span class="variable">$DESC</span> quitted. \033[0m"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">do_test</span></span>() &#123;</span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"\033[32m <span class="variable">$DESC</span> Testing <span class="variable">$CONF</span> ... \033[0m"</span></span><br><span class="line">    <span class="variable">$DAEMON</span> -t -c <span class="variable">$CONF</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">do_info</span></span>() &#123;</span><br><span class="line">    <span class="variable">$DAEMON</span> -V</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></span><br><span class="line"> start)</span><br><span class="line"> do_start</span><br><span class="line"> ;;</span><br><span class="line"> stop)</span><br><span class="line"> do_stop</span><br><span class="line"> ;;</span><br><span class="line"> reload)</span><br><span class="line"> do_reload</span><br><span class="line"> ;;</span><br><span class="line"> restart)</span><br><span class="line"> do_stop</span><br><span class="line"> do_start</span><br><span class="line"> ;;</span><br><span class="line"> quit)</span><br><span class="line"> do_quit</span><br><span class="line"> ;;</span><br><span class="line"> <span class="built_in">test</span>)</span><br><span class="line"> do_test</span><br><span class="line"> ;;</span><br><span class="line"> info)</span><br><span class="line"> do_info</span><br><span class="line"> ;;</span><br><span class="line"> *)</span><br><span class="line"> <span class="built_in">echo</span> <span class="string">"Usage: <span class="variable">$SCRIPT</span> &#123;start|stop|reload|restart|quit|test|info&#125;"</span></span><br><span class="line"> <span class="built_in">exit</span> 2</span><br><span class="line"> ;;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure></div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/01/information-law/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -525,30 +836,9 @@
       
         
           
-            <p>Hexo Error: HttpRequestException</p>
-<pre><code>warning: LF will be replaced by CRLF in tags/concept/index.html.
-The file will have its original line endings in your working directory.
-Fatal: HttpRequestException encountered.
-bash: /dev/tty: No such device or address
-error: failed to execute prompt script (exit code 1)
-fatal: could not read Username for &#39;https://github.com&#39;: Invalid argument
-FATAL Something&#39;s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html
-Error: Fatal: HttpRequestException encountered.
-bash: /dev/tty: No such device or address
-error: failed to execute prompt script (exit code 1)
-fatal: could not read Username for &#39;https://github.com&#39;: Invalid argument
-
-    at ChildProcess.&lt;anonymous&gt; (D:\learning\node_modules\hexo-util\lib\spawn.js:37:17)
-    at emitTwo (events.js:126:13)
-    at ChildProcess.emit (events.js:214:7)
-    at ChildProcess.cp.emit (D:\learning\node_modules\cross-spawn\lib\enoent.js:40:29)
-    at maybeClose (internal/child_process.js:925:16)
-    at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
-</code></pre><p>使用：</p>
-<pre><code>git config --global credential.helper wincred
-
-hexo clean
-</code></pre>
+            <p>Hexo Error: HttpRequestException<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SUBUNIT"><figure class="iseeu highlight /subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">warning: LF will be replaced by CRLF in tags/concept/index.html.</span><br><span class="line">The file will have its original line endings in your working directory.</span><br><span class="line">Fatal: HttpRequestException encountered.</span><br><span class="line">bash: /dev/tty: No such device or address</span><br><span class="line"><span class="keyword">error: </span>failed to execute prompt script (exit code 1)</span><br><span class="line">fatal: could not read Username for 'https://github.com': Invalid argument</span><br><span class="line">FATAL Something's wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</span><br><span class="line"><span class="keyword">Error: </span>Fatal: HttpRequestException encountered.</span><br><span class="line">bash: /dev/tty: No such device or address</span><br><span class="line"><span class="keyword">error: </span>failed to execute prompt script (exit code 1)</span><br><span class="line">fatal: could not read Username for 'https://github.com': Invalid argument</span><br><span class="line"></span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (D:\learning\node_modules\hexo-util\lib\spawn.js:37:17)</span><br><span class="line">    at emitTwo (events.js:126:13)</span><br><span class="line">    at ChildProcess.emit (events.js:214:7)</span><br><span class="line">    at ChildProcess.cp.emit (D:\learning\node_modules\cross-spawn\lib\enoent.js:40:29)</span><br><span class="line">    at maybeClose (internal/child_process.js:925:16)</span><br><span class="line">    at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)</span><br></pre></td></tr></table></figure></div></p>
+<p>使用：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global credential.helper wincred</span><br><span class="line"></span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure></div>
           
         
       
@@ -925,15 +1215,11 @@ hexo clean
             <h2 id="如何查看一个包所在的地址"><a href="#如何查看一个包所在的地址" class="headerlink" title="如何查看一个包所在的地址"></a>如何查看一个包所在的地址</h2><ul>
 <li></li>
 </ul>
-<pre><code>import numpy
-print numpy.__file__
-</code></pre><ul>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SWIFT"><figure class="iseeu highlight /swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="built_in">print</span> numpy.__file__</span><br></pre></td></tr></table></figure></div>
+<ul>
 <li></li>
 </ul>
-<pre><code>import os
-import numpy
-path = os.path.dirname(numpy.__file__)
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="XL"><figure class="iseeu highlight /xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="built_in">path</span> = os.<span class="built_in">path</span>.dirname(numpy.__file__)</span><br></pre></td></tr></table></figure></div>
           
         
       
@@ -1086,10 +1372,8 @@ path = os.path.dirname(numpy.__file__)
 </li>
 <li><p>摘要的写法<br>一定要规范，（时间、项目、投资金额、周期、项目目标、本文导论的内容（哪个管理的描述、管理的几个过程的介绍、管理中的问题、解决措施）、项目是否完工、是否达到目标）</p>
 <p>举例：</p>
-<pre><code>2016年3月，我作为项目经理参与了XX市XX项目，整个项目总投资7--余万元，建设工期为1年。某市力图通过XX项目的建设，实现XX的目的。该项目于2017年3月，通过了业主方的验收，赢得了用户的好评。
-
-本文以XX项目为例，结合作者实践，探讨了在项目XX管理中遇到的问题及解决方法。包括XX、XX、XX。（或者讨论了信息系统项目过程中的XX管理，主要从如下几个方面进行论述：XX-结合自己的论点去写，可以是过程，可以是解决方法，但是需要和论点对应）最后，针对存在的不足之处，提出了今后的改进思路
-</code></pre></li>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LSL"><figure class="iseeu highlight /lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2016</span>年<span class="number">3</span>月，我作为项目经理参与了XX市XX项目，整个项目总投资<span class="number">7</span>--余万元，建设工期为<span class="number">1</span>年。某市力图通过XX项目的建设，实现XX的目的。该项目于<span class="number">2017</span>年<span class="number">3</span>月，通过了业主方的验收，赢得了用户的好评。</span><br><span class="line"></span><br><span class="line">本文以XX项目为例，结合作者实践，探讨了在项目XX管理中遇到的问题及解决方法。包括XX、XX、XX。（或者讨论了信息系统项目过程中的XX管理，主要从如下几个方面进行论述：XX-结合自己的论点去写，可以是过程，可以是解决方法，但是需要和论点对应）最后，针对存在的不足之处，提出了今后的改进思路</span><br></pre></td></tr></table></figure></div>
+</li>
 <li><p>正文背景写法<br>背景基本上就是摘要的扩充</p>
 <ol>
 <li>甲方立项的目的，即项目将要解决什么问题</li>
@@ -1101,20 +1385,15 @@ path = os.path.dirname(numpy.__file__)
 <li>过渡到论述的论点<br>以上150字左右</li>
 </ol>
 <p>例：</p>
-<pre><code>2017年2月， 我参与了XX市区域卫生信息集成平台建设项目，担任项目经理职位。该项目由该市卫生局贯彻“十二五”期间关于深化医药卫生体制改革规划而催生，共投资人民币980万元，工期15个月。通过该项目的建设，实现了该市人人享有基本医疗卫生服务，提高全民健康水平的总体目标。该项目将该市卫生局下属7家二级以上医院，以及23家乡镇卫生院各类医疗信息进行整合，建立区域内患者医疗信息集中存储、分布调阅、资源整合、互联互通、资源共享，减少患者跨院就诊重复检查，从而以推进公共卫生、医疗、医保、药品、财务监管信息化建设为着力点，加快信息标准化和公共卫生服务信息平台建设。
-
-该集成平台涵盖了区域市民健康系统、区域医院信息系统（简称HIS）、区域电子病历系统（EMR）、基层医疗卫生信息系统、绩效考核系统、药品监督系统等6大子系统。由于系统应用于各乡镇各医疗机构，考虑使用者的地域性，所以该集成平台使用基于.net平台的B/S三层架构，所有服务器集中存放在卫生局的中心机房，各医疗机构通过专网连接。该集成平台应用系统采用C#+MVC+ExtJS架构开发，服务器使用IBM Power 720小型机，应用服务器操作系统为Windows Server 2008,数据库采用Oracle 11g,数据库服务器操作系统为AIX 5L。同时使用vs2013自带的团队管理器TFS作为项目配置管理工具。【515字，一般到这里就结束了】
-
-该项目建设具有如下特征：1. 项目周期长，历时长达15个月之久。2. 项目规模大，目标构成复杂。3. 项目干系人构成复杂，包括市卫生局、社保中心、医院卫生院以及各子系统的项目成员等。 4. 综合性强。然而面对如此复杂的应用，我面临更多“间接管理”的挑战，日常职责更集中于管理职责。由于本系统涉及业务考核，因此在本项目中，质量管理尤为重要。在本项目中，我作为项目经理，除了对其他管理领域进行恪尽职守的管理外，主要从质量规划、质量保证和质量控制等方面进行质量管理。下面结合本人实际经验，简要介绍该项目的质量管理过程和方法，望各位批评指正。【这一段一般市大项目的写法，一般项目不用谢】
-</code></pre></li>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LSL"><figure class="iseeu highlight /lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2017</span>年<span class="number">2</span>月， 我参与了XX市区域卫生信息集成平台建设项目，担任项目经理职位。该项目由该市卫生局贯彻“十二五”期间关于深化医药卫生体制改革规划而催生，共投资人民币<span class="number">980</span>万元，工期<span class="number">15</span>个月。通过该项目的建设，实现了该市人人享有基本医疗卫生服务，提高全民健康水平的总体目标。该项目将该市卫生局下属<span class="number">7</span>家二级以上医院，以及<span class="number">23</span>家乡镇卫生院各类医疗信息进行整合，建立区域内患者医疗信息集中存储、分布调阅、资源整合、互联互通、资源共享，减少患者跨院就诊重复检查，从而以推进公共卫生、医疗、医保、药品、财务监管信息化建设为着力点，加快信息标准化和公共卫生服务信息平台建设。</span><br><span class="line"></span><br><span class="line">该集成平台涵盖了区域市民健康系统、区域医院信息系统（简称HIS）、区域电子病历系统（EMR）、基层医疗卫生信息系统、绩效考核系统、药品监督系统等<span class="number">6</span>大子系统。由于系统应用于各乡镇各医疗机构，考虑使用者的地域性，所以该集成平台使用基于.net平台的B/S三层架构，所有服务器集中存放在卫生局的中心机房，各医疗机构通过专网连接。该集成平台应用系统采用C#+MVC+ExtJS架构开发，服务器使用IBM Power <span class="number">720</span>小型机，应用服务器操作系统为Windows Server <span class="number">2008</span>,数据库采用Oracle <span class="number">11</span>g,数据库服务器操作系统为AIX <span class="number">5</span>L。同时使用vs2013自带的团队管理器TFS作为项目配置管理工具。【<span class="number">515</span>字，一般到这里就结束了】</span><br><span class="line"></span><br><span class="line">该项目建设具有如下特征：<span class="number">1.</span> 项目周期长，历时长达<span class="number">15</span>个月之久。<span class="number">2.</span> 项目规模大，目标构成复杂。<span class="number">3.</span> 项目干系人构成复杂，包括市卫生局、社保中心、医院卫生院以及各子系统的项目成员等。 <span class="number">4.</span> 综合性强。然而面对如此复杂的应用，我面临更多“间接管理”的挑战，日常职责更集中于管理职责。由于本系统涉及业务考核，因此在本项目中，质量管理尤为重要。在本项目中，我作为项目经理，除了对其他管理领域进行恪尽职守的管理外，主要从质量规划、质量保证和质量控制等方面进行质量管理。下面结合本人实际经验，简要介绍该项目的质量管理过程和方法，望各位批评指正。【这一段一般市大项目的写法，一般项目不用谢】</span><br></pre></td></tr></table></figure></div>
+</li>
 <li><p>正文中的万能模板<br>需求管理</p>
-<pre><code>从事多年项目管理的我深知，需求是龙头，是做项目管理的基础，没有需求，项目就无从谈起；因此在项目开始实施后，我带领我的项目团队深入甲方现场，通过用户访谈方式获得了用户需求，为后期项目管理奠定了基础；【建议在实践的开头部分写】
-</code></pre><p>变更管理</p>
-<pre><code>在项目实施过程中，变更不可避免的可能会由于用户的需求发生了变化、政策导向的改变或者由于一些新金属的出现等等。在本项目中我严格遵照变更控制流程进行管理，比如变更申请-评估-决策-实施-验证-沟通存档，我通过严格管理变更，没有导致项目的延期【建议在时间的偏后写】
-</code></pre></li>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">从事多年项目管理的我深知，需求是龙头，是做项目管理的基础，没有需求，项目就无从谈起；因此在项目开始实施后，我带领我的项目团队深入甲方现场，通过用户访谈方式获得了用户需求，为后期项目管理奠定了基础；【建议在实践的开头部分写】</span><br></pre></td></tr></table></figure></div>
+<p>变更管理</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在项目实施过程中，变更不可避免的可能会由于用户的需求发生了变化、政策导向的改变或者由于一些新金属的出现等等。在本项目中我严格遵照变更控制流程进行管理，比如变更申请-评估-决策-实施-验证-沟通存档，我通过严格管理变更，没有导致项目的延期【建议在时间的偏后写】</span><br></pre></td></tr></table></figure></div>
+</li>
 <li><p>收尾的万能模板</p>
-<pre><code>由于在实际项目中我们对XX管理的高度重视，采取了···（方法和措施），取得了良好的收效，我们的项目按期完成，项目组也赢得了公司的好评，项目基本上取得了成功。但通过总结认为，该项目··管理中····（哪些方面）仍存在一些不足，主要是由于····（原因）造成了····（不良后果），所以在后续的学习和工作中，我将不断充电学习，同时进行业务交流，提升自己的业务和管理水平，力争为我国信息化建设做出自己的努力
-</code></pre></li>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">由于在实际项目中我们对XX管理的高度重视，采取了···（方法和措施），取得了良好的收效，我们的项目按期完成，项目组也赢得了公司的好评，项目基本上取得了成功。但通过总结认为，该项目··管理中····（哪些方面）仍存在一些不足，主要是由于····（原因）造成了····（不良后果），所以在后续的学习和工作中，我将不断充电学习，同时进行业务交流，提升自己的业务和管理水平，力争为我国信息化建设做出自己的努力</span><br></pre></td></tr></table></figure></div></li>
 </ul>
 
           
@@ -1272,86 +1551,7 @@ path = os.path.dirname(numpy.__file__)
 <p>Python list有两个部件：<br>   数组        存储数据在链表中的地址<br>   链表        实际存储数据</p>
 </li>
 </ul>
-<pre><code class="python"># HashTable Data Structure
-class HashTable(object):
-    def __init__(self):
-        self.table_size = 11
-        self.table = [0]*self.table_size
-
-    # 这个魔法方法来实现in/not in语法
-    def __contains__(self, item):
-        return self.has_key(item)
-
-    def has_key(self, key):
-        index = self._index(key)
-        v = self.table[index]
-
-        if isinstance(v, list):
-            for kv in v:
-                if kv[0] == key:
-                    return True
-        return False
-
-    def _index(self, key):
-        return self._hash(key) % self.table_size
-
-    def _hash(self, s):
-        n = 0
-        f = 1
-        for i in s:
-            n += ord(i) * f
-            f *= 10
-        return n
-
-    def add(self, key, value):
-        index = self._index(key)
-        self._insert_at_index(index, key, value)
-
-    def _insert_at_index(self, index, key, value):
-        v = self.table[index]
-        data = [key, value]
-        if isinstance(v, int):
-            self.table[index] = [data]
-        else:
-            self.table[index].append(data)
-
-    def get(self, key, default_value = None):
-        index = self._index(key)
-        v = self.table[index]
-        if isinstance(v, list):
-            for kv in v:
-                if kv[0] == key:
-                    return kv[1]
-        return default_value
-
-
-def test():
-    import uuid
-    names = [
-        &#39;ss&#39;,
-        &#39;drill&#39;,
-        &#39;name&#39;,
-        &#39;python&#39;,
-        &#39;web&#39;,
-        &#39;Banana&#39;,
-        &#39;Apple&#39;,
-        &#39;Computer&#39;,
-        &#39;Android&#39;,
-        &#39;Mobile&#39;
-    ]
-    ht = HashTable()
-    for key in names:
-        value = uuid.uuid4()
-        ht.add(key, value)
-        print(&#39;add 元素&#39;, key, value)
-    for key in names:
-        v = ht.get(key)
-        print(&#39;get 元素&#39;, key, v)
-
-
-if __name__ == &#39;__main__&#39;:
-    test()
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># HashTable Data Structure</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HashTable</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.table_size = <span class="number">11</span></span><br><span class="line">        self.table = [<span class="number">0</span>]*self.table_size</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 这个魔法方法来实现in/not in语法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__contains__</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.has_key(item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">has_key</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        index = self._index(key)</span><br><span class="line">        v = self.table[index]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> isinstance(v, list):</span><br><span class="line">            <span class="keyword">for</span> kv <span class="keyword">in</span> v:</span><br><span class="line">                <span class="keyword">if</span> kv[<span class="number">0</span>] == key:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_index</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._hash(key) % self.table_size</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_hash</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        n = <span class="number">0</span></span><br><span class="line">        f = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            n += ord(i) * f</span><br><span class="line">            f *= <span class="number">10</span></span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, key, value)</span>:</span></span><br><span class="line">        index = self._index(key)</span><br><span class="line">        self._insert_at_index(index, key, value)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_insert_at_index</span><span class="params">(self, index, key, value)</span>:</span></span><br><span class="line">        v = self.table[index]</span><br><span class="line">        data = [key, value]</span><br><span class="line">        <span class="keyword">if</span> isinstance(v, int):</span><br><span class="line">            self.table[index] = [data]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.table[index].append(data)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, key, default_value = None)</span>:</span></span><br><span class="line">        index = self._index(key)</span><br><span class="line">        v = self.table[index]</span><br><span class="line">        <span class="keyword">if</span> isinstance(v, list):</span><br><span class="line">            <span class="keyword">for</span> kv <span class="keyword">in</span> v:</span><br><span class="line">                <span class="keyword">if</span> kv[<span class="number">0</span>] == key:</span><br><span class="line">                    <span class="keyword">return</span> kv[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">return</span> default_value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">import</span> uuid</span><br><span class="line">    names = [</span><br><span class="line">        <span class="string">'ss'</span>,</span><br><span class="line">        <span class="string">'drill'</span>,</span><br><span class="line">        <span class="string">'name'</span>,</span><br><span class="line">        <span class="string">'python'</span>,</span><br><span class="line">        <span class="string">'web'</span>,</span><br><span class="line">        <span class="string">'Banana'</span>,</span><br><span class="line">        <span class="string">'Apple'</span>,</span><br><span class="line">        <span class="string">'Computer'</span>,</span><br><span class="line">        <span class="string">'Android'</span>,</span><br><span class="line">        <span class="string">'Mobile'</span></span><br><span class="line">    ]</span><br><span class="line">    ht = HashTable()</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> names:</span><br><span class="line">        value = uuid.uuid4()</span><br><span class="line">        ht.add(key, value)</span><br><span class="line">        print(<span class="string">'add 元素'</span>, key, value)</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> names:</span><br><span class="line">        v = ht.get(key)</span><br><span class="line">        print(<span class="string">'get 元素'</span>, key, v)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure></div>
 <p>如果这个素数设置的够小，你就能看到有些item存的是一个list<br><img src="/2018/05/28/data-structure/20180528160417.png"></p>
 
           
@@ -1474,274 +1674,9 @@ if __name__ == &#39;__main__&#39;:
           
             <p>Session 和 Cookie的出现都是为了保存状态， 因为浏览器是无状态的</p>
 <h2 id="Cookie-是保存在客户端的，如果服务器的response里面有set-cookie-则客户端的服务器就会存这个值"><a href="#Cookie-是保存在客户端的，如果服务器的response里面有set-cookie-则客户端的服务器就会存这个值" class="headerlink" title="Cookie 是保存在客户端的，如果服务器的response里面有set_cookie,则客户端的服务器就会存这个值"></a>Cookie 是保存在客户端的，如果服务器的response里面有set_cookie,则客户端的服务器就会存这个值</h2><h2 id="Cookie里面不能直接存敏感的值，所以有了Session-服务器维护Session和Cookie的Mapping关系，但是"><a href="#Cookie里面不能直接存敏感的值，所以有了Session-服务器维护Session和Cookie的Mapping关系，但是" class="headerlink" title="Cookie里面不能直接存敏感的值，所以有了Session, 服务器维护Session和Cookie的Mapping关系，但是"></a>Cookie里面不能直接存敏感的值，所以有了Session, 服务器维护Session和Cookie的Mapping关系，但是</h2><p><span style="color:red">Session也是可以存在客户端的</span></p>
-<p>比方说</p>
-<pre><code class="python">@main.route(&quot;/login&quot;, methods=[&#39;POST&#39;])
-def login():
-    form = request.form
-    u = User.validate_login(form)
-    if u is None:
-        return redirect(url_for(&#39;.index&#39;))
-    else:
-        # session 中写入 user_id
-        session[&#39;user_id&#39;] = u.id
-        return redirect(url_for(&#39;.profile&#39;))
-</code></pre>
+<p>比方说<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@main.route("/login", methods=['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">    form = request.form</span><br><span class="line">    u = User.validate_login(form)</span><br><span class="line">    <span class="keyword">if</span> u <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">'.index'</span>))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># session 中写入 user_id</span></span><br><span class="line">        session[<span class="string">'user_id'</span>] = u.id</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">'.profile'</span>))</span><br></pre></td></tr></table></figure></div></p>
 <img src="/2018/05/22/session-cookie/20180522162224.png">
 <p>不过比较好的方法是放在服务器中防止客户端丢失数据，比方说存储在服务的mongodb</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/22/linux-server-chinese-encoding/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/22/linux-server-chinese-encoding/" itemprop="url">Ubuntu 服务器中文编码</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-22T15:44:28+08:00">
-                2018-05-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>nano /etc/environment
-LC_CTYPE=&quot;en_US.UTF-8&quot;
-LC_ALL=&quot;en_US.UTF-8&quot;
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/22/linux-install-zsh/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/22/linux-install-zsh/" itemprop="url">Ubuntu EC2 install Oh My Zsh</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-22T15:40:12+08:00">
-                2018-05-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><code>sudo apt-get install zsh</code></li>
-<li>wget <a href="https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh" target="_blank" rel="noopener">https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh</a> -O - | sh</li>
-<li>sudo chsh -s /bin/zsh</li>
-<li>Check whether your bash is correct: <code>$ cat /etc/passwd</code></li>
-<li>You should have root and ubuntu set as:<pre><code>root:x:0:0:root:/root:/bin/zsh
-ubuntu:x:1000:1000:Ubuntu,,,:/home/ubuntu:/bin/zsh
-</code></pre></li>
-<li>If not, manually change for ubuntu user:<pre><code>sudo -s
-chsh -s /bin/zsh ubuntu
-</code></pre></li>
-<li>If you change the theme, be sure to install the theme first</li>
-</ul>
 
           
         
@@ -1825,7 +1760,7 @@ chsh -s /bin/zsh ubuntu
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1838,7 +1773,7 @@ chsh -s /bin/zsh ubuntu
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

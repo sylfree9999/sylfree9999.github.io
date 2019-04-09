@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content=". ./test.sh 两个点的含义#!/bin/bash aa = &amp;quot;hello&amp;quot; 如果echo $aa是没有东西的，为什么？ 当只运行一个    ./test.sh 的时候,其实是test.sh是在别的进程里面跑的，所以你在当前进程里跑的时候是不会输出东西的所以用. ./test.sh是说在我现在这个进程里面来跑这个脚本 变量定义1，系统变量：$HOME、$PWD、$SHE">
+<meta name="description" content=". ./test.sh 两个点的含义12#!/bin/bashaa = &quot;hello&quot; 如果echo $aa是没有东西的，为什么？ 当只运行一个    ./test.sh 的时候,其实是test.sh是在别的进程里面跑的，所以你在当前进程里跑的时候是不会输出东西的所以用. ./test.sh是说在我现在这个进程里面来跑这个脚本 变量定义1，系统变量：$HOME、$PWD、$SHELL(现在用的是哪">
 <meta name="keywords" content="concept,shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shell 基本语法">
 <meta property="og:url" content="http://yoursite.com/2018/06/20/shell-basic/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content=". ./test.sh 两个点的含义#!/bin/bash aa = &amp;quot;hello&amp;quot; 如果echo $aa是没有东西的，为什么？ 当只运行一个    ./test.sh 的时候,其实是test.sh是在别的进程里面跑的，所以你在当前进程里跑的时候是不会输出东西的所以用. ./test.sh是说在我现在这个进程里面来跑这个脚本 变量定义1，系统变量：$HOME、$PWD、$SHE">
+<meta property="og:description" content=". ./test.sh 两个点的含义12#!/bin/bashaa = &quot;hello&quot; 如果echo $aa是没有东西的，为什么？ 当只运行一个    ./test.sh 的时候,其实是test.sh是在别的进程里面跑的，所以你在当前进程里跑的时候是不会输出东西的所以用. ./test.sh是说在我现在这个进程里面来跑这个脚本 变量定义1，系统变量：$HOME、$PWD、$SHELL(现在用的是哪">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shell 基本语法">
-<meta name="twitter:description" content=". ./test.sh 两个点的含义#!/bin/bash aa = &amp;quot;hello&amp;quot; 如果echo $aa是没有东西的，为什么？ 当只运行一个    ./test.sh 的时候,其实是test.sh是在别的进程里面跑的，所以你在当前进程里跑的时候是不会输出东西的所以用. ./test.sh是说在我现在这个进程里面来跑这个脚本 变量定义1，系统变量：$HOME、$PWD、$SHE">
+<meta name="twitter:description" content=". ./test.sh 两个点的含义12#!/bin/bashaa = &quot;hello&quot; 如果echo $aa是没有东西的，为什么？ 当只运行一个    ./test.sh 的时候,其实是test.sh是在别的进程里面跑的，所以你在当前进程里跑的时候是不会输出东西的所以用. ./test.sh是说在我现在这个进程里面来跑这个脚本 变量定义1，系统变量：$HOME、$PWD、$SHELL(现在用的是哪">
 
 
 
@@ -330,28 +330,15 @@
       
 
       
-        <h2 id="test-sh-两个点的含义"><a href="#test-sh-两个点的含义" class="headerlink" title=". ./test.sh 两个点的含义"></a>. ./test.sh 两个点的含义</h2><pre><code>#!/bin/bash
-aa = &quot;hello&quot;
-</code></pre><p>如果<code>echo $aa</code>是没有东西的，为什么？</p>
+        <h2 id="test-sh-两个点的含义"><a href="#test-sh-两个点的含义" class="headerlink" title=". ./test.sh 两个点的含义"></a>. ./test.sh 两个点的含义</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">aa = <span class="string">"hello"</span></span><br></pre></td></tr></table></figure></div>
+<p>如果<code>echo $aa</code>是没有东西的，为什么？</p>
 <p>当只运行一个    <code>./test.sh</code> 的时候,其实是test.sh是在别的进程里面跑的，所以你在当前进程里跑的时候是不会输出东西的<br>所以用<code>. ./test.sh</code>是说在我现在这个进程里面来跑这个脚本</p>
 <h2 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h2><pre><code>1，系统变量：$HOME、$PWD、$SHELL(现在用的是哪种解释器)、$USER(当前用户)等
 2，查看所有变量:`set`
 3，定义变量：VAR=value，&lt;span style=&quot;color:red;&quot;&gt;等号两侧不能有空格&lt;/span&gt;，变量名称一般为大写 
 4，双引号与单引号的区别：双引号仅将空格脱意，单引号会将所有特殊字符脱意(单引号里面用变量引用没有用) 
 
-    ```
-    X=hello
-    echo $X -&gt; hello
-    X=&quot;hello world&quot;
-    echo $X -&gt; hello world
-    X=&#39;hello\nworld&#39;
-    echo $X -&gt; hello\nworld
-    Y=abc
-    X=&#39;hello $Y&#39;
-    echo $X -&gt; hello $Y
-    X=&quot;hello $Y&quot;
-    echo $X -&gt; hello abc
-    ```
+    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">X</span>=hello</span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello</span><br><span class="line"><span class="attribute">X</span>=<span class="string">"hello world"</span></span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello world</span><br><span class="line"><span class="attribute">X</span>=<span class="string">'hello\nworld'</span></span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello\nworld</span><br><span class="line"><span class="attribute">Y</span>=abc</span><br><span class="line"><span class="attribute">X</span>=<span class="string">'hello $Y'</span></span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello <span class="variable">$Y</span></span><br><span class="line"><span class="attribute">X</span>=<span class="string">"hello <span class="variable">$Y</span>"</span></span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello abc</span><br></pre></td></tr></table></figure></div>
 
 5，撤销变量：unset X
 6，export：可以把变量提升为全局环境变量，所有连上去的BASH都能访问，否则只在当前的bash能用
@@ -360,148 +347,33 @@ aa = &quot;hello&quot;
     1，用A=`ls -la`反引号的形式
     2，用A=$(ls -la)，等价于上面的方式
 
-    ```
-    X=&quot;Hello;World;SS&quot;
-    echo $X | cut -d &quot;;&quot; -f2  //拿到以；为分隔符切分的第二个元素
-    Y=`echo $X | cut -d &quot;;&quot; -f2`
-    echo $Y -&gt; World
-    ```
+    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X=<span class="string">"Hello;World;SS"</span></span><br><span class="line"><span class="keyword">echo</span> $X | cut -d <span class="string">";"</span> -f2  <span class="comment">//拿到以；为分隔符切分的第二个元素</span></span><br><span class="line">Y=`<span class="keyword">echo</span> $X | cut -d <span class="string">";"</span> -f2`</span><br><span class="line"><span class="keyword">echo</span> $Y -&gt; World</span><br></pre></td></tr></table></figure></div>
 
 8，Shell中的特殊变量
     1，$? 上一个命令执行的状态，类似与方法的返回值，通常情况下返回值为0代表成功，非0代表不正常
-        ```
-        true
-        echo $? -&gt; 0
-        false
-        echo $? -&gt; 1
-        ll
-        echo $? -&gt; 0
-        lsss
-        echo $? -&gt; 127
-        ```
+        <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">true</span></span><br><span class="line">echo <span class="variable">$?</span> -&gt; <span class="number">0</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line">echo <span class="variable">$?</span> -&gt; <span class="number">1</span></span><br><span class="line">ll</span><br><span class="line">echo <span class="variable">$?</span> -&gt; <span class="number">0</span></span><br><span class="line">lsss</span><br><span class="line">echo <span class="variable">$?</span> -&gt; <span class="number">127</span></span><br></pre></td></tr></table></figure></div>
+
     2，$$ 表示当前进程号
     3，$0 表示当前脚本名称
     4，$N 表示N位置的输入参数
-        ```
-        #!/bin/bash
-        aa=&quot;hello&quot;
-        echo &quot;第一个参数=&quot;$1
-        echo &quot;第二个参数=&quot;$2
+        <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">aa=<span class="string">"hello"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第一个参数="</span><span class="variable">$1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第二个参数="</span><span class="variable">$2</span></span><br><span class="line"></span><br><span class="line">./test.sh hello world</span><br><span class="line">第一个参数=hello</span><br><span class="line">第二个参数=world</span><br></pre></td></tr></table></figure></div>
 
-        ./test.sh hello world
-        第一个参数=hello
-        第二个参数=world
-        ```
     5，$# 表示参数的个数，常用于循环
     6，$*和$@都表示参数列表
         &quot;$*&quot;会将所有的参数作为一个整体，以&quot;$S1$S2...$Sn&quot;的形式输出
         &quot;$@&quot;会将各个参数分开，以&quot;$S1&quot;&quot;$S2&quot;...&quot;$Sn&quot;的形式输出
-        ```
-        #!/bin/bash
-        echo $*
-        echo $@
-        for N in &quot;$*&quot;
-        do
-        echo $N
-        done
-
-        for N in &quot;$@&quot;
-        do
-        echo $N
-        done
-
-        ```
-</code></pre><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>格式：expr m+n 或者 $((m+n)) 注意expr运算符间要有空格<br>例如（2+3）*4</p>
-<pre><code>S=`expr 2+3`\*4 或者 $(((2+3)*4)),最外层的$()代表取其值
-</code></pre><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><pre><code>for N in 1 2 3
-do
-    echo $N
-done
-或者 for N in {1..3};do echo $N;done
-或者
-for ((i=0;i&lt;=5;i++)) //必须要是两层括号
-do
-    echo &quot;welcome $i times&quot;
-done
-</code></pre><h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><pre><code>while expression
-do 
-    command
-done
-或者
-int=1
-while ((int&lt;=3))
-do
-    echo $int
-    let int++
-done
-</code></pre><h2 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h2><pre><code>case $1 in
-start)
-    echo &quot;starting&quot;
-    ;;
-stop)
-    echo &quot;stoping&quot;
-    ;;
-*)
-    echo &quot;Usage:{start|stop}&quot;
-esac
-</code></pre><h2 id="read命令"><a href="#read命令" class="headerlink" title="read命令"></a>read命令</h2><pre><code>read -p &quot;please enter a number: &quot; numb
-please enter a number:  1
-echo $numb
-1
-</code></pre><h2 id="if"><a href="#if" class="headerlink" title="if"></a>if</h2><pre><code>if [ $NAME=root ]
-then
-    echo &quot;hello ${NAME}&quot;
-elif [ $NAME=itcast ]
-    then
-        echo &quot;hello ${NAME}&quot;
-else
-    echo &quot;OUT&quot;
-fi
-</code></pre><p>[ condition ]一定要前后有空格，空[  ]则返回1，即false</p>
+        <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> $*</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$@</span></span><br><span class="line"><span class="keyword">for</span> N <span class="keyword">in</span> <span class="string">"$*"</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$N</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> N <span class="keyword">in</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$N</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></div>
+</code></pre><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>格式：expr m+n 或者 $((m+n)) 注意expr运算符间要有空格<br>例如（2+3）*4<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LSL"><figure class="iseeu highlight /lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S=`expr <span class="number">2</span>+<span class="number">3</span>`\*<span class="number">4</span> 或者 $(((<span class="number">2</span>+<span class="number">3</span>)*<span class="number">4</span>)),最外层的$()代表取其值</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> N <span class="keyword">in</span> 1 2 3</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="variable">$N</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">或者 <span class="keyword">for</span> N <span class="keyword">in</span> &#123;1..3&#125;;<span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">$N</span>;<span class="keyword">done</span></span><br><span class="line">或者</span><br><span class="line"><span class="keyword">for</span> ((i=0;i&lt;=5;i++)) //必须要是两层括号</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"welcome <span class="variable">$i</span> times"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="OCAML"><figure class="iseeu highlight /ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> expression</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">	command</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">或者</span><br><span class="line"><span class="built_in">int</span>=<span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> ((<span class="built_in">int</span>&lt;=<span class="number">3</span>))</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	echo $<span class="built_in">int</span></span><br><span class="line">	<span class="keyword">let</span> <span class="built_in">int</span>++</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="variable">$1</span> <span class="keyword">in</span></span><br><span class="line">start)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"starting"</span></span><br><span class="line">	;;</span><br><span class="line">stop)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"stoping"</span></span><br><span class="line">	;;</span><br><span class="line">*)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"Usage:&#123;start|stop&#125;"</span></span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="read命令"><a href="#read命令" class="headerlink" title="read命令"></a>read命令</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="STYLUS"><figure class="iseeu highlight /stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">read -<span class="selector-tag">p</span> <span class="string">"please enter a number: "</span> numb</span><br><span class="line">please enter <span class="selector-tag">a</span> number:  <span class="number">1</span></span><br><span class="line">echo <span class="variable">$numb</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="if"><a href="#if" class="headerlink" title="if"></a>if</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="variable">$NAME</span>=root ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"hello <span class="variable">$&#123;NAME&#125;</span>"</span></span><br><span class="line"><span class="keyword">elif</span> [ <span class="variable">$NAME</span>=itcast ]</span><br><span class="line">	<span class="keyword">then</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"hello <span class="variable">$&#123;NAME&#125;</span>"</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"OUT"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></div>
+<p>[ condition ]一定要前后有空格，空[  ]则返回1，即false</p>
 <h2 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h2><p>[ condition ] &amp;&amp; echo OK || echo notok<br>= 字符串比较<br>-lt 小于<br>-le 小于等于<br>-eq 等于<br>-gt 大于<br>-ge 大于等于<br>-ne 不等于<br>-r     有读的权限<br>-w     有写权限<br>-f     文件存在并且是一个常规的文件<br>-s     文件存在且不为空<br>-d     文件存在并且为一个目录<br>-b     文件存在并且是一个块设备<br>-L     文件存在并且是一个链接</p>
-<h2 id="Shell-自定义函数"><a href="#Shell-自定义函数" class="headerlink" title="Shell 自定义函数"></a>Shell 自定义函数</h2><pre><code>[ function ] funname [()]
-{
-    action;
-    [return int;]
-}
-例如可以这样定义
-function start() / function start/ start()
-函数只能返回int类型
-
-如果要传入参数，需要在外面定义
-
-!#/bin/bash
-function fSum()
-{
-    echo $1,$2;
-    return $(($1+$2));
-}
-fSum 3 2;
-total=$?;
-fSum 5 7;
-total=$?;
-echo $total, $?;
-</code></pre><h2 id="脚本调试"><a href="#脚本调试" class="headerlink" title="脚本调试"></a>脚本调试</h2><p><code>sh -vx helloWorld.sh</code> 只会展现所有的执行状态，不会停</p>
-<h2 id="模拟用户输入"><a href="#模拟用户输入" class="headerlink" title="模拟用户输入"></a>模拟用户输入</h2><pre><code class="bash">auto_ssh_copy_id() {
-    expect -c &quot;set timeout -1;
-        spawn ssh-copy-id $1;
-        expect {
-            *(yes/no)* {send -- yes\r;exp_continue;}
-            *assword:* {send -- $2\r;exp_continue;}
-            eof           {exit 0;}
-        }
-    &quot;;
-}
-
-
-ssy_copy_id_to_all() {
-    for SERVER in $SERVERS
-    do
-        auto_ssh_copy_id $SERVER $PASSWORD
-    done    
-}
-</code></pre>
-
+<h2 id="Shell-自定义函数"><a href="#Shell-自定义函数" class="headerlink" title="Shell 自定义函数"></a>Shell 自定义函数</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ADA"><figure class="iseeu highlight /ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[ <span class="keyword">function</span> <span class="title">]</span> funname [()]</span><br><span class="line">&#123;</span><br><span class="line">	action;</span><br><span class="line">	[<span class="keyword">return</span> <span class="type">int</span>;]</span><br><span class="line">&#125;</span><br><span class="line">例如可以这样定义</span><br><span class="line"><span class="keyword">function</span> <span class="title">start</span>() / <span class="keyword">function</span> <span class="title">start/</span> start()</span><br><span class="line">函数只能返回int类型</span><br><span class="line"></span><br><span class="line">如果要传入参数，需要在外面定义</span><br><span class="line"></span><br><span class="line">!#/bin/bash</span><br><span class="line"><span class="keyword">function</span> <span class="title">fSum</span>()</span><br><span class="line">&#123;</span><br><span class="line">	echo $1,$2;</span><br><span class="line">	<span class="keyword">return</span> <span class="type">$(($1+$2))</span>;</span><br><span class="line">&#125;</span><br><span class="line">fSum <span class="number">3</span> <span class="number">2</span>;</span><br><span class="line">total=$?;</span><br><span class="line">fSum <span class="number">5</span> <span class="number">7</span>;</span><br><span class="line">total=$?;</span><br><span class="line">echo $total, $?;</span><br></pre></td></tr></table></figure></div>
+<h2 id="脚本调试"><a href="#脚本调试" class="headerlink" title="脚本调试"></a>脚本调试</h2><p><code>sh -vx helloWorld.sh</code> 只会展现所有的执行状态，不会停</p>
+<h2 id="模拟用户输入"><a href="#模拟用户输入" class="headerlink" title="模拟用户输入"></a>模拟用户输入</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">auto_ssh_copy_id</span></span>() &#123;</span><br><span class="line">	expect -c <span class="string">"set timeout -1;</span></span><br><span class="line"><span class="string">		spawn ssh-copy-id <span class="variable">$1</span>;</span></span><br><span class="line"><span class="string">		expect &#123;</span></span><br><span class="line"><span class="string">			*(yes/no)* &#123;send -- yes\r;exp_continue;&#125;</span></span><br><span class="line"><span class="string">			*assword:* &#123;send -- <span class="variable">$2</span>\r;exp_continue;&#125;</span></span><br><span class="line"><span class="string">			eof		   &#123;exit 0;&#125;</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">ssy_copy_id_to_all</span></span>() &#123;</span><br><span class="line">	<span class="keyword">for</span> SERVER <span class="keyword">in</span> <span class="variable">$SERVERS</span></span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">		auto_ssh_copy_id <span class="variable">$SERVER</span> <span class="variable">$PASSWORD</span></span><br><span class="line">	<span class="keyword">done</span>	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
       
     </div>
     
@@ -620,7 +492,7 @@ ssy_copy_id_to_all() {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -633,7 +505,7 @@ ssy_copy_id_to_all() {
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

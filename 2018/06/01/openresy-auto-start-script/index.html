@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="#!/bin/sh # # chkconfig: 2345 55 25 # Description: Nginx init.d script, put in /etc/init.d, chmod +x /etc/init.d/nginx #              For Debian, run: update-rc.d -f nginx defaults #              For">
+<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
 <meta name="keywords" content="linux,practice">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Openresty Auto Start Script">
 <meta property="og:url" content="http://yoursite.com/2018/06/01/openresy-auto-start-script/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="#!/bin/sh # # chkconfig: 2345 55 25 # Description: Nginx init.d script, put in /etc/init.d, chmod +x /etc/init.d/nginx #              For Debian, run: update-rc.d -f nginx defaults #              For">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Openresty Auto Start Script">
-<meta name="twitter:description" content="#!/bin/sh # # chkconfig: 2345 55 25 # Description: Nginx init.d script, put in /etc/init.d, chmod +x /etc/init.d/nginx #              For Debian, run: update-rc.d -f nginx defaults #              For">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
 
 
 
@@ -330,139 +330,7 @@
       
 
       
-        <pre><code class="bash">
-#!/bin/sh
-#
-# chkconfig: 2345 55 25
-# Description: Nginx init.d script, put in /etc/init.d, chmod +x /etc/init.d/nginx
-#              For Debian, run: update-rc.d -f nginx defaults
-#              For CentOS, run: chkconfig --add nginx
-#
-### BEGIN INIT INFO
-# Provides:          nginx
-# Required-Start:    $all
-# Required-Stop:     $all
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: nginx init.d script
-# Description:       OpenResty (aka. ngx_openresty) is a full-fledged web application server by bundling the standard Nginx core, lots of 3rd-party Nginx modules, as well as most of their external dependencies.
-### END INIT INFO
-#
-
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DESC=&quot;Nginx Daemon&quot;
-NAME=nginx
-PREFIX=/usr/local/openresty/nginx
-DAEMON=$PREFIX/sbin/$NAME
-CONF=$PREFIX/conf/$NAME.conf
-PID=$PREFIX/logs/$NAME.pid
-SCRIPT=/etc/init.d/$NAME
-
-if [ ! -x &quot;$DAEMON&quot; ] || [ ! -f &quot;$CONF&quot; ]; then
-    echo -e &quot;\033[33m $DAEMON has no permission to run. \033[0m&quot;
-    echo -e &quot;\033[33m Or $CONF doesn&#39;t exist. \033[0m&quot;
-    sleep 1
-    exit 1
-fi
-
-do_start() {
-    if [ -f $PID ]; then
-        echo -e &quot;\033[33m $PID already exists. \033[0m&quot;
-        echo -e &quot;\033[33m $DESC is already running or crashed. \033[0m&quot;
-        echo -e &quot;\033[32m $DESC Reopening $CONF ... \033[0m&quot;
-        $DAEMON -s reopen -c $CONF
-        sleep 1
-        echo -e &quot;\033[36m $DESC reopened. \033[0m&quot;
-    else
-        echo -e &quot;\033[32m $DESC Starting $CONF ... \033[0m&quot;
-        $DAEMON -c $CONF
-        sleep 1
-        echo -e &quot;\033[36m $DESC started. \033[0m&quot;
-    fi
-}
-
-do_stop() {
-    if [ ! -f $PID ]; then
-        echo -e &quot;\033[33m $PID doesn&#39;t exist. \033[0m&quot;
-        echo -e &quot;\033[33m $DESC isn&#39;t running. \033[0m&quot;
-    else
-        echo -e &quot;\033[32m $DESC Stopping $CONF ... \033[0m&quot;
-        $DAEMON -s stop -c $CONF
-        sleep 1
-        echo -e &quot;\033[36m $DESC stopped. \033[0m&quot;
-    fi
-}
-
-do_reload() {
-    if [ ! -f $PID ]; then
-        echo -e &quot;\033[33m $PID doesn&#39;t exist. \033[0m&quot;
-        echo -e &quot;\033[33m $DESC isn&#39;t running. \033[0m&quot;
-        echo -e &quot;\033[32m $DESC Starting $CONF ... \033[0m&quot;
-        $DAEMON -c $CONF
-        sleep 1
-        echo -e &quot;\033[36m $DESC started. \033[0m&quot;
-    else
-        echo -e &quot;\033[32m $DESC Reloading $CONF ... \033[0m&quot;
-        $DAEMON -s reload -c $CONF
-        sleep 1
-        echo -e &quot;\033[36m $DESC reloaded. \033[0m&quot;
-    fi
-}
-
-do_quit() {
-    if [ ! -f $PID ]; then
-        echo -e &quot;\033[33m $PID doesn&#39;t exist. \033[0m&quot;
-        echo -e &quot;\033[33m $DESC isn&#39;t running. \033[0m&quot;
-    else
-        echo -e &quot;\033[32m $DESC Quitting $CONF ... \033[0m&quot;
-        $DAEMON -s quit -c $CONF
-        sleep 1
-        echo -e &quot;\033[36m $DESC quitted. \033[0m&quot;
-    fi
-}
-
-do_test() {
-    echo -e &quot;\033[32m $DESC Testing $CONF ... \033[0m&quot;
-    $DAEMON -t -c $CONF
-}
-
-do_info() {
-    $DAEMON -V
-}
-
-case &quot;$1&quot; in
- start)
- do_start
- ;;
- stop)
- do_stop
- ;;
- reload)
- do_reload
- ;;
- restart)
- do_stop
- do_start
- ;;
- quit)
- do_quit
- ;;
- test)
- do_test
- ;;
- info)
- do_info
- ;;
- *)
- echo &quot;Usage: $SCRIPT {start|stop|reload|restart|quit|test|info}&quot;
- exit 2
- ;;
-esac
-
-exit 0
-
-</code></pre>
-
+        <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># chkconfig: 2345 55 25</span></span><br><span class="line"><span class="comment"># Description: Nginx init.d script, put in /etc/init.d, chmod +x /etc/init.d/nginx</span></span><br><span class="line"><span class="comment">#              For Debian, run: update-rc.d -f nginx defaults</span></span><br><span class="line"><span class="comment">#              For CentOS, run: chkconfig --add nginx</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">### BEGIN INIT INFO</span></span><br><span class="line"><span class="comment"># Provides:          nginx</span></span><br><span class="line"><span class="comment"># Required-Start:    $all</span></span><br><span class="line"><span class="comment"># Required-Stop:     $all</span></span><br><span class="line"><span class="comment"># Default-Start:     2 3 4 5</span></span><br><span class="line"><span class="comment"># Default-Stop:      0 1 6</span></span><br><span class="line"><span class="comment"># Short-Description: nginx init.d script</span></span><br><span class="line"><span class="comment"># Description:       OpenResty (aka. ngx_openresty) is a full-fledged web application server by bundling the standard Nginx core, lots of 3rd-party Nginx modules, as well as most of their external dependencies.</span></span><br><span class="line"><span class="comment">### END INIT INFO</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line">PATH=/usr/<span class="built_in">local</span>/sbin:/usr/<span class="built_in">local</span>/bin:/sbin:/bin:/usr/sbin:/usr/bin</span><br><span class="line">DESC=<span class="string">"Nginx Daemon"</span></span><br><span class="line">NAME=nginx</span><br><span class="line">PREFIX=/usr/<span class="built_in">local</span>/openresty/nginx</span><br><span class="line">DAEMON=<span class="variable">$PREFIX</span>/sbin/<span class="variable">$NAME</span></span><br><span class="line">CONF=<span class="variable">$PREFIX</span>/conf/<span class="variable">$NAME</span>.conf</span><br><span class="line">PID=<span class="variable">$PREFIX</span>/logs/<span class="variable">$NAME</span>.pid</span><br><span class="line">SCRIPT=/etc/init.d/<span class="variable">$NAME</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -x <span class="string">"<span class="variable">$DAEMON</span>"</span> ] || [ ! -f <span class="string">"<span class="variable">$CONF</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$DAEMON</span> has no permission to run. \033[0m"</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"\033[33m Or <span class="variable">$CONF</span> doesn't exist. \033[0m"</span></span><br><span class="line">    sleep 1</span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">do_start</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> [ -f <span class="variable">$PID</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$PID</span> already exists. \033[0m"</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$DESC</span> is already running or crashed. \033[0m"</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[32m <span class="variable">$DESC</span> Reopening <span class="variable">$CONF</span> ... \033[0m"</span></span><br><span class="line">        <span class="variable">$DAEMON</span> -s reopen -c <span class="variable">$CONF</span></span><br><span class="line">        sleep 1</span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[36m <span class="variable">$DESC</span> reopened. \033[0m"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[32m <span class="variable">$DESC</span> Starting <span class="variable">$CONF</span> ... \033[0m"</span></span><br><span class="line">        <span class="variable">$DAEMON</span> -c <span class="variable">$CONF</span></span><br><span class="line">        sleep 1</span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[36m <span class="variable">$DESC</span> started. \033[0m"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">do_stop</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> [ ! -f <span class="variable">$PID</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$PID</span> doesn't exist. \033[0m"</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$DESC</span> isn't running. \033[0m"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[32m <span class="variable">$DESC</span> Stopping <span class="variable">$CONF</span> ... \033[0m"</span></span><br><span class="line">        <span class="variable">$DAEMON</span> -s stop -c <span class="variable">$CONF</span></span><br><span class="line">        sleep 1</span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[36m <span class="variable">$DESC</span> stopped. \033[0m"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">do_reload</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> [ ! -f <span class="variable">$PID</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$PID</span> doesn't exist. \033[0m"</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$DESC</span> isn't running. \033[0m"</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[32m <span class="variable">$DESC</span> Starting <span class="variable">$CONF</span> ... \033[0m"</span></span><br><span class="line">        <span class="variable">$DAEMON</span> -c <span class="variable">$CONF</span></span><br><span class="line">        sleep 1</span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[36m <span class="variable">$DESC</span> started. \033[0m"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[32m <span class="variable">$DESC</span> Reloading <span class="variable">$CONF</span> ... \033[0m"</span></span><br><span class="line">        <span class="variable">$DAEMON</span> -s reload -c <span class="variable">$CONF</span></span><br><span class="line">        sleep 1</span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[36m <span class="variable">$DESC</span> reloaded. \033[0m"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">do_quit</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> [ ! -f <span class="variable">$PID</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$PID</span> doesn't exist. \033[0m"</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[33m <span class="variable">$DESC</span> isn't running. \033[0m"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[32m <span class="variable">$DESC</span> Quitting <span class="variable">$CONF</span> ... \033[0m"</span></span><br><span class="line">        <span class="variable">$DAEMON</span> -s quit -c <span class="variable">$CONF</span></span><br><span class="line">        sleep 1</span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">"\033[36m <span class="variable">$DESC</span> quitted. \033[0m"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">do_test</span></span>() &#123;</span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"\033[32m <span class="variable">$DESC</span> Testing <span class="variable">$CONF</span> ... \033[0m"</span></span><br><span class="line">    <span class="variable">$DAEMON</span> -t -c <span class="variable">$CONF</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">do_info</span></span>() &#123;</span><br><span class="line">    <span class="variable">$DAEMON</span> -V</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></span><br><span class="line"> start)</span><br><span class="line"> do_start</span><br><span class="line"> ;;</span><br><span class="line"> stop)</span><br><span class="line"> do_stop</span><br><span class="line"> ;;</span><br><span class="line"> reload)</span><br><span class="line"> do_reload</span><br><span class="line"> ;;</span><br><span class="line"> restart)</span><br><span class="line"> do_stop</span><br><span class="line"> do_start</span><br><span class="line"> ;;</span><br><span class="line"> quit)</span><br><span class="line"> do_quit</span><br><span class="line"> ;;</span><br><span class="line"> <span class="built_in">test</span>)</span><br><span class="line"> do_test</span><br><span class="line"> ;;</span><br><span class="line"> info)</span><br><span class="line"> do_info</span><br><span class="line"> ;;</span><br><span class="line"> *)</span><br><span class="line"> <span class="built_in">echo</span> <span class="string">"Usage: <span class="variable">$SCRIPT</span> &#123;start|stop|reload|restart|quit|test|info&#125;"</span></span><br><span class="line"> <span class="built_in">exit</span> 2</span><br><span class="line"> ;;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure></div>
       
     </div>
     
@@ -572,7 +440,7 @@ exit 0
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -585,7 +453,7 @@ exit 0
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

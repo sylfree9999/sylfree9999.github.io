@@ -260,6 +260,271 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/26/SSIS-CanNotImportPackage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/26/SSIS-CanNotImportPackage/" itemprop="url">SSIS Cannot Import Package</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-26T15:51:46+08:00">
+                2018-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Error:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SMALI"><figure class="iseeu highlight /smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The SQL Server<span class="built_in"> instance </span>specified in SSIS service configuration is<span class="built_in"> not </span>present<span class="built_in"> or </span>is<span class="built_in"> not </span>available. This might occur when there is no default<span class="built_in"> instance </span>of SQL Server on the computer. For more information, see the topic <span class="string">"Configuring the Integration Services Service"</span> in Server 2008 Books Online.</span><br><span class="line"></span><br><span class="line">Login failed for user 'XXXXX'. (MsDtsSrvr)</span><br></pre></td></tr></table></figure></div>
+<p>Solution:</p>
+<p>Add the user XXXX as a login to the SQL server<br>with sys_admin rights to msdb</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/26/asp-net-mvc-lifecycle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/26/asp-net-mvc-lifecycle/" itemprop="url">ASP.NET MVC Request Life Cycle</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-26T10:15:43+08:00">
+                2018-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.codeproject.com/Articles/1028156/A-Detailed-Walkthrough-of-ASP-NET-MVC-Request-Life" target="_blank" rel="noopener">Ref A Detailed Walkthrough of ASP.NET MVC Request Life Cycle</a></p>
+<p>This is mainly for <strong>Page Life Cycle</strong> other than <strong>Application Life Cycle</strong>.<br>A typical <strong>Application Life Cycle</strong> contains <strong>Application Start</strong> and <strong>Application End events</strong> while <strong>Http Life Cycle</strong> is something which is repeated for every request.</p>
+<h2 id="MVC-Request-Life-Cycle"><a href="#MVC-Request-Life-Cycle" class="headerlink" title="MVC Request Life Cycle"></a>MVC Request Life Cycle</h2><img src="/2018/03/26/asp-net-mvc-lifecycle/mvc-life-cycle.png">
+<h3 id="URL-Routing-Module"><a href="#URL-Routing-Module" class="headerlink" title="URL Routing Module"></a>URL Routing Module</h3><p>The incoming request from <strong>IIS pipeline</strong> is handed over to URL Routing module which analyses the request and looks up <strong>Routing table</strong> to figure out which controller the incoming request maps to.</p>
+<p>Routing table is a static container of routes defined in MVC application with corresponding controller action mapping. If the route is found in the routing table <code>MVCRouteHandler</code> executes and bring s the instance of <code>MVCHttpHandler</code>.</p>
+<p><code>MVC handler</code> begins initializing and executing controller. The <code>MVCHttpHandler</code> also takes of converting route data into concrete controller that is capable of serving the request. <code>MVC handler</code> does all this with the help of MVC Controller factory and activator which are responsible for creating an instance of the controller. <span style="background-color: #FFFF00">This is also the place where the Dependency Injection is performed if the application has been designed to invoke parameterized controller constructor and satisfy its dependencies</span>.</p>
+<p>After the controller instance is created <strong>the next major step is to find and execute the corresponding action</strong>. A component called ActionInvoker finds and executes the action defined in routing table. Before the action method is called model bindings takes place which maps data from http request to action method parameters. After the model binding, action filters are invoked which includes OnActionExecuting filter. This is followed by action execution and Action Executed filter execution and finally preparing Action Result.</p>
+<p>Once the Action method has been finished executing the next step is Result execution. MVC separates the action declaration from Result execution. If the Result from action execution is view, then depending upon configuration, ASPX or Razor view engine will be called to find and render the html view as a response of http request. If the result was not view then it’s passed as-is to http response.</p>
+<h2 id="Application-Life-Cycle"><a href="#Application-Life-Cycle" class="headerlink" title="Application Life Cycle"></a>Application Life Cycle</h2><p>MVC application life cycle contains two application level events that are associated with start and end events of the application. Application start fires <strong>when the application is brought to life by a very first request</strong> to the application. Application end event is fired <strong>when application has been shut down</strong>.</p>
+<p>It’s important to understand application life cycle events to get a better understanding on how MVC life cycle starts. So far we have seen that URL Routing module is the starting point for MVC application that has a collection of predefined routes to map from. Now, the question here is <strong>how does URL routing handler gets this information from</strong>? The answer is simple, using Application start event. MVC applications provide these events in Global.asax file which contains all the application level events. All the prestart things are managed in the application start event.</p>
+<p>MVC Application_Start event is:</p>
+<ul>
+<li>An event that fires when first request is received.</li>
+<li>Can be used to <strong>run initial configuration and settings code</strong></li>
+<li>The event takes care of <strong>registering all areas of MVC application, installing global filters, adding routes and bundles</strong>.</li>
+</ul>
+<h2 id="Register-Routes"><a href="#Register-Routes" class="headerlink" title="Register Routes"></a>Register Routes</h2><p>Since Application_start event is the first event that gets called when application receives its very first request, <strong>all the pre application tasks like routing takes place here</strong>.</p>
+<p>As you see in the diagram below ResolveRequestCache needs to know the routes to choose from, and this needs to have static route collection already created.</p>
+<img src="/2018/03/26/asp-net-mvc-lifecycle/register-routes.png">
+<h2 id="HttpHandlers"><a href="#HttpHandlers" class="headerlink" title="HttpHandlers"></a>HttpHandlers</h2><p>HttpHandlers are classes that implement <code>IHttpHandler</code> and generate a response to <code>HttpRequest</code>. There could be httpHandler re-assignment in a life cycle of a request but only on http handler executes and provides response.</p>
+<h3 id="Create-HttpHandler"><a href="#Create-HttpHandler" class="headerlink" title="Create HttpHandler:"></a>Create HttpHandler:</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SampleHttlHandler</span> : <span class="title">IHttpHandler</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span> book IsReusable &#123; <span class="keyword">get</span>&#123; <span class="keyword">return</span> <span class="literal">false</span>;&#125;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ProcessRequest</span> (<span class="params">HttpContext context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		context.Response.Write(<span class="string">"&lt;b&gt;This is the response from HttpHandler&lt;/b&gt;"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="HttpModules"><a href="#HttpModules" class="headerlink" title="HttpModules"></a>HttpModules</h2><p>HttpModules are classes that implement <code>IHttpModule</code> interface and are designed to respond to Life cycle events. In a given Http Life cycle, multiple http modules <strong>can respond to one single request and can also hook into multiple life cycle events</strong>. So they are not tied to any specific event, rather they can act at several places during the life cycle and expose multiple development possibilities.</p>
+<p>Features such as <span style="background-color: #FFFF00"><strong>Logging and Authentication</strong></span> are best examples of wrapping things up in a HttpModule. </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/25/Func/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -332,17 +597,10 @@
         
           
             <p><code>Func&lt;T1,T2,...,Tn,Tr&gt;</code> represents a function that takes <code>(T1, T2, ..., Tn)</code> and returns <code>Tr</code></p>
-<p>E.g., you have function:</p>
-<pre><code>double sqr(double s){
-    return x*x;
-}
-</code></pre><p>You could save it as some kind of a function-variable:</p>
-<pre><code>Func&lt;double, double&gt; f1 = sqr;
-Func&lt;double, double&gt; f2 = x=&gt; x*x;
-</code></pre><p>And then use exactly as you would use sqr:</p>
-<pre><code>f1(2);
-f2(f1(4))
-</code></pre><p>.</p>
+<p>E.g., you have function:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PERL"><figure class="iseeu highlight /perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">double <span class="keyword">s</span><span class="string">qr(double s)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">x</span>*<span class="keyword">x</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>You could save it as some kind of a function-variable:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LLVM"><figure class="iseeu highlight /llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;<span class="keyword">double</span>, <span class="keyword">double</span>&gt; f<span class="number">1</span> = sqr<span class="comment">;</span></span><br><span class="line"><span class="comment">Func&lt;double, double&gt; f2 = x=&gt; x*x;</span></span><br></pre></td></tr></table></figure></div></p>
+<p>And then use exactly as you would use sqr:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LISP"><figure class="iseeu highlight /lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f1(<span class="number">2</span>)<span class="comment">;</span></span><br><span class="line">f2(<span class="name">f1</span>(<span class="number">4</span>))</span><br></pre></td></tr></table></figure></div></p>
+<p>.</p>
 
           
         
@@ -463,26 +721,8 @@ f2(f1(4))
         
           
             <p>转自:<br><a href="http://www.cnblogs.com/jesse2013/p/aspnet-identity-claims-based-authentication-and-owin.html" target="_blank" rel="noopener">MVC5 - ASP.NET Identity登录原理 - Claims-based认证和OWIN</a></p>
-<p>实现登录实际上只有简单的三行代码</p>
-<pre><code>private IAuthenticationManager AuthenticationManager
-{
-    get{
-        return HttpContext.GetOwinContext().Authentication;
-    }
-}
-
-private async Task SignInAsync()
-{
-    //1.    利用ASP.NET Identity获取用户对象
-    var user = await UserManager.FindAsync(&quot;UserName&quot;,&quot;Password&quot;);
-    //2.    利用ASP.NET Identity获取Identity对象
-    var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
-    //3.    将上面拿到的identity对象登录
-    AuthenticationManager.SignIn(new AuthenticationProperties(){
-        IsPersistent = true
-        }, identity);
-}
-</code></pre><p><code>CreateIdentityAsync</code>返回的是一个ClaimsIdentity，这又是什么？</p>
+<p>实现登录实际上只有简单的三行代码<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> IAuthenticationManager AuthenticationManager</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">get</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> HttpContext.GetOwinContext().Authentication;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> Task <span class="title">SignInAsync</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//1.	利用ASP.NET Identity获取用户对象</span></span><br><span class="line">	<span class="keyword">var</span> user = <span class="keyword">await</span> UserManager.FindAsync(<span class="string">"UserName"</span>,<span class="string">"Password"</span>);</span><br><span class="line">	<span class="comment">//2.	利用ASP.NET Identity获取Identity对象</span></span><br><span class="line">	<span class="keyword">var</span> identity = <span class="keyword">await</span> UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);</span><br><span class="line">	<span class="comment">//3.	将上面拿到的identity对象登录</span></span><br><span class="line">	AuthenticationManager.SignIn(<span class="keyword">new</span> AuthenticationProperties()&#123;</span><br><span class="line">		IsPersistent = <span class="literal">true</span></span><br><span class="line">		&#125;, identity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p><code>CreateIdentityAsync</code>返回的是一个ClaimsIdentity，这又是什么？</p>
 <h2 id="Claim-baised-Identity"><a href="#Claim-baised-Identity" class="headerlink" title="Claim-baised Identity"></a>Claim-baised Identity</h2><p>Claim-based 认证将Authentication 和 Authorization 与login 分开，将Authentication 和 Authorization 拆分为另外的web服务。</p>
 <p>主要特点：</p>
 <ul>
@@ -502,57 +742,22 @@ private async Task SignInAsync()
 </ol>
 <img src="/2018/03/25/asp-net-identity/qq-claim-based-login.png">
 <h2 id="ClaimsIdentity-ClaimsPrincipal"><a href="#ClaimsIdentity-ClaimsPrincipal" class="headerlink" title="ClaimsIdentity, ClaimsPrincipal"></a>ClaimsIdentity, ClaimsPrincipal</h2><p>ClaimsIdentity和ClaimsPrincipal继承了接口IIdentity和IPrincipal</p>
-<p><strong>Identity</strong></p>
-<pre><code class="c#">public interface IIdentity
-{
-    string AuthenticationType { get; }
-    bool IsAUthenticated { get; }
-    string Name { get; }
-}
-</code></pre>
+<p><strong>Identity</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public interface IIdentity</span><br><span class="line">&#123;</span><br><span class="line">	string AuthenticationType &#123; get; &#125;</span><br><span class="line">	bool IsAUthenticated &#123; get; &#125;</span><br><span class="line">	string Name &#123; get; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <p><strong>IPrincipal</strong><br>IPrincipal代表了一个安全<strong>上下文</strong>，这个上下文对象包含了上面identity以及一些角色和组的信息，每一个线程都会关联一个Principal的对象，但是这个对象是<span style="background-color: #FFFF00">属性进程或者AppDomain级别的</span>.</p>
 <p><a href="https://stackoverflow.com/a/27108829/4336416" target="_blank" rel="noopener">Ref: What is the idea behind IIdentity and IPrincipal in .NET
 </a></p>
 <p><code>IIdentity</code> is just used for the user’s authenticated identity, regardless of what roles they may have.</p>
 <p><code>IPrincipal</code> is used to combine a user’s identity with the <code>authorized</code> roles they have in a given security context.</p>
 <p>For example, you can use a third-party login provider, like Facebook or Google, to get the user’s identity, but you will not get a principal from those providers, as they don’t provide any roles. You can use your own application or a third-party role-based authorization provider to apply roles to , say, a <code>FacebookIdentity</code> or <code>GoogleIdentity</code>. A different application can expect a different principal, with its own roles , but still use the same identity as in another application</p>
-<p>例子：</p>
-<pre><code class="c#">public class HomeController : Controller
-{
-    [Authorize(Role = &quot;Users&quot;)]
-    public ActionResult Index(){
-        return View();
-    }
-
-    [Authorize(Roles = &quot;Managers&quot;)]
-    public ActionResult Manager()
-    {
-        return View();
-    }
-}
-</code></pre>
+<p>例子：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class HomeController : Controller</span><br><span class="line">&#123;</span><br><span class="line">	[Authorize(Role = &quot;Users&quot;)]</span><br><span class="line">	public ActionResult Index()&#123;</span><br><span class="line">		return View();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	[Authorize(Roles = &quot;Managers&quot;)]</span><br><span class="line">	public ActionResult Manager()</span><br><span class="line">	&#123;</span><br><span class="line">		return View();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <p>登录, 在global.asax中添加了Application_AuthenticateRequest方法，<strong>就是每次MVC要对用户进行认证的时候都会进到这个方法里面</strong>，然后就神奇的把用户给登陆了。</p>
-<pre><code class="c#">protected void Application_AuthenticateRequest()
-{
-    var claims = new List&lt;Claim&gt;();
-    claims.Add(new Claim(ClaimTypes.Name, &quot;Zhang san&quot;));
-    claims.Add(new Claim(ClaimTypes.Role, &quot;Users&quot;));
-    var identity = new ClaimsIdentity(claims, &quot;MyClaimsLogin&quot;);
-
-    ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-    HttpContext.Current.User = principal;
-}
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">protected void Application_AuthenticateRequest()</span><br><span class="line">&#123;</span><br><span class="line">	var claims = new List&lt;Claim&gt;();</span><br><span class="line">	claims.Add(new Claim(ClaimTypes.Name, &quot;Zhang san&quot;));</span><br><span class="line">	claims.Add(new Claim(ClaimTypes.Role, &quot;Users&quot;));</span><br><span class="line">	var identity = new ClaimsIdentity(claims, &quot;MyClaimsLogin&quot;);</span><br><span class="line"></span><br><span class="line">	ClaimsPrincipal principal = new ClaimsPrincipal(identity);</span><br><span class="line">	HttpContext.Current.User = principal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>最后结论，我们讲了ClaimsIdentity什么的，讲了这么多和今天的主题有嘛关系？我们上面说ASPNET Identity登录有三句话，第一句话可以略过，第二句话就是我们上面讲的。</p>
-<pre><code>var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
-</code></pre><p>UserManager实际上只是为我们创建了一个ClaimsIdentity的对象，还是通过我们自己从数据库里面取出来的对象来创建的，它也就干了那么点事，一层小小的封装而已。不要被后面的DefaultAuthenticationTypes.ApplicationCookie吓到了，这里还没有和cookie扯上半点关系，这就是一个字符串常量，和我们上面自己定义的MyClaimsLogin是没有区别的。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var<span class="built_in"> identity </span>= await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);</span><br></pre></td></tr></table></figure></div>
+<p>UserManager实际上只是为我们创建了一个ClaimsIdentity的对象，还是通过我们自己从数据库里面取出来的对象来创建的，它也就干了那么点事，一层小小的封装而已。不要被后面的DefaultAuthenticationTypes.ApplicationCookie吓到了，这里还没有和cookie扯上半点关系，这就是一个字符串常量，和我们上面自己定义的MyClaimsLogin是没有区别的。</p>
 <p>到这里，我想算是把登录代码的第二句话讲完了，讲清楚了，那么我们来看看第三句话，也就是最后一句，其实它才是登录的核心，第二句只是创建了一个ClaimsIdentity的对象。</p>
-<pre><code>private IAuthenticationManager AuthenticationManager
-{
-    get { return HttpContext.GetOwinContext().Authentication; }
-}
-AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, identity);
-</code></pre><p>IAuthenticationManager 在<code>Microsoft.Owin.Security</code>命名空间下，而这个接口是定义在Microsoft.Owin.dll中。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="HAXE"><figure class="iseeu highlight /haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> IAuthenticationManager AuthenticationManager</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">get</span> &#123; <span class="keyword">return</span> HttpContext.GetOwinContext().Authentication; &#125;</span><br><span class="line">&#125;</span><br><span class="line">AuthenticationManager.SignIn(<span class="keyword">new</span> <span class="type">AuthenticationProperties</span>() &#123; IsPersistent = <span class="literal">true</span> &#125;, identity);</span><br></pre></td></tr></table></figure></div>
+<p>IAuthenticationManager 在<code>Microsoft.Owin.Security</code>命名空间下，而这个接口是定义在Microsoft.Owin.dll中。</p>
 <p>##Owin</p>
 <p>OWIN目标是解耦服务器和应用，这里面的服务器主要是指web服务器，比如说IIS等，那么是如何做到的呢？</p>
 <p><strong>解耦服务器与应用程序</strong><br>首先需要复习ASP.NET或者<span style="background-color: #FFFF00">IIS集成模式管道模型</span>，也就是说一个http请求在进入IIS之后（IIS7.0以上）一直到返回response这中间所经历的步骤。</p>
@@ -563,14 +768,13 @@ AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = tru
 <p>另一个，我们<code>Request</code>和<code>Response</code>都是封装在<code>HttpContext</code>里面的，而这些信息从IIS里面来，最后也是交给IIS，如果web服务器不是IIS，那么这些信息从哪里获取呢？</p>
 <p>所以能够看出来，应用程序和服务器之间的耦合很大。我们不能够轻易换掉其中任何一个。</p>
 <h2 id="OWIN如何做到解耦"><a href="#OWIN如何做到解耦" class="headerlink" title="OWIN如何做到解耦"></a>OWIN如何做到解耦</h2><p>它通过将服务器与应用程序之间的交互归纳为一个方法签名，称之为”应用程序代理(application delegate)”</p>
-<pre><code>AppFunc = Func&lt;IDictionary&lt;string, object&gt;, Task&gt;;
-</code></pre><p>在一个基于Owin的应用程序中的每一个组件都可以通过这样的一个代理来与服务器进行交互。 这们这里的交互其实是与服务器一起来处理http request，比如说ASP.NET管理模型中的那些事件，认证，授权，缓存等等，原先我们是通过自定义的http module，在里面拿到包含了request和response的HttpContext对象，进行处理。而现在我们能拿到的就是一个Dictionary。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ARDUINO"><figure class="iseeu highlight /arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AppFunc = Func&lt;IDictionary&lt;<span class="keyword">string</span>, object&gt;, <span class="built_in">Task</span>&gt;;</span><br></pre></td></tr></table></figure></div>
+<p>在一个基于Owin的应用程序中的每一个组件都可以通过这样的一个代理来与服务器进行交互。 这们这里的交互其实是与服务器一起来处理http request，比如说ASP.NET管理模型中的那些事件，认证，授权，缓存等等，原先我们是通过自定义的http module，在里面拿到包含了request和response的HttpContext对象，进行处理。而现在我们能拿到的就是一个Dictionary。</p>
 <p>可是别小看了这个Dictionary，我们所有的信息比如Application state, request state，server state等等这些信息全部存在这个数据结构中。这个dictionary会在Owin处理request的管道中进行传递，没错有了OWin之后，我们就不再是与ASP.NET 管道打交道了，而是OWin的管道，但是这个管道相对于ASP.NET 管道而言更灵活，更开放。</p>
 <p>这个字典在OWin管道的各个组件中传输时，你可以任意的往里面添加或更改数据。 OWin默认为我们定义了以下的数据：<br><img src="/2018/03/25/asp-net-identity/owin-defaults.png"></p>
 <p>有了这些数据以后，我们就不需要和.NET的那些对象打交道了，比如说ASP.NET MVC中的HttpContextBase, 以及WEB API  中的HttpRequestMessage和HttpResponseMessage。我们也不需要再考虑system.web 这个dll里的东西，我们只需要通过OWin就可以拿到我们想要的信息，做我们想做的事了。而OWin，它本身和web服务器或者IIS没有任何关系。</p>
-<h2 id="Forms-Authentication"><a href="#Forms-Authentication" class="headerlink" title="Forms Authentication"></a>Forms Authentication</h2><p>在Forms认证中我们检测完用户名和密码之后，只需要调用小面的代码就会为我们创建用户cookie.</p>
-<pre><code>FormsAuthentication.SetAuthCookie(&quot;Jesse&quot;, false);
-</code></pre><p>然后FormsAuthenticationModule(<strong>这就是一个HTTP Module</strong>)会在ASP.NET管道的AuthenticateRequest阶段去检查是否有这个cookie，并把它转换成我们需要的Identity对象，这样的话我们就不需要每一次都让用户去输入用户名和密码了。所以登录过程如下：<br>1。    用户在没有登录的情况下访问了我们需要登录的页面</p>
+<h2 id="Forms-Authentication"><a href="#Forms-Authentication" class="headerlink" title="Forms Authentication"></a>Forms Authentication</h2><p>在Forms认证中我们检测完用户名和密码之后，只需要调用小面的代码就会为我们创建用户cookie.<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ACTIONSCRIPT"><figure class="iseeu highlight /actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FormsAuthentication.SetAuthCookie(<span class="string">"Jesse"</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure></div></p>
+<p>然后FormsAuthenticationModule(<strong>这就是一个HTTP Module</strong>)会在ASP.NET管道的AuthenticateRequest阶段去检查是否有这个cookie，并把它转换成我们需要的Identity对象，这样的话我们就不需要每一次都让用户去输入用户名和密码了。所以登录过程如下：<br>1。    用户在没有登录的情况下访问了我们需要登录的页面</p>
 <ol>
 <li>FormsAuthenticationModule检查不到用户身份的cookie，没有生成identity对象，HttpContext.User.IsAuthenticated = false</li>
 <li>在ASP.NET 管道 的Authroize 授权阶段，将用户跳转到登录页面</li>
@@ -588,62 +792,11 @@ AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = tru
 <li>不支持claim-based认证</li>
 </ol>
 <p>我们上面Forms的登录过程，对于OWin登录来说同样适用。我们在上面讲ASP.NET Identity登录第二句话的时候已经拿到了ClaimsIdentity，那么我们接下来要看的问题就是如何借助于IAuthenticationManager 去登录？ FormsAuthenticationModuel没有了，谁来负责检测cookie？您请接着往下看！</p>
-<h2 id="MVC5默认的StartUp配置类"><a href="#MVC5默认的StartUp配置类" class="headerlink" title="MVC5默认的StartUp配置类"></a>MVC5默认的StartUp配置类</h2><p>VS除了为我们引用OWin相关dll，以及移除FormsAuthenticationModule以外，还为我们在App_Start文件夹里添加了一个Startup.Auth.cs的文件。</p>
-<pre><code>public partial class Startup
-{
-    public void ConfigureAuth(IAppBuilder app)
-    {
-        app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString(&quot;/Account/Login&quot;),
-                CookieSecure = CookieSecureOption.Never,
-            });
-    }
-}
-</code></pre><p>UseCookieAuthentication是一个IAppBuilder的扩展方法，定义在Microsoft.Owin.Security.Cookies.dll中</p>
-<pre><code>public static IAppBuilder UseCookieAuthentication(this IAppBuilder app, CookieAuthenticationOptions options)
-{
-    if(app == null)
-    {
-        throw new ArgumentNullException(&quot;app&quot;);
-    }
-    //添加OWIN middleware组件到OWIN管道
-    app.Use(typeof(CookieAuthenticationMiddleware), app, options);
-    //为前面添加的Middleware指定在IIS管道的哪个阶段执行
-    app.UseStageMarker(PipelineStage.Authenticate);
-    return app;
-}
-</code></pre><p>PipelineStage这个枚举定义与IIS管道里的那些顺序同，也是我们Http Module里面可以绑定的那些事件：</p>
-<pre><code>public enum PipelineStage
-{
-    Authenticate = 0,
-    PostAuthenticate = 1,
-    Authorize = 2,
-    PostAuthorize = 3,
-    ResolveCache = 4,
-    PostResolveCache = 5,
-    MapHandler = 6,
-    PostMapHandler = 7,
-    AcquireState = 8,
-    PostAcquireState = 9,
-    PreHandlerExecute = 10,
-
-}
-</code></pre><p>也就是说我们上面注册的CookieAuthenticationMiddleware会在AuthenticaRequest 阶段执行。而它就是真正生成cookie以及读取cookie的那只背后的手。<br>顺便回顾一下如何在http module中为Authenticate绑定事件：</p>
-<pre><code>public class MyModule : IHttpModule
-{
-    public void Init(HttpApplication context)
-    {
-        context.AuthenticateRequest += ctx_AuthRequest;
-    }
-
-    void vtx_AuthRequest(object sender, EventArgs e)
-    {
-
-    }
-}
-</code></pre><p>.</p>
+<h2 id="MVC5默认的StartUp配置类"><a href="#MVC5默认的StartUp配置类" class="headerlink" title="MVC5默认的StartUp配置类"></a>MVC5默认的StartUp配置类</h2><p>VS除了为我们引用OWin相关dll，以及移除FormsAuthenticationModule以外，还为我们在App_Start文件夹里添加了一个Startup.Auth.cs的文件。<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Startup</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ConfigureAuth</span>(<span class="params">IAppBuilder app</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		app.UseCookieAuthentication(<span class="keyword">new</span> CookieAuthenticationOptions</span><br><span class="line">			&#123;</span><br><span class="line">				AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,</span><br><span class="line">				LoginPath = <span class="keyword">new</span> PathString(<span class="string">"/Account/Login"</span>),</span><br><span class="line">				CookieSecure = CookieSecureOption.Never,</span><br><span class="line">			&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>UseCookieAuthentication是一个IAppBuilder的扩展方法，定义在Microsoft.Owin.Security.Cookies.dll中<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IAppBuilder <span class="title">UseCookieAuthentication</span>(<span class="params"><span class="keyword">this</span> IAppBuilder app, CookieAuthenticationOptions options</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(app == <span class="literal">null</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="string">"app"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//添加OWIN middleware组件到OWIN管道</span></span><br><span class="line">	app.Use(<span class="keyword">typeof</span>(CookieAuthenticationMiddleware), app, options);</span><br><span class="line">	<span class="comment">//为前面添加的Middleware指定在IIS管道的哪个阶段执行</span></span><br><span class="line">	app.UseStageMarker(PipelineStage.Authenticate);</span><br><span class="line">	<span class="keyword">return</span> app;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>PipelineStage这个枚举定义与IIS管道里的那些顺序同，也是我们Http Module里面可以绑定的那些事件：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PROTOBUF"><figure class="iseeu highlight /protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">enum</span> <span class="title">PipelineStage</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	Authenticate = <span class="number">0</span>,</span><br><span class="line">	PostAuthenticate = <span class="number">1</span>,</span><br><span class="line">	Authorize = <span class="number">2</span>,</span><br><span class="line">	PostAuthorize = <span class="number">3</span>,</span><br><span class="line">	ResolveCache = <span class="number">4</span>,</span><br><span class="line">	PostResolveCache = <span class="number">5</span>,</span><br><span class="line">	MapHandler = <span class="number">6</span>,</span><br><span class="line">	PostMapHandler = <span class="number">7</span>,</span><br><span class="line">	AcquireState = <span class="number">8</span>,</span><br><span class="line">	PostAcquireState = <span class="number">9</span>,</span><br><span class="line">	PreHandlerExecute = <span class="number">10</span>,</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>也就是说我们上面注册的CookieAuthenticationMiddleware会在AuthenticaRequest 阶段执行。而它就是真正生成cookie以及读取cookie的那只背后的手。<br>顺便回顾一下如何在http module中为Authenticate绑定事件：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyModule</span> : <span class="title">IHttpModule</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Init</span>(<span class="params">HttpApplication context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		context.AuthenticateRequest += ctx_AuthRequest;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">vtx_AuthRequest</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>.</p>
 
           
         
@@ -764,30 +917,8 @@ AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = tru
         
           
             <p>Consider this sample:</p>
-<pre><code>class Student {
-    string _studengType = &quot;&quot;;
-    string _id = &quot;&quot;;
-    string _fName = &quot;&quot;;
-    string _lName = &quot;&quot;;
-
-    public Student(string id) : this(id, &quot;&quot;, &quot;&quot;){
-
-    }
-
-    public Student(stirng id, string fName) : this(id, fName, &quot;&quot;){
-
-    }
-
-    public Student(string id, string fName, string lName){
-        //Validation logic...
-        _studentType = &quot;&lt;student_type&gt;&quot;;
-
-        _id = id;
-        _fName = fName;
-        _lName = lName;
-    }
-}
-</code></pre><p>通过this，调用第三个构造参数，可以复用id赋值的这个语句：<br><code>_id = id;</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span><br><span class="line">	<span class="keyword">string</span> _studengType = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">string</span> _id = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">string</span> _fName = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">string</span> _lName = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Student</span>(<span class="params"><span class="keyword">string</span> id</span>) : <span class="title">this</span>(<span class="params">id, <span class="string">""</span>, <span class="string">""</span></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Student</span>(<span class="params">stirng id, <span class="keyword">string</span> fName</span>) : <span class="title">this</span>(<span class="params">id, fName, <span class="string">""</span></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Student</span>(<span class="params"><span class="keyword">string</span> id, <span class="keyword">string</span> fName, <span class="keyword">string</span> lName</span>)</span>&#123;</span><br><span class="line">		<span class="comment">//Validation logic...</span></span><br><span class="line">		_studentType = <span class="string">"&lt;student_type&gt;"</span>;</span><br><span class="line"></span><br><span class="line">		_id = id;</span><br><span class="line">		_fName = fName;</span><br><span class="line">		_lName = lName;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>通过this，调用第三个构造参数，可以复用id赋值的这个语句：<br><code>_id = id;</code></p>
 <p>这样就不用每个构造函数都写这个逻辑，只需要用那个有最多参数构造函数即可</p>
 
           
@@ -910,8 +1041,8 @@ AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = tru
           
             <h3 id="IPrincipal-amp-IIdentity"><a href="#IPrincipal-amp-IIdentity" class="headerlink" title="IPrincipal &amp; IIdentity"></a>IPrincipal &amp; IIdentity</h3><p>IPrincipal定义用户对象的基本功能<br>IIdentity定义标识对象的基本功能</p>
 <h3 id="Windows-Authentication-过程"><a href="#Windows-Authentication-过程" class="headerlink" title="Windows Authentication 过程"></a>Windows Authentication 过程</h3><p>IIS传递给Asp.Net一个Windows Token, 用这个Token创建一个<code>WindowsIdentity</code>对象,然后根据<code>WindowsIdentity</code>创建<code>WindowsPrincipal</code>对象，之后将这个对象赋值给<code>HttpContext.User</code></p>
-<pre><code>token = context.WorkerRequest.GetUserToken()
-</code></pre><h3 id="Form-Authentication-过程"><a href="#Form-Authentication-过程" class="headerlink" title="Form Authentication 过程"></a>Form Authentication 过程</h3><p>通过用户名和密码创建一个包含<code>FormsAuthenticationTicket</code>的登陆<code>Cookie</code>, ASP.NET 解析登陆的<code>Cookie</code>然后创建一个<code>GenericPrincipal</code>对象,这个对象包含<code>FormsIdentity</code>,之后把这个Principal对象赋值给<code>HttpContext.User</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="STYLUS"><figure class="iseeu highlight /stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">token = context<span class="selector-class">.WorkerRequest</span><span class="selector-class">.GetUserToken</span>()</span><br></pre></td></tr></table></figure></div>
+<h3 id="Form-Authentication-过程"><a href="#Form-Authentication-过程" class="headerlink" title="Form Authentication 过程"></a>Form Authentication 过程</h3><p>通过用户名和密码创建一个包含<code>FormsAuthenticationTicket</code>的登陆<code>Cookie</code>, ASP.NET 解析登陆的<code>Cookie</code>然后创建一个<code>GenericPrincipal</code>对象,这个对象包含<code>FormsIdentity</code>,之后把这个Principal对象赋值给<code>HttpContext.User</code></p>
 <p>REF:<br><a href="https://www.cnblogs.com/fish-li/archive/2012/05/07/2486840.html" target="_blank" rel="noopener">细说ASP.NET Windows身份认证</a></p>
 
           
@@ -1051,14 +1182,15 @@ AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = tru
 <li>check if the ip address is returned:<img src="/2018/03/20/dns-forwarding/nslookup.png"></li>
 </ul>
 </li>
-<li>linux(centos):<ul>
+<li><p>linux(centos):</p>
+<ul>
 <li>normally <code>dig baidu.com</code></li>
 <li>check if ip address is returned:<img src="/2018/03/20/dns-forwarding/dig.png"></li>
-<li>resolve use specific DNS server, like Google’s<pre><code class="linux">dig @8.8.8.8 baidu.com
-</code></pre>
+<li><p>resolve use specific DNS server, like Google’s</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig @8.8.8.8 baidu.com</span><br></pre></td></tr></table></figure></div>
 </li>
-<li>If you are just looking for IP address, you can add <code>+short</code> at the end<pre><code class="linux">dig @8.8.8.8 baidu.com +short
-</code></pre>
+<li><p>If you are just looking for IP address, you can add <code>+short</code> at the end</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig @8.8.8.8 baidu.com +short</span><br></pre></td></tr></table></figure></div>
 </li>
 </ul>
 </li>
@@ -1311,25 +1443,9 @@ AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = tru
 <li>You can use a <code>SEQUENCE</code> instead of an identity column and define a smaller cache size for example and use <code>NEXT VALUE FOR</code> in a column default</li>
 </ul>
 <p>e.g:</p>
-<pre><code class="sql"> CREATE SEQUENCE Service_Ticket_Seq AS INTEGER
- START WITH 1
- INCREMENT BY 1
- MINVALUE 1
- MAXVALUE 100
- CYCLE; 
-</code></pre>
-<p>We can put a <code>SEQUENCE</code> in the <code>DEFAULT</code> clause of the DDL for table:</p>
-<pre><code class="sql">CREATE TABLE Service_Tickets
-(ticket_nbr INTEGER DEFAULT NEXT VALUE FOR Service_Ticket_Seq,
- department_code CHAR(1) NOT NULL
- CHECK (department_code IN (&#39;M&#39;, &#39;F&#39;))); 
-</code></pre>
-<p>Now play with code:</p>
-<pre><code class="sql">INSERT INTO Service_Tickets (department_code)
-VALUES (&#39;M&#39;);
-
-SELECT * FROM Service_Tickets;
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">SEQUENCE</span> Service_Ticket_Seq <span class="keyword">AS</span> <span class="built_in">INTEGER</span></span><br><span class="line"><span class="keyword">START</span> <span class="keyword">WITH</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">INCREMENT</span> <span class="keyword">BY</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">MINVALUE</span> <span class="number">1</span></span><br><span class="line">MAXVALUE <span class="number">100</span></span><br><span class="line"><span class="keyword">CYCLE</span>;</span><br></pre></td></tr></table></figure></div>
+<p>We can put a <code>SEQUENCE</code> in the <code>DEFAULT</code> clause of the DDL for table:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Service_Tickets</span><br><span class="line">(ticket_nbr <span class="built_in">INTEGER</span> <span class="keyword">DEFAULT</span> <span class="keyword">NEXT</span> <span class="keyword">VALUE</span> <span class="keyword">FOR</span> Service_Ticket_Seq,</span><br><span class="line"> department_code <span class="built_in">CHAR</span>(<span class="number">1</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line"> <span class="keyword">CHECK</span> (department_code <span class="keyword">IN</span> (<span class="string">'M'</span>, <span class="string">'F'</span>)));</span><br></pre></td></tr></table></figure></div></p>
+<p>Now play with code:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Service_Tickets (department_code)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">'M'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Service_Tickets;</span><br></pre></td></tr></table></figure></div></p>
 <p>Now we get:</p>
 <table>
 <thead>
@@ -1345,22 +1461,9 @@ SELECT * FROM Service_Tickets;
 </tr>
 </tbody>
 </table>
-<p>Let’s re-do the Meats and Fish tables.</p>
-<pre><code>CREATE TABLE Meats
-(ticket_seq INTEGER DEFAULT NEXT VALUE FOR Service_Ticket_Seq 
-       PRIMARY KEY,
- meat_type VARCHAR(15) NOT NULL);
-
-CREATE TABLE Fish
-(ticket_seq INTEGER DEFAULT NEXT VALUE FOR Service_Ticket_Seq 
-       PRIMARY KEY,
- fish_type VARCHAR(15) NOT NULL);
-</code></pre><p>Now try:</p>
-<pre><code>INSERT INTO Meats (meat_type) VALUES (&#39;pig&#39;);
-INSERT INTO Fish (fish_type) VALUES (&#39;squid&#39;);
-SELECT * FROM Meats;
-SELECT * FROM Fish;
-</code></pre><p>We get:</p>
+<p>Let’s re-do the Meats and Fish tables.<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Meats</span><br><span class="line">(ticket_seq INTEGER<span class="built_in"> DEFAULT </span>NEXT VALUE <span class="keyword">FOR</span> Service_Ticket_Seq </span><br><span class="line">       PRIMARY KEY,</span><br><span class="line"> meat_type VARCHAR(15) <span class="keyword">NOT</span> <span class="literal">NULL</span>);</span><br><span class="line"> </span><br><span class="line">CREATE TABLE Fish</span><br><span class="line">(ticket_seq INTEGER<span class="built_in"> DEFAULT </span>NEXT VALUE <span class="keyword">FOR</span> Service_Ticket_Seq </span><br><span class="line">       PRIMARY KEY,</span><br><span class="line"> fish_type VARCHAR(15) <span class="keyword">NOT</span> <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure></div></p>
+<p>Now try:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Meats (meat_type) <span class="keyword">VALUES</span> (<span class="string">'pig'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Fish (fish_type) <span class="keyword">VALUES</span> (<span class="string">'squid'</span>);</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Meats;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Fish;</span><br></pre></td></tr></table></figure></div></p>
+<p>We get:</p>
 <table>
 <thead>
 <tr>
@@ -1511,383 +1614,29 @@ SELECT * FROM Fish;
             <p><strong>Python 3</strong></p>
 <p><strong>list与tuple都是有序列表</strong></p>
 <h3 id="LIST"><a href="#LIST" class="headerlink" title="LIST"></a>LIST</h3><p>是一种有序的集合，可以随时添加或删除元素</p>
-<pre><code class="python">p = [&#39;asp&#39;, &#39;php&#39;]
-
-s = [&#39;python&#39;, &#39;java&#39;, p, &#39;angular&#39;]
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p = [<span class="string">'asp'</span>, <span class="string">'php'</span>]</span><br><span class="line"> </span><br><span class="line">s = [<span class="string">'python'</span>, <span class="string">'java'</span>, p, <span class="string">'angular'</span>]</span><br></pre></td></tr></table></figure></div>
 <p>如果想要拿到php，可以写成<code>s[2][1]</code>,因此s可以看作为二维数组</p>
-<p>常用方法：</p>
-<pre><code class="python">&gt;&gt;&gt; len(classmates) ***获取元素个数***
-&gt;&gt;&gt; s[-2] ***获取倒数第二个元素***
-&gt;&gt;&gt; s.append(&#39;vue&#39;) ***追加元素到末尾***
-&gt;&gt;&gt; s.insert(2,&#39;vue&#39;) ***把元素插入到索引号为2的位置，索引从0开始***
-&gt;&gt;&gt; s.pop() ***删除list末尾元素***
-&gt;&gt;&gt; s.pop(1) ***删除索引位置为i的元素***
-&gt;&gt;&gt; s[1] = &#39;vue&#39; ***把某个索引位置的元素替换成另一个元素***
-</code></pre>
-<h3 id="TUPLE"><a href="#TUPLE" class="headerlink" title="TUPLE"></a>TUPLE</h3><p><strong>tuple一旦初始化就不能修改，这里的不能修改指的是tuple中的每个元素的指向不变</strong></p>
-<pre><code class="python">classmates=(&#39;Jane&#39;, &#39;Anna&#39;, &#39;Ed&#39;)
-</code></pre>
+<p>常用方法：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(classmates) ***获取元素个数***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">-2</span>] ***获取倒数第二个元素***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.append(<span class="string">'vue'</span>) ***追加元素到末尾***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.insert(<span class="number">2</span>,<span class="string">'vue'</span>) ***把元素插入到索引号为<span class="number">2</span>的位置，索引从<span class="number">0</span>开始***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.pop() ***删除list末尾元素***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.pop(<span class="number">1</span>) ***删除索引位置为i的元素***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">1</span>] = <span class="string">'vue'</span> ***把某个索引位置的元素替换成另一个元素***</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="TUPLE"><a href="#TUPLE" class="headerlink" title="TUPLE"></a>TUPLE</h3><p><strong>tuple一旦初始化就不能修改，这里的不能修改指的是tuple中的每个元素的指向不变</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">classmates=(<span class="string">'Jane'</span>, <span class="string">'Anna'</span>, <span class="string">'Ed'</span>)</span><br></pre></td></tr></table></figure></div></p>
 <p>现在这个classmates就无法更改，没有append(),insert()可以调用</p>
-<p>但是有时候却能看见给tuple添加元素的操作：</p>
-<pre><code class="python">def two(**s):
-    print(&#39;s is &#39;, s)
-    t = ()
-    for i in s.values():
-        t += (i,) #这里tuple竟然可以添加元素
-    print(t)
-
-dic = dict(
-    d1=1,
-    d2=2,
-    d3=3
-)
-
-if __name__ == &#39;__main__&#39;:
-    two(**dic) #输出为tuple(1, 2, 3)
-</code></pre>
-<p><span style="color: red"><strong>当执行上面的操作的时，其实stucture is changed. 即你每新增一个新的，其实是一个新的Object.</strong></span><br>比如：</p>
-<pre><code class="python">&gt;&gt;&gt; tup = (1, 2, 3)
-&gt;&gt;&gt; id(tup)
-140153476307856
-&gt;&gt;&gt; tup += (4, 5)
-&gt;&gt;&gt; id(tup)
-140153479825840
-</code></pre>
-<p>而如果是list的话：</p>
-<pre><code class="python">&gt;&gt;&gt; lst = [1, 2, 3]
-&gt;&gt;&gt; id(lst)
-140153476247704
-&gt;&gt;&gt; lst += [4, 5]
-&gt;&gt;&gt; id(lst)
-140153476247704
-</code></pre>
+<p>但是有时候却能看见给tuple添加元素的操作：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">two</span><span class="params">(**s)</span>:</span></span><br><span class="line">    print(<span class="string">'s is '</span>, s)</span><br><span class="line">    t = ()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s.values():</span><br><span class="line">        t += (i,) <span class="comment">#这里tuple竟然可以添加元素</span></span><br><span class="line">    print(t)</span><br><span class="line"> </span><br><span class="line">dic = dict(</span><br><span class="line">    d1=<span class="number">1</span>,</span><br><span class="line">    d2=<span class="number">2</span>,</span><br><span class="line">    d3=<span class="number">3</span></span><br><span class="line">)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    two(**dic) <span class="comment">#输出为tuple(1, 2, 3)</span></span><br></pre></td></tr></table></figure></div></p>
+<p><span style="color: red"><strong>当执行上面的操作的时，其实stucture is changed. 即你每新增一个新的，其实是一个新的Object.</strong></span><br>比如：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(tup)</span><br><span class="line"><span class="number">140153476307856</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup += (<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(tup)</span><br><span class="line"><span class="number">140153479825840</span></span><br></pre></td></tr></table></figure></div></p>
+<p>而如果是list的话：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>lst = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(lst)</span><br><span class="line"><span class="number">140153476247704</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lst += [<span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(lst)</span><br><span class="line"><span class="number">140153476247704</span></span><br></pre></td></tr></table></figure></div></p>
 <p><a href="https://drillearningss.wordpress.com/2018/01/04/python-list-and-tuple/" target="_blank" rel="noopener">Ref link</a></p>
-<p>如果想要定义一个只有一个参数的tuple,<strong>不能写成</strong></p>
-<pre><code class="python">&gt;&gt;&gt; t = (1)
-
-&gt;&gt;&gt; t
-</code></pre>
-<p><strong>因为这个时候t是数字1，（）这个时候当作数学括号来解析</strong><br>需要写成</p>
-<pre><code class="python">&gt;&gt;&gt; t = (1, )
-
-&gt;&gt;&gt; t
-
-(1, )
-</code></pre>
+<p>如果想要定义一个只有一个参数的tuple,<strong>不能写成</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="number">1</span>)</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br></pre></td></tr></table></figure></div></p>
+<p><strong>因为这个时候t是数字1，（）这个时候当作数学括号来解析</strong><br>需要写成<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="number">1</span>, )</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line"> </span><br><span class="line">(<span class="number">1</span>, )</span><br></pre></td></tr></table></figure></div></p>
 <h3 id="DICT"><a href="#DICT" class="headerlink" title="DICT"></a>DICT</h3><p>使用键值对存储, 且dict的<strong>key是不可变对象</strong></p>
-<pre><code class="python">&gt;&gt;&gt; d = {&#39;Michael&#39;: 95, &#39;Bob&#39;: 75, &#39;Tracy&#39;: 85}
-&gt;&gt;&gt; d[&#39;Michael&#39;]
-95
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">'Michael'</span>]</span><br><span class="line"><span class="number">95</span></span><br></pre></td></tr></table></figure></div>
 <p>为避免key不存在报错：</p>
-<pre><code class="python">&gt;&gt;&gt; &#39;Thomas&#39; in d
-False
-
-&gt;&gt;&gt; d.get(&#39;Thomas&#39;) //返回None
-&gt;&gt;&gt; d.get(&#39;Thomas&#39;, -1)
-
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Thomas'</span> <span class="keyword">in</span> d</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'Thomas'</span>) //返回<span class="keyword">None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'Thomas'</span>, <span class="number">-1</span>)</span><br></pre></td></tr></table></figure></div>
 <p><span style="color: red">注意，dict的添加就是直接赋值就好了，例如<br><code>d[&#39;newkey&#39;]=&#39;newvalue&#39;</code></span></p>
 <h3 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h3><p>Set也是一组Key的集合，但不存储value，且Key也不能重复。</p>
-<pre><code class="python">&gt;&gt;&gt; s = set([1,2,3])
-&gt;&gt;&gt; s
-{1,2,3}
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure></div>
 <p><strong>注意传入的参数<code>[1,2,3]</code>是一个list，而显示的<code>{1,2,3}</code>只是告诉你这个set内部有1，2，3这3个元素，显示的顺序也不表示set是有序的</strong></p>
 <p>重复元素再set中会自动被过滤掉</p>
-<pre><code class="python">&gt;&gt;&gt; s = set([1,1,2,2,3,3,])
-&gt;&gt;&gt; s
-{1,2,3}
-&gt;&gt;&gt; s.add(4)
-&gt;&gt;&gt; s
-{1,2,3,4}
-&gt;&gt;&gt; s.remove(4)
-&gt;&gt;&gt; s
-{1,2,3}
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.add(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.remove(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure></div>
 <p><strong>SET可以看成无序且无重复元素的集合，因此两个set可以做数学意义上的交集、并集等操作</strong></p>
-<pre><code class="python">&gt;&gt;&gt; s1 = set([1,2,3])
-&gt;&gt;&gt; s2 = set([2,3,4])
-&gt;&gt;&gt; s1 &amp; s2
-{2,3}
-&gt;&gt;&gt; s1 | s2
-{1,2,3,4}
-</code></pre>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/python-parameter/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/15/python-parameter/" itemprop="url">Python 可变参数，关键字参数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-15T11:13:36+08:00">
-                2018-03-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>可变参数*args</p>
-<ul>
-<li>变的是个数</li>
-<li>在函数调用的时候自动组装为一个tuple</li>
-<li>传入的时候直接传值即可</li>
-</ul>
-</li>
-<li><p>关键字参数**kwargs</p>
-<ul>
-<li>在函数调用的时候自动组装为一个dictionary</li>
-<li>传入的时候必须是以含参数名的形式传递</li>
-</ul>
-</li>
-</ul>
-<pre><code class="python">def func(a, b, c=0, *args, **kwargs):
-    print (&#39;a=&#39;, a, &#39;b=&#39;, b, &#39;c=&#39;, c, &#39;args=&#39;, args, &#39;kwargs=&#39;, kwargs)
-
-if __name__ == &#39;__main__&#39;:
-    func(1,2,3,spence,shao,name=&#39;spence&#39;,gender=&#39;male&#39;)
-
-&gt;&gt;&gt;a=1,b=2,c=3,args=(spence,shao),kwargs={&#39;name&#39;:&#39;spence&#39;,&#39;gender&#39;:&#39;male&#39;}
-</code></pre>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/html-auto-add-parameter/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/15/html-auto-add-parameter/" itemprop="url">HTML GET请求自动添加参数列表</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-15T11:09:03+08:00">
-                2018-03-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code class="html">&lt;form action=&quot;/action&quot; method=&quot;get&quot;&gt;
-&lt;textarea name=&quot;message&quot;&gt;&lt;/textarea&gt;
-        &lt;input name=&quot;author&quot;&gt;
-        &lt;!-- /?message=输入的内容 --&gt;
-        &lt;button type=&quot;submit&quot;&gt;GET 提交&lt;/button&gt;
-&lt;/form&gt;
-&lt;form action=&quot;/&quot; method=&quot;post&quot;&gt;
-        &lt;textarea name=&quot;message&quot;&gt;&lt;/textarea&gt;
-        &lt;button type=&quot;submit&quot;&gt;POST 提交&lt;/button&gt;
-&lt;/form&gt;
-</code></pre>
-<p>对于GET请求，GET提交之后，浏览器会在<code>host:port[action]?author=xx&amp;message=xx</code>, 例如<br><code>localhost:3000/action?author=spencer&amp;message=test</code></p>
-
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 = set([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2 = set([<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 &amp; s2</span><br><span class="line">&#123;<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 | s2</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure></div>
           
         
       
@@ -1970,7 +1719,7 @@ if __name__ == &#39;__main__&#39;:
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1983,7 +1732,7 @@ if __name__ == &#39;__main__&#39;:
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

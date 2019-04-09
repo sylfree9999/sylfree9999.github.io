@@ -340,47 +340,15 @@
 <li>…: 更多参数</li>
 </ul>
 <p>例： 对一个矩阵的每一行求和</p>
-<pre><code class="R">&gt; x&lt;-matrix(1:12, ncol=3)
-&gt; x
-     [,1] [,2] [,3]
-[1,]    1    5    9
-[2,]    2    6   10
-[3,]    3    7   11
-[4,]    4    8   12
-&gt; apply(x, 1, sum)
-[1] 15 18 21 24
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="R"><figure class="iseeu highlight /r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; x&lt;-matrix(<span class="number">1</span>:<span class="number">12</span>, ncol=<span class="number">3</span>)</span><br><span class="line">&gt; x</span><br><span class="line">     [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">1</span>    <span class="number">5</span>    <span class="number">9</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">2</span>    <span class="number">6</span>   <span class="number">10</span></span><br><span class="line">[<span class="number">3</span>,]    <span class="number">3</span>    <span class="number">7</span>   <span class="number">11</span></span><br><span class="line">[<span class="number">4</span>,]    <span class="number">4</span>    <span class="number">8</span>   <span class="number">12</span></span><br><span class="line">&gt; apply(x, <span class="number">1</span>, sum)</span><br><span class="line">[<span class="number">1</span>] <span class="number">15</span> <span class="number">18</span> <span class="number">21</span> <span class="number">24</span></span><br></pre></td></tr></table></figure></div>
 <p>例： 按行循环，让数据框的x1列+1,并计算x1,x2列的均值</p>
-<pre><code class="R">&gt; x &lt;- cbind(x1=3, x2=c(4:1,2:5)); x
-     x1 x2
-[1,]  3  4
-[2,]  3  3
-[3,]  3  2
-[4,]  3  1
-[5,]  3  2
-[6,]  3  3
-[7,]  3  4
-[8,]  3  5
-
-# 自定义函数myFUN, 第一个参数x为数据，第二、第三个参数为自定义参数
-
-&gt; myFun &lt;- function(x,c1,c2){
-    c(sum(x[c1],1), mean(x[c2]))
-}
-
-&gt; apply(x,1,myFUN,c1=&#39;x1&#39;,c2=(&#39;x1&#39;,&#39;x2&#39;))
-    [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
-[1,]  4.0    4  4.0    4  4.0    4  4.0    4
-[2,]  3.5    3  2.5    2  2.5    3  3.5    4
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="R"><figure class="iseeu highlight /r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&gt; x &lt;- cbind(x1=<span class="number">3</span>, x2=c(<span class="number">4</span>:<span class="number">1</span>,<span class="number">2</span>:<span class="number">5</span>)); x</span><br><span class="line">     x1 x2</span><br><span class="line">[<span class="number">1</span>,]  <span class="number">3</span>  <span class="number">4</span></span><br><span class="line">[<span class="number">2</span>,]  <span class="number">3</span>  <span class="number">3</span></span><br><span class="line">[<span class="number">3</span>,]  <span class="number">3</span>  <span class="number">2</span></span><br><span class="line">[<span class="number">4</span>,]  <span class="number">3</span>  <span class="number">1</span></span><br><span class="line">[<span class="number">5</span>,]  <span class="number">3</span>  <span class="number">2</span></span><br><span class="line">[<span class="number">6</span>,]  <span class="number">3</span>  <span class="number">3</span></span><br><span class="line">[<span class="number">7</span>,]  <span class="number">3</span>  <span class="number">4</span></span><br><span class="line">[<span class="number">8</span>,]  <span class="number">3</span>  <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 自定义函数myFUN, 第一个参数x为数据，第二、第三个参数为自定义参数</span></span><br><span class="line"></span><br><span class="line">&gt; myFun &lt;- <span class="keyword">function</span>(x,c1,c2)&#123;</span><br><span class="line">	c(sum(x[c1],<span class="number">1</span>), mean(x[c2]))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt; apply(x,<span class="number">1</span>,myFUN,c1=<span class="string">'x1'</span>,c2=(<span class="string">'x1'</span>,<span class="string">'x2'</span>))</span><br><span class="line">    [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>] [,<span class="number">4</span>] [,<span class="number">5</span>] [,<span class="number">6</span>] [,<span class="number">7</span>] [,<span class="number">8</span>]</span><br><span class="line">[<span class="number">1</span>,]  <span class="number">4.0</span>    <span class="number">4</span>  <span class="number">4.0</span>    <span class="number">4</span>  <span class="number">4.0</span>    <span class="number">4</span>  <span class="number">4.0</span>    <span class="number">4</span></span><br><span class="line">[<span class="number">2</span>,]  <span class="number">3.5</span>    <span class="number">3</span>  <span class="number">2.5</span>    <span class="number">2</span>  <span class="number">2.5</span>    <span class="number">3</span>  <span class="number">3.5</span>    <span class="number">4</span></span><br></pre></td></tr></table></figure></div>
 <h2 id="accessors"><a href="#accessors" class="headerlink" title="[,[[,$ accessors"></a>[,[[,$ accessors</h2><p>[Ref:<a href="https://www.r-bloggers.com/r-accessors-explained/]" target="_blank" rel="noopener">https://www.r-bloggers.com/r-accessors-explained/]</a></p>
 <ul>
 <li><p>Subset with [<br>  取Object子集用[]. 取出来的子集与原object类型相同</p>
 </li>
 <li><p>Extract one item with [[<br>  The double square brackets are used to extract one element from potentially many.<br>  For vectors yield vectors with a single value;<br>  data frames give a column vector;<br>  for list, one element</p>
-<pre><code class="R">  letters[[3]]
-  iris[[&quot;Petal.Length&quot;]]
-</code></pre>
+  <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="R"><figure class="iseeu highlight /r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">letters[[<span class="number">3</span>]]</span><br><span class="line">iris[[<span class="string">"Petal.Length"</span>]]</span><br></pre></td></tr></table></figure></div>
 <p>  Remember:</p>
 <ul>
 <li>You can return only one item.</li>
@@ -390,19 +358,15 @@
 </li>
 <li><p>Interact with $<br>  $ is a special case of [[]] in which you access a single item by actual name.</p>
 <p>  The following are equal</p>
-<pre><code class="R">  iris$Petal.Length
-  iris[[&quot;Petal.Length&quot;]]
-</code></pre>
-<p>  Remember:</p>
-<ul>
-<li>You cannot use integer indices</li>
-<li>The mane will not be interpolated.</li>
-<li>Returns only one item.</li>
-<li>If the name contains special characters, the name must be enclosed in <strong>“”</strong></li>
-</ul>
+  <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="R"><figure class="iseeu highlight /r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iris$Petal.Length</span><br><span class="line">iris[[<span class="string">"Petal.Length"</span>]]</span><br></pre></td></tr></table></figure></div>
 </li>
 </ul>
-
+<pre><code>Remember:
+*    You cannot use integer indices
+*     The mane will not be interpolated.
+*    Returns only one item.
+*    If the name contains special characters, the name must be enclosed in **&quot;&quot;**
+</code></pre>
       
     </div>
     
@@ -521,7 +485,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -534,7 +498,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

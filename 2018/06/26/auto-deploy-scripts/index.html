@@ -330,81 +330,16 @@
       
 
       
-        <h2 id="自己建yum源【centos系统】"><a href="#自己建yum源【centos系统】" class="headerlink" title="自己建yum源【centos系统】"></a>自己建yum源【centos系统】</h2><p>1，启一个httpd web service，不需要装tomcat这类，只需要一个静态的服务器即可<br>2，检查httpd service <code>service httpd status</code><br>3，在<code>/var/www/html</code>下面创建一个目录挂载cdrom<br>4，挂载目录指令为<br>    <code>mount -t iso9660 -o ro /dev/cdrom /mnt/cdrom</code><br>41，如果iso盘中没有<code>repodata</code>,即没有dependecy link文件，需要手动创建<br>    <code>createrepo /mnt/cdromlocal</code><br>42，    创建完<code>repodata</code>后，需要再生成一个iso文件<br>    <code>mkisofs -o /mnt/example.iso /mnt/cdromlocal/</code><br>5，设置重启自动挂载<br>    <code>vi /etc/fstab</code><br>    在文件尾部追加<br>    <code>/dev/cdrom        /mnt/cdrom        iso9660        defaults        0        0</code><br>6，在httpd html文件夹下面新建一个文件夹比方说叫centos，软链接指向这个mnt目录即可，假设mnt目录为/mnt/cdrom<br>    <code>ln -s /mnt/cdrom /var/www/html/centos</code><br>7，更改centos repo.d文件，指向这个yum源<br>    <code>vi /etc/yum.repos.d/xxx.repo</code></p>
-<pre><code>```
-[base]
-name=CentOS-Local
-baseurl=http://192.168.X.X/centos
-gpgcheck=1
-enabled=1   #很重要，1才启用
-gpgkey=file:///mnt/cdrom/rpm-gpg/RPM-GPG-KEY-CentOS-6
-```
-</code></pre><p>8，常用yum命令<br>    <code>yum clean all</code>    清除所有缓冲数据<br>    <code>yum repolist</code>    列出可用的yum源<br>    <code>yum deplist httpd</code>    列出一个包所依赖的包<br>    <code>yum remove httpd</code>    删除一个包</p>
+        <h2 id="自己建yum源【centos系统】"><a href="#自己建yum源【centos系统】" class="headerlink" title="自己建yum源【centos系统】"></a>自己建yum源【centos系统】</h2><p>1，启一个httpd web service，不需要装tomcat这类，只需要一个静态的服务器即可<br>2，检查httpd service <code>service httpd status</code><br>3，在<code>/var/www/html</code>下面创建一个目录挂载cdrom<br>4，挂载目录指令为<br>    <code>mount -t iso9660 -o ro /dev/cdrom /mnt/cdrom</code><br>41，如果iso盘中没有<code>repodata</code>,即没有dependecy link文件，需要手动创建<br>    <code>createrepo /mnt/cdromlocal</code><br>42，    创建完<code>repodata</code>后，需要再生成一个iso文件<br>    <code>mkisofs -o /mnt/example.iso /mnt/cdromlocal/</code><br>5，设置重启自动挂载<br>    <code>vi /etc/fstab</code><br>    在文件尾部追加<br>    <code>/dev/cdrom        /mnt/cdrom        iso9660        defaults        0        0</code><br>6，在httpd html文件夹下面新建一个文件夹比方说叫centos，软链接指向这个mnt目录即可，假设mnt目录为/mnt/cdrom<br>    <code>ln -s /mnt/cdrom /var/www/html/centos</code><br>7，更改centos repo.d文件，指向这个yum源<br>    <code>vi /etc/yum.repos.d/xxx.repo</code><br>    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="INI"><figure class="iseeu highlight /ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[base]</span></span><br><span class="line"><span class="attr">name</span>=CentOS-Local</span><br><span class="line"><span class="attr">baseurl</span>=http://<span class="number">192.168</span>.X.X/centos</span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="number">1</span>   #很重要，<span class="number">1</span>才启用</span><br><span class="line"><span class="attr">gpgkey</span>=file:///mnt/cdrom/rpm-gpg/RPM-GPG-KEY-CentOS-<span class="number">6</span></span><br></pre></td></tr></table></figure></div></p>
+<p>8，常用yum命令<br>    <code>yum clean all</code>    清除所有缓冲数据<br>    <code>yum repolist</code>    列出可用的yum源<br>    <code>yum deplist httpd</code>    列出一个包所依赖的包<br>    <code>yum remove httpd</code>    删除一个包</p>
 <h2 id="准备一个boot-sh脚本"><a href="#准备一个boot-sh脚本" class="headerlink" title="准备一个boot.sh脚本"></a>准备一个boot.sh脚本</h2><p><code>ssh-keygen -f</code>    查看pem对应的private key</p>
 <p>ssh登陆所用的key pair存在.ssh/authorized_keys文件中，如果不小心删掉了，可以把private key的内容copy到authorized_keys文件，然后+空格+pem的名称，比如<code>ssh-rsa XXXXXX linuxAAAA</code>,之后再更改文件权限<code>chmod 600 .ssh/authorized_keys</code></p>
 <p><code>ssh-keygen -f publickey.pem &gt;&gt; authorized.keys</code>或者可以用这个命令写进去前半段key的内容</p>
 <p><code>ssh-keygen -R hostname</code>    删除known_hosts</p>
 <p><code>sudo yum install expect</code>    模拟用户输入密码，yes等信息</p>
-<pre><code class="bash">#!/bin/bash
-SERVERS=&quot;node-3.itcast.cn node-4.itcast.cn&quot;
-PASSWORD=123456
-BASE_SERVER=172.16.203.100
-
-#auto_ssh_copy_id() {
-#    expect -c &quot;set timeout -1;
-#        spawn ssh-copy-id $1;
-#        expect {
-#            *(yes/no)* {send -- #yes\r;exp_continue;}
-#            *assword:* {send -- $2\r;exp_continue;}
-#            eof        {exit 0;}
-#        }&quot;;
-#}
-#
-#ssh_copy_id_to_all() {
-#    for SERVER in $SERVERS
-#    do
-#        auto_ssh_copy_id $SERVER $PASSWORD
-#    done
-#}
-#
-
-auto_ssh_login() {
-    expect -c &quot;set timeout -1;
-        spawn ssh -i /home/ec2-user/linuxSS.pem ec2-user@$1;
-        expect {
-            *(yes/no)* {send -- yes\r;exp_continue;}
-            eof        {exit 0;}
-        }&quot;;
-}
-
-ssh_login_to_all() {
-        for SERVER in $SERVERS
-        do
-                auto_ssh_login $SERVER
-        done
-}
-
-ssh_login_to_all
-
-
-for SERVER in $SERVERS
-do
-       scp -i linuxSS.pem install.sh ec2-user@$SERVER:/home/ec2-user
-       ssh -i linuxSS.pem ec2-user@$SERVER &quot;sudo chmod u+x /home/ec2-user/install.sh;echo lalalal &gt;&gt; /home/ec2-use$
-done
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">SERVERS=<span class="string">"node-3.itcast.cn node-4.itcast.cn"</span></span><br><span class="line">PASSWORD=123456</span><br><span class="line">BASE_SERVER=172.16.203.100</span><br><span class="line"></span><br><span class="line"><span class="comment">#auto_ssh_copy_id() &#123;</span></span><br><span class="line"><span class="comment">#    expect -c "set timeout -1;</span></span><br><span class="line"><span class="comment">#        spawn ssh-copy-id $1;</span></span><br><span class="line"><span class="comment">#        expect &#123;</span></span><br><span class="line"><span class="comment">#            *(yes/no)* &#123;send -- #yes\r;exp_continue;&#125;</span></span><br><span class="line"><span class="comment">#            *assword:* &#123;send -- $2\r;exp_continue;&#125;</span></span><br><span class="line"><span class="comment">#            eof        &#123;exit 0;&#125;</span></span><br><span class="line"><span class="comment">#        &#125;";</span></span><br><span class="line"><span class="comment">#&#125;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#ssh_copy_id_to_all() &#123;</span></span><br><span class="line"><span class="comment">#    for SERVER in $SERVERS</span></span><br><span class="line"><span class="comment">#    do</span></span><br><span class="line"><span class="comment">#        auto_ssh_copy_id $SERVER $PASSWORD</span></span><br><span class="line"><span class="comment">#    done</span></span><br><span class="line"><span class="comment">#&#125;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">auto_ssh_login</span></span>() &#123;</span><br><span class="line">    expect -c <span class="string">"set timeout -1;</span></span><br><span class="line"><span class="string">        spawn ssh -i /home/ec2-user/linuxSS.pem ec2-user@<span class="variable">$1</span>;</span></span><br><span class="line"><span class="string">        expect &#123;</span></span><br><span class="line"><span class="string">            *(yes/no)* &#123;send -- yes\r;exp_continue;&#125;</span></span><br><span class="line"><span class="string">            eof        &#123;exit 0;&#125;</span></span><br><span class="line"><span class="string">        &#125;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">ssh_login_to_all</span></span>() &#123;</span><br><span class="line">        <span class="keyword">for</span> SERVER <span class="keyword">in</span> <span class="variable">$SERVERS</span></span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">                auto_ssh_login <span class="variable">$SERVER</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ssh_login_to_all</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> SERVER <span class="keyword">in</span> <span class="variable">$SERVERS</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">       scp -i linuxSS.pem install.sh ec2-user@<span class="variable">$SERVER</span>:/home/ec2-user</span><br><span class="line">       ssh -i linuxSS.pem ec2-user@<span class="variable">$SERVER</span> <span class="string">"sudo chmod u+x /home/ec2-user/install.sh;echo lalalal &gt;&gt; /home/ec2-use$</span></span><br><span class="line"><span class="string">done</span></span><br></pre></td></tr></table></figure></div>
 <h2 id="Install-sh"><a href="#Install-sh" class="headerlink" title="Install.sh"></a>Install.sh</h2><p>如果用<code>echo</code>来写入到/etc/profile中，换行符不好弄<br><code>&lt;&lt;</code>类似于文件的重定向，就是写个文件进去，<code>EOF</code>就是文件的标志，末尾也要写个EOF进去，就相当于追加一个文件到/etc/profile的末尾</p>
-<pre><code class="bash">#!/bin/bash
-
-BASE_SERVER=172.16.203.100
-yum install -y wget
-wget $BASE_SERVER/soft/jdk-XXXX.tar.gz
-tar -zxvf jdk-XXXX.tar.gz -C /usr/local
-cat &gt;&gt; /etc/profile &lt;&lt; EOF
-export JAVA_HOME=/usr/local/jdkXXX
-export PATH=\$PATH:\$JAVA_HOME/bin
-EOF
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">BASE_SERVER=172.16.203.100</span><br><span class="line">yum install -y wget</span><br><span class="line">wget <span class="variable">$BASE_SERVER</span>/soft/jdk-XXXX.tar.gz</span><br><span class="line">tar -zxvf jdk-XXXX.tar.gz -C /usr/<span class="built_in">local</span></span><br><span class="line">cat &gt;&gt; /etc/profile &lt;&lt; EOF</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdkXXX</span><br><span class="line"><span class="built_in">export</span> PATH=\<span class="variable">$PATH</span>:\<span class="variable">$JAVA_HOME</span>/bin</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure></div>
 
       
     </div>
@@ -524,7 +459,7 @@ EOF
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -537,7 +472,7 @@ EOF
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

@@ -330,269 +330,24 @@
       
 
       
-        <h2 id="全局解释器锁GIL"><a href="#全局解释器锁GIL" class="headerlink" title="全局解释器锁GIL"></a>全局解释器锁GIL</h2><p>1，GIL是一个全局排他锁，同一时刻只有一个线程在运行，就类似于Python是个单线程的程序<br>2，multiprocessing库很大程度上是为了弥补GIL低效的缺陷，它完整复制了一套thread所提供的接口方便迁移，唯一不同的是它使用了多进程而不是多线程，所以每个进程有自己的独立的GIL，因此不会出现进程间的GIL争抢<br>3，多进程的fork操作，调用一次返回两次，操作系统会自动把当前进程（称为父进程）复制了一份（作为子进程），然后分别在父进程和子进程内返回。子进程永远返回0，而父进程返回子进程的ID。子进程只需要调用<code>getppid()</code>就可以拿到父进程的ID</p>
-<pre><code class="python">import os
-
-print(&#39;Process (%s) start...&#39; % os.getpid())
-pid = os.fork()
-if pid == 0:
-    print(&quot;Child Process {0}, Parent Process {1}&quot;.format(os.getpid(), os.getppid()))
-else:
-    print(&quot;Parent Process is me {0}, my child process is {1}&quot;.format(os.getpid(),pid))
-</code></pre>
+        <h2 id="全局解释器锁GIL"><a href="#全局解释器锁GIL" class="headerlink" title="全局解释器锁GIL"></a>全局解释器锁GIL</h2><p>1，GIL是一个全局排他锁，同一时刻只有一个线程在运行，就类似于Python是个单线程的程序<br>2，multiprocessing库很大程度上是为了弥补GIL低效的缺陷，它完整复制了一套thread所提供的接口方便迁移，唯一不同的是它使用了多进程而不是多线程，所以每个进程有自己的独立的GIL，因此不会出现进程间的GIL争抢<br>3，多进程的fork操作，调用一次返回两次，操作系统会自动把当前进程（称为父进程）复制了一份（作为子进程），然后分别在父进程和子进程内返回。子进程永远返回0，而父进程返回子进程的ID。子进程只需要调用<code>getppid()</code>就可以拿到父进程的ID<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Process (%s) start...'</span> % os.getpid())</span><br><span class="line">pid = os.fork()</span><br><span class="line"><span class="keyword">if</span> pid == <span class="number">0</span>:</span><br><span class="line">	print(<span class="string">"Child Process &#123;0&#125;, Parent Process &#123;1&#125;"</span>.format(os.getpid(), os.getppid()))</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	print(<span class="string">"Parent Process is me &#123;0&#125;, my child process is &#123;1&#125;"</span>.format(os.getpid(),pid))</span><br></pre></td></tr></table></figure></div></p>
 <a id="more"></a>
-<p>multiprocessing</p>
-<pre><code class="python">from multiprocessing import Process
-import time
-
-def f(n):
-    time.sleep(1)
-    print n*n
-
-if __name__ == &quot;__main__&quot;:
-    for i in range(10):
-        p = Process(target = f, args = [i,])
-        p.start()
-</code></pre>
-<h2 id="进程间通信Queue"><a href="#进程间通信Queue" class="headerlink" title="进程间通信Queue"></a>进程间通信Queue</h2><p>1，Queue是多进程安全的队列，可以实现多进程之间的数据传递<br>2，Queue.qsize() 返回队列的大小<br>    Queue.empty() 如果队列为空，返回True,反之False<br>    Queue.full() 如果队列满了，返回True,反之False<br>    Queue.get([block[, timeout]]) 获取队列，timeout等待时间<br>    Queue.get_nowait() 相当Queue.get(False)<br>    非阻塞 Queue.put(item) 写入队列，timeout等待时间<br>    Queue.put_nowait(item) 相当Queue.put(item, False)</p>
-<pre><code class="python">from multiprocessing import Process, Queue
-import time
-
-def write(q):
-    for i in [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;]:
-        print(&#39;Put {0} to queue&#39;.format(i))
-        q.put(i)
-        time.sleep(0.5)
-
-def read(q):
-    while True:
-        v = q.get(True)
-        print(&#39;Get {0} from queue&#39;.format(v))
-
-if __name__ == &#39;__main__&#39;:
-    q = Queue()
-    pw = Process(target = write, args=(q,))
-    pr = Process(target = read, args=(q,))
-    pw.start()
-    pr.start()
-    pw.join()
-    pr.join()
-    pr.terminate()
-</code></pre>
-<h2 id="进程池Pool"><a href="#进程池Pool" class="headerlink" title="进程池Pool"></a>进程池Pool</h2><p>1，用于批量创建子进程，可以灵活控制子进程的数量</p>
-<pre><code class="python">from multiprocessing import Pool
-import time
-
-def f(x):
-    print x*x
-    time.sleep(2)
-    return x*x
-
-if __name__ == &#39;__main__&#39;:
-    &#39;&#39;&#39;定义启动进程的数量&#39;&#39;&#39;
-    pool = Pool(processes = 5)
-    res_list = []
-
-    for i in range(10):
-        &#39;&#39;&#39;以异步并行的方式启动进程，如果要同步等待的方式，可以在每次启动进程之后调用res.get()方法，也可以是用Pool.apply&#39;&#39;&#39;
-        res = pool.apply_async(f, [i,])
-        print(&#39;-----------:&#39;,i)
-        res_list.append(res)
-    pool.close()
-    pool.join() #强制等待所有进程运行完毕
-    for r in res_list:
-        print(&quot;result: &quot;,(r.get(timeout = 5)))
-
-#结果
-&#39;&#39;&#39;
-ubuntu@bosch-shiny1:~$ python multiPython.py 
------------: 0
-0
------------: 1
------------: 2
------------: 3
------------: 4
------------: 5
------------: 6
------------: 7
------------: 8
------------: 9
-1
-4
-9
-16
-25
-36
-49
-64
-81
-result:  0
-result:  1
-result:  4
-result:  9
-result:  16
-result:  25
-result:  36
-result:  49
-result:  64
-result:  81
-&#39;&#39;&#39;
-</code></pre>
-<h2 id="多进程与多线程对比"><a href="#多进程与多线程对比" class="headerlink" title="多进程与多线程对比"></a>多进程与多线程对比</h2><p>1，主要区别就在于线程之间可以共享进程的资源，而进程是独立的<br>2，由于进程之前是互相独立的，所以结果会是</p>
-<pre><code class="python">from multiprocessing import Process
-import threading
-import time
-lock = threading.Lock()
-
-def run(info_list,n):
-    lock.acquire()
-    info_list.append(n)
-    lock.release()
-    print(&quot;{0}\n&quot;.format(info_list))
-
-if __name__ == &#39;__main__&#39;:
-    info = []
-    for i in range(10):
-        p = Process(target=run, args=[info,i])
-        p.start()
-        p.join()
-    time.sleep(1)
-    print(&#39;------------------------threading--------------------&#39;)
-    for i in range(10):
-        p = threading.Thread(target=run, args=[info,i])
-        p.start()
-        p.join()
-</code></pre>
-<p>结果为</p>
-<pre><code>[0]
-
-[1]
-
-[2]
-
-[3]
-
-[4]
-
-[5]
-
-[6]
-
-[7]
-
-[8]
-
-[9]
-
-------------------------threading--------------------
-[0]
-
-[0, 1]
-
-[0, 1, 2]
-
-[0, 1, 2, 3]
-
-[0, 1, 2, 3, 4]
-
-[0, 1, 2, 3, 4, 5]
-
-[0, 1, 2, 3, 4, 5, 6]
-
-[0, 1, 2, 3, 4, 5, 6, 7]
-
-[0, 1, 2, 3, 4, 5, 6, 7, 8]
-
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-</code></pre><p>如果想让multiprocessing也像多进程一样，可以用Queue</p>
-<pre><code class="python">from multiprocessing import Process,Queue
-import time
-import threading
-lock = threading.Lock()
-
-def run(queue,info_list,n):
-    lock.acquire()
-    while not queue.empty():
-        value = queue.get(True)
-        info_list.append(value)
-    lock.release()
-    if len(info_list) &gt; 0:
-        print(&#39;{0}\n&#39;.format(info_list))
-
-
-def foo(q,n):
-    q.put(n)
-
-
-if __name__ == &#39;__main__&#39;:
-    info = []
-    q = Queue()
-    for i in range(10):
-        for j in range(1,i+1):
-                q.put(j)
-        p = Process(target=run,args=[q,info,i])
-        p.start()
-        p.join()
-</code></pre>
-<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><p>1，有并发的思想，三大特性：immutable data不可变数据，first class functions函数像变量一样使用,尾递归优化：每次递归都重用stack<br>2，好处：并行，惰性求值（在使用的时候再求值），确定性<br>3，技术：map&amp;reduce,pipeline,recursing递归,currying归一化,higher order function高阶函数</p>
-<pre><code class="python">def inc(x):
-    def incx(y):
-        return x+y
-    return incx
-
-inc2 = inc(2)
-inc5 = inc(5)
-
-print(inc2(5)) #输出7
-print(inc5(5)) #输出10
-</code></pre>
-<p>4，lambda快速定义单行的最小函数，即inline的匿名函数</p>
-<pre><code class="python">g = lambda x: x*2
-print(g(3)) # 6
-print(lambda x: x*2)(4) # 8
-</code></pre>
-<p>5，map，filter，reduce<br>    map(function, sequence)：对sequence中的item依次执行function(item),执行结果组成一个List返回</p>
-<pre><code class="python"># 对于这个函数
-for n in [&quot;qi&quot;, &quot;yue&quot;, &quot;July&quot;]:
-    print(len(n))
-#可以写成
-name_len = map(len, [&quot;qi&quot;, &quot;yue&quot;, &quot;July&quot;])
-print(name_len)
-</code></pre>
+<p>multiprocessing<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(n)</span>:</span></span><br><span class="line">	time.sleep(<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">print</span> n*n</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">		p = Process(target = f, args = [i,])</span><br><span class="line">		p.start()</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="进程间通信Queue"><a href="#进程间通信Queue" class="headerlink" title="进程间通信Queue"></a>进程间通信Queue</h2><p>1，Queue是多进程安全的队列，可以实现多进程之间的数据传递<br>2，Queue.qsize() 返回队列的大小<br>    Queue.empty() 如果队列为空，返回True,反之False<br>    Queue.full() 如果队列满了，返回True,反之False<br>    Queue.get([block[, timeout]]) 获取队列，timeout等待时间<br>    Queue.get_nowait() 相当Queue.get(False)<br>    非阻塞 Queue.put(item) 写入队列，timeout等待时间<br>    Queue.put_nowait(item) 相当Queue.put(item, False)<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Queue</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write</span><span class="params">(q)</span>:</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>]:</span><br><span class="line">		print(<span class="string">'Put &#123;0&#125; to queue'</span>.format(i))</span><br><span class="line">		q.put(i)</span><br><span class="line">		time.sleep(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(q)</span>:</span></span><br><span class="line">	<span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">		v = q.get(<span class="keyword">True</span>)</span><br><span class="line">		print(<span class="string">'Get &#123;0&#125; from queue'</span>.format(v))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	q = Queue()</span><br><span class="line">	pw = Process(target = write, args=(q,))</span><br><span class="line">	pr = Process(target = read, args=(q,))</span><br><span class="line">	pw.start()</span><br><span class="line">	pr.start()</span><br><span class="line">	pw.join()</span><br><span class="line">	pr.join()</span><br><span class="line">	pr.terminate()</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="进程池Pool"><a href="#进程池Pool" class="headerlink" title="进程池Pool"></a>进程池Pool</h2><p>1，用于批量创建子进程，可以灵活控制子进程的数量<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="keyword">print</span> x*x</span><br><span class="line">	time.sleep(<span class="number">2</span>)</span><br><span class="line">	<span class="keyword">return</span> x*x</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	<span class="string">'''定义启动进程的数量'''</span></span><br><span class="line">	pool = Pool(processes = <span class="number">5</span>)</span><br><span class="line">	res_list = []</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">		<span class="string">'''以异步并行的方式启动进程，如果要同步等待的方式，可以在每次启动进程之后调用res.get()方法，也可以是用Pool.apply'''</span></span><br><span class="line">		res = pool.apply_async(f, [i,])</span><br><span class="line">		print(<span class="string">'-----------:'</span>,i)</span><br><span class="line">		res_list.append(res)</span><br><span class="line">	pool.close()</span><br><span class="line">	pool.join() <span class="comment">#强制等待所有进程运行完毕</span></span><br><span class="line">	<span class="keyword">for</span> r <span class="keyword">in</span> res_list:</span><br><span class="line">		print(<span class="string">"result: "</span>,(r.get(timeout = <span class="number">5</span>)))</span><br><span class="line"></span><br><span class="line"><span class="comment">#结果</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">ubuntu@bosch-shiny1:~$ python multiPython.py </span></span><br><span class="line"><span class="string">-----------: 0</span></span><br><span class="line"><span class="string">0</span></span><br><span class="line"><span class="string">-----------: 1</span></span><br><span class="line"><span class="string">-----------: 2</span></span><br><span class="line"><span class="string">-----------: 3</span></span><br><span class="line"><span class="string">-----------: 4</span></span><br><span class="line"><span class="string">-----------: 5</span></span><br><span class="line"><span class="string">-----------: 6</span></span><br><span class="line"><span class="string">-----------: 7</span></span><br><span class="line"><span class="string">-----------: 8</span></span><br><span class="line"><span class="string">-----------: 9</span></span><br><span class="line"><span class="string">1</span></span><br><span class="line"><span class="string">4</span></span><br><span class="line"><span class="string">9</span></span><br><span class="line"><span class="string">16</span></span><br><span class="line"><span class="string">25</span></span><br><span class="line"><span class="string">36</span></span><br><span class="line"><span class="string">49</span></span><br><span class="line"><span class="string">64</span></span><br><span class="line"><span class="string">81</span></span><br><span class="line"><span class="string">result:  0</span></span><br><span class="line"><span class="string">result:  1</span></span><br><span class="line"><span class="string">result:  4</span></span><br><span class="line"><span class="string">result:  9</span></span><br><span class="line"><span class="string">result:  16</span></span><br><span class="line"><span class="string">result:  25</span></span><br><span class="line"><span class="string">result:  36</span></span><br><span class="line"><span class="string">result:  49</span></span><br><span class="line"><span class="string">result:  64</span></span><br><span class="line"><span class="string">result:  81</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure></div></p>
+<h2 id="多进程与多线程对比"><a href="#多进程与多线程对比" class="headerlink" title="多进程与多线程对比"></a>多进程与多线程对比</h2><p>1，主要区别就在于线程之间可以共享进程的资源，而进程是独立的<br>2，由于进程之前是互相独立的，所以结果会是<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">lock = threading.Lock()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(info_list,n)</span>:</span></span><br><span class="line">	lock.acquire()</span><br><span class="line">	info_list.append(n)</span><br><span class="line">	lock.release()</span><br><span class="line">	print(<span class="string">"&#123;0&#125;\n"</span>.format(info_list))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	info = []</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">		p = Process(target=run, args=[info,i])</span><br><span class="line">		p.start()</span><br><span class="line">		p.join()</span><br><span class="line">	time.sleep(<span class="number">1</span>)</span><br><span class="line">	print(<span class="string">'------------------------threading--------------------'</span>)</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">		p = threading.Thread(target=run, args=[info,i])</span><br><span class="line">		p.start()</span><br><span class="line">		p.join()</span><br></pre></td></tr></table></figure></div></p>
+<p>结果为<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LSL"><figure class="iseeu highlight /lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">8</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">------------------------threading--------------------</span><br><span class="line">[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</span><br><span class="line"></span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br></pre></td></tr></table></figure></div></p>
+<p>如果想让multiprocessing也像多进程一样，可以用Queue<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process,Queue</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line">lock = threading.Lock()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(queue,info_list,n)</span>:</span></span><br><span class="line">    lock.acquire()</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> queue.empty():</span><br><span class="line">        value = queue.get(<span class="keyword">True</span>)</span><br><span class="line">        info_list.append(value)</span><br><span class="line">    lock.release()</span><br><span class="line">    <span class="keyword">if</span> len(info_list) &gt; <span class="number">0</span>:</span><br><span class="line">        print(<span class="string">'&#123;0&#125;\n'</span>.format(info_list))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(q,n)</span>:</span></span><br><span class="line">    q.put(n)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    info = []</span><br><span class="line">    q = Queue()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,i+<span class="number">1</span>):</span><br><span class="line">                q.put(j)</span><br><span class="line">        p = Process(target=run,args=[q,info,i])</span><br><span class="line">        p.start()</span><br><span class="line">        p.join()</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><p>1，有并发的思想，三大特性：immutable data不可变数据，first class functions函数像变量一样使用,尾递归优化：每次递归都重用stack<br>2，好处：并行，惰性求值（在使用的时候再求值），确定性<br>3，技术：map&amp;reduce,pipeline,recursing递归,currying归一化,higher order function高阶函数<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inc</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">incx</span><span class="params">(y)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> x+y</span><br><span class="line">	<span class="keyword">return</span> incx</span><br><span class="line"></span><br><span class="line">inc2 = inc(<span class="number">2</span>)</span><br><span class="line">inc5 = inc(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">print(inc2(<span class="number">5</span>)) <span class="comment">#输出7</span></span><br><span class="line">print(inc5(<span class="number">5</span>)) <span class="comment">#输出10</span></span><br></pre></td></tr></table></figure></div></p>
+<p>4，lambda快速定义单行的最小函数，即inline的匿名函数<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g = <span class="keyword">lambda</span> x: x*<span class="number">2</span></span><br><span class="line">print(g(<span class="number">3</span>)) <span class="comment"># 6</span></span><br><span class="line">print(<span class="keyword">lambda</span> x: x*<span class="number">2</span>)(<span class="number">4</span>) <span class="comment"># 8</span></span><br></pre></td></tr></table></figure></div></p>
+<p>5，map，filter，reduce<br>    map(function, sequence)：对sequence中的item依次执行function(item),执行结果组成一个List返回<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对于这个函数</span></span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> [<span class="string">"qi"</span>, <span class="string">"yue"</span>, <span class="string">"July"</span>]:</span><br><span class="line">	print(len(n))</span><br><span class="line"><span class="comment">#可以写成</span></span><br><span class="line">name_len = map(len, [<span class="string">"qi"</span>, <span class="string">"yue"</span>, <span class="string">"July"</span>])</span><br><span class="line">print(name_len)</span><br></pre></td></tr></table></figure></div></p>
 <pre><code>filter(function, sequence):对sequence中的item一次执行function(item),将执行结果为True的item组成一个List/String/Tuple(取决于sequence的类型)返回
-</code></pre><pre><code class="python">number_list = range(-5,5)
-less_than_zero = list(filter(lambda x: x&lt;0, number_list))
-print(less_than_zero)
-</code></pre>
+</code></pre><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">number_list = range(<span class="number">-5</span>,<span class="number">5</span>)</span><br><span class="line">less_than_zero = list(filter(<span class="keyword">lambda</span> x: x&lt;<span class="number">0</span>, number_list))</span><br><span class="line">print(less_than_zero)</span><br></pre></td></tr></table></figure></div>
 <pre><code>reduce(function, sequence, starting_value):对sequence中的item顺序迭代调用function,如果有starting_value,还可以作为初始值调用
-</code></pre><pre><code class="python">def add(x,y):
-    return x+y
-print reduce(add,range(1,5))# 10
-print reduce(add,range(1,5),10) # 20
-</code></pre>
+</code></pre><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x,y)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> x+y</span><br><span class="line"><span class="keyword">print</span> reduce(add,range(<span class="number">1</span>,<span class="number">5</span>))<span class="comment"># 10</span></span><br><span class="line"><span class="keyword">print</span> reduce(add,range(<span class="number">1</span>,<span class="number">5</span>),<span class="number">10</span>) <span class="comment"># 20</span></span><br></pre></td></tr></table></figure></div>
 <pre><code>例：计算数组中的平均数
-</code></pre><pre><code class="python">num = [2, -5, 9, 7, -2, 5, 3, 1, 0, -3, 8]
-true_list = list(filter(lambda x: x&gt;0, num))
-total = reduce(lambda x,y:x+y,true_list)
-average = total/len(true_list)
-</code></pre>
-<h2 id="Hadoop-amp-Spark"><a href="#Hadoop-amp-Spark" class="headerlink" title="Hadoop &amp; Spark"></a>Hadoop &amp; Spark</h2><p>1，核心设计就是MapReduce和HDFS(Hadoop Distributed File System<br>2，mrjob是在Hadoop Streaming的命令行上面包了一层，有了统一的Python界面，无序直接调用复杂的Hadoop Streaming命令<br>3，Spark是基于map reduce算法实现的分布式计算框架，其中间输出和结果可是直接保存在<strong>内存</strong>中，不再需要读写HDFS<br>4，Spark能更好地用于数据挖掘与机器学习等需要<strong>迭代</strong>的map,reduce的算法<br>5，Spark的核心为弹性分布式数据集RDD(Resilient Distributed Datasets),它是一个集群节点上不可变、已分区的对象，可以序列化，可以控制存储级别（内存、磁盘等）来进行重用<br>6，用PySpark实现WordCount</p>
-<pre><code class="python">import sys
-from operator import add
-from pyspark import SparkContext
-sc = SparkContext()
-
-lines = sc.textFile(&quot;stormofswords.csv&quot;)
-counts = lines.flatMap(lambda x: x.split(&#39;,&#39;))\
-            .map(lambda x: (x, 1))
-            .reduceByKey(add)
-output = counts.collect() #这个时候才开始计算
-output = filter(lambda x:not x[0].isnumeric(), sorted(output, key=lambda x:x[1], reverse=True))
-for (word,count) in output[:10]:
-    print(&quot;{0}:{1}&quot;.format(word, count))
-
-sc.stop()
-</code></pre>
+</code></pre><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">num = [<span class="number">2</span>, <span class="number">-5</span>, <span class="number">9</span>, <span class="number">7</span>, <span class="number">-2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-3</span>, <span class="number">8</span>]</span><br><span class="line">true_list = list(filter(<span class="keyword">lambda</span> x: x&gt;<span class="number">0</span>, num))</span><br><span class="line">total = reduce(<span class="keyword">lambda</span> x,y:x+y,true_list)</span><br><span class="line">average = total/len(true_list)</span><br></pre></td></tr></table></figure></div>
+<h2 id="Hadoop-amp-Spark"><a href="#Hadoop-amp-Spark" class="headerlink" title="Hadoop &amp; Spark"></a>Hadoop &amp; Spark</h2><p>1，核心设计就是MapReduce和HDFS(Hadoop Distributed File System<br>2，mrjob是在Hadoop Streaming的命令行上面包了一层，有了统一的Python界面，无序直接调用复杂的Hadoop Streaming命令<br>3，Spark是基于map reduce算法实现的分布式计算框架，其中间输出和结果可是直接保存在<strong>内存</strong>中，不再需要读写HDFS<br>4，Spark能更好地用于数据挖掘与机器学习等需要<strong>迭代</strong>的map,reduce的算法<br>5，Spark的核心为弹性分布式数据集RDD(Resilient Distributed Datasets),它是一个集群节点上不可变、已分区的对象，可以序列化，可以控制存储级别（内存、磁盘等）来进行重用<br>6，用PySpark实现WordCount<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> add</span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line">sc = SparkContext()</span><br><span class="line"></span><br><span class="line">lines = sc.textFile(<span class="string">"stormofswords.csv"</span>)</span><br><span class="line">counts = lines.flatMap(<span class="keyword">lambda</span> x: x.split(<span class="string">','</span>))\</span><br><span class="line">			.map(<span class="keyword">lambda</span> x: (x, <span class="number">1</span>))</span><br><span class="line">			.reduceByKey(add)</span><br><span class="line">output = counts.collect() <span class="comment">#这个时候才开始计算</span></span><br><span class="line">output = filter(<span class="keyword">lambda</span> x:<span class="keyword">not</span> x[<span class="number">0</span>].isnumeric(), sorted(output, key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>], reverse=<span class="keyword">True</span>))</span><br><span class="line"><span class="keyword">for</span> (word,count) <span class="keyword">in</span> output[:<span class="number">10</span>]:</span><br><span class="line">	print(<span class="string">"&#123;0&#125;:&#123;1&#125;"</span>.format(word, count))</span><br><span class="line"></span><br><span class="line">sc.stop()</span><br></pre></td></tr></table></figure></div></p>
 
       
     </div>
@@ -712,7 +467,7 @@ sc.stop()
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -725,7 +480,7 @@ sc.stop()
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="迭代器注意！yield是写在while里面的，且返回的是result!不是results! yield 是一个状态机，只有在真正调用的时候才会进到方法里面调用 //一次性把所有数据都计算好 public IEnumerable&amp;lt;int&amp;gt; CommonMethod() {     List&amp;lt;int&amp;gt; results = new List&amp;lt;int&amp;gt;();     i">
+<meta name="description" content="迭代器注意！yield是写在while里面的，且返回的是result!不是results! yield 是一个状态机，只有在真正调用的时候才会进到方法里面调用1234567891011121314151617181920212223242526272829303132333435363738394041//一次性把所有数据都计算好public IEnumerable&amp;lt;int&amp;gt; Comm">
 <meta name="keywords" content="concept,net">
 <meta property="og:type" content="article">
 <meta property="og:title" content="net-yield">
 <meta property="og:url" content="http://yoursite.com/2018/06/28/net-yield/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="迭代器注意！yield是写在while里面的，且返回的是result!不是results! yield 是一个状态机，只有在真正调用的时候才会进到方法里面调用 //一次性把所有数据都计算好 public IEnumerable&amp;lt;int&amp;gt; CommonMethod() {     List&amp;lt;int&amp;gt; results = new List&amp;lt;int&amp;gt;();     i">
+<meta property="og:description" content="迭代器注意！yield是写在while里面的，且返回的是result!不是results! yield 是一个状态机，只有在真正调用的时候才会进到方法里面调用1234567891011121314151617181920212223242526272829303132333435363738394041//一次性把所有数据都计算好public IEnumerable&amp;lt;int&amp;gt; Comm">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="net-yield">
-<meta name="twitter:description" content="迭代器注意！yield是写在while里面的，且返回的是result!不是results! yield 是一个状态机，只有在真正调用的时候才会进到方法里面调用 //一次性把所有数据都计算好 public IEnumerable&amp;lt;int&amp;gt; CommonMethod() {     List&amp;lt;int&amp;gt; results = new List&amp;lt;int&amp;gt;();     i">
+<meta name="twitter:description" content="迭代器注意！yield是写在while里面的，且返回的是result!不是results! yield 是一个状态机，只有在真正调用的时候才会进到方法里面调用1234567891011121314151617181920212223242526272829303132333435363738394041//一次性把所有数据都计算好public IEnumerable&amp;lt;int&amp;gt; Comm">
 
 
 
@@ -331,56 +331,10 @@
 
       
         <p>迭代器<br><span style="color: red">注意！yield是写在while里面的，且返回的是result!不是results!</span></p>
-<p>yield 是一个状态机，只有在真正调用的时候才会进到方法里面调用</p>
-<pre><code class="c#">//一次性把所有数据都计算好
-public IEnumerable&lt;int&gt; CommonMethod()
-{
-    List&lt;int&gt; results = new List&lt;int&gt;();
-    int counter = 0;
-    int result = 1;
-
-    while(counter++ &lt; 10)
-    {
-        Thread.Sleep(1000);
-        Console.WriteLine($&quot;获取{counter}次数据&quot;);
-        result = result * 2;
-        results.Add(result);
-    }
-    return results;
-}
-
-//按需获取 
-public IEnumerable&lt;int&gt; YieldMethod()
-{
-    int counter = 0;
-    int result = 1;
-    while(counter++ &lt; 10)
-    {
-        Thread.Sleep(1000);
-        Console.WriteLine($&quot;获取{counter}次数据&quot;);
-        result = result * 2;
-        yield return results;
-    }
-}
-
-//caller
-IEnumerable&lt;int&gt; intListCommon = show.CommonMethod();//返回的是最终的结果
-IEnumerable&lt;int&gt; intListYield = show.YieldMethod();//这个时候返回的是一个状态机，不是最终的结果
-
-
-//只有在调用item的时候，才会真正走进去，且每次循环后是从while开始的！
-foreach(var item in intListYield)
-{
-
-}
-</code></pre>
+<p>yield 是一个状态机，只有在真正调用的时候才会进到方法里面调用<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">//一次性把所有数据都计算好</span><br><span class="line">public IEnumerable&lt;int&gt; CommonMethod()</span><br><span class="line">&#123;</span><br><span class="line">	List&lt;int&gt; results = new List&lt;int&gt;();</span><br><span class="line">	int counter = 0;</span><br><span class="line">	int result = 1;</span><br><span class="line"></span><br><span class="line">	while(counter++ &lt; 10)</span><br><span class="line">	&#123;</span><br><span class="line">		Thread.Sleep(1000);</span><br><span class="line">		Console.WriteLine($&quot;获取&#123;counter&#125;次数据&quot;);</span><br><span class="line">		result = result * 2;</span><br><span class="line">		results.Add(result);</span><br><span class="line">	&#125;</span><br><span class="line">	return results;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//按需获取 </span><br><span class="line">public IEnumerable&lt;int&gt; YieldMethod()</span><br><span class="line">&#123;</span><br><span class="line">	int counter = 0;</span><br><span class="line">	int result = 1;</span><br><span class="line">	while(counter++ &lt; 10)</span><br><span class="line">	&#123;</span><br><span class="line">		Thread.Sleep(1000);</span><br><span class="line">		Console.WriteLine($&quot;获取&#123;counter&#125;次数据&quot;);</span><br><span class="line">		result = result * 2;</span><br><span class="line">		yield return results;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//caller</span><br><span class="line">IEnumerable&lt;int&gt; intListCommon = show.CommonMethod();//返回的是最终的结果</span><br><span class="line">IEnumerable&lt;int&gt; intListYield = show.YieldMethod();//这个时候返回的是一个状态机，不是最终的结果</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//只有在调用item的时候，才会真正走进去，且每次循环后是从while开始的！</span><br><span class="line">foreach(var item in intListYield)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <h2 id="linq"><a href="#linq" class="headerlink" title="linq"></a>linq</h2><p>.NET里面linq其实也是用的yield方式实现的，只有在真正使用的时候才会去执行逻辑代码</p>
-<p>比方说</p>
-<pre><code class="c#">var itemList = studentList.Where(x=&gt;x.Age &lt; 30);
-</code></pre>
-<p>但是如果用了ToList()，就会之u姐去执行逻辑代码</p>
-<pre><code class="c#">var itemList2 = studentList.Where(x=&gt;x.Age&gt;30).ToList();
-</code></pre>
+<p>比方说<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var itemList = studentList.Where(x=&gt;x.Age &lt; 30);</span><br></pre></td></tr></table></figure></div></p>
+<p>但是如果用了ToList()，就会之u姐去执行逻辑代码<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var itemList2 = studentList.Where(x=&gt;x.Age&gt;30).ToList();</span><br></pre></td></tr></table></figure></div></p>
 
       
     </div>
@@ -500,7 +454,7 @@ foreach(var item in intListYield)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -513,7 +467,7 @@ foreach(var item in intListYield)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

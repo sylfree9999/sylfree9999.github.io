@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Install Python3$ sudo yum groupinstall &amp;quot;Development Tools&amp;quot;  $ sudo yum -y install zlib*  $ sudo mkdir /usr/local/python3 # 创建安装目录  # 下载 Python 源文件 $ wget --no-check-certificate https://www.p">
+<meta name="description" content="Install Python312345678910111213141516171819$ sudo yum groupinstall &amp;quot;Development Tools&amp;quot;$ sudo yum -y install zlib*$ sudo mkdir /usr/local/python3 # 创建安装目录# 下载 Python 源文件$ wget --no-check-cer">
 <meta name="keywords" content="linux,practice">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS Install Python3, pip3 and Coexist Python2">
 <meta property="og:url" content="http://yoursite.com/2018/04/16/centos-install-python3/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="Install Python3$ sudo yum groupinstall &amp;quot;Development Tools&amp;quot;  $ sudo yum -y install zlib*  $ sudo mkdir /usr/local/python3 # 创建安装目录  # 下载 Python 源文件 $ wget --no-check-certificate https://www.p">
+<meta property="og:description" content="Install Python312345678910111213141516171819$ sudo yum groupinstall &amp;quot;Development Tools&amp;quot;$ sudo yum -y install zlib*$ sudo mkdir /usr/local/python3 # 创建安装目录# 下载 Python 源文件$ wget --no-check-cer">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS Install Python3, pip3 and Coexist Python2">
-<meta name="twitter:description" content="Install Python3$ sudo yum groupinstall &amp;quot;Development Tools&amp;quot;  $ sudo yum -y install zlib*  $ sudo mkdir /usr/local/python3 # 创建安装目录  # 下载 Python 源文件 $ wget --no-check-certificate https://www.p">
+<meta name="twitter:description" content="Install Python312345678910111213141516171819$ sudo yum groupinstall &amp;quot;Development Tools&amp;quot;$ sudo yum -y install zlib*$ sudo mkdir /usr/local/python3 # 创建安装目录# 下载 Python 源文件$ wget --no-check-cer">
 
 
 
@@ -330,62 +330,22 @@
       
 
       
-        <h2 id="Install-Python3"><a href="#Install-Python3" class="headerlink" title="Install Python3"></a>Install Python3</h2><pre><code class="linux">$ sudo yum groupinstall &quot;Development Tools&quot;
-
-$ sudo yum -y install zlib*
-
-$ sudo mkdir /usr/local/python3 # 创建安装目录
-
-# 下载 Python 源文件
-$ wget --no-check-certificate https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
-# 注意：wget获取https的时候要加上：--no-check-certificate
-
-$ tar -xzvf Python-3.6.0.tgz # 解压缩包
-
-$ cd Python-3.6.0 # 进入解压目录
-
-$ sudo ./configure --prefix=/usr/local/python3 # 指定创建的目录
-
-$ sudo make
-
-$ sudo make install
-
-</code></pre>
+        <h2 id="Install-Python3"><a href="#Install-Python3" class="headerlink" title="Install Python3"></a>Install Python3</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum groupinstall &quot;Development Tools&quot;</span><br><span class="line"></span><br><span class="line">$ sudo yum -y install zlib*</span><br><span class="line"></span><br><span class="line">$ sudo mkdir /usr/local/python3 # 创建安装目录</span><br><span class="line"></span><br><span class="line"># 下载 Python 源文件</span><br><span class="line">$ wget --no-check-certificate https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz</span><br><span class="line"># 注意：wget获取https的时候要加上：--no-check-certificate</span><br><span class="line"></span><br><span class="line">$ tar -xzvf Python-3.6.0.tgz # 解压缩包</span><br><span class="line"></span><br><span class="line">$ cd Python-3.6.0 # 进入解压目录</span><br><span class="line"></span><br><span class="line">$ sudo ./configure --prefix=/usr/local/python3 # 指定创建的目录</span><br><span class="line"></span><br><span class="line">$ sudo make</span><br><span class="line"></span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure></div>
 <h2 id="Python2-Python3-共存"><a href="#Python2-Python3-共存" class="headerlink" title="Python2 Python3 共存"></a>Python2 Python3 共存</h2><p>创建python3软链接<br>这样可以用<code>python</code>命令使用Python2， <code>python3</code>来使用Python3</p>
-<pre><code class="linux">$ sudo ln -s /usr/local/python3/bin/python3 /usr/bin/python3
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ln -s /usr/local/python3/bin/python3 /usr/bin/python3</span><br></pre></td></tr></table></figure></div>
 <h2 id="默认使用Python3"><a href="#默认使用Python3" class="headerlink" title="默认使用Python3"></a>默认使用Python3</h2><p>先将现有的python备份， 用<code>which python</code>来看：</p>
-<pre><code class="linux">$ which python
-/usr/bin/python
-
-$ cd /usr/bin
-$ sudo mv python python.bak
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ which python</span><br><span class="line">/usr/bin/python</span><br><span class="line"></span><br><span class="line">$ cd /usr/bin</span><br><span class="line">$ sudo mv python python.bak</span><br></pre></td></tr></table></figure></div>
 <p>然后创建软链接</p>
-<pre><code class="linux">$ sudo ln -s /usr/local/python3/bin/python3 /usr/bin/python
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ln -s /usr/local/python3/bin/python3 /usr/bin/python</span><br></pre></td></tr></table></figure></div>
 <p>这样默认的python版本就替换成Python3了</p>
 <p>另外由于yum使用Python2,替换后python3可能无法正常工作，所以修改yum配置文件</p>
-<pre><code class="linux">sudo vi /usr/bin/yum
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /usr/bin/yum</span><br></pre></td></tr></table></figure></div>
 <p>将第一行从 <code>#!/usr/bin/python</code>改为<code>#!/usr/bin/python2.7</code></p>
-<h2 id="Install-Pip3"><a href="#Install-Pip3" class="headerlink" title="Install Pip3"></a>Install Pip3</h2><pre><code class="linux"># 下载源代码
-$ wget --no-check-certificate https://github.com/pypa/pip/archive/9.0.1.tar.gz
-
-$ tar -zvxf 9.0.1.tar.gz    # 解压文件
-
-$ cd pip-9.0.1
-
-# 使用 Python 3 安装
-$ python3 setup.py install
-</code></pre>
+<h2 id="Install-Pip3"><a href="#Install-Pip3" class="headerlink" title="Install Pip3"></a>Install Pip3</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 下载源代码</span><br><span class="line">$ wget --no-check-certificate https://github.com/pypa/pip/archive/9.0.1.tar.gz</span><br><span class="line"></span><br><span class="line">$ tar -zvxf 9.0.1.tar.gz    # 解压文件</span><br><span class="line"></span><br><span class="line">$ cd pip-9.0.1</span><br><span class="line"></span><br><span class="line"># 使用 Python 3 安装</span><br><span class="line">$ python3 setup.py install</span><br></pre></td></tr></table></figure></div>
 <p>创建软链接</p>
-<pre><code class="linux">$ sudo ln -s /usr/local/python3/bin/pip /usr/bin/pip3
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ln -s /usr/local/python3/bin/pip /usr/bin/pip3</span><br></pre></td></tr></table></figure></div>
 <p>升级pip</p>
-<pre><code class="linux">$ pip install --upgrade pip
-</code></pre>
-
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install --upgrade pip</span><br></pre></td></tr></table></figure></div>
       
     </div>
     
@@ -504,7 +464,7 @@ $ python3 setup.py install
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -517,7 +477,7 @@ $ python3 setup.py install
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

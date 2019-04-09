@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Shiny ScopePer-session objects# server.R  shinyServer(func = function(input, output){         startTime &amp;lt;- Sys.time()     })  func is called each time a web brower is pointed to the Shiny applicati">
+<meta name="description" content="Shiny ScopePer-session objects12345# server.RshinyServer(func = function(input, output)&amp;#123;		startTime &amp;lt;- Sys.time()	&amp;#125;) func is called each time a web brower is pointed to the Shiny applicat">
 <meta name="keywords" content="concept,R,shiny">
 <meta property="og:type" content="article">
 <meta property="og:title" content="rshiny-concept">
 <meta property="og:url" content="http://yoursite.com/2018/04/18/rshiny-concept/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="Shiny ScopePer-session objects# server.R  shinyServer(func = function(input, output){         startTime &amp;lt;- Sys.time()     })  func is called each time a web brower is pointed to the Shiny applicati">
+<meta property="og:description" content="Shiny ScopePer-session objects12345# server.RshinyServer(func = function(input, output)&amp;#123;		startTime &amp;lt;- Sys.time()	&amp;#125;) func is called each time a web brower is pointed to the Shiny applicat">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rshiny-concept">
-<meta name="twitter:description" content="Shiny ScopePer-session objects# server.R  shinyServer(func = function(input, output){         startTime &amp;lt;- Sys.time()     })  func is called each time a web brower is pointed to the Shiny applicati">
+<meta name="twitter:description" content="Shiny ScopePer-session objects12345# server.RshinyServer(func = function(input, output)&amp;#123;		startTime &amp;lt;- Sys.time()	&amp;#125;) func is called each time a web brower is pointed to the Shiny applicat">
 
 
 
@@ -330,28 +330,11 @@
       
 
       
-        <h2 id="Shiny-Scope"><a href="#Shiny-Scope" class="headerlink" title="Shiny Scope"></a>Shiny Scope</h2><h3 id="Per-session-objects"><a href="#Per-session-objects" class="headerlink" title="Per-session objects"></a>Per-session objects</h3><pre><code class="R"># server.R
-
-shinyServer(func = function(input, output){
-        startTime &lt;- Sys.time()
-    })
-</code></pre>
+        <h2 id="Shiny-Scope"><a href="#Shiny-Scope" class="headerlink" title="Shiny Scope"></a>Shiny Scope</h2><h3 id="Per-session-objects"><a href="#Per-session-objects" class="headerlink" title="Per-session objects"></a>Per-session objects</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="R"><figure class="iseeu highlight /r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># server.R</span></span><br><span class="line"></span><br><span class="line">shinyServer(func = <span class="keyword">function</span>(input, output)&#123;</span><br><span class="line">		startTime &lt;- Sys.time()</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure></div>
 <p><code>func</code> is called each time a web brower is pointed to the Shiny application = is called once for each session.</p>
 <p>所有在func里面的东西是每个session单独实例化的。这包括<code>input</code>和<code>output</code>。<br>每个session有自己的<code>input</code>和<code>output</code>,只在func中可见。 每个session也会有自己的startTime。</p>
 <h3 id="Objects-所有session可见"><a href="#Objects-所有session可见" class="headerlink" title="Objects 所有session可见"></a>Objects 所有session可见</h3><p>适用于需要使用大数据，或者不需要<code>input</code>和<code>output</code>的工具函数的情况。<br>只需要把objects定义在shinyServer之外+inside server.R文件即可。</p>
-<pre><code class="R">
-# objects visible across all sessions
-bigDataSet &lt;- read.csv(&#39;bigdata.csv&#39;)
-
-# objects visible across all sessions
-utilityFunc &lt;- function(x){
-
-}
-
-shinyServer(function(input,output){
-
-})
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="R"><figure class="iseeu highlight /r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># objects visible across all sessions</span></span><br><span class="line">bigDataSet &lt;- read.csv(<span class="string">'bigdata.csv'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># objects visible across all sessions</span></span><br><span class="line">utilityFunc &lt;- <span class="keyword">function</span>(x)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">shinyServer(<span class="keyword">function</span>(input,output)&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
 <p>如果要修改共享objects，<strong>需要使用&lt;&lt;-运算符，&lt;-只针对本地变量</strong></p>
 <h3 id="Global-Objects"><a href="#Global-Objects" class="headerlink" title="Global Objects"></a>Global Objects</h3><p>Objects defined in <code>global.R</code>. 与<code>所有Session可见Objects</code>相似，但是不同的是，它同时对于<code>ui.R</code>可见。 这是因为他们被加载到了R session的全局环境中。所有的Shiny app的R代码都是运行在这个全局环境或者其子环境中。</p>
 <p>实际应用中，这个并不常见。<strong><code>ui.R</code>中的代码只会被执行一次，就是当Shiny app启动时。然后它会生成html 文件，缓存然后传给与其相连的浏览器</strong>。 这种所发当设置一些共享配置的时候可能比较有用。</p>
@@ -476,7 +459,7 @@ shinyServer(function(input,output){
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -489,7 +472,7 @@ shinyServer(function(input,output){
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

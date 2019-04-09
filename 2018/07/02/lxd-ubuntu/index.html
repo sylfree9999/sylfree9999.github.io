@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="ENV: UBUNTU Add a non root useradduser lxduser usermod -aG sudo lxduser ##disable password authentication sudo nano /etc/ssh/sshd_config PasswordAuthentication no sudo systemctl reload sshd">
+<meta name="description" content="ENV: UBUNTU Add a non root user123456adduser lxduserusermod -aG sudo lxduser##disable password authenticationsudo nano /etc/ssh/sshd_configPasswordAuthentication nosudo systemctl reload sshd">
 <meta name="keywords" content="practice,LXD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="lxd-ubuntu">
 <meta property="og:url" content="http://yoursite.com/2018/07/02/lxd-ubuntu/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="ENV: UBUNTU Add a non root useradduser lxduser usermod -aG sudo lxduser ##disable password authentication sudo nano /etc/ssh/sshd_config PasswordAuthentication no sudo systemctl reload sshd">
+<meta property="og:description" content="ENV: UBUNTU Add a non root user123456adduser lxduserusermod -aG sudo lxduser##disable password authenticationsudo nano /etc/ssh/sshd_configPasswordAuthentication nosudo systemctl reload sshd">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lxd-ubuntu">
-<meta name="twitter:description" content="ENV: UBUNTU Add a non root useradduser lxduser usermod -aG sudo lxduser ##disable password authentication sudo nano /etc/ssh/sshd_config PasswordAuthentication no sudo systemctl reload sshd">
+<meta name="twitter:description" content="ENV: UBUNTU Add a non root user123456adduser lxduserusermod -aG sudo lxduser##disable password authenticationsudo nano /etc/ssh/sshd_configPasswordAuthentication nosudo systemctl reload sshd">
 
 
 
@@ -331,376 +331,63 @@
 
       
         <p>ENV: UBUNTU</p>
-<h2 id="Add-a-non-root-user"><a href="#Add-a-non-root-user" class="headerlink" title="Add a non root user"></a>Add a non root user</h2><pre><code class="shell">adduser lxduser
-usermod -aG sudo lxduser
-##disable password authentication
-sudo nano /etc/ssh/sshd_config
-PasswordAuthentication no
-sudo systemctl reload sshd
-</code></pre>
+<h2 id="Add-a-non-root-user"><a href="#Add-a-non-root-user" class="headerlink" title="Add a non root user"></a>Add a non root user</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SHELL"><figure class="iseeu highlight /shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">adduser lxduser</span><br><span class="line">usermod -aG sudo lxduser</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#disable password authentication</span></span></span><br><span class="line">sudo nano /etc/ssh/sshd_config</span><br><span class="line">PasswordAuthentication no</span><br><span class="line">sudo systemctl reload sshd</span><br></pre></td></tr></table></figure></div>
 <a id="more"></a>
-<h2 id="Configure-LXD"><a href="#Configure-LXD" class="headerlink" title="Configure LXD"></a>Configure LXD</h2><pre><code class="shell">sudo usermod --append --groups lxd lxduser
-sudo apt-get update
-sudo apt-get install zfsutils-linux
-sudo lxd init
-Do you want to configure a new storage pool (yes/no) [default=yes]? yes
-Name of the storage backend to use (dir or zfs) [default=zfs]: zfs
-Create a new ZFS pool (yes/no) [default=yes]? yes
-Name of the new ZFS pool [default=lxd]: lxd
-Would you like to use an existing block device (yes/no) [default=no]?
-Would you like to use an existing block device (yes/no) [default=no]? no
-Size in GB of the new loop device (1GB minimum) [default=15]: 15
-Would you like LXD to be available over the network (yes/no) [default=no]? no
-Do you want to configure the LXD bridge (yes/no) [default=yes]? yes
-
-</code></pre>
-<h2 id="Create-Container"><a href="#Create-Container" class="headerlink" title="Create Container"></a>Create Container</h2><pre><code class="shell">lxc list
-Generating a client certificate. This may take a minute...
-If this is your first time using LXD, you should also run: sudo lxd init
-To start your first container, try: lxc launch ubuntu:16.04
-
-+------+-------+------+------+------+-----------+
-| NAME | STATE | IPV4 | IPV6 | TYPE | SNAPSHOTS |
-+------+-------+------+------+------+-----------+
-
-lxc launch ubuntu:x webserver
-
-##The x in ubuntu:x is a shortcut for the first letter of Xenial, the codename of Ubuntu 16.04. ubuntu: is the identifier for the preconfigured repository of LXD images. You could also use ubuntu:16.04 for the image name.
-
-</code></pre>
-<h2 id="Configure-Container"><a href="#Configure-Container" class="headerlink" title="Configure Container"></a>Configure Container</h2><pre><code class="shell">lxc exec webserver -- sudo --login --user ubuntu
-</code></pre>
+<h2 id="Configure-LXD"><a href="#Configure-LXD" class="headerlink" title="Configure LXD"></a>Configure LXD</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SHELL"><figure class="iseeu highlight /shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod --append --groups lxd lxduser</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install zfsutils-linux</span><br><span class="line">sudo lxd init</span><br><span class="line">Do you want to configure a new storage pool (yes/no) [default=yes]? yes</span><br><span class="line">Name of the storage backend to use (dir or zfs) [default=zfs]: zfs</span><br><span class="line">Create a new ZFS pool (yes/no) [default=yes]? yes</span><br><span class="line">Name of the new ZFS pool [default=lxd]: lxd</span><br><span class="line">Would you like to use an existing block device (yes/no) [default=no]?</span><br><span class="line">Would you like to use an existing block device (yes/no) [default=no]? no</span><br><span class="line">Size in GB of the new loop device (1GB minimum) [default=15]: 15</span><br><span class="line">Would you like LXD to be available over the network (yes/no) [default=no]? no</span><br><span class="line">Do you want to configure the LXD bridge (yes/no) [default=yes]? yes</span><br></pre></td></tr></table></figure></div>
+<h2 id="Create-Container"><a href="#Create-Container" class="headerlink" title="Create Container"></a>Create Container</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SHELL"><figure class="iseeu highlight /shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">lxc list</span><br><span class="line">Generating a client certificate. This may take a minute...</span><br><span class="line">If this is your first time using LXD, you should also run: sudo lxd init</span><br><span class="line">To start your first container, try: lxc launch ubuntu:16.04</span><br><span class="line"></span><br><span class="line">+------+-------+------+------+------+-----------+</span><br><span class="line">| NAME | STATE | IPV4 | IPV6 | TYPE | SNAPSHOTS |</span><br><span class="line">+------+-------+------+------+------+-----------+</span><br><span class="line"></span><br><span class="line">lxc launch ubuntu:x webserver</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#The x in ubuntu:x is a shortcut for the first letter of Xenial, the codename of Ubuntu 16.04. ubuntu: is the identifier for the preconfigured repository of LXD images. You could also use ubuntu:16.04 for the image name.</span></span></span><br></pre></td></tr></table></figure></div>
+<h2 id="Configure-Container"><a href="#Configure-Container" class="headerlink" title="Configure Container"></a>Configure Container</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SHELL"><figure class="iseeu highlight /shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lxc exec webserver -- sudo --login --user ubuntu</span><br></pre></td></tr></table></figure></div>
 <h2 id="Ubuntu-Nginx-AutoStart"><a href="#Ubuntu-Nginx-AutoStart" class="headerlink" title="Ubuntu Nginx AutoStart"></a>Ubuntu Nginx AutoStart</h2><p>[<a href="https://community.rackspace.com/products/f/public-cloud-forum/6747/ubuntu-and-debian---adding-an-nginx-init-script]" target="_blank" rel="noopener">https://community.rackspace.com/products/f/public-cloud-forum/6747/ubuntu-and-debian---adding-an-nginx-init-script]</a></p>
-<pre><code>sudo nano /etc/init.d/nginx
-</code></pre><p>Add those, <strong>spotted: ADD YOUR NGINX INSTALLATION PATH INTO $PATH</strong></p>
-<pre><code>#! /bin/sh
-
-### BEGIN INIT INFO
-# Provides:          nginx
-# Required-Start:    $all
-# Required-Stop:     $all
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: starts the nginx web server
-# Description:       starts nginx using start-stop-daemon
-### END INIT INFO
-
-PATH=/usr/local/nginx/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DAEMON=/usr/local/nginx/sbin
-NAME=nginx
-DESC=nginx
-
-test -x $DAEMON || exit 0
-
-# Include nginx defaults if available
-if [ -f /etc/default/nginx ] ; then
-    . /etc/default/nginx
-fi
-
-set -e
-
-. /lib/lsb/init-functions
-
-case &quot;$1&quot; in
-  start)
-    echo -n &quot;Starting $DESC: &quot;
-    start-stop-daemon --start --quiet --pidfile /usr/local/nginx/logs/$NAME.pid \
-        --exec $DAEMON -- $DAEMON_OPTS || true
-    echo &quot;$NAME.&quot;
-    ;;
-  stop)
-    echo -n &quot;Stopping $DESC: &quot;
-    start-stop-daemon --stop --quiet --pidfile /usr/local/nginx/logs/$NAME.pid \
-        --exec $DAEMON || true
-    echo &quot;$NAME.&quot;
-    ;;
-  restart|force-reload)
-    echo -n &quot;Restarting $DESC: &quot;
-    start-stop-daemon --stop --quiet --pidfile \
-        /usr/local/nginx/logs/$NAME.pid --exec $DAEMON || true
-    sleep 1
-    start-stop-daemon --start --quiet --pidfile \
-        /usr/local/nginx/logs/$NAME.pid --exec $DAEMON -- $DAEMON_OPTS || true
-    echo &quot;$NAME.&quot;
-    ;;
-  reload)
-      echo -n &quot;Reloading $DESC configuration: &quot;
-      start-stop-daemon --stop --signal HUP --quiet --pidfile /usr/local/nginx/logs/$NAME.pid \
-          --exec $DAEMON || true
-      echo &quot;$NAME.&quot;
-      ;;
-  status)
-      status_of_proc -p /usr/local/nginx/logs/$NAME.pid &quot;$DAEMON&quot; nginx &amp;&amp; exit 0 || exit $?
-      ;;
-  *)
-    N=/etc/init.d/$NAME
-    echo &quot;Usage: $N {start|stop|restart|reload|force-reload|status}&quot; &gt;&amp;2
-    exit 1
-    ;;
-esac
-
-exit 0
-</code></pre><pre><code>sudo chmod +x /etc/init.d/nginx
-sudo /usr/sbin/update-rc.d -f nginx defaults
-</code></pre><p>The output will be similar to this:</p>
-<pre><code>Adding system startup for /etc/init.d/nginx ...
- Adding system startup for /etc/init.d/nginx ...
-   /etc/rc0.d/K20nginx -&gt; ../init.d/nginx
-   /etc/rc1.d/K20nginx -&gt; ../init.d/nginx
-   /etc/rc6.d/K20nginx -&gt; ../init.d/nginx
-   /etc/rc2.d/S20nginx -&gt; ../init.d/nginx
-   /etc/rc3.d/S20nginx -&gt; ../init.d/nginx
-   /etc/rc4.d/S20nginx -&gt; ../init.d/nginx
-   /etc/rc5.d/S20nginx -&gt; ../init.d/nginx
-</code></pre><p>Then start/stop/restart</p>
-<pre><code>sudo /etc/init.d/nginx start
-...
-sudo /etc/init.d/nginx stop
-...
-sudo /etc/init.d/nginx restart
-</code></pre><h2 id="Reset-timezone"><a href="#Reset-timezone" class="headerlink" title="Reset timezone"></a>Reset timezone</h2><pre><code>sudo dpkg-reconfigure tzdata
-</code></pre><h2 id="Rename-Container"><a href="#Rename-Container" class="headerlink" title="Rename Container"></a>Rename Container</h2><p>1,    Login to the container</p>
-<pre><code>```
-sudo -s
-hostname newName
-echo newName &gt; /etc/hostname
-bash
-reboot
-exit
-```
-</code></pre><p>2,    Return to the host</p>
-<pre><code>```
-sudo -s
-lxc stop oldName
-lxc move oldName newName
-lxc start newName
-lxc list
-```
-</code></pre><h2 id="Copy-Container"><a href="#Copy-Container" class="headerlink" title="Copy Container"></a>Copy Container</h2><pre><code>lxc copy old1 new1
-lxc start new1
-</code></pre><h2 id="Add-Swap-Space"><a href="#Add-Swap-Space" class="headerlink" title="Add Swap Space"></a>Add Swap Space</h2><p>[<a href="https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04]" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04]</a></p>
-<h4 id="Check-system-for-swap-information"><a href="#Check-system-for-swap-information" class="headerlink" title="Check system for swap information"></a>Check system for swap information</h4><pre><code>sudo swapon --show
-</code></pre><p>If you don’t get back any output, this means your system does not have swap space available currently.</p>
-<p>You can verify that there is no active swap using the free utility:</p>
-<pre><code>free -h
-</code></pre><pre><code>Output
-              total        used        free      shared  buff/cache   available
-Mem:           488M         36M        104M        652K        348M        426M
-Swap:            0B          0B          0B
-</code></pre><h4 id="Check-Available-Space-on-the-Hard-Drive-Partition"><a href="#Check-Available-Space-on-the-Hard-Drive-Partition" class="headerlink" title="Check Available Space on the Hard Drive Partition"></a>Check Available Space on the Hard Drive Partition</h4><p>The most common way of allocating space for swap is to use a separate partition devoted to the task. However, altering the partitioning scheme is not always possible. We can just as easily create a swap file that resides on an existing partition.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="AWK"><figure class="iseeu highlight /awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano <span class="regexp">/etc/i</span>nit.d<span class="regexp">/nginx</span></span><br></pre></td></tr></table></figure></div>
+<p>Add those, <strong>spotted: ADD YOUR NGINX INSTALLATION PATH INTO $PATH</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">### BEGIN INIT INFO</span></span><br><span class="line"><span class="comment"># Provides:          nginx</span></span><br><span class="line"><span class="comment"># Required-Start:    $all</span></span><br><span class="line"><span class="comment"># Required-Stop:     $all</span></span><br><span class="line"><span class="comment"># Default-Start:     2 3 4 5</span></span><br><span class="line"><span class="comment"># Default-Stop:      0 1 6</span></span><br><span class="line"><span class="comment"># Short-Description: starts the nginx web server</span></span><br><span class="line"><span class="comment"># Description:       starts nginx using start-stop-daemon</span></span><br><span class="line"><span class="comment">### END INIT INFO</span></span><br><span class="line"> </span><br><span class="line">PATH=/usr/<span class="built_in">local</span>/nginx/sbin:/usr/<span class="built_in">local</span>/bin:/sbin:/bin:/usr/sbin:/usr/bin</span><br><span class="line">DAEMON=/usr/<span class="built_in">local</span>/nginx/sbin</span><br><span class="line">NAME=nginx</span><br><span class="line">DESC=nginx</span><br><span class="line"> </span><br><span class="line"><span class="built_in">test</span> -x <span class="variable">$DAEMON</span> || <span class="built_in">exit</span> 0</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Include nginx defaults if available</span></span><br><span class="line"><span class="keyword">if</span> [ -f /etc/default/nginx ] ; <span class="keyword">then</span></span><br><span class="line">    . /etc/default/nginx</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">set</span> -e</span><br><span class="line"> </span><br><span class="line">. /lib/lsb/init-functions</span><br><span class="line"> </span><br><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></span><br><span class="line">  start)</span><br><span class="line">    <span class="built_in">echo</span> -n <span class="string">"Starting <span class="variable">$DESC</span>: "</span></span><br><span class="line">    start-stop-daemon --start --quiet --pidfile /usr/<span class="built_in">local</span>/nginx/logs/<span class="variable">$NAME</span>.pid \</span><br><span class="line">        --<span class="built_in">exec</span> <span class="variable">$DAEMON</span> -- <span class="variable">$DAEMON_OPTS</span> || <span class="literal">true</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$NAME</span>."</span></span><br><span class="line">    ;;</span><br><span class="line">  stop)</span><br><span class="line">    <span class="built_in">echo</span> -n <span class="string">"Stopping <span class="variable">$DESC</span>: "</span></span><br><span class="line">    start-stop-daemon --stop --quiet --pidfile /usr/<span class="built_in">local</span>/nginx/logs/<span class="variable">$NAME</span>.pid \</span><br><span class="line">        --<span class="built_in">exec</span> <span class="variable">$DAEMON</span> || <span class="literal">true</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$NAME</span>."</span></span><br><span class="line">    ;;</span><br><span class="line">  restart|force-reload)</span><br><span class="line">    <span class="built_in">echo</span> -n <span class="string">"Restarting <span class="variable">$DESC</span>: "</span></span><br><span class="line">    start-stop-daemon --stop --quiet --pidfile \</span><br><span class="line">        /usr/<span class="built_in">local</span>/nginx/logs/<span class="variable">$NAME</span>.pid --<span class="built_in">exec</span> <span class="variable">$DAEMON</span> || <span class="literal">true</span></span><br><span class="line">    sleep 1</span><br><span class="line">    start-stop-daemon --start --quiet --pidfile \</span><br><span class="line">        /usr/<span class="built_in">local</span>/nginx/logs/<span class="variable">$NAME</span>.pid --<span class="built_in">exec</span> <span class="variable">$DAEMON</span> -- <span class="variable">$DAEMON_OPTS</span> || <span class="literal">true</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$NAME</span>."</span></span><br><span class="line">    ;;</span><br><span class="line">  reload)</span><br><span class="line">      <span class="built_in">echo</span> -n <span class="string">"Reloading <span class="variable">$DESC</span> configuration: "</span></span><br><span class="line">      start-stop-daemon --stop --signal HUP --quiet --pidfile /usr/<span class="built_in">local</span>/nginx/logs/<span class="variable">$NAME</span>.pid \</span><br><span class="line">          --<span class="built_in">exec</span> <span class="variable">$DAEMON</span> || <span class="literal">true</span></span><br><span class="line">      <span class="built_in">echo</span> <span class="string">"<span class="variable">$NAME</span>."</span></span><br><span class="line">      ;;</span><br><span class="line">  status)</span><br><span class="line">      status_of_proc -p /usr/<span class="built_in">local</span>/nginx/logs/<span class="variable">$NAME</span>.pid <span class="string">"<span class="variable">$DAEMON</span>"</span> nginx &amp;&amp; <span class="built_in">exit</span> 0 || <span class="built_in">exit</span> $?</span><br><span class="line">      ;;</span><br><span class="line">  *)</span><br><span class="line">    N=/etc/init.d/<span class="variable">$NAME</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Usage: <span class="variable">$N</span> &#123;start|stop|restart|reload|force-reload|status&#125;"</span> &gt;&amp;2</span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line">    ;;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure></div></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="DTS"><figure class="iseeu highlight /dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x <span class="meta-keyword">/etc/</span>init.d/nginx</span><br><span class="line">sudo <span class="meta-keyword">/usr/</span>sbin/update-rc.d -f nginx defaults</span><br></pre></td></tr></table></figure></div>
+<p>The output will be similar to this:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Adding<span class="built_in"> system </span>startup <span class="keyword">for</span> /etc/init.d/nginx <span class="built_in">..</span>.</span><br><span class="line"> Adding<span class="built_in"> system </span>startup <span class="keyword">for</span> /etc/init.d/nginx <span class="built_in">..</span>.</span><br><span class="line">   /etc/rc0.d/K20nginx -&gt; <span class="built_in">..</span>/init.d/nginx</span><br><span class="line">   /etc/rc1.d/K20nginx -&gt; <span class="built_in">..</span>/init.d/nginx</span><br><span class="line">   /etc/rc6.d/K20nginx -&gt; <span class="built_in">..</span>/init.d/nginx</span><br><span class="line">   /etc/rc2.d/S20nginx -&gt; <span class="built_in">..</span>/init.d/nginx</span><br><span class="line">   /etc/rc3.d/S20nginx -&gt; <span class="built_in">..</span>/init.d/nginx</span><br><span class="line">   /etc/rc4.d/S20nginx -&gt; <span class="built_in">..</span>/init.d/nginx</span><br><span class="line">   /etc/rc5.d/S20nginx -&gt; <span class="built_in">..</span>/init.d/nginx</span><br></pre></td></tr></table></figure></div></p>
+<p>Then start/stop/restart<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="string">/etc/init.d/nginx</span> start</span><br><span class="line"><span class="string">...</span></span><br><span class="line">sudo <span class="string">/etc/init.d/nginx</span> stop</span><br><span class="line"><span class="string">...</span></span><br><span class="line">sudo <span class="string">/etc/init.d/nginx</span> restart</span><br></pre></td></tr></table></figure></p>
+<h2 id="Reset-timezone"><a href="#Reset-timezone" class="headerlink" title="Reset timezone"></a>Reset timezone</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="EBNF"><figure class="iseeu highlight /ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo dpkg-reconfigure tzdata</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="Rename-Container"><a href="#Rename-Container" class="headerlink" title="Rename Container"></a>Rename Container</h2><p>1,    Login to the container<br>    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="AWK"><figure class="iseeu highlight /awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">hostname newName</span><br><span class="line">echo newName &gt; <span class="regexp">/etc/</span>hostname</span><br><span class="line">bash</span><br><span class="line">reboot</span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure></div></p>
+<p>2,    Return to the host<br>    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="HAXE"><figure class="iseeu highlight /haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">lxc stop oldName</span><br><span class="line">lxc move oldName <span class="keyword">new</span><span class="type">Name</span></span><br><span class="line"><span class="type">lxc</span> start <span class="keyword">new</span><span class="type">Name</span></span><br><span class="line"><span class="type">lxc</span> list</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="Copy-Container"><a href="#Copy-Container" class="headerlink" title="Copy Container"></a>Copy Container</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="DOCKERFILE"><figure class="iseeu highlight /dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lxc <span class="keyword">copy</span><span class="bash"> old1 new1</span></span><br><span class="line"><span class="bash">lxc start new1</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="Add-Swap-Space"><a href="#Add-Swap-Space" class="headerlink" title="Add Swap Space"></a>Add Swap Space</h2><p>[<a href="https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04]" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04]</a></p>
+<h4 id="Check-system-for-swap-information"><a href="#Check-system-for-swap-information" class="headerlink" title="Check system for swap information"></a>Check system for swap information</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ADA"><figure class="iseeu highlight /ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo swapon <span class="comment">--show</span></span><br></pre></td></tr></table></figure></div>
+<p>If you don’t get back any output, this means your system does not have swap space available currently.</p>
+<p>You can verify that there is no active swap using the free utility:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="CPP"><figure class="iseeu highlight /cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">free</span> -h</span><br></pre></td></tr></table></figure></div></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="MIPSASM"><figure class="iseeu highlight /mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Output</span><br><span class="line">              total        used        free      <span class="keyword">shared </span> <span class="keyword">buff/cache </span>  available</span><br><span class="line"><span class="symbol">Mem:</span>           <span class="number">488</span>M         <span class="number">36</span>M        <span class="number">104</span>M        <span class="number">652</span>K        <span class="number">348</span>M        <span class="number">426</span>M</span><br><span class="line"><span class="keyword">Swap: </span>           <span class="number">0</span>B          <span class="number">0</span>B          <span class="number">0</span>B</span><br></pre></td></tr></table></figure></div>
+<h4 id="Check-Available-Space-on-the-Hard-Drive-Partition"><a href="#Check-Available-Space-on-the-Hard-Drive-Partition" class="headerlink" title="Check Available Space on the Hard Drive Partition"></a>Check Available Space on the Hard Drive Partition</h4><p>The most common way of allocating space for swap is to use a separate partition devoted to the task. However, altering the partitioning scheme is not always possible. We can just as easily create a swap file that resides on an existing partition.</p>
 <p>Before we do this, we should check the current disk usage by typing:</p>
-<pre><code>df -h
-</code></pre><pre><code>Output
-Filesystem      Size  Used Avail Use% Mounted on
-udev            238M     0  238M   0% /dev
-tmpfs            49M  624K   49M   2% /run
-/dev/vda1        20G  1.1G   18G   6% /
-tmpfs           245M     0  245M   0% /dev/shm
-tmpfs           5.0M     0  5.0M   0% /run/lock
-tmpfs           245M     0  245M   0% /sys/fs/cgroup
-tmpfs            49M     0   49M   0% /run/user/1001
-</code></pre><h4 id="Create-a-Swap-File"><a href="#Create-a-Swap-File" class="headerlink" title="Create a Swap File"></a>Create a Swap File</h4><p>Now that we know our available hard drive space, we can go about creating a swap file within our filesystem. We will create a file of the swap size that we want called swapfile in our root (/) directory.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="EBNF"><figure class="iseeu highlight /ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">df -h</span></span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LSL"><figure class="iseeu highlight /lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Output</span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">udev            <span class="number">238</span>M     <span class="number">0</span>  <span class="number">238</span>M   <span class="number">0</span>% /dev</span><br><span class="line">tmpfs            <span class="number">49</span>M  <span class="number">624</span>K   <span class="number">49</span>M   <span class="number">2</span>% /run</span><br><span class="line">/dev/vda1        <span class="number">20</span>G  <span class="number">1.1</span>G   <span class="number">18</span>G   <span class="number">6</span>% /</span><br><span class="line">tmpfs           <span class="number">245</span>M     <span class="number">0</span>  <span class="number">245</span>M   <span class="number">0</span>% /dev/shm</span><br><span class="line">tmpfs           <span class="number">5.0</span>M     <span class="number">0</span>  <span class="number">5.0</span>M   <span class="number">0</span>% /run/lock</span><br><span class="line">tmpfs           <span class="number">245</span>M     <span class="number">0</span>  <span class="number">245</span>M   <span class="number">0</span>% /sys/fs/cgroup</span><br><span class="line">tmpfs            <span class="number">49</span>M     <span class="number">0</span>   <span class="number">49</span>M   <span class="number">0</span>% /run/user/<span class="number">1001</span></span><br></pre></td></tr></table></figure></div>
+<h4 id="Create-a-Swap-File"><a href="#Create-a-Swap-File" class="headerlink" title="Create a Swap File"></a>Create a Swap File</h4><p>Now that we know our available hard drive space, we can go about creating a swap file within our filesystem. We will create a file of the swap size that we want called swapfile in our root (/) directory.</p>
 <p>The best way of creating a swap file is with the fallocate program. This command creates a file of a preallocated size instantly.</p>
-<p>Since the server in our example has 512MB of RAM, we will create a 1 Gigabyte file in this guide. Adjust this to meet the needs of your own server:</p>
-<pre><code>sudo fallocate -l 1G /swapfile
-</code></pre><p>We can verify that the correct amount of space was reserved by typing:</p>
-<pre><code>ls -lh /swapfile
-</code></pre><pre><code>-rw-r--r-- 1 root root 1.0G Apr 25 11:14 /swapfile
-</code></pre><h4 id="Enabling-the-Swap-File"><a href="#Enabling-the-Swap-File" class="headerlink" title="Enabling the Swap File"></a>Enabling the Swap File</h4><p>Now that we have a file of the correct size available, we need to actually turn this into swap space.</p>
+<p>Since the server in our example has 512MB of RAM, we will create a 1 Gigabyte file in this guide. Adjust this to meet the needs of your own server:<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fallocate -l 1G <span class="string">/swapfile</span></span><br></pre></td></tr></table></figure></p>
+<p>We can verify that the correct amount of space was reserved by typing:<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span> -lh <span class="string">/swapfile</span></span><br></pre></td></tr></table></figure></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BRAINFUCK"><figure class="iseeu highlight /brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">-</span><span class="comment">rw</span><span class="literal">-</span><span class="comment">r</span><span class="literal">-</span><span class="literal">-</span><span class="comment">r</span><span class="literal">-</span><span class="literal">-</span> <span class="comment">1</span> <span class="comment">root</span> <span class="comment">root</span> <span class="comment">1</span><span class="string">.</span><span class="comment">0G</span> <span class="comment">Apr</span> <span class="comment">25</span> <span class="comment">11:14</span> <span class="comment">/swapfile</span></span><br></pre></td></tr></table></figure></div>
+<h4 id="Enabling-the-Swap-File"><a href="#Enabling-the-Swap-File" class="headerlink" title="Enabling the Swap File"></a>Enabling the Swap File</h4><p>Now that we have a file of the correct size available, we need to actually turn this into swap space.</p>
 <p>First, we need to lock down the permissions of the file so that only the users with root privileges can read the contents. This prevents normal users from being able to access the file, which would have significant security implications.</p>
-<p>Make the file only accessible to root by typing:</p>
-<pre><code>sudo chmod 600 /swapfile
-</code></pre><p>We can now mark the file as swap space by typing:</p>
-<pre><code>sudo mkswap /swapfile
-</code></pre><pre><code>Setting up swapspace version 1, size = 1024 MiB (1073737728 bytes)
-no label, UUID=6e965805-2ab9-450f-aed6-577e74089dbf
-</code></pre><p>After marking the file, we can enable the swap file, allowing our system to start utilizing it:</p>
-<pre><code>sudo swapon /swapfile
-</code></pre><p>We can verify that the swap is available by typing:</p>
-<pre><code>sudo swapon --show
-</code></pre><pre><code>Output
-NAME      TYPE  SIZE USED PRIO
-/swapfile file 1024M   0B   -1
-</code></pre><h4 id="Make-the-swap-file-permanant"><a href="#Make-the-swap-file-permanant" class="headerlink" title="Make the swap file permanant"></a>Make the swap file permanant</h4><p>Our recent changes have enabled the swap file for the current session. However, if we reboot, the server will not retain the swap settings automatically. We can change this by adding the swap file to our <code>/etc/fstab</code>file.</p>
-<pre><code>sudo cp /etc/fstab /etc/fstab.bak
-echo &#39;/swapfile none swap sw 0 0&#39; | sudo tee -a /etc/fstab
-</code></pre><h4 id="Adjusting-the-Swappiness-Property"><a href="#Adjusting-the-Swappiness-Property" class="headerlink" title="Adjusting the Swappiness Property"></a>Adjusting the Swappiness Property</h4><p>The swappiness parameter configures how often your system swaps data out of RAM to the swap space. This is a value between 0 and 100 that represents a percentage.</p>
+<p>Make the file only accessible to root by typing:<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 600 <span class="string">/swapfile</span></span><br></pre></td></tr></table></figure></p>
+<p>We can now mark the file as swap space by typing:<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkswap <span class="string">/swapfile</span></span><br></pre></td></tr></table></figure></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LSL"><figure class="iseeu highlight /lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Setting up swapspace version <span class="number">1</span>, size = <span class="number">1024</span> MiB (<span class="number">1073737728</span> bytes)</span><br><span class="line">no label, UUID=<span class="number">6e965805</span><span class="number">-2</span>ab9<span class="number">-450</span>f-aed6<span class="number">-577e74089</span>dbf</span><br></pre></td></tr></table></figure></div>
+<p>After marking the file, we can enable the swap file, allowing our system to start utilizing it:<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo swapon <span class="string">/swapfile</span></span><br></pre></td></tr></table></figure></p>
+<p>We can verify that the swap is available by typing:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ADA"><figure class="iseeu highlight /ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo swapon <span class="comment">--show</span></span><br></pre></td></tr></table></figure></div></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Output</span><br><span class="line">NAME     <span class="built_in"> TYPE </span> SIZE USED PRIO</span><br><span class="line">/swapfile file 1024M   0B   -1</span><br></pre></td></tr></table></figure></div>
+<h4 id="Make-the-swap-file-permanant"><a href="#Make-the-swap-file-permanant" class="headerlink" title="Make the swap file permanant"></a>Make the swap file permanant</h4><p>Our recent changes have enabled the swap file for the current session. However, if we reboot, the server will not retain the swap settings automatically. We can change this by adding the swap file to our <code>/etc/fstab</code>file.</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp <span class="string">/etc/fstab</span> <span class="string">/etc/fstab.bak</span></span><br><span class="line"><span class="keyword">echo</span> '<span class="string">/swapfile</span> none swap sw 0 0' | sudo tee -a <span class="string">/etc/fstab</span></span><br></pre></td></tr></table></figure>
+<h4 id="Adjusting-the-Swappiness-Property"><a href="#Adjusting-the-Swappiness-Property" class="headerlink" title="Adjusting the Swappiness Property"></a>Adjusting the Swappiness Property</h4><p>The swappiness parameter configures how often your system swaps data out of RAM to the swap space. This is a value between 0 and 100 that represents a percentage.</p>
 <p>With values close to zero, the kernel will not swap data to the disk unless absolutely necessary. Remember, interactions with the swap file are “expensive” in that they take a lot longer than interactions with RAM and they can cause a significant reduction in performance. Telling the system not to rely on the swap much will generally make your system faster.</p>
 <p>Values that are closer to 100 will try to put more data into swap in an effort to keep more RAM space free. Depending on your applications’ memory profile or what you are using your server for, this might be better in some cases.</p>
-<pre><code>cat /proc/sys/vm/swappiness
-</code></pre><pre><code>Output
-60
-</code></pre><p>For a Desktop, a swappiness setting of 60 is not a bad value. For a server, you might want to move it closer to 0.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="AWK"><figure class="iseeu highlight /awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat <span class="regexp">/proc/</span>sys<span class="regexp">/vm/</span>swappiness</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="GAUSS"><figure class="iseeu highlight /gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Output</span></span><br><span class="line"><span class="number">60</span></span><br></pre></td></tr></table></figure></div>
+<p>For a Desktop, a swappiness setting of 60 is not a bad value. For a server, you might want to move it closer to 0.</p>
 <p>We can set the swappiness to a different value by using the sysctl command.</p>
-<p>For instance, to set the swappiness to 10, we could type:</p>
-<pre><code>sudo sysctl vm.swappiness=10
-</code></pre><pre><code>Output
-vm.swappiness = 10
-</code></pre><p>This setting will persist until the next reboot. We can set this value automatically at restart by adding the line to our /etc/sysctl.conf file:</p>
-<pre><code>sudo nano /etc/sysctl.conf
-</code></pre><p>At the bottom, you can add:</p>
-<pre><code>vm.swappiness=10
-</code></pre><h4 id="Adjusting-the-Cache-Pressure-Setting"><a href="#Adjusting-the-Cache-Pressure-Setting" class="headerlink" title="Adjusting the Cache Pressure Setting"></a>Adjusting the Cache Pressure Setting</h4><p>Another related value that you might want to modify is the vfs_cache_pressure. This setting configures how much the system will choose to cache inode and dentry information over other data.</p>
-<p>Basically, this is access data about the filesystem. This is generally very costly to look up and very frequently requested, so it’s an excellent thing for your system to cache. You can see the current value by querying the proc filesystem again:</p>
-<pre><code>cat /proc/sys/vm/vfs_cache_pressure
-</code></pre><pre><code>Output
-100
-</code></pre><p>As it is currently configured, our system removes inode information from the cache too quickly. We can set this to a more conservative setting like 50 by typing:</p>
-<pre><code>sudo sysctl vm.vfs_cache_pressure=50
-</code></pre><p>Again, this is only valid for our current session. We can change that by adding it to our configuration file like we did with our swappiness setting:</p>
-<pre><code>sudo nano /etc/sysctl.conf
-vm.vfs_cache_pressure=50
-</code></pre><h2 id="Bash-Script-to-launch-lxd"><a href="#Bash-Script-to-launch-lxd" class="headerlink" title="Bash Script to launch lxd"></a>Bash Script to launch lxd</h2><p>REF:[<a href="https://gist.github.com/CalebEverett/aef682acf6988bbc44d9d8196f222355]" target="_blank" rel="noopener">https://gist.github.com/CalebEverett/aef682acf6988bbc44d9d8196f222355]</a></p>
-<pre><code class="bash">#!/bin/bash
-
-# variables
-CONTAINER=mycontainer
-IMAGE=ubuntu-daily:xenial
-PORT=8080
-PROFILES=default
-FOLDER=app
-REPO=https://github.com/CalebEverett/hello-lxd.git
-RUN_USER=app
-RUN_USER_UID=1444
-CONTAINER_ROOT_UID=$(cat /etc/subgid | grep lxd | cut -d : -f 2)
-
-function wait_bar () {
-  for i in {1..10}
-  do
-    printf &#39;= %.0s&#39; {1..$i}
-    sleep $1s
-  done
-}
-
-# create the container if it doesn&#39;t exist
-if [ ! -e /var/lib/lxd/containers/$CONTAINER ]
-  then
-    lxc launch --verbose $IMAGE $CONTAINER
-    wait_bar 0.5
-    echo container $CONTAINER started
-  else
-    echo container $CONTAINER already created
-fi
-
-# apply profiles
-lxc profile apply $CONTAINER $PROFILES
-
-# delete ubuntu user
-if [ ! -z $(lxc exec $CONTAINER -- getent passwd | grep ubuntu) ]
-then
-  lxc exec $CONTAINER -- userdel -r ubuntu
-fi
-
-# create running user
-if [ -z $(lxc exec $CONTAINER -- getent passwd | grep $RUN_USER) ]
-then
-  lxc exec $CONTAINER -- useradd -u $RUN_USER_UID -s /usr/sbin/nologin $RUN_USER
-fi
-
-#install node
-if [ -z $(lxc exec $CONTAINER -- which node) ]
-then
-  printf &quot;\n\n*** Installing node ***&quot;
-  lxc exec $CONTAINER -- /bin/bash -c &#39;curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -&#39;
-  lxc exec $CONTAINER -- apt-get install -y nodejs
-  echo Node $(lxc exec $CONTAINER -- node -v) installed
-else
-  echo Node $(lxc exec $CONTAINER -- node -v) already installed
-fi
-
-#install git
-if [ -z $(lxc exec $CONTAINER -- which git) ]
-then
-  printf &quot;\n\n*** Installing git ***&quot;
-  lxc exec $CONTAINER -- apt-get install -y git
-  echo $(lxc exec $CONTAINER -- git --version) installed
-else
-  echo $(lxc exec $CONTAINER -- git --version) already installed
-fi
-
-# redirect 80 to $PORT
-if [[ -z $(lxc exec $CONTAINER -- cat /etc/ufw/before.rules | grep PREROUTING) ]]
-then
-  lxc exec $CONTAINER -- /bin/bash -c &quot;sed -i &#39;/#   ufw-before-forward/ a\
-#\n\
-# redirect 80 to $PORT\n\
-*nat\n\
-:PREROUTING ACCEPT [0:0]\n\
--A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port $PORT\n\
-COMMIT&#39; /etc/ufw/before.rules&quot;
-  lxc exec $CONTAINER -- ufw enable
-  lxc exec $CONTAINER -- ufw allow $PORT/tcp
-fi
-
-#mount $FOLDER directory if developing
-if [[ $FOLDER &amp;&amp;  $PROFILES == *&quot;default&quot;* ]]
-then
-  printf &quot;\n\n*** Mounting shared folder ***\n&quot;
-  if [ ! -d ./$FOLDER ]; then mkdir ./$FOLDER; fi
-  if [[ -z $(lxc config device list $CONTAINER | grep $FOLDER) ]]
-  then
-    lxc config device add $CONTAINER $FOLDER disk path=/usr/src/$FOLDER source=$(pwd)/$FOLDER
-    sudo chown -R $((CONTAINER_ROOT_UID + RUN_USER_UID)):$((CONTAINER_ROOT_UID + $RUN_USER_UID)) ./$FOLDER
-    sudo setfacl -R -m d:u:$USER:xwr,u:$USER:xwr,d:g:$USER:xwr,g:$USER:xwr ./$FOLDER
-    sudo chown -R $((CONTAINER_ROOT_UID + RUN_USER_UID)):$((CONTAINER_ROOT_UID + $RUN_USER_UID)) ./$FOLDER
-    echo $(pwd)/$FOLDER mounted at /usr/src/$FOLDER
-  else
-    echo Directory $(pwd)/$FOLDER already mounted
-  fi
-fi
-
-#clone repo and install modules
-if [ $REPO ]
-  then 
-  if [[ -z $(lxc exec $CONTAINER -- cat /usr/src/$FOLDER/package.json) ]]
-    then
-      lxc exec $CONTAINER -- git clone -q $REPO /usr/src/$FOLDER
-      lxc exec $CONTAINER --env HOME=/usr/src/$FOLDER -- npm install
-      lxc exec $CONTAINER -- chown -R $RUN_USER:$RUN_USER /usr/src/$FOLDER/node_modules
-    fi
-fi
-
-# build and run as a service if production
-if [[ $PROFILES == *&quot;pro&quot;* ]]
-then  
-  if [[ $(lxc exec $CONTAINER -- /bin/bash -c &#39;if [ ! -f /etc/systemd/system/$CONTAINER.service ]; then echo 0; fi&#39;) ]]
-  then
-    printf &quot;\n\n*** Creating service file ***&quot;
-    lxc exec $CONTAINER -- /bin/bash -c &quot;cat &lt;&lt;-EOF &gt; /etc/systemd/system/$CONTAINER.service
-    [Unit]
-    Description=$CONTAINER
-    [Service]
-    WorkingDirectory=/usr/src/$FOLDER
-    ExecStart=/usr/bin/node /usr/src/$FOLDER/index.js
-    Restart=always
-    RestartSec=10
-    StandardOutput=syslog
-    StandardError=syslog
-    SyslogIdentifier=$CONTAINER
-    User=$RUN_USER
-    Environment=HOME=/usr/src/$FOLDER
-    Environment=NODE_ENV=production
-    Environment=PORT=$PORT
-
-    [Install]
-    WantedBy=multi-user.target
-EOF&quot;
-    lxc exec $CONTAINER -- systemctl enable $CONTAINER.service
-    sleep 3.0s
-    lxc exec $CONTAINER -- systemctl start $CONTAINER.service
-  fi
-fi
-
-printf &quot;\n&quot; &amp;&amp; lxc list $CONTAINER
-
-# start app for dev
-if [[ $PROFILES == *&quot;default&quot;* &amp;&amp; -z $(lxc exec $CONTAINER -- ps aux | grep /usr/src/$FOLDER/index.js) ]]
-then
-  google-chrome $(lxc exec $CONTAINER -- bash -c &quot;ifconfig | grep -o &#39;[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}&#39; | head -n 1&quot;)
-  lxc exec $CONTAINER --env HOME=/usr/src/$FOLDER --env PORT=$PORT -- node index.js
-fi
-</code></pre>
-
+<p>For instance, to set the swappiness to 10, we could type:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl vm.<span class="attribute">swappiness</span>=10</span><br></pre></td></tr></table></figure></div></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="STYLUS"><figure class="iseeu highlight /stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Output</span><br><span class="line">vm<span class="selector-class">.swappiness</span> = <span class="number">10</span></span><br></pre></td></tr></table></figure></div>
+<p>This setting will persist until the next reboot. We can set this value automatically at restart by adding the line to our /etc/sysctl.conf file:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="AWK"><figure class="iseeu highlight /awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano <span class="regexp">/etc/</span>sysctl.conf</span><br></pre></td></tr></table></figure></div></p>
+<p>At the bottom, you can add:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.<span class="attribute">swappiness</span>=10</span><br></pre></td></tr></table></figure></div></p>
+<h4 id="Adjusting-the-Cache-Pressure-Setting"><a href="#Adjusting-the-Cache-Pressure-Setting" class="headerlink" title="Adjusting the Cache Pressure Setting"></a>Adjusting the Cache Pressure Setting</h4><p>Another related value that you might want to modify is the vfs_cache_pressure. This setting configures how much the system will choose to cache inode and dentry information over other data.</p>
+<p>Basically, this is access data about the filesystem. This is generally very costly to look up and very frequently requested, so it’s an excellent thing for your system to cache. You can see the current value by querying the proc filesystem again:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="AWK"><figure class="iseeu highlight /awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat <span class="regexp">/proc/</span>sys<span class="regexp">/vm/</span>vfs_cache_pressure</span><br></pre></td></tr></table></figure></div></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="GAUSS"><figure class="iseeu highlight /gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Output</span></span><br><span class="line"><span class="number">100</span></span><br></pre></td></tr></table></figure></div>
+<p>As it is currently configured, our system removes inode information from the cache too quickly. We can set this to a more conservative setting like 50 by typing:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl vm.<span class="attribute">vfs_cache_pressure</span>=50</span><br></pre></td></tr></table></figure></div></p>
+<p>Again, this is only valid for our current session. We can change that by adding it to our configuration file like we did with our swappiness setting:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/sysctl.conf</span><br><span class="line">vm.<span class="attribute">vfs_cache_pressure</span>=50</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="Bash-Script-to-launch-lxd"><a href="#Bash-Script-to-launch-lxd" class="headerlink" title="Bash Script to launch lxd"></a>Bash Script to launch lxd</h2><p>REF:[<a href="https://gist.github.com/CalebEverett/aef682acf6988bbc44d9d8196f222355]" target="_blank" rel="noopener">https://gist.github.com/CalebEverett/aef682acf6988bbc44d9d8196f222355]</a></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># variables</span></span><br><span class="line">CONTAINER=mycontainer</span><br><span class="line">IMAGE=ubuntu-daily:xenial</span><br><span class="line">PORT=8080</span><br><span class="line">PROFILES=default</span><br><span class="line">FOLDER=app</span><br><span class="line">REPO=https://github.com/CalebEverett/hello-lxd.git</span><br><span class="line">RUN_USER=app</span><br><span class="line">RUN_USER_UID=1444</span><br><span class="line">CONTAINER_ROOT_UID=$(cat /etc/subgid | grep lxd | cut -d : -f 2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">wait_bar</span></span> () &#123;</span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> &#123;1..10&#125;</span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">printf</span> <span class="string">'= %.0s'</span> &#123;1..<span class="variable">$i</span>&#125;</span><br><span class="line">    sleep <span class="variable">$1s</span></span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># create the container if it doesn't exist</span></span><br><span class="line"><span class="keyword">if</span> [ ! -e /var/lib/lxd/containers/<span class="variable">$CONTAINER</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">    lxc launch --verbose <span class="variable">$IMAGE</span> <span class="variable">$CONTAINER</span></span><br><span class="line">    wait_bar 0.5</span><br><span class="line">    <span class="built_in">echo</span> container <span class="variable">$CONTAINER</span> started</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> container <span class="variable">$CONTAINER</span> already created</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># apply profiles</span></span><br><span class="line">lxc profile apply <span class="variable">$CONTAINER</span> <span class="variable">$PROFILES</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># delete ubuntu user</span></span><br><span class="line"><span class="keyword">if</span> [ ! -z $(lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- getent passwd | grep ubuntu) ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- userdel -r ubuntu</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># create running user</span></span><br><span class="line"><span class="keyword">if</span> [ -z $(lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- getent passwd | grep <span class="variable">$RUN_USER</span>) ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- useradd -u <span class="variable">$RUN_USER_UID</span> -s /usr/sbin/nologin <span class="variable">$RUN_USER</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#install node</span></span><br><span class="line"><span class="keyword">if</span> [ -z $(lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- <span class="built_in">which</span> node) ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  <span class="built_in">printf</span> <span class="string">"\n\n*** Installing node ***"</span></span><br><span class="line">  lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- /bin/bash -c <span class="string">'curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -'</span></span><br><span class="line">  lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- apt-get install -y nodejs</span><br><span class="line">  <span class="built_in">echo</span> Node $(lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- node -v) installed</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">echo</span> Node $(lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- node -v) already installed</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#install git</span></span><br><span class="line"><span class="keyword">if</span> [ -z $(lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- <span class="built_in">which</span> git) ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  <span class="built_in">printf</span> <span class="string">"\n\n*** Installing git ***"</span></span><br><span class="line">  lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- apt-get install -y git</span><br><span class="line">  <span class="built_in">echo</span> $(lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- git --version) installed</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">echo</span> $(lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- git --version) already installed</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># redirect 80 to $PORT</span></span><br><span class="line"><span class="keyword">if</span> [[ -z $(lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- cat /etc/ufw/before.rules | grep PREROUTING) ]]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- /bin/bash -c <span class="string">"sed -i '/#   ufw-before-forward/ a\</span></span><br><span class="line"><span class="string">#\n\</span></span><br><span class="line"><span class="string"># redirect 80 to <span class="variable">$PORT</span>\n\</span></span><br><span class="line"><span class="string">*nat\n\</span></span><br><span class="line"><span class="string">:PREROUTING ACCEPT [0:0]\n\</span></span><br><span class="line"><span class="string">-A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port <span class="variable">$PORT</span>\n\</span></span><br><span class="line"><span class="string">COMMIT' /etc/ufw/before.rules"</span></span><br><span class="line">  lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- ufw <span class="built_in">enable</span></span><br><span class="line">  lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- ufw allow <span class="variable">$PORT</span>/tcp</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#mount $FOLDER directory if developing</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$FOLDER</span> &amp;&amp;  <span class="variable">$PROFILES</span> == *<span class="string">"default"</span>* ]]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  <span class="built_in">printf</span> <span class="string">"\n\n*** Mounting shared folder ***\n"</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -d ./<span class="variable">$FOLDER</span> ]; <span class="keyword">then</span> mkdir ./<span class="variable">$FOLDER</span>; <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">if</span> [[ -z $(lxc config device list <span class="variable">$CONTAINER</span> | grep <span class="variable">$FOLDER</span>) ]]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">    lxc config device add <span class="variable">$CONTAINER</span> <span class="variable">$FOLDER</span> disk path=/usr/src/<span class="variable">$FOLDER</span> <span class="built_in">source</span>=$(<span class="built_in">pwd</span>)/<span class="variable">$FOLDER</span></span><br><span class="line">    sudo chown -R $((CONTAINER_ROOT_UID + RUN_USER_UID)):$((CONTAINER_ROOT_UID + <span class="variable">$RUN_USER_UID</span>)) ./<span class="variable">$FOLDER</span></span><br><span class="line">    sudo setfacl -R -m d:u:<span class="variable">$USER</span>:xwr,u:<span class="variable">$USER</span>:xwr,d:g:<span class="variable">$USER</span>:xwr,g:<span class="variable">$USER</span>:xwr ./<span class="variable">$FOLDER</span></span><br><span class="line">    sudo chown -R $((CONTAINER_ROOT_UID + RUN_USER_UID)):$((CONTAINER_ROOT_UID + <span class="variable">$RUN_USER_UID</span>)) ./<span class="variable">$FOLDER</span></span><br><span class="line">    <span class="built_in">echo</span> $(<span class="built_in">pwd</span>)/<span class="variable">$FOLDER</span> mounted at /usr/src/<span class="variable">$FOLDER</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> Directory $(<span class="built_in">pwd</span>)/<span class="variable">$FOLDER</span> already mounted</span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#clone repo and install modules</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$REPO</span> ]</span><br><span class="line">  <span class="keyword">then</span> </span><br><span class="line">  <span class="keyword">if</span> [[ -z $(lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- cat /usr/src/<span class="variable">$FOLDER</span>/package.json) ]]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">      lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- git <span class="built_in">clone</span> -q <span class="variable">$REPO</span> /usr/src/<span class="variable">$FOLDER</span></span><br><span class="line">      lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> --env HOME=/usr/src/<span class="variable">$FOLDER</span> -- npm install</span><br><span class="line">      lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- chown -R <span class="variable">$RUN_USER</span>:<span class="variable">$RUN_USER</span> /usr/src/<span class="variable">$FOLDER</span>/node_modules</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># build and run as a service if production</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$PROFILES</span> == *<span class="string">"pro"</span>* ]]</span><br><span class="line"><span class="keyword">then</span>  </span><br><span class="line">  <span class="keyword">if</span> [[ $(lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- /bin/bash -c <span class="string">'if [ ! -f /etc/systemd/system/$CONTAINER.service ]; then echo 0; fi'</span>) ]]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"\n\n*** Creating service file ***"</span></span><br><span class="line">    lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- /bin/bash -c <span class="string">"cat &lt;&lt;-EOF &gt; /etc/systemd/system/<span class="variable">$CONTAINER</span>.service</span></span><br><span class="line"><span class="string">    [Unit]</span></span><br><span class="line"><span class="string">    Description=<span class="variable">$CONTAINER</span></span></span><br><span class="line"><span class="string">    [Service]</span></span><br><span class="line"><span class="string">    WorkingDirectory=/usr/src/<span class="variable">$FOLDER</span></span></span><br><span class="line"><span class="string">    ExecStart=/usr/bin/node /usr/src/<span class="variable">$FOLDER</span>/index.js</span></span><br><span class="line"><span class="string">    Restart=always</span></span><br><span class="line"><span class="string">    RestartSec=10</span></span><br><span class="line"><span class="string">    StandardOutput=syslog</span></span><br><span class="line"><span class="string">    StandardError=syslog</span></span><br><span class="line"><span class="string">    SyslogIdentifier=<span class="variable">$CONTAINER</span></span></span><br><span class="line"><span class="string">    User=<span class="variable">$RUN_USER</span></span></span><br><span class="line"><span class="string">    Environment=HOME=/usr/src/<span class="variable">$FOLDER</span></span></span><br><span class="line"><span class="string">    Environment=NODE_ENV=production</span></span><br><span class="line"><span class="string">    Environment=PORT=<span class="variable">$PORT</span></span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    [Install]</span></span><br><span class="line"><span class="string">    WantedBy=multi-user.target</span></span><br><span class="line"><span class="string">EOF"</span></span><br><span class="line">    lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- systemctl <span class="built_in">enable</span> <span class="variable">$CONTAINER</span>.service</span><br><span class="line">    sleep 3.0s</span><br><span class="line">    lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- systemctl start <span class="variable">$CONTAINER</span>.service</span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> <span class="string">"\n"</span> &amp;&amp; lxc list <span class="variable">$CONTAINER</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># start app for dev</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$PROFILES</span> == *<span class="string">"default"</span>* &amp;&amp; -z $(lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- ps aux | grep /usr/src/<span class="variable">$FOLDER</span>/index.js) ]]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  google-chrome $(lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> -- bash -c <span class="string">"ifconfig | grep -o '[0-9]\&#123;1,3\&#125;\.[0-9]\&#123;1,3\&#125;\.[0-9]\&#123;1,3\&#125;\.[0-9]\&#123;1,3\&#125;' | head -n 1"</span>)</span><br><span class="line">  lxc <span class="built_in">exec</span> <span class="variable">$CONTAINER</span> --env HOME=/usr/src/<span class="variable">$FOLDER</span> --env PORT=<span class="variable">$PORT</span> -- node index.js</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></div>
       
     </div>
     
@@ -819,7 +506,7 @@ fi
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -832,7 +519,7 @@ fi
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

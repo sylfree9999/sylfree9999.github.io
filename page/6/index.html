@@ -260,6 +260,280 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/linux-concepts/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/17/linux-concepts/" itemprop="url">Linux 小概念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T10:34:43+08:00">
+                2018-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="amp-后台执行"><a href="#amp-后台执行" class="headerlink" title="&amp; 后台执行"></a>&amp; 后台执行</h2><p>如果在界面输入 <code>./test.sh &amp;</code>会</p>
+<ul>
+<li>在终端显示进程号2333</li>
+<li>test.sh的结果会输出到终端</li>
+<li>输入 <code>Ctrl+C</code>, 会发出<code>SIGINT</code>信号，<strong>程序会继续运行</strong></li>
+<li>但是关掉session之后， 程序会收到<code>SIGHUP</code>信号，<strong>程序关闭</strong></li>
+</ul>
+<h2 id="nohup"><a href="#nohup" class="headerlink" title="nohup"></a>nohup</h2><p>如果在界面输入<code>nohup ./test.sh</code></p>
+<ul>
+<li>前台没有出现进程号</li>
+<li>有一个“忽略输入，输出到nohup.out”的提示</li>
+<li>test.sh里面的结果也没有输出到前台上</li>
+<li>输入<code>Ctrl+C</code>,<strong>进程关闭</strong></li>
+<li>关掉session之后，<strong>进程仍然存在</strong></li>
+</ul>
+<p><span style="color: red">所以一般都是nohup与&amp;共同使用，这样可以让程序同时免疫SIGINT和SIGHUP信号</span></p>
+<h2 id="开新的子进程shell执行"><a href="#开新的子进程shell执行" class="headerlink" title="() 开新的子进程shell执行"></a>() 开新的子进程shell执行</h2><p>单独踢到后台&amp;，如果当前命令界面关掉，这个命令界面执行的所有命令都会被关掉<br>开新的子进程就不会</p>
+<p><code>(python3 server.py &gt;&gt; output.txt &amp; )</code></p>
+<h2 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h2><p><code>touch x.txt</code><br>如果x.txt存在就更新修改时间<br>如果x.txt不存在就创建文件</p>
+<h2 id="history-grep"><a href="#history-grep" class="headerlink" title="history/grep"></a>history/grep</h2><p><code>history</code> 查看历史命令<br><code>grep</code> 查找</p>
+<p><code>history | grep touch</code> 把历史记录里所有的touch拿出来</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/16/centos-install-python3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/16/centos-install-python3/" itemprop="url">CentOS Install Python3, pip3 and Coexist Python2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-16T17:58:25+08:00">
+                2018-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Install-Python3"><a href="#Install-Python3" class="headerlink" title="Install Python3"></a>Install Python3</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum groupinstall &quot;Development Tools&quot;</span><br><span class="line"></span><br><span class="line">$ sudo yum -y install zlib*</span><br><span class="line"></span><br><span class="line">$ sudo mkdir /usr/local/python3 # 创建安装目录</span><br><span class="line"></span><br><span class="line"># 下载 Python 源文件</span><br><span class="line">$ wget --no-check-certificate https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz</span><br><span class="line"># 注意：wget获取https的时候要加上：--no-check-certificate</span><br><span class="line"></span><br><span class="line">$ tar -xzvf Python-3.6.0.tgz # 解压缩包</span><br><span class="line"></span><br><span class="line">$ cd Python-3.6.0 # 进入解压目录</span><br><span class="line"></span><br><span class="line">$ sudo ./configure --prefix=/usr/local/python3 # 指定创建的目录</span><br><span class="line"></span><br><span class="line">$ sudo make</span><br><span class="line"></span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure></div>
+<h2 id="Python2-Python3-共存"><a href="#Python2-Python3-共存" class="headerlink" title="Python2 Python3 共存"></a>Python2 Python3 共存</h2><p>创建python3软链接<br>这样可以用<code>python</code>命令使用Python2， <code>python3</code>来使用Python3</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ln -s /usr/local/python3/bin/python3 /usr/bin/python3</span><br></pre></td></tr></table></figure></div>
+<h2 id="默认使用Python3"><a href="#默认使用Python3" class="headerlink" title="默认使用Python3"></a>默认使用Python3</h2><p>先将现有的python备份， 用<code>which python</code>来看：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ which python</span><br><span class="line">/usr/bin/python</span><br><span class="line"></span><br><span class="line">$ cd /usr/bin</span><br><span class="line">$ sudo mv python python.bak</span><br></pre></td></tr></table></figure></div>
+<p>然后创建软链接</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ln -s /usr/local/python3/bin/python3 /usr/bin/python</span><br></pre></td></tr></table></figure></div>
+<p>这样默认的python版本就替换成Python3了</p>
+<p>另外由于yum使用Python2,替换后python3可能无法正常工作，所以修改yum配置文件</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /usr/bin/yum</span><br></pre></td></tr></table></figure></div>
+<p>将第一行从 <code>#!/usr/bin/python</code>改为<code>#!/usr/bin/python2.7</code></p>
+<h2 id="Install-Pip3"><a href="#Install-Pip3" class="headerlink" title="Install Pip3"></a>Install Pip3</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 下载源代码</span><br><span class="line">$ wget --no-check-certificate https://github.com/pypa/pip/archive/9.0.1.tar.gz</span><br><span class="line"></span><br><span class="line">$ tar -zvxf 9.0.1.tar.gz    # 解压文件</span><br><span class="line"></span><br><span class="line">$ cd pip-9.0.1</span><br><span class="line"></span><br><span class="line"># 使用 Python 3 安装</span><br><span class="line">$ python3 setup.py install</span><br></pre></td></tr></table></figure></div>
+<p>创建软链接</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ln -s /usr/local/python3/bin/pip /usr/bin/pip3</span><br></pre></td></tr></table></figure></div>
+<p>升级pip</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install --upgrade pip</span><br></pre></td></tr></table></figure></div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/16/python-pip3-install-error/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -332,12 +606,9 @@
         
           
             <p>While installing pymongo:</p>
-<pre><code class="python">Fatal error in launcher: Unable to create process using &#39;&quot;&#39;
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fatal error <span class="keyword">in</span> launcher: Unable to create process using <span class="string">'"'</span></span><br></pre></td></tr></table></figure></div>
 <p>Solution:</p>
-<pre><code class="python">python -m pip install --upgrade pip
-</code></pre>
-
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install --upgrade pip</span><br></pre></td></tr></table></figure></div>
           
         
       
@@ -456,73 +727,18 @@
       
         
           
-            <h2 id="class继承"><a href="#class继承" class="headerlink" title="class继承"></a>class继承</h2><pre><code class="python">class Animal(Object)：
-    def cry(self):
-        print(&quot;Animal shouts&quot;)
-
-class Dog(Animal):
-    def cry(self):
-        print(&quot;Wang wang&quot;)
-
-&gt;&gt;&gt; dog = Dog()
-&gt;&gt;&gt; dog.cry() //覆盖了父类Animal的cry()方法
-Wang wang
-
-</code></pre>
+            <h2 id="class继承"><a href="#class继承" class="headerlink" title="class继承"></a>class继承</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span><span class="params">(Object)</span>：</span></span><br><span class="line"><span class="class">	<span class="title">def</span> <span class="title">cry</span><span class="params">(self)</span>:</span></span><br><span class="line">		print(<span class="string">"Animal shouts"</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span><span class="params">(Animal)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">cry</span><span class="params">(self)</span>:</span></span><br><span class="line">		print(<span class="string">"Wang wang"</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dog = Dog()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dog.cry() //覆盖了父类Animal的cry()方法</span><br><span class="line">Wang wang</span><br></pre></td></tr></table></figure></div>
 <h2 id="class访问限制"><a href="#class访问限制" class="headerlink" title="class访问限制"></a>class访问限制</h2><p>私有变量，可以把属性的名称前加上<strong>两个</strong>下划线<code>__</code></p>
-<pre><code class="python">class Student(object):
-    def __init__(self, name, score):
-        self.__name = name
-        self.__score = score
-
-    def get_name(self):
-        return self.__name
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, score)</span>:</span></span><br><span class="line">		self.__name = name</span><br><span class="line">		self.__score = score</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">get_name</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> self.__name</span><br></pre></td></tr></table></figure></div>
 <p>但是以<code>__</code>开头<code>__</code>结尾的，是<span style="color: red; font-weight: bold;">特殊变量</span>, 特殊变量可以直接访问，不是private变量</p>
 <p>如果变量名前面只有<strong>一个</strong>下划线<code>_</code>，这样的实例变量外部可以访问，但是by convention, 虽然可以方位，但请把我视为私有变量，不要随意访问</p>
 <p><strong>注意！！！</strong></p>
-<pre><code class="python">&gt;&gt;&gt; bart = Student(&#39;Bart Simpson&#39;, 59)
-&gt;&gt;&gt; bart.get_name()
-&#39;Bart Simpson&#39;
-&gt;&gt;&gt; bart.__name = &#39;New Name&#39; # 这里设置__name变量, 是相当于新加了一个__name变量，而真正的变量已经被Python解释器变为_Student__name
-&gt;&gt;&gt; bart.__name
-&#39;New Name&#39;
-&gt;&gt;&gt; bart.get_name() # get_name()内部返回self.__name
-&#39;Bart Simpson&#39;
-</code></pre>
-<h2 id="获得一个对象的所有属性和方法"><a href="#获得一个对象的所有属性和方法" class="headerlink" title="获得一个对象的所有属性和方法"></a>获得一个对象的所有属性和方法</h2><pre><code class="python">&gt;&gt;&gt; dir(&#39;ABC&#39;)
-[&#39;__add__&#39;, &#39;__class__&#39;,..., &#39;__subclasshook__&#39;, &#39;capitalize&#39;, &#39;casefold&#39;,..., &#39;zfill&#39;]
-&gt;&gt;&gt; len(&#39;ABC&#39;) #内部相当于调用了该对象的__len__()方法
-3
-&gt;&gt;&gt; &#39;ABC&#39;.__len__()
-3
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart = Student(<span class="string">'Bart Simpson'</span>, <span class="number">59</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart.get_name()</span><br><span class="line"><span class="string">'Bart Simpson'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart.__name = <span class="string">'New Name'</span> <span class="comment"># 这里设置__name变量, 是相当于新加了一个__name变量，而真正的变量已经被Python解释器变为_Student__name</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart.__name</span><br><span class="line"><span class="string">'New Name'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart.get_name() <span class="comment"># get_name()内部返回self.__name</span></span><br><span class="line"><span class="string">'Bart Simpson'</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="获得一个对象的所有属性和方法"><a href="#获得一个对象的所有属性和方法" class="headerlink" title="获得一个对象的所有属性和方法"></a>获得一个对象的所有属性和方法</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dir(<span class="string">'ABC'</span>)</span><br><span class="line">[<span class="string">'__add__'</span>, <span class="string">'__class__'</span>,..., <span class="string">'__subclasshook__'</span>, <span class="string">'capitalize'</span>, <span class="string">'casefold'</span>,..., <span class="string">'zfill'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(<span class="string">'ABC'</span>) <span class="comment">#内部相当于调用了该对象的__len__()方法</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'ABC'</span>.__len__()</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></div>
 <h2 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h2><p>实例绑定属性通过<code>self</code>变量：</p>
-<pre><code class="python">class Student(object):
-    def __init__(self, name):
-        self.name = name
-
-s = Student(&#39;Bob&#39;)
-s.score = 90
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">s = Student(<span class="string">'Bob'</span>)</span><br><span class="line">s.score = <span class="number">90</span></span><br></pre></td></tr></table></figure></div>
 <p>类属性直接在类下面定义,这个属性可以被所有类的实例访问到</p>
-<pre><code class="python">class Student(object):
-    name = &#39;Student&#39;
-
-&gt;&gt;&gt; s = Student() # 创建实例s
-&gt;&gt;&gt; print(s.name) # 打印name属性，因为实例并没有name属性，所以会继续查找class的name属性
-Student
-&gt;&gt;&gt; print(Student.name) # 打印类的name属性
-Student
-&gt;&gt;&gt; s.name = &#39;Michael&#39; # 给实例绑定name属性
-&gt;&gt;&gt; print(s.name) # 由于实例属性优先级比类属性高，因此，它会屏蔽掉类的name属性
-Michael
-&gt;&gt;&gt; print(Student.name) # 但是类属性并未消失，用Student.name仍然可以访问
-Student
-&gt;&gt;&gt; del s.name # 如果删除实例的name属性
-&gt;&gt;&gt; print(s.name) # 再次调用s.name，由于实例的name属性没有找到，类的name属性就显示出来了
-Student
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line">    name = <span class="string">'Student'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = Student() <span class="comment"># 创建实例s</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(s.name) <span class="comment"># 打印name属性，因为实例并没有name属性，所以会继续查找class的name属性</span></span><br><span class="line">Student</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(Student.name) <span class="comment"># 打印类的name属性</span></span><br><span class="line">Student</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.name = <span class="string">'Michael'</span> <span class="comment"># 给实例绑定name属性</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(s.name) <span class="comment"># 由于实例属性优先级比类属性高，因此，它会屏蔽掉类的name属性</span></span><br><span class="line">Michael</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(Student.name) <span class="comment"># 但是类属性并未消失，用Student.name仍然可以访问</span></span><br><span class="line">Student</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> s.name <span class="comment"># 如果删除实例的name属性</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(s.name) <span class="comment"># 再次调用s.name，由于实例的name属性没有找到，类的name属性就显示出来了</span></span><br><span class="line">Student</span><br></pre></td></tr></table></figure></div>
 <h2 id="staticmethod和-classmethod"><a href="#staticmethod和-classmethod" class="headerlink" title="@staticmethod和@classmethod"></a>@staticmethod和@classmethod</h2><p>一般是用类方法需要先实例化一个对象再调用方法<br>但是使用了@staticmethod以及@classmethod，可以直接<code>类名.方法名()</code>调用</p>
 <p>它们的区别：</p>
 <ul>
@@ -531,38 +747,7 @@ Student
 <ul>
 <li>@staticmethod，当调用这个方法的时候，我们<strong>甚至不用把类传进去</strong>，也就是说我们可以把这个方法放到类里面，但是这个方法其实根本不需要这个类或者实例，比方说设置一些环境参数，更改别的类的属性之类的。</li>
 </ul>
-<pre><code class="python">
-class Kls(object):
-    def __init__(self, data):
-        self.data = data
-
-    def printd(self):
-        print(self.data)
-
-    @staticmethod
-        def smethod(*arg):
-            print(&#39;Static:&#39;, arg)
-
-    @classmethod
-        def cmethod(*arg):
-            print(&#39;Class:&#39;, arg)
-
-&gt;&gt;&gt; ik = Kls(23)
-&gt;&gt;&gt; ik.printd()
-23
-&gt;&gt;&gt; ik.smethod()
-Static: ()
-&gt;&gt;&gt; ik.cmethod()
-Class: (&lt;class &#39;__main__.Kls&#39;&gt;,)
-&gt;&gt;&gt; Kls.printd()
-TypeError: unbound method printd() must be called with Kls instance as first argument (got nothing instead)
-&gt;&gt;&gt; Kls.smethod()
-Static: ()
-&gt;&gt;&gt; Kls.cmethod()
-Class: (&lt;class &#39;__main__.Kls&#39;&gt;,)
-
-</code></pre>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Kls</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printd</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(self.data)</span><br><span class="line"> </span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">smethod</span><span class="params">(*arg)</span>:</span></span><br><span class="line">            print(<span class="string">'Static:'</span>, arg)</span><br><span class="line"> </span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">cmethod</span><span class="params">(*arg)</span>:</span></span><br><span class="line">            print(<span class="string">'Class:'</span>, arg)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ik = Kls(<span class="number">23</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ik.printd()</span><br><span class="line"><span class="number">23</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ik.smethod()</span><br><span class="line">Static: ()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ik.cmethod()</span><br><span class="line">Class: (&lt;class '__main__.Kls'&gt;,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Kls.printd()</span><br><span class="line">TypeError: unbound method printd() must be called <span class="keyword">with</span> Kls instance <span class="keyword">as</span> first argument (got nothing instead)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Kls.smethod()</span><br><span class="line">Static: ()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Kls.cmethod()</span><br><span class="line">Class: (&lt;class '__main__.Kls'&gt;,)</span><br></pre></td></tr></table></figure>
           
         
       
@@ -682,10 +867,8 @@ Class: (&lt;class &#39;__main__.Kls&#39;&gt;,)
         
           
             <p>open()打开一个文件并返回一个<code>file</code>对象</p>
-<pre><code class="python">open(&#39;log.txt&#39;, &#39;a&#39;, encoding=&#39;utf-8&#39;)
-</code></pre>
-<pre><code class="python">open(name, mode, buffering=1, encoding=None, errors=None, newline=None, closefd=True, opener=None)
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open(<span class="string">'log.txt'</span>, <span class="string">'a'</span>, encoding=<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open(name, mode, buffering=<span class="number">1</span>, encoding=<span class="keyword">None</span>, errors=<span class="keyword">None</span>, newline=<span class="keyword">None</span>, closefd=<span class="keyword">True</span>, opener=<span class="keyword">None</span>)</span><br></pre></td></tr></table></figure></div>
 <ul>
 <li>name: 要访问的文件名称</li>
 <li><p>mode:    决定打开文件的模式：</p>
@@ -818,112 +1001,31 @@ Class: (&lt;class &#39;__main__.Kls&#39;&gt;,)
         
           
             <h2 id="Slice切片"><a href="#Slice切片" class="headerlink" title="Slice切片"></a>Slice切片</h2><p>取list/tuple/字符串中的部分元素即切片</p>
-<h4 id="list"><a href="#list" class="headerlink" title="list"></a>list</h4><pre><code class="python">&gt;&gt;&gt; L = [&#39;Michael&#39;, &#39;Sarah&#39;, &#39;Tracy&#39;, &#39;Bob&#39;, &#39;Jack&#39;]
-&gt;&gt;&gt; L[0:3] //从索引0的位置开始取，直到索引3，但是不包含索引3，也可以写成L[:3]
-[&#39;Michael&#39;, &#39;Sarah&#39;, &#39;Tracy&#39;]
-&gt;&gt;&gt; L[1:3]
-[&#39;Sarah&#39;, &#39;Tracy&#39;]
-&gt;&gt;&gt; L[-2:] //取倒数两个
-[&#39;Bob&#39;, &#39;Jack&#39;]
-&gt;&gt;&gt; L[-2:-1]
-[&#39;Bob&#39;]
-</code></pre>
-<h4 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h4><pre><code class="python">&gt;&gt;&gt; (0, 1, 2, 3, 4, 5)[:3]
-(0, 1, 2)
-</code></pre>
-<h4 id="string"><a href="#string" class="headerlink" title="string"></a>string</h4><pre><code class="python">&gt;&gt;&gt; &#39;ABCDEFG&#39;[:3]
-&#39;ABC&#39;
-&gt;&gt;&gt; &#39;ABCDEFG&#39;[::2]
-&#39;ACEG&#39;
-</code></pre>
+<h4 id="list"><a href="#list" class="headerlink" title="list"></a>list</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L = [<span class="string">'Michael'</span>, <span class="string">'Sarah'</span>, <span class="string">'Tracy'</span>, <span class="string">'Bob'</span>, <span class="string">'Jack'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">0</span>:<span class="number">3</span>] //从索引<span class="number">0</span>的位置开始取，直到索引<span class="number">3</span>，但是不包含索引<span class="number">3</span>，也可以写成L[:<span class="number">3</span>]</span><br><span class="line">[<span class="string">'Michael'</span>, <span class="string">'Sarah'</span>, <span class="string">'Tracy'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">[<span class="string">'Sarah'</span>, <span class="string">'Tracy'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">-2</span>:] //取倒数两个</span><br><span class="line">[<span class="string">'Bob'</span>, <span class="string">'Jack'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">-2</span>:<span class="number">-1</span>]</span><br><span class="line">[<span class="string">'Bob'</span>]</span><br></pre></td></tr></table></figure></div>
+<h4 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)[:<span class="number">3</span>]</span><br><span class="line">(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure></div>
+<h4 id="string"><a href="#string" class="headerlink" title="string"></a>string</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'ABCDEFG'</span>[:<span class="number">3</span>]</span><br><span class="line"><span class="string">'ABC'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'ABCDEFG'</span>[::<span class="number">2</span>]</span><br><span class="line"><span class="string">'ACEG'</span></span><br></pre></td></tr></table></figure></div>
 <h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>python中<code>for</code>循环可以作用在所有可以迭代的对象上面，与有没有下标无关</p>
-<pre><code class="python">&gt;&gt;&gt; d = {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}
-&gt;&gt;&gt; for key in d:
-...     print(key)
-...
-a
-c
-b
-
-&gt;&gt;&gt; for value in d.values() //默认情况下dict迭代是的key, 可以用value来迭代
-&gt;&gt;&gt; for k, v in d.items()
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="string">'a'</span>: <span class="number">1</span>, <span class="string">'b'</span>: <span class="number">2</span>, <span class="string">'c'</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> key <span class="keyword">in</span> d:</span><br><span class="line"><span class="meta">... </span>    print(key)</span><br><span class="line">...</span><br><span class="line">a</span><br><span class="line">c</span><br><span class="line">b</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> value <span class="keyword">in</span> d.values() //默认情况下dict迭代是的key, 可以用value来迭代</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()</span><br></pre></td></tr></table></figure></div>
 <p>如何判断是否是可迭代的对象：</p>
-<pre><code class="python">&gt;&gt;&gt; from collections import Iterable
-&gt;&gt;&gt; isinstance(&#39;abc&#39;, Iterable) # str是否可迭代
-True
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'abc'</span>, Iterable) <span class="comment"># str是否可迭代</span></span><br><span class="line"><span class="keyword">True</span></span><br></pre></td></tr></table></figure></div>
 <p>如果在<code>for</code>循环里面同时引用两个变量：</p>
-<pre><code class="python">&gt;&gt;&gt; for x, y in [(1, 1), (2, 4), (3, 9)]:
-...     print(x, y)
-...
-1 1
-2 4
-3 9
-</code></pre>
-<h2 id="List-Comprehensions-列表生成式"><a href="#List-Comprehensions-列表生成式" class="headerlink" title="List Comprehensions 列表生成式"></a>List Comprehensions 列表生成式</h2><pre><code class="python">&gt;&gt;&gt; [x * x for x in range(1, 11) if x % 2 == 0]
-[4, 16, 36, 64, 100]
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> x, y <span class="keyword">in</span> [(<span class="number">1</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">4</span>), (<span class="number">3</span>, <span class="number">9</span>)]:</span><br><span class="line"><span class="meta">... </span>    print(x, y)</span><br><span class="line">...</span><br><span class="line"><span class="number">1</span> <span class="number">1</span></span><br><span class="line"><span class="number">2</span> <span class="number">4</span></span><br><span class="line"><span class="number">3</span> <span class="number">9</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="List-Comprehensions-列表生成式"><a href="#List-Comprehensions-列表生成式" class="headerlink" title="List Comprehensions 列表生成式"></a>List Comprehensions 列表生成式</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>[x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>) <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>]</span><br><span class="line">[<span class="number">4</span>, <span class="number">16</span>, <span class="number">36</span>, <span class="number">64</span>, <span class="number">100</span>]</span><br></pre></td></tr></table></figure></div>
 <p>也可以使用两层循环</p>
-<pre><code class="python">&gt;&gt;&gt; [m + n for m in &#39;ABC&#39; for n in &#39;XYZ&#39;]
-[&#39;AX&#39;, &#39;AY&#39;, &#39;AZ&#39;, &#39;BX&#39;, &#39;BY&#39;, &#39;BZ&#39;, &#39;CX&#39;, &#39;CY&#39;, &#39;CZ&#39;]
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>[m + n <span class="keyword">for</span> m <span class="keyword">in</span> <span class="string">'ABC'</span> <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">'XYZ'</span>]</span><br><span class="line">[<span class="string">'AX'</span>, <span class="string">'AY'</span>, <span class="string">'AZ'</span>, <span class="string">'BX'</span>, <span class="string">'BY'</span>, <span class="string">'BZ'</span>, <span class="string">'CX'</span>, <span class="string">'CY'</span>, <span class="string">'CZ'</span>]</span><br></pre></td></tr></table></figure></div>
 <h2 id="Generator-生成器"><a href="#Generator-生成器" class="headerlink" title="Generator 生成器"></a>Generator 生成器</h2><p>不是一次性生成所有的list,而是一边循环一边计算，从而节省大量的空间</p>
 <ul>
 <li>生成器就是把列表生成式从[]to()</li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt; L = [x * x for x in range(10)]
-&gt;&gt;&gt; L
-[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
-&gt;&gt;&gt; g = (x * x for x in range(10))
-&gt;&gt;&gt; g
-&lt;generator object &lt;genexpr&gt; at 0x1022ef630&gt;
-&gt;&gt;&gt; next(g) //不常用
-0
-&gt;&gt;&gt; g = (x * x for x in range(10)) 
-&gt;&gt;&gt; for n in g: //一般是用这样的形式来拿取生成器里面的值
-...     print(n)
-... 
-0
-1
-4
-9
-16
-25
-36
-49
-64
-81
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L = [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>, <span class="number">36</span>, <span class="number">49</span>, <span class="number">64</span>, <span class="number">81</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>g</span><br><span class="line">&lt;generator object &lt;genexpr&gt; at <span class="number">0x1022ef630</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>next(g) //不常用</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> n <span class="keyword">in</span> g: //一般是用这样的形式来拿取生成器里面的值</span><br><span class="line"><span class="meta">... </span>    print(n)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line"><span class="number">25</span></span><br><span class="line"><span class="number">36</span></span><br><span class="line"><span class="number">49</span></span><br><span class="line"><span class="number">64</span></span><br><span class="line"><span class="number">81</span></span><br></pre></td></tr></table></figure></div>
 <ul>
 <li>也可以是用<code>yield</code>来生成</li>
 </ul>
-<pre><code class="python">def fib(max):
-    n, a, b = 0, 0, 1
-    while n &lt; max:
-        yield b //如果是print b则不是生成器了
-        a, b = b, a + b
-        n = n + 1
-    return &#39;done&#39;
-</code></pre>
-<pre><code class="python">&gt;&gt;&gt; for n in fib(6):
-...     print(n)
-...
-1
-1
-2
-3
-5
-8
-
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(max)</span>:</span></span><br><span class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> n &lt; max:</span><br><span class="line">        <span class="keyword">yield</span> b //如果是<span class="keyword">print</span> b则不是生成器了</span><br><span class="line">        a, b = b, a + b</span><br><span class="line">        n = n + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'done'</span></span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> n <span class="keyword">in</span> fib(<span class="number">6</span>):</span><br><span class="line"><span class="meta">... </span>    print(n)</span><br><span class="line">...</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">8</span></span><br></pre></td></tr></table></figure></div>
 <h2 id="Iterator-迭代器"><a href="#Iterator-迭代器" class="headerlink" title="Iterator 迭代器"></a>Iterator 迭代器</h2><p><code>for</code> 除了可以作用于集合类型如： <code>list    tuple    dict    set    str</code><br>还可作用于<code>generator</code></p>
 <p>这些可以直接作用于<code>for</code>循环的对象称为可迭代对象 <code>Iterable</code></p>
-<pre><code class="python">&gt;&gt;&gt; from collections import Iterable
-&gt;&gt;&gt; isinstance([], Iterable)
-True
-</code></pre>
-
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance([], Iterable)</span><br><span class="line"><span class="keyword">True</span></span><br></pre></td></tr></table></figure></div>
           
         
       
@@ -1200,48 +1302,12 @@ True
         
           
             <p>If &gt; SQL 2005,</p>
-<pre><code class="sql">select ExcelMediaPlanId,ChannelCN,rank
-from(
-    select ExcelMediaplanId, ChannelCN,Rank() 
-    over (Partition BY ExcelMediaplanId order by UnitRatecard desc) as rank
-    from ExcelAdPosition) rs 
-where rank &lt;=3
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> ExcelMediaPlanId,ChannelCN,<span class="keyword">rank</span></span><br><span class="line"><span class="keyword">from</span>(</span><br><span class="line">	<span class="keyword">select</span> ExcelMediaplanId, ChannelCN,<span class="keyword">Rank</span>() </span><br><span class="line">	<span class="keyword">over</span> (<span class="keyword">Partition</span> <span class="keyword">BY</span> ExcelMediaplanId <span class="keyword">order</span> <span class="keyword">by</span> UnitRatecard <span class="keyword">desc</span>) <span class="keyword">as</span> <span class="keyword">rank</span></span><br><span class="line">	<span class="keyword">from</span> ExcelAdPosition) rs </span><br><span class="line"><span class="keyword">where</span> <span class="keyword">rank</span> &lt;=<span class="number">3</span></span><br></pre></td></tr></table></figure></div>
 <p>or </p>
-<pre><code class="sql">WITH TOPTEN AS (
-    SELECT *, ROW_NUMBER() 
-    over (
-        PARTITION BY [group_by_field] 
-        order by [prioritise_field]
-    ) AS RowNo 
-    FROM [table_name]
-)
-SELECT * FROM TOPTEN WHERE RowNo &lt;= 10
-</code></pre>
-<p>or </p>
-<pre><code class="sql">select *
-from Things t
-where t.ThingID in (
-    select top 10 ThingID
-    from Things tt
-    where tt.Section = t.Section and tt.ThingDate = @Date
-    order by tt.DateEntered desc
-    )
-    and t.ThingDate = @Date
-order by Section, DateEntered desc
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">WITH TOPTEN AS (</span><br><span class="line">    <span class="keyword">SELECT</span> *, ROW_NUMBER() </span><br><span class="line">    <span class="keyword">over</span> (</span><br><span class="line">        <span class="keyword">PARTITION</span> <span class="keyword">BY</span> [group_by_field] </span><br><span class="line">        <span class="keyword">order</span> <span class="keyword">by</span> [prioritise_field]</span><br><span class="line">    ) <span class="keyword">AS</span> RowNo </span><br><span class="line">    <span class="keyword">FROM</span> [table_name]</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> TOPTEN <span class="keyword">WHERE</span> RowNo &lt;= <span class="number">10</span></span><br></pre></td></tr></table></figure></div>
+<p>or<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Things t</span><br><span class="line"><span class="keyword">where</span> t.ThingID <span class="keyword">in</span> (</span><br><span class="line">    <span class="keyword">select</span> top <span class="number">10</span> ThingID</span><br><span class="line">    <span class="keyword">from</span> Things tt</span><br><span class="line">    <span class="keyword">where</span> tt.Section = t.Section <span class="keyword">and</span> tt.ThingDate = @<span class="built_in">Date</span></span><br><span class="line">    <span class="keyword">order</span> <span class="keyword">by</span> tt.DateEntered <span class="keyword">desc</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">and</span> t.ThingDate = @<span class="built_in">Date</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">Section</span>, DateEntered <span class="keyword">desc</span></span><br></pre></td></tr></table></figure></div></p>
 <p>In MS Access:</p>
-<pre><code class="sql">SELECT StudentID, TestID, TestScore
-  FROM MyTable t
- WHERE TestID IN
-(
-  SELECT TOP 3 TestID 
-    FROM MyTable
-   WHERE StudentID = t.StudentID 
-   ORDER BY TestScore DESC, TestID
-)
- ORDER BY StudentID, TestScore DESC, TestID;
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> StudentID, TestID, TestScore</span><br><span class="line">  <span class="keyword">FROM</span> MyTable t</span><br><span class="line"> <span class="keyword">WHERE</span> TestID <span class="keyword">IN</span></span><br><span class="line">(</span><br><span class="line">  <span class="keyword">SELECT</span> TOP <span class="number">3</span> TestID </span><br><span class="line">    <span class="keyword">FROM</span> MyTable</span><br><span class="line">   <span class="keyword">WHERE</span> StudentID = t.StudentID </span><br><span class="line">   <span class="keyword">ORDER</span> <span class="keyword">BY</span> TestScore <span class="keyword">DESC</span>, TestID</span><br><span class="line">)</span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> StudentID, TestScore <span class="keyword">DESC</span>, TestID;</span><br></pre></td></tr></table></figure></div>
 <table>
 <thead>
 <tr>
@@ -1412,43 +1478,10 @@ order by Section, DateEntered desc
       
         
           
-            <h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><pre><code class="linux">cd /opt/
-
-wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.tar.gz&quot;
-
-tar xzf jdk-8u161-linux-x64.tar.gz
-
-cd /opt/jdk1.8.0_161/
-alternatives --install /usr/bin/java java /opt/jdk1.8.0_161/bin/java 2
-alternatives --config java
-
-There are 3 programs which provide &#39;java&#39;.
-
-  Selection    Command
------------------------------------------------
-*  1           /opt/jdk1.7.0_71/bin/java
- + 2           /opt/jdk1.8.0_45/bin/java
-   3           /opt/jdk1.8.0_144/bin/java
-   4           /opt/jdk1.8.0_161/bin/java
-
-Enter to keep the current selection[+], or type selection number: 4
-
-</code></pre>
-<h2 id="Setup-javac-and-jar-commands-path-using-alternatives"><a href="#Setup-javac-and-jar-commands-path-using-alternatives" class="headerlink" title="Setup javac and jar commands path using alternatives"></a>Setup javac and jar commands path using <code>alternatives</code></h2><pre><code class="linux">alternatives --install /usr/bin/jar jar /opt/jdk1.8.0_161/bin/jar 2
-alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_161/bin/javac 2
-alternatives --set jar /opt/jdk1.8.0_161/bin/jar
-alternatives --set javac /opt/jdk1.8.0_161/bin/javac
-</code></pre>
-<h2 id="Check-installed-java-version"><a href="#Check-installed-java-version" class="headerlink" title="Check installed java version"></a>Check installed java version</h2><pre><code class="linux">java -version
-java version &quot;1.8.0_161&quot;
-Java(TM) SE Runtime Environment (build 1.8.0_161-b12)
-Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)
-</code></pre>
-<h2 id="Setup-Java-Environment-Variables"><a href="#Setup-Java-Environment-Variables" class="headerlink" title="Setup Java Environment Variables"></a>Setup Java Environment Variables</h2><pre><code class="linux">export JAVA_HOME=/opt/jdk1.8.0_161
-export JRE_HOME=/opt/jdk1.8.0_161/jre
-export PATH=$PATH:/opt/jdk1.8.0_161/bin:/opt/jdk1.8.0_161/jre/bin
-</code></pre>
-
+            <h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/</span><br><span class="line"></span><br><span class="line">wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.tar.gz&quot;</span><br><span class="line"></span><br><span class="line">tar xzf jdk-8u161-linux-x64.tar.gz</span><br><span class="line"></span><br><span class="line">cd /opt/jdk1.8.0_161/</span><br><span class="line">alternatives --install /usr/bin/java java /opt/jdk1.8.0_161/bin/java 2</span><br><span class="line">alternatives --config java</span><br><span class="line"></span><br><span class="line">There are 3 programs which provide &apos;java&apos;.</span><br><span class="line"></span><br><span class="line">  Selection    Command</span><br><span class="line">-----------------------------------------------</span><br><span class="line">*  1           /opt/jdk1.7.0_71/bin/java</span><br><span class="line"> + 2           /opt/jdk1.8.0_45/bin/java</span><br><span class="line">   3           /opt/jdk1.8.0_144/bin/java</span><br><span class="line">   4           /opt/jdk1.8.0_161/bin/java</span><br><span class="line"></span><br><span class="line">Enter to keep the current selection[+], or type selection number: 4</span><br></pre></td></tr></table></figure></div>
+<h2 id="Setup-javac-and-jar-commands-path-using-alternatives"><a href="#Setup-javac-and-jar-commands-path-using-alternatives" class="headerlink" title="Setup javac and jar commands path using alternatives"></a>Setup javac and jar commands path using <code>alternatives</code></h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alternatives --install /usr/bin/jar jar /opt/jdk1.8.0_161/bin/jar 2</span><br><span class="line">alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_161/bin/javac 2</span><br><span class="line">alternatives --set jar /opt/jdk1.8.0_161/bin/jar</span><br><span class="line">alternatives --set javac /opt/jdk1.8.0_161/bin/javac</span><br></pre></td></tr></table></figure></div>
+<h2 id="Check-installed-java-version"><a href="#Check-installed-java-version" class="headerlink" title="Check installed java version"></a>Check installed java version</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line">java version &quot;1.8.0_161&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_161-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</span><br></pre></td></tr></table></figure></div>
+<h2 id="Setup-Java-Environment-Variables"><a href="#Setup-Java-Environment-Variables" class="headerlink" title="Setup Java Environment Variables"></a>Setup Java Environment Variables</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8.0_161</span><br><span class="line">export JRE_HOME=/opt/jdk1.8.0_161/jre</span><br><span class="line">export PATH=$PATH:/opt/jdk1.8.0_161/bin:/opt/jdk1.8.0_161/jre/bin</span><br></pre></td></tr></table></figure></div>
           
         
       
@@ -1574,309 +1607,19 @@ export PATH=$PATH:/opt/jdk1.8.0_161/bin:/opt/jdk1.8.0_161/jre/bin
 <li>nohup， 让进程忽略HUP信号</li>
 </ol>
 <p>nohup，标准输出和标准错误缺省会被重定向到nohup.out文件中。<br>一般我们可在结尾加上<code>&amp;</code>来将命令同时放入后台运行</p>
-<pre><code>[root@pvcent107 ~]# nohup ping www.ibm.com &amp;
-[1] 3059
-nohup: appending output to `nohup.out&#39;
-[root@pvcent107 ~]# ps -ef |grep 3059
-root      3059   984  0 21:06 pts/3    00:00:00 ping www.ibm.com
-root      3067   984  0 21:06 pts/3    00:00:00 grep 3059
-[root@pvcent107 ~]#
-
-</code></pre><ol>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@pvcent107 ~]# nohup<span class="built_in"> ping </span>www.ibm.com &amp;</span><br><span class="line">[1] 3059</span><br><span class="line">nohup: appending output <span class="keyword">to</span> `nohup.out'</span><br><span class="line">[root@pvcent107 ~]# ps -ef |grep 3059</span><br><span class="line">root      3059   984  0 21:06 pts/3    00:00:00<span class="built_in"> ping </span>www.ibm.com</span><br><span class="line">root      3067   984  0 21:06 pts/3    00:00:00 grep 3059</span><br><span class="line">[root@pvcent107 ~]#</span><br></pre></td></tr></table></figure></div>
+<ol>
 <li>setsid</li>
 </ol>
 <p>如果进程不属于接受HUP信号的终端的子进程，就要用setsid.</p>
-<pre><code>[root@pvcent107 ~]# setsid ping www.ibm.com
-[root@pvcent107 ~]# ps -ef |grep www.ibm.com
-root     31094     1  0 07:28 ?        00:00:00 ping www.ibm.com
-root     31102 29217  0 07:29 pts/4    00:00:00 grep www.ibm.com
-[root@pvcent107 ~]#
-
-</code></pre><p>注意的是我们的进程31094其父进程为1（<code>即为init进程ID</code>），<strong>并不是当前终端的进程ID</strong></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@pvcent107 ~]# setsid<span class="built_in"> ping </span>www.ibm.com</span><br><span class="line">[root@pvcent107 ~]# ps -ef |grep www.ibm.com</span><br><span class="line">root     31094     1  0 07:28 ?        00:00:00<span class="built_in"> ping </span>www.ibm.com</span><br><span class="line">root     31102 29217  0 07:29 pts/4    00:00:00 grep www.ibm.com</span><br><span class="line">[root@pvcent107 ~]#</span><br></pre></td></tr></table></figure></div>
+<p>注意的是我们的进程31094其父进程为1（<code>即为init进程ID</code>），<strong>并不是当前终端的进程ID</strong></p>
 <ol>
 <li>&amp;</li>
 </ol>
 <p>将<code>&amp;</code>也放入<code>()</code>,所提交的作业不会出现在作业列表中，就是无法通过jobs来查看。<br>subshell示例:</p>
-<pre><code>[root@pvcent107 ~]# (ping www.ibm.com &amp;)
-[root@pvcent107 ~]# ps -ef |grep www.ibm.com
-root     16270     1  0 14:13 pts/4    00:00:00 ping www.ibm.com
-root     16278 15362  0 14:13 pts/4    00:00:00 grep www.ibm.com
-[root@pvcent107 ~]#
-</code></pre><p>新提交的进程父ID为1（init进程ID）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/26/SSIS-CanNotImportPackage/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/26/SSIS-CanNotImportPackage/" itemprop="url">SSIS Cannot Import Package</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-26T15:51:46+08:00">
-                2018-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Error:</p>
-<pre><code>The SQL Server instance specified in SSIS service configuration is not present or is not available. This might occur when there is no default instance of SQL Server on the computer. For more information, see the topic &quot;Configuring the Integration Services Service&quot; in Server 2008 Books Online.
-
-Login failed for user &#39;XXXXX&#39;. (MsDtsSrvr)
-</code></pre><p>Solution:</p>
-<p>Add the user XXXX as a login to the SQL server<br>with sys_admin rights to msdb</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/26/asp-net-mvc-lifecycle/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/26/asp-net-mvc-lifecycle/" itemprop="url">ASP.NET MVC Request Life Cycle</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-26T10:15:43+08:00">
-                2018-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.codeproject.com/Articles/1028156/A-Detailed-Walkthrough-of-ASP-NET-MVC-Request-Life" target="_blank" rel="noopener">Ref A Detailed Walkthrough of ASP.NET MVC Request Life Cycle</a></p>
-<p>This is mainly for <strong>Page Life Cycle</strong> other than <strong>Application Life Cycle</strong>.<br>A typical <strong>Application Life Cycle</strong> contains <strong>Application Start</strong> and <strong>Application End events</strong> while <strong>Http Life Cycle</strong> is something which is repeated for every request.</p>
-<h2 id="MVC-Request-Life-Cycle"><a href="#MVC-Request-Life-Cycle" class="headerlink" title="MVC Request Life Cycle"></a>MVC Request Life Cycle</h2><img src="/2018/03/26/asp-net-mvc-lifecycle/mvc-life-cycle.png">
-<h3 id="URL-Routing-Module"><a href="#URL-Routing-Module" class="headerlink" title="URL Routing Module"></a>URL Routing Module</h3><p>The incoming request from <strong>IIS pipeline</strong> is handed over to URL Routing module which analyses the request and looks up <strong>Routing table</strong> to figure out which controller the incoming request maps to.</p>
-<p>Routing table is a static container of routes defined in MVC application with corresponding controller action mapping. If the route is found in the routing table <code>MVCRouteHandler</code> executes and bring s the instance of <code>MVCHttpHandler</code>.</p>
-<p><code>MVC handler</code> begins initializing and executing controller. The <code>MVCHttpHandler</code> also takes of converting route data into concrete controller that is capable of serving the request. <code>MVC handler</code> does all this with the help of MVC Controller factory and activator which are responsible for creating an instance of the controller. <span style="background-color: #FFFF00">This is also the place where the Dependency Injection is performed if the application has been designed to invoke parameterized controller constructor and satisfy its dependencies</span>.</p>
-<p>After the controller instance is created <strong>the next major step is to find and execute the corresponding action</strong>. A component called ActionInvoker finds and executes the action defined in routing table. Before the action method is called model bindings takes place which maps data from http request to action method parameters. After the model binding, action filters are invoked which includes OnActionExecuting filter. This is followed by action execution and Action Executed filter execution and finally preparing Action Result.</p>
-<p>Once the Action method has been finished executing the next step is Result execution. MVC separates the action declaration from Result execution. If the Result from action execution is view, then depending upon configuration, ASPX or Razor view engine will be called to find and render the html view as a response of http request. If the result was not view then it’s passed as-is to http response.</p>
-<h2 id="Application-Life-Cycle"><a href="#Application-Life-Cycle" class="headerlink" title="Application Life Cycle"></a>Application Life Cycle</h2><p>MVC application life cycle contains two application level events that are associated with start and end events of the application. Application start fires <strong>when the application is brought to life by a very first request</strong> to the application. Application end event is fired <strong>when application has been shut down</strong>.</p>
-<p>It’s important to understand application life cycle events to get a better understanding on how MVC life cycle starts. So far we have seen that URL Routing module is the starting point for MVC application that has a collection of predefined routes to map from. Now, the question here is <strong>how does URL routing handler gets this information from</strong>? The answer is simple, using Application start event. MVC applications provide these events in Global.asax file which contains all the application level events. All the prestart things are managed in the application start event.</p>
-<p>MVC Application_Start event is:</p>
-<ul>
-<li>An event that fires when first request is received.</li>
-<li>Can be used to <strong>run initial configuration and settings code</strong></li>
-<li>The event takes care of <strong>registering all areas of MVC application, installing global filters, adding routes and bundles</strong>.</li>
-</ul>
-<h2 id="Register-Routes"><a href="#Register-Routes" class="headerlink" title="Register Routes"></a>Register Routes</h2><p>Since Application_start event is the first event that gets called when application receives its very first request, <strong>all the pre application tasks like routing takes place here</strong>.</p>
-<p>As you see in the diagram below ResolveRequestCache needs to know the routes to choose from, and this needs to have static route collection already created.</p>
-<img src="/2018/03/26/asp-net-mvc-lifecycle/register-routes.png">
-<h2 id="HttpHandlers"><a href="#HttpHandlers" class="headerlink" title="HttpHandlers"></a>HttpHandlers</h2><p>HttpHandlers are classes that implement <code>IHttpHandler</code> and generate a response to <code>HttpRequest</code>. There could be httpHandler re-assignment in a life cycle of a request but only on http handler executes and provides response.</p>
-<h3 id="Create-HttpHandler"><a href="#Create-HttpHandler" class="headerlink" title="Create HttpHandler:"></a>Create HttpHandler:</h3><pre><code>public class SampleHttlHandler : IHttpHandler
-{
-    public book IsReusable { get{ return false;}}
-    public void ProcessRequest (HttpContext context)
-    {
-        context.Response.Write(&quot;&lt;b&gt;This is the response from HttpHandler&lt;/b&gt;&quot;)
-    }
-}
-</code></pre><h2 id="HttpModules"><a href="#HttpModules" class="headerlink" title="HttpModules"></a>HttpModules</h2><p>HttpModules are classes that implement <code>IHttpModule</code> interface and are designed to respond to Life cycle events. In a given Http Life cycle, multiple http modules <strong>can respond to one single request and can also hook into multiple life cycle events</strong>. So they are not tied to any specific event, rather they can act at several places during the life cycle and expose multiple development possibilities.</p>
-<p>Features such as <span style="background-color: #FFFF00"><strong>Logging and Authentication</strong></span> are best examples of wrapping things up in a HttpModule. </p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LESS"><figure class="iseeu highlight /less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[root@pvcent107 ~]</span># (ping www.ibm.com &amp;)</span><br><span class="line"><span class="selector-attr">[root@pvcent107 ~]</span># <span class="selector-tag">ps</span> <span class="selector-tag">-ef</span> |<span class="selector-tag">grep</span> <span class="selector-tag">www</span><span class="selector-class">.ibm</span><span class="selector-class">.com</span></span><br><span class="line"><span class="selector-tag">root</span>     <span class="selector-tag">16270</span>     <span class="selector-tag">1</span>  <span class="selector-tag">0</span> <span class="selector-tag">14</span><span class="selector-pseudo">:13</span> <span class="selector-tag">pts</span>/<span class="selector-tag">4</span>    <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">ping</span> <span class="selector-tag">www</span><span class="selector-class">.ibm</span><span class="selector-class">.com</span></span><br><span class="line"><span class="selector-tag">root</span>     <span class="selector-tag">16278</span> <span class="selector-tag">15362</span>  <span class="selector-tag">0</span> <span class="selector-tag">14</span><span class="selector-pseudo">:13</span> <span class="selector-tag">pts</span>/<span class="selector-tag">4</span>    <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">grep</span> <span class="selector-tag">www</span><span class="selector-class">.ibm</span><span class="selector-class">.com</span></span><br><span class="line"><span class="selector-attr">[root@pvcent107 ~]</span>#</span><br></pre></td></tr></table></figure></div>
+<p>新提交的进程父ID为1（init进程ID）</p>
 
           
         
@@ -1960,7 +1703,7 @@ Login failed for user &#39;XXXXX&#39;. (MsDtsSrvr)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1973,7 +1716,7 @@ Login failed for user &#39;XXXXX&#39;. (MsDtsSrvr)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

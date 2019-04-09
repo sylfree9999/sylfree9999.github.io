@@ -260,6 +260,254 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/25/sublimetext-usage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/25/sublimetext-usage/" itemprop="url">sublimetext-usage</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T10:42:29+08:00">
+                2018-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Allow-Alt-Drag-in-windows"><a href="#Allow-Alt-Drag-in-windows" class="headerlink" title="Allow Alt+Drag in windows"></a>Allow Alt+Drag in windows</h2><p>I created a file “C:\Users\XX\AppData\Roaming\Sublime Text 3\Packages\User\Default (Windows).sublime-mousemap”, and put this in it:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JSON"><figure class="iseeu highlight /json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">"button"</span>: <span class="string">"button1"</span>,<span class="attr">"modifiers"</span>: [<span class="string">"alt"</span>],</span><br><span class="line">    <span class="attr">"press_command"</span>: <span class="string">"drag_select"</span>,</span><br><span class="line">    <span class="attr">"press_args"</span>: &#123;<span class="attr">"by"</span>: <span class="string">"columns"</span>&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></div>
+<p>restart Sublime</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/25/net-EventIOSerialize/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/25/net-EventIOSerialize/" itemprop="url">net-EventIOSerialize</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T10:00:51+08:00">
+                2018-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="EVENT"><a href="#EVENT" class="headerlink" title="EVENT"></a>EVENT</h2><p>假如现在有一个猫类型，它叫一声会引发一连串反应，诸如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Cat</span><br><span class="line">&#123;</span><br><span class="line">	public void Miao()</span><br><span class="line">	&#123;</span><br><span class="line">		new Neighbor().Awake();</span><br><span class="line">		new Dog().Bark();</span><br><span class="line">		new Mouse().Run();</span><br><span class="line">		new Baby().Cry();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样的写法会导致耦合性高，不易扩展，增加，减少或者调整顺序都会变得比较困难，最好是猫叫一声-&gt;触发一系列的动作</p>
+<p><strong>用委托的方法实现</strong></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/25/net-EventIOSerialize/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/22/net-delegate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -333,97 +581,15 @@
           
             <h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p><code>public delegate string WithReturnWithPara(int x, int y);</code>没有方法体的方法声明+delegate</p>
 <p>委托其实就是MulticastDelegate的一个<strong>子类</strong>，是一个<strong>类</strong>！</p>
-<pre><code class="c#">
-public delegate void NoReturnNoPara();
-public delegate void NoReturnWithPara(int x, int y);
-public delegate int WithReturnNoPara();
-public delegate void GenericDelegate(T x); //泛型委托
-
-public void Show()
-{
-    {
-        //2. 实例化委托，要求传入的签名一致的方法
-        NoReturnNoPara method = new NoReturnNoPara(this.DoNothing);
-        //3. 委托实例的调用，参数和委托声明的时候参数一致
-        method.Invoke();
-        //4. 与上面的Invoke效果是一样的
-        method();
-    }
-    {
-        NoReturnWithPara method = new NoReturnWithPara(this.DoNothingWithPara);
-        method.Invoke(1,2);
-    }
-    {
-        WithReturnNoPara method = new WithReturnNoPara(this.GetNothing);
-        int iResult = method.Invoke();
-    }
-
-}
-
-private void DoNothing()
-{
-    Console.WriteLine(&quot;This is DoNothing&quot;);
-}
-
-private void DoNothingWithPara(int x, int y)
-{
-
-}
-
-private int GetNothing()
-{
-    return 1;
-}
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public delegate void NoReturnNoPara();</span><br><span class="line">public delegate void NoReturnWithPara(int x, int y);</span><br><span class="line">public delegate int WithReturnNoPara();</span><br><span class="line">public delegate void GenericDelegate(T x); //泛型委托</span><br><span class="line"></span><br><span class="line">public void Show()</span><br><span class="line">&#123;</span><br><span class="line">	&#123;</span><br><span class="line">		//2. 实例化委托，要求传入的签名一致的方法</span><br><span class="line">		NoReturnNoPara method = new NoReturnNoPara(this.DoNothing);</span><br><span class="line">		//3. 委托实例的调用，参数和委托声明的时候参数一致</span><br><span class="line">		method.Invoke();</span><br><span class="line">		//4. 与上面的Invoke效果是一样的</span><br><span class="line">		method();</span><br><span class="line">	&#125;</span><br><span class="line">	&#123;</span><br><span class="line">		NoReturnWithPara method = new NoReturnWithPara(this.DoNothingWithPara);</span><br><span class="line">		method.Invoke(1,2);</span><br><span class="line">	&#125;</span><br><span class="line">	&#123;</span><br><span class="line">		WithReturnNoPara method = new WithReturnNoPara(this.GetNothing);</span><br><span class="line">		int iResult = method.Invoke();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void DoNothing()</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(&quot;This is DoNothing&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void DoNothingWithPara(int x, int y)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int GetNothing()</span><br><span class="line">&#123;</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>##.NET自带的一些委托类型</p>
-<p>####Action -&gt; 无返回值的委托</p>
-<pre><code class="c#">Action act = new Action(this.DoNothing);
-Action&lt;int,string,int,string&gt; act2 = null;
-</code></pre>
-<p>####Func -&gt; 带返回值的泛型委托，注意，最后一个泛型类型代表返回类型</p>
-<pre><code class="c#">Func&lt;int&gt; fun1 = new Func&lt;int&gt;(this.GetNothing);//返回一个int类型
-Func&lt;int,string&gt; fun2 = null; //接受一个int类型的参数，返回类型为string
-</code></pre>
+<p>####Action -&gt; 无返回值的委托<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Action act = new Action(this.DoNothing);</span><br><span class="line">Action&lt;int,string,int,string&gt; act2 = null;</span><br></pre></td></tr></table></figure></div></p>
+<p>####Func -&gt; 带返回值的泛型委托，注意，最后一个泛型类型代表返回类型<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;int&gt; fun1 = new Func&lt;int&gt;(this.GetNothing);//返回一个int类型</span><br><span class="line">Func&lt;int,string&gt; fun2 = null; //接受一个int类型的参数，返回类型为string</span><br></pre></td></tr></table></figure></div></p>
 <p>####多播委托 -&gt;<br>+=表示向一个委托实例里面添加多个方法，形成方法链，invoke的时候按添加顺序执行<br>-=表示向一个委托实例里面移除方法，从方法链尾部开始匹配，遇到第一个完全吻合的，移除且只移除一个；没有匹配的不报错</p>
 <p><strong>如果是用lambda表达式来定义方法，那么永远都无法-=，因为编译器碰到lambda表达式，会自动生成一个委托，都是不同的实例</strong></p>
 <p><strong>多播委托<span style="color: red">不适用于带返回值的委托</span>&gt;带返回值的委托，因为到后面只会拿最后一个委托的返回值</strong></p>
-<pre><code class="c#">Action act = new Action(this.DoNothing);
-act += this.DoNothing;
-act += this.DoNothingStatic;
-act += new OtherClass().DoNothing;
-
-//act.BeginInvoke(null, null);//不能调用，因为不知道里面这么多实例应该按照什么顺序去执行
-foreach(Action item in act.GetInvocationList())
-{
-    item.BeginInvoke(null,null);
-}
-
-act -= this.DoNothing;
-act -= this.DoNothingStatic;
-act -= new OtherClass().DoNothing; //你会发现这个方法没有被移除，原因是上面的act += new OtherClass()与这个是两个实例，不是同一个，所以没有移除
-
-</code></pre>
-<p>##委托的使用</p>
-<pre><code class="c#">private static List&lt;Student&gt; Where(List&lt;Student&gt; studentList, Func&lt;Student, bool&gt; func)
-{
-    list&lt;Student&gt; resultList = new List&lt;Student&gt;();
-    foreach(var student in studentList)
-    {
-        if(func.invoke(student))
-        {
-            resultList.Add(student);
-        }
-    }
-}
-//caller
-private static bool Equals(Student)
-{
-    return student.ClassId == 1;
-} 
-
-Func&lt;Student,bool&gt; func = new Func&lt;Student,bool&gt;(Equals);
-var list = Where(studentList, func);
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Action act = new Action(this.DoNothing);</span><br><span class="line">act += this.DoNothing;</span><br><span class="line">act += this.DoNothingStatic;</span><br><span class="line">act += new OtherClass().DoNothing;</span><br><span class="line"></span><br><span class="line">//act.BeginInvoke(null, null);//不能调用，因为不知道里面这么多实例应该按照什么顺序去执行</span><br><span class="line">foreach(Action item in act.GetInvocationList())</span><br><span class="line">&#123;</span><br><span class="line">	item.BeginInvoke(null,null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">act -= this.DoNothing;</span><br><span class="line">act -= this.DoNothingStatic;</span><br><span class="line">act -= new OtherClass().DoNothing; //你会发现这个方法没有被移除，原因是上面的act += new OtherClass()与这个是两个实例，不是同一个，所以没有移除</span><br></pre></td></tr></table></figure></div>
+<p>##委托的使用<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">private static List&lt;Student&gt; Where(List&lt;Student&gt; studentList, Func&lt;Student, bool&gt; func)</span><br><span class="line">&#123;</span><br><span class="line">	list&lt;Student&gt; resultList = new List&lt;Student&gt;();</span><br><span class="line">	foreach(var student in studentList)</span><br><span class="line">	&#123;</span><br><span class="line">		if(func.invoke(student))</span><br><span class="line">		&#123;</span><br><span class="line">			resultList.Add(student);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//caller</span><br><span class="line">private static bool Equals(Student)</span><br><span class="line">&#123;</span><br><span class="line">	return student.ClassId == 1;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">Func&lt;Student,bool&gt; func = new Func&lt;Student,bool&gt;(Equals);</span><br><span class="line">var list = Where(studentList, func);</span><br></pre></td></tr></table></figure></div></p>
 
           
         
@@ -553,110 +719,28 @@ var list = Where(studentList, func);
 <p>##继承，就是可以用父类的</p>
 <p>##多态：同一个东东运行的时候会展现不同的形态</p>
 <ol>
-<li>继承多态：<pre><code class="c#">//编译器编译的时候认为这三个都是People类型
-//但在运行的时候people, student, teacher是三种不同的类型
-People people = new People();
-People student = new Student();
-People teacher = new Teacher();
-</code></pre>
+<li><p>继承多态：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//编译器编译的时候认为这三个都是People类型</span><br><span class="line">//但在运行的时候people, student, teacher是三种不同的类型</span><br><span class="line">People people = new People();</span><br><span class="line">People student = new Student();</span><br><span class="line">People teacher = new Teacher();</span><br></pre></td></tr></table></figure></div>
 </li>
-<li>编译时多态:<br> 声明，接口<br> 方法的重载(overload)也是多态<br> <span style="color: red;">普通方法的调用</span><pre><code> 注意：`Parent ins = new Child(); ins.Method();`会调用的是父类方法，因为这是编译时确定的！！！
+<li><p>编译时多态:<br> 声明，接口<br> 方法的重载(overload)也是多态<br> <span style="color: red;">普通方法的调用</span></p>
+<pre><code>注意：`Parent ins = new Child(); ins.Method();`会调用的是父类方法，因为这是编译时确定的！！！
 </code></pre></li>
 </ol>
 <ol>
 <li><p>运行时多态<br> 抽象方法与虚方法的区别：</p>
-<pre><code> 虚方法本身是一个普通方法，但是加了一个virtual，子类继承的时候可以覆写也可以不覆写
- 抽象方法没有方法体，必须在一个抽象类里面定义，子类继承后，必须显性的override掉这个抽象类
+<pre><code>虚方法本身是一个普通方法，但是加了一个virtual，子类继承的时候可以覆写也可以不覆写
+抽象方法没有方法体，必须在一个抽象类里面定义，子类继承后，必须显性的override掉这个抽象类
 </code></pre><p> 在override之前加<code>sealed</code>代表不想让它的子类再覆写</p>
 <p> <span style="color: red;"><code>new</code>这种写法尽量不要用！改成虚方法</span></p>
 </li>
 </ol>
-<pre><code class="c#">public abstract class ParentClass
-{
-    public int age = 70;
-
-    public void CommonMethod()
-    {
-        Console.WriteLine(&quot;ParentClass CommonMethod&quot;);
-    }
-
-    //虚方法本身是一个普通方法，但是加了一个virtual
-    //子类继承的时候可以覆写也可以不覆写
-    public virtual void VirtualMethod()
-    {
-        Console.WriteLine(&quot;ParentClass VirtualMethod&quot;);
-    }
-
-    public virtual void VirtualMethod(string name)
-    {
-        Console.WriteLine(&quot;ParentClass VirtualMethod with string name&quot;);
-    }
-
-    //抽象方法没有方法体，必须在一个抽象类里面定义
-    //子类继承后，必须显性的override掉这个抽象类
-    public abstract void AbstractMethod();
-}
-
-public class ChildClass: ParentClass
-{
-    public int age  = 18;
-
-    //这里隐藏父类的CommonMethod,并没有覆盖掉
-    public new void CommonMethod()
-    {
-        Console.WriteLine(&quot;ChildClass CommonMethod&quot;);
-    }
-
-    public override void VirtualMethod()
-    {
-        Console.WriteLine(&quot;ChildClass VirtualMethod&quot;);
-        base.VirtualMethod();
-    }
-
-    public override void AbstractMethod()
-    {
-        Console.WriteLine(&quot;ChildClass AbstractMethod&quot;);
-    }
-}
-
-//caller
-public static void Test()
-{
-    ParentClass instance = new ChildClass();
-    //父类，age=70
-    Console.WriteLint(instance.age);
-    //父类,编译的时候决定了普通方法的调用，只根据等号左边来看，ChildClass里面的new一点用都没有
-    instance.CommonMethod();
-    //子类，虽然最终调用的是父类，运行的时候决定了虚方法的调用
-    instance.VirtualMethod();
-    //子类,运行时决定了抽象方法的调用
-    instance.AbstractMethod();
-}
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">public abstract class ParentClass</span><br><span class="line">&#123;</span><br><span class="line">	public int age = 70;</span><br><span class="line"></span><br><span class="line">	public void CommonMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ParentClass CommonMethod&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//虚方法本身是一个普通方法，但是加了一个virtual</span><br><span class="line">	//子类继承的时候可以覆写也可以不覆写</span><br><span class="line">	public virtual void VirtualMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ParentClass VirtualMethod&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public virtual void VirtualMethod(string name)</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ParentClass VirtualMethod with string name&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//抽象方法没有方法体，必须在一个抽象类里面定义</span><br><span class="line">	//子类继承后，必须显性的override掉这个抽象类</span><br><span class="line">	public abstract void AbstractMethod();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class ChildClass: ParentClass</span><br><span class="line">&#123;</span><br><span class="line">	public int age  = 18;</span><br><span class="line"></span><br><span class="line">	//这里隐藏父类的CommonMethod,并没有覆盖掉</span><br><span class="line">	public new void CommonMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ChildClass CommonMethod&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public override void VirtualMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ChildClass VirtualMethod&quot;);</span><br><span class="line">		base.VirtualMethod();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public override void AbstractMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ChildClass AbstractMethod&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//caller</span><br><span class="line">public static void Test()</span><br><span class="line">&#123;</span><br><span class="line">	ParentClass instance = new ChildClass();</span><br><span class="line">	//父类，age=70</span><br><span class="line">	Console.WriteLint(instance.age);</span><br><span class="line">	//父类,编译的时候决定了普通方法的调用，只根据等号左边来看，ChildClass里面的new一点用都没有</span><br><span class="line">	instance.CommonMethod();</span><br><span class="line">	//子类，虽然最终调用的是父类，运行的时候决定了虚方法的调用</span><br><span class="line">	instance.VirtualMethod();</span><br><span class="line">	//子类,运行时决定了抽象方法的调用</span><br><span class="line">	instance.AbstractMethod();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>##接口抽象类</p>
 <p>什么方法适用于虚方法：<br>    大家都有默认实现，只有少部分不同，建议采用虚方法<br>其他用abstract方法：<br>    抽象方法就是约束一下，但是不提供实现，子类必须override，且必须在抽象类里面</p>
 <pre><code>**抽象类是不能实例化的**，只能这么用
 
-```c#
-BasePhone iphone = new iPhone();
-
-public abstract class BasePhone
-{
-
-}
-```
-</code></pre><p>除了可以用抽象类来约束，也可以用接口来约束,接口方法默认都是public，且不能放字段（可以放属性）</p>
-<pre><code class="c#">public interface IExtend
-{
-    void Online();
-    string Remark{get;set;}
-    event Action DoNothingHandle;
-    //索引器
-    string this[int index]{get;set;}
-    //string description; 不能
-    //delegate xxx;不能
-}
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BasePhone iphone = new iPhone();</span><br><span class="line"></span><br><span class="line">public abstract class BasePhone</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</code></pre><p>除了可以用抽象类来约束，也可以用接口来约束,接口方法默认都是public，且不能放字段（可以放属性）<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public interface IExtend</span><br><span class="line">&#123;</span><br><span class="line">	void Online();</span><br><span class="line">	string Remark&#123;get;set;&#125;</span><br><span class="line">	event Action DoNothingHandle;</span><br><span class="line">	//索引器</span><br><span class="line">	string this[int index]&#123;get;set;&#125;</span><br><span class="line">	//string description; 不能</span><br><span class="line">	//delegate xxx;不能</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <p>抽象类和接口区别，想约束东西的时候是用抽象类还是接口？</p>
 <ul>
 <li>抽象类可以包含一些已经实现的东西，然后可以再加上约束的功能，其主要是类，加上一点约束的功能，表明的主要是is a what</li>
@@ -782,29 +866,7 @@ public abstract class BasePhone
       
         
           <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Attribute其实是为了生成MetaData的<br>Attribute就是一个继承于Attribute的类</p>
-<pre><code class="c#">public class CustomAttribute: Attribute{
-
-    public CustomAttribute(){
-        Console.WriteLine(&quot;This is constructor of CustomAttribute&quot;);
-    }
-
-    public CustomAttribute(string remark){
-
-    }
-
-    public string Remark{get;set;}
-    public string Description{get;set;}
-
-    public void Show(){
-        Console.Writeline($&quot;This is {this.GetType().Name}&quot;);
-    }
-}
-
-//也可以间接继承于Attribute
-public class CustomChildAttribute: CustomAttribute{
-
-}
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class CustomAttribute: Attribute&#123;</span><br><span class="line"></span><br><span class="line">	public CustomAttribute()&#123;</span><br><span class="line">		Console.WriteLine(&quot;This is constructor of CustomAttribute&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public CustomAttribute(string remark)&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public string Remark&#123;get;set;&#125;</span><br><span class="line">	public string Description&#123;get;set;&#125;</span><br><span class="line"></span><br><span class="line">	public void Show()&#123;</span><br><span class="line">		Console.Writeline($&quot;This is &#123;this.GetType().Name&#125;&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//也可以间接继承于Attribute</span><br><span class="line">public class CustomChildAttribute: CustomAttribute&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/06/21/net-attribute/#more" rel="contents">
@@ -930,91 +992,16 @@ public class CustomChildAttribute: CustomAttribute{
         
           
             <h2 id="CUT"><a href="#CUT" class="headerlink" title="CUT"></a>CUT</h2><p>CUT命令可以从一个文本文件或者文本流中提取文本<br><code>echo $PATH | cut -d &#39;:&#39; -f 2,3</code>将PATH变量取出，返回第二，第三个路径<br><code>echo $PATH | cut -d &#39;:&#39; -f 1-3,5</code>取1~3和第五个</p>
-<h2 id="SORT"><a href="#SORT" class="headerlink" title="SORT"></a>SORT</h2><p>对FILE参数制定的文件中的行排序，并将结果写到标准输出</p>
-<pre><code>
-[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd
-root:x:0:0:root:/root:/bin/bash
-bin:x:1:1:bin:/bin:/sbin/nologin
-daemon:x:2:2:daemon:/sbin:/sbin/nologin
-adm:x:3:4:adm:/var/adm:/sbin/nologin
-lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
-sync:x:5:0:sync:/sbin:/bin/sync
-
-[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort
-adm:x:3:4:adm:/var/adm:/sbin/nologin
-bin:x:1:1:bin:/bin:/sbin/nologin
-daemon:x:2:2:daemon:/sbin:/sbin/nologin
-dbus:x:81:81:System message bus:/:/sbin/nologin
-ec2-user:x:500:500:EC2 Default User:/home/ec2-user:/bin/bash
-
-[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort -t &#39;:&#39; -k 3 //以：为分隔符，以第三列字符串模式为排序标准
-root:x:0:0:root:/root:/bin/bash
-uucp:x:10:14:uucp:/var/spool/uucp:/sbin/nologin
-operator:x:11:0:operator:/root:/sbin/nologin
-bin:x:1:1:bin:/bin:/sbin/nologin
-
-[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort -t &#39;:&#39; -k 3n //以第三列数字模式排序
-root:x:0:0:root:/root:/bin/bash
-bin:x:1:1:bin:/bin:/sbin/nologin
-daemon:x:2:2:daemon:/sbin:/sbin/nologin
-adm:x:3:4:adm:/var/adm:/sbin/nologin
-lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
-
-[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort -t &#39;:&#39; -k 3nr //倒序排列
-nfsnobody:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin
-ec2-user:x:500:500:EC2 Default User:/home/ec2-user:/bin/bash
-saslauth:x:499:76:&quot;Saslauthd user&quot;:/var/empty/saslauth:/sbin/nologin
-nobody:x:99:99:Nobody:/:/sbin/nologin
-
-[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | sort -t &#39;:&#39; -k 7 -u //去重
-root:x:0:0:root:/root:/bin/bash
-sync:x:5:0:sync:/sbin:/bin/sync
-halt:x:7:0:halt:/sbin:/sbin/halt
-bin:x:1:1:bin:/bin:/sbin/nologin
-shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
-</code></pre><h2 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h2><p>uniq只能去重排序过的文件</p>
-<pre><code>cat testfile | sort | uniq -c //-c显示重复次数
-1 friend
-3 hello
-2 world
-</code></pre><p>取出处于ESTABLISHED状态的端口号</p>
-<pre><code>netstat -an | grep &#39;:4001\|:4002\|:4003\|:4004&#39; | grep ESTABLISHED | awk {&#39;print $4&#39;} | uniq | cut -d &#39;:&#39; -f 2 
-</code></pre><h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><h3 id="删除：d命令"><a href="#删除：d命令" class="headerlink" title="删除：d命令"></a>删除：d命令</h3><p><code>sed -i &#39;2d&#39; example</code> 删除example文件的第二行并写会原文件，不建议刚开始就用-i写回文件，调试完了以后再加-i<br><code>sed &#39;2,$d&#39; example</code> 删除example文件的第二行到末尾所有行，正则中$表示末尾，^表示开头<br><code>sed &#39;$d&#39; example</code> 删除example文件的最后一行<br><code>sed &#39;/test/&#39;d example</code> 删除example文件所有包含test的行,//代表模式</p>
+<h2 id="SORT"><a href="#SORT" class="headerlink" title="SORT"></a>SORT</h2><p>对FILE参数制定的文件中的行排序，并将结果写到标准输出<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[root<span class="variable">@ip</span>-<span class="number">172</span>-<span class="number">31</span>-<span class="number">7</span>-<span class="number">202</span> ec2-user]<span class="comment"># cat /etc/passwd</span></span><br><span class="line"><span class="symbol">root:</span><span class="symbol">x:</span><span class="number">0</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:root</span><span class="symbol">:/root</span><span class="symbol">:/bin/bash</span></span><br><span class="line"><span class="symbol">bin:</span><span class="symbol">x:</span><span class="number">1</span><span class="symbol">:</span><span class="number">1</span><span class="symbol">:bin</span><span class="symbol">:/bin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">daemon:</span><span class="symbol">x:</span><span class="number">2</span><span class="symbol">:</span><span class="number">2</span><span class="symbol">:daemon</span><span class="symbol">:/sbin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">adm:</span><span class="symbol">x:</span><span class="number">3</span><span class="symbol">:</span><span class="number">4</span><span class="symbol">:adm</span><span class="symbol">:/var/adm</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">lp:</span><span class="symbol">x:</span><span class="number">4</span><span class="symbol">:</span><span class="number">7</span><span class="symbol">:lp</span><span class="symbol">:/var/spool/lpd</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">sync:</span><span class="symbol">x:</span><span class="number">5</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:sync</span><span class="symbol">:/sbin</span><span class="symbol">:/bin/sync</span></span><br><span class="line"></span><br><span class="line">[root<span class="variable">@ip</span>-<span class="number">172</span>-<span class="number">31</span>-<span class="number">7</span>-<span class="number">202</span> ec2-user]<span class="comment"># cat /etc/passwd | sort</span></span><br><span class="line"><span class="symbol">adm:</span><span class="symbol">x:</span><span class="number">3</span><span class="symbol">:</span><span class="number">4</span><span class="symbol">:adm</span><span class="symbol">:/var/adm</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">bin:</span><span class="symbol">x:</span><span class="number">1</span><span class="symbol">:</span><span class="number">1</span><span class="symbol">:bin</span><span class="symbol">:/bin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">daemon:</span><span class="symbol">x:</span><span class="number">2</span><span class="symbol">:</span><span class="number">2</span><span class="symbol">:daemon</span><span class="symbol">:/sbin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">dbus:</span><span class="symbol">x:</span><span class="number">81</span><span class="symbol">:</span><span class="number">81</span><span class="symbol">:System</span> message <span class="symbol">bus:</span>/<span class="symbol">:/sbin/nologin</span></span><br><span class="line">ec2-<span class="symbol">user:</span><span class="symbol">x:</span><span class="number">500</span><span class="symbol">:</span><span class="number">500</span><span class="symbol">:EC2</span> Default <span class="symbol">User:</span>/home/ec2-<span class="symbol">user:</span>/bin/bash</span><br><span class="line"></span><br><span class="line">[root<span class="variable">@ip</span>-<span class="number">172</span>-<span class="number">31</span>-<span class="number">7</span>-<span class="number">202</span> ec2-user]<span class="comment"># cat /etc/passwd | sort -t ':' -k 3 //以：为分隔符，以第三列字符串模式为排序标准</span></span><br><span class="line"><span class="symbol">root:</span><span class="symbol">x:</span><span class="number">0</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:root</span><span class="symbol">:/root</span><span class="symbol">:/bin/bash</span></span><br><span class="line"><span class="symbol">uucp:</span><span class="symbol">x:</span><span class="number">10</span><span class="symbol">:</span><span class="number">14</span><span class="symbol">:uucp</span><span class="symbol">:/var/spool/uucp</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">operator:</span><span class="symbol">x:</span><span class="number">11</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:operator</span><span class="symbol">:/root</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">bin:</span><span class="symbol">x:</span><span class="number">1</span><span class="symbol">:</span><span class="number">1</span><span class="symbol">:bin</span><span class="symbol">:/bin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"></span><br><span class="line">[root<span class="variable">@ip</span>-<span class="number">172</span>-<span class="number">31</span>-<span class="number">7</span>-<span class="number">202</span> ec2-user]<span class="comment"># cat /etc/passwd | sort -t ':' -k 3n //以第三列数字模式排序</span></span><br><span class="line"><span class="symbol">root:</span><span class="symbol">x:</span><span class="number">0</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:root</span><span class="symbol">:/root</span><span class="symbol">:/bin/bash</span></span><br><span class="line"><span class="symbol">bin:</span><span class="symbol">x:</span><span class="number">1</span><span class="symbol">:</span><span class="number">1</span><span class="symbol">:bin</span><span class="symbol">:/bin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">daemon:</span><span class="symbol">x:</span><span class="number">2</span><span class="symbol">:</span><span class="number">2</span><span class="symbol">:daemon</span><span class="symbol">:/sbin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">adm:</span><span class="symbol">x:</span><span class="number">3</span><span class="symbol">:</span><span class="number">4</span><span class="symbol">:adm</span><span class="symbol">:/var/adm</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">lp:</span><span class="symbol">x:</span><span class="number">4</span><span class="symbol">:</span><span class="number">7</span><span class="symbol">:lp</span><span class="symbol">:/var/spool/lpd</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"></span><br><span class="line">[root<span class="variable">@ip</span>-<span class="number">172</span>-<span class="number">31</span>-<span class="number">7</span>-<span class="number">202</span> ec2-user]<span class="comment"># cat /etc/passwd | sort -t ':' -k 3nr //倒序排列</span></span><br><span class="line"><span class="symbol">nfsnobody:</span><span class="symbol">x:</span><span class="number">65534</span><span class="symbol">:</span><span class="number">65534</span><span class="symbol">:Anonymous</span> NFS <span class="symbol">User:</span>/var/lib/<span class="symbol">nfs:</span>/sbin/nologin</span><br><span class="line">ec2-<span class="symbol">user:</span><span class="symbol">x:</span><span class="number">500</span><span class="symbol">:</span><span class="number">500</span><span class="symbol">:EC2</span> Default <span class="symbol">User:</span>/home/ec2-<span class="symbol">user:</span>/bin/bash</span><br><span class="line"><span class="symbol">saslauth:</span><span class="symbol">x:</span><span class="number">499</span><span class="symbol">:</span><span class="number">76</span><span class="symbol">:<span class="string">"Saslauthd user"</span></span><span class="symbol">:/var/empty/saslauth</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">nobody:</span><span class="symbol">x:</span><span class="number">99</span><span class="symbol">:</span><span class="number">99</span><span class="symbol">:Nobody</span><span class="symbol">:/</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"></span><br><span class="line">[root<span class="variable">@ip</span>-<span class="number">172</span>-<span class="number">31</span>-<span class="number">7</span>-<span class="number">202</span> ec2-user]<span class="comment"># cat /etc/passwd | sort -t ':' -k 7 -u //去重</span></span><br><span class="line"><span class="symbol">root:</span><span class="symbol">x:</span><span class="number">0</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:root</span><span class="symbol">:/root</span><span class="symbol">:/bin/bash</span></span><br><span class="line"><span class="symbol">sync:</span><span class="symbol">x:</span><span class="number">5</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:sync</span><span class="symbol">:/sbin</span><span class="symbol">:/bin/sync</span></span><br><span class="line"><span class="symbol">halt:</span><span class="symbol">x:</span><span class="number">7</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:halt</span><span class="symbol">:/sbin</span><span class="symbol">:/sbin/halt</span></span><br><span class="line"><span class="symbol">bin:</span><span class="symbol">x:</span><span class="number">1</span><span class="symbol">:</span><span class="number">1</span><span class="symbol">:bin</span><span class="symbol">:/bin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">shutdown:</span><span class="symbol">x:</span><span class="number">6</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:shutdown</span><span class="symbol">:/sbin</span><span class="symbol">:/sbin/shutdown</span></span><br></pre></td></tr></table></figure></div></p>
+<h2 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h2><p>uniq只能去重排序过的文件<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LSL"><figure class="iseeu highlight /lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat testfile | sort | uniq -c <span class="comment">//-c显示重复次数</span></span><br><span class="line"><span class="number">1</span> friend</span><br><span class="line"><span class="number">3</span> hello</span><br><span class="line"><span class="number">2</span> world</span><br></pre></td></tr></table></figure></div></p>
+<p>取出处于ESTABLISHED状态的端口号<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="COQ"><figure class="iseeu highlight /coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -an | <span class="type">grep</span> ':<span class="number">4001</span>\|<span class="type">:4002</span>\|<span class="type">:4003</span>\|<span class="type">:4004</span>' | <span class="type">grep</span> ESTABLISHED | <span class="type">awk</span> &#123;'print $<span class="number">4</span>'&#125; | <span class="type">uniq</span> | <span class="type">cut</span> -d ':' -f <span class="number">2</span></span><br></pre></td></tr></table></figure></div></p>
+<h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><h3 id="删除：d命令"><a href="#删除：d命令" class="headerlink" title="删除：d命令"></a>删除：d命令</h3><p><code>sed -i &#39;2d&#39; example</code> 删除example文件的第二行并写会原文件，不建议刚开始就用-i写回文件，调试完了以后再加-i<br><code>sed &#39;2,$d&#39; example</code> 删除example文件的第二行到末尾所有行，正则中$表示末尾，^表示开头<br><code>sed &#39;$d&#39; example</code> 删除example文件的最后一行<br><code>sed &#39;/test/&#39;d example</code> 删除example文件所有包含test的行,//代表模式</p>
 <h3 id="替换：s命令"><a href="#替换：s命令" class="headerlink" title="替换：s命令"></a>替换：s命令</h3><p><code>sed &#39;s/test/mytest/g&#39; example</code> 在整行范围内把test替换成mytest，如果没有g标记，则只有每行第一个匹配的test会被替换成mytest<br><code>sed -n &#39;s/^test/mytest/p&#39; example</code> (-n)选项和p标志一起使用表示只打印那些发生替换的行。也就是说如果某一行开头的test被替换成mytest，就打印它。<br><code>sed &#39;s/^192.168.0.1/&amp;localhost/&#39; example</code> &amp;符号表示替换字符串被找到的部分再加上新的。所有以192.168.0.1开头的行都会被替换成它自己加localhost，即192.168.0.1localhost。<br><code>sed -n &#39;s/\(love\)able/\1rs/p&#39; example</code> love被标记为1，所有loveable会被替换成lovers，且替换的行会被打印出来，\1代表第一组    </p>
 <h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><p><code>last -n 5 | awk &#39;{print $1}&#39;</code> 打印出第一列的登录人名<br>awk工作流程：读入有’\n’换行符分割的一条记录，然后将记录按指定的域分隔符划分域，填充域，$0表示所有域，$1表示第一个域，$n表示第n个域。<br>默认域分隔符是”空白键”或者”[tab]键”,所以$1表示登录用户，$3表示登录用户ip,以此类推</p>
 <p><code>cat /etc/passwd | awk -F &#39;:&#39; &#39;{print $1&quot;\t&quot;$7}&#39;</code>指定分隔符,且账户与shell之间以tab键分割</p>
 <p><code>cat /etc/passwd | awk -F &#39;:&#39; &#39;BEGIN {print &quot;name,shell&quot;} {print $1&quot;,&quot;$7} END {print &quot;endtest,/bin/bash&quot;}&#39;</code><br>awk还可以分Begin 中间 End三个部分</p>
 <p><code>lxc list | awk &#39;NR &gt; 2 { print $6}&#39;</code>去除首行，拿取第6列</p>
-<pre><code>[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | awk -F &#39;:&#39; &#39;BEGIN {print &quot;name,shell&quot;} {print $1&quot;,&quot;$7} END {print &quot;endtest,/bin/bash&quot;}&#39;
-name,shell
-root,/bin/bash
-bin,/sbin/nologin
-daemon,/sbin/nologin
-adm,/sbin/nologin
-lp,/sbin/nologin
-sync,/bin/sync
-shutdown,/sbin/shutdown
-halt,/sbin/halt
-mail,/sbin/nologin
-uucp,/sbin/nologin
-operator,/sbin/nologin
-games,/sbin/nologin
-gopher,/sbin/nologin
-ftp,/sbin/nologin
-nobody,/sbin/nologin
-rpc,/sbin/nologin
-ntp,/sbin/nologin
-saslauth,/sbin/nologin
-mailnull,/sbin/nologin
-smmsp,/sbin/nologin
-rpcuser,/sbin/nologin
-nfsnobody,/sbin/nologin
-sshd,/sbin/nologin
-dbus,/sbin/nologin
-ec2-user,/bin/bash
-mysql,/bin/bash
-endtest,/bin/bash
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="AUTOHOTKEY"><figure class="iseeu highlight /autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">[root@ip-172-31-7-202 ec2-user]# cat /etc/passwd | awk -F ':</span>' 'BEGIN &#123;print <span class="string">"name,shell"</span>&#125; &#123;print $<span class="number">1</span><span class="string">","</span>$<span class="number">7</span>&#125; END &#123;print <span class="string">"endtest,/bin/bash"</span>&#125;'</span><br><span class="line"><span class="built_in">name,</span>shell</span><br><span class="line"><span class="built_in">root,</span>/bin/bash</span><br><span class="line"><span class="built_in">bin,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">daemon,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">adm,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">lp,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">sync,</span>/bin/sync</span><br><span class="line"><span class="built_in">shutdown,</span>/sbin/shutdown</span><br><span class="line"><span class="built_in">halt,</span>/sbin/halt</span><br><span class="line"><span class="built_in">mail,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">uucp,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">operator,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">games,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">gopher,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">ftp,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">nobody,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">rpc,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">ntp,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">saslauth,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">mailnull,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">smmsp,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">rpcuser,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">nfsnobody,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">sshd,</span>/sbin/nologin</span><br><span class="line"><span class="built_in">dbus,</span>/sbin/nologin</span><br><span class="line">ec2-user,/bin/bash</span><br><span class="line"><span class="built_in">mysql,</span>/bin/bash</span><br><span class="line"><span class="built_in">endtest,</span>/bin/bash</span><br></pre></td></tr></table></figure></div>
           
         
       
@@ -1133,28 +1120,15 @@ endtest,/bin/bash
       
         
           
-            <h2 id="test-sh-两个点的含义"><a href="#test-sh-两个点的含义" class="headerlink" title=". ./test.sh 两个点的含义"></a>. ./test.sh 两个点的含义</h2><pre><code>#!/bin/bash
-aa = &quot;hello&quot;
-</code></pre><p>如果<code>echo $aa</code>是没有东西的，为什么？</p>
+            <h2 id="test-sh-两个点的含义"><a href="#test-sh-两个点的含义" class="headerlink" title=". ./test.sh 两个点的含义"></a>. ./test.sh 两个点的含义</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">aa = <span class="string">"hello"</span></span><br></pre></td></tr></table></figure></div>
+<p>如果<code>echo $aa</code>是没有东西的，为什么？</p>
 <p>当只运行一个    <code>./test.sh</code> 的时候,其实是test.sh是在别的进程里面跑的，所以你在当前进程里跑的时候是不会输出东西的<br>所以用<code>. ./test.sh</code>是说在我现在这个进程里面来跑这个脚本</p>
 <h2 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h2><pre><code>1，系统变量：$HOME、$PWD、$SHELL(现在用的是哪种解释器)、$USER(当前用户)等
 2，查看所有变量:`set`
 3，定义变量：VAR=value，&lt;span style=&quot;color:red;&quot;&gt;等号两侧不能有空格&lt;/span&gt;，变量名称一般为大写 
 4，双引号与单引号的区别：双引号仅将空格脱意，单引号会将所有特殊字符脱意(单引号里面用变量引用没有用) 
 
-    ```
-    X=hello
-    echo $X -&gt; hello
-    X=&quot;hello world&quot;
-    echo $X -&gt; hello world
-    X=&#39;hello\nworld&#39;
-    echo $X -&gt; hello\nworld
-    Y=abc
-    X=&#39;hello $Y&#39;
-    echo $X -&gt; hello $Y
-    X=&quot;hello $Y&quot;
-    echo $X -&gt; hello abc
-    ```
+    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">X</span>=hello</span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello</span><br><span class="line"><span class="attribute">X</span>=<span class="string">"hello world"</span></span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello world</span><br><span class="line"><span class="attribute">X</span>=<span class="string">'hello\nworld'</span></span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello\nworld</span><br><span class="line"><span class="attribute">Y</span>=abc</span><br><span class="line"><span class="attribute">X</span>=<span class="string">'hello $Y'</span></span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello <span class="variable">$Y</span></span><br><span class="line"><span class="attribute">X</span>=<span class="string">"hello <span class="variable">$Y</span>"</span></span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello abc</span><br></pre></td></tr></table></figure></div>
 
 5，撤销变量：unset X
 6，export：可以把变量提升为全局环境变量，所有连上去的BASH都能访问，否则只在当前的bash能用
@@ -1163,148 +1137,33 @@ aa = &quot;hello&quot;
     1，用A=`ls -la`反引号的形式
     2，用A=$(ls -la)，等价于上面的方式
 
-    ```
-    X=&quot;Hello;World;SS&quot;
-    echo $X | cut -d &quot;;&quot; -f2  //拿到以；为分隔符切分的第二个元素
-    Y=`echo $X | cut -d &quot;;&quot; -f2`
-    echo $Y -&gt; World
-    ```
+    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X=<span class="string">"Hello;World;SS"</span></span><br><span class="line"><span class="keyword">echo</span> $X | cut -d <span class="string">";"</span> -f2  <span class="comment">//拿到以；为分隔符切分的第二个元素</span></span><br><span class="line">Y=`<span class="keyword">echo</span> $X | cut -d <span class="string">";"</span> -f2`</span><br><span class="line"><span class="keyword">echo</span> $Y -&gt; World</span><br></pre></td></tr></table></figure></div>
 
 8，Shell中的特殊变量
     1，$? 上一个命令执行的状态，类似与方法的返回值，通常情况下返回值为0代表成功，非0代表不正常
-        ```
-        true
-        echo $? -&gt; 0
-        false
-        echo $? -&gt; 1
-        ll
-        echo $? -&gt; 0
-        lsss
-        echo $? -&gt; 127
-        ```
+        <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">true</span></span><br><span class="line">echo <span class="variable">$?</span> -&gt; <span class="number">0</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line">echo <span class="variable">$?</span> -&gt; <span class="number">1</span></span><br><span class="line">ll</span><br><span class="line">echo <span class="variable">$?</span> -&gt; <span class="number">0</span></span><br><span class="line">lsss</span><br><span class="line">echo <span class="variable">$?</span> -&gt; <span class="number">127</span></span><br></pre></td></tr></table></figure></div>
+
     2，$$ 表示当前进程号
     3，$0 表示当前脚本名称
     4，$N 表示N位置的输入参数
-        ```
-        #!/bin/bash
-        aa=&quot;hello&quot;
-        echo &quot;第一个参数=&quot;$1
-        echo &quot;第二个参数=&quot;$2
+        <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">aa=<span class="string">"hello"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第一个参数="</span><span class="variable">$1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第二个参数="</span><span class="variable">$2</span></span><br><span class="line"></span><br><span class="line">./test.sh hello world</span><br><span class="line">第一个参数=hello</span><br><span class="line">第二个参数=world</span><br></pre></td></tr></table></figure></div>
 
-        ./test.sh hello world
-        第一个参数=hello
-        第二个参数=world
-        ```
     5，$# 表示参数的个数，常用于循环
     6，$*和$@都表示参数列表
         &quot;$*&quot;会将所有的参数作为一个整体，以&quot;$S1$S2...$Sn&quot;的形式输出
         &quot;$@&quot;会将各个参数分开，以&quot;$S1&quot;&quot;$S2&quot;...&quot;$Sn&quot;的形式输出
-        ```
-        #!/bin/bash
-        echo $*
-        echo $@
-        for N in &quot;$*&quot;
-        do
-        echo $N
-        done
-
-        for N in &quot;$@&quot;
-        do
-        echo $N
-        done
-
-        ```
-</code></pre><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>格式：expr m+n 或者 $((m+n)) 注意expr运算符间要有空格<br>例如（2+3）*4</p>
-<pre><code>S=`expr 2+3`\*4 或者 $(((2+3)*4)),最外层的$()代表取其值
-</code></pre><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><pre><code>for N in 1 2 3
-do
-    echo $N
-done
-或者 for N in {1..3};do echo $N;done
-或者
-for ((i=0;i&lt;=5;i++)) //必须要是两层括号
-do
-    echo &quot;welcome $i times&quot;
-done
-</code></pre><h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><pre><code>while expression
-do 
-    command
-done
-或者
-int=1
-while ((int&lt;=3))
-do
-    echo $int
-    let int++
-done
-</code></pre><h2 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h2><pre><code>case $1 in
-start)
-    echo &quot;starting&quot;
-    ;;
-stop)
-    echo &quot;stoping&quot;
-    ;;
-*)
-    echo &quot;Usage:{start|stop}&quot;
-esac
-</code></pre><h2 id="read命令"><a href="#read命令" class="headerlink" title="read命令"></a>read命令</h2><pre><code>read -p &quot;please enter a number: &quot; numb
-please enter a number:  1
-echo $numb
-1
-</code></pre><h2 id="if"><a href="#if" class="headerlink" title="if"></a>if</h2><pre><code>if [ $NAME=root ]
-then
-    echo &quot;hello ${NAME}&quot;
-elif [ $NAME=itcast ]
-    then
-        echo &quot;hello ${NAME}&quot;
-else
-    echo &quot;OUT&quot;
-fi
-</code></pre><p>[ condition ]一定要前后有空格，空[  ]则返回1，即false</p>
+        <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> $*</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$@</span></span><br><span class="line"><span class="keyword">for</span> N <span class="keyword">in</span> <span class="string">"$*"</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$N</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> N <span class="keyword">in</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$N</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></div>
+</code></pre><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>格式：expr m+n 或者 $((m+n)) 注意expr运算符间要有空格<br>例如（2+3）*4<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LSL"><figure class="iseeu highlight /lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S=`expr <span class="number">2</span>+<span class="number">3</span>`\*<span class="number">4</span> 或者 $(((<span class="number">2</span>+<span class="number">3</span>)*<span class="number">4</span>)),最外层的$()代表取其值</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> N <span class="keyword">in</span> 1 2 3</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="variable">$N</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">或者 <span class="keyword">for</span> N <span class="keyword">in</span> &#123;1..3&#125;;<span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">$N</span>;<span class="keyword">done</span></span><br><span class="line">或者</span><br><span class="line"><span class="keyword">for</span> ((i=0;i&lt;=5;i++)) //必须要是两层括号</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"welcome <span class="variable">$i</span> times"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="OCAML"><figure class="iseeu highlight /ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> expression</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">	command</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">或者</span><br><span class="line"><span class="built_in">int</span>=<span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> ((<span class="built_in">int</span>&lt;=<span class="number">3</span>))</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	echo $<span class="built_in">int</span></span><br><span class="line">	<span class="keyword">let</span> <span class="built_in">int</span>++</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="variable">$1</span> <span class="keyword">in</span></span><br><span class="line">start)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"starting"</span></span><br><span class="line">	;;</span><br><span class="line">stop)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"stoping"</span></span><br><span class="line">	;;</span><br><span class="line">*)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"Usage:&#123;start|stop&#125;"</span></span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="read命令"><a href="#read命令" class="headerlink" title="read命令"></a>read命令</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="STYLUS"><figure class="iseeu highlight /stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">read -<span class="selector-tag">p</span> <span class="string">"please enter a number: "</span> numb</span><br><span class="line">please enter <span class="selector-tag">a</span> number:  <span class="number">1</span></span><br><span class="line">echo <span class="variable">$numb</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="if"><a href="#if" class="headerlink" title="if"></a>if</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="variable">$NAME</span>=root ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"hello <span class="variable">$&#123;NAME&#125;</span>"</span></span><br><span class="line"><span class="keyword">elif</span> [ <span class="variable">$NAME</span>=itcast ]</span><br><span class="line">	<span class="keyword">then</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"hello <span class="variable">$&#123;NAME&#125;</span>"</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"OUT"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></div>
+<p>[ condition ]一定要前后有空格，空[  ]则返回1，即false</p>
 <h2 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h2><p>[ condition ] &amp;&amp; echo OK || echo notok<br>= 字符串比较<br>-lt 小于<br>-le 小于等于<br>-eq 等于<br>-gt 大于<br>-ge 大于等于<br>-ne 不等于<br>-r     有读的权限<br>-w     有写权限<br>-f     文件存在并且是一个常规的文件<br>-s     文件存在且不为空<br>-d     文件存在并且为一个目录<br>-b     文件存在并且是一个块设备<br>-L     文件存在并且是一个链接</p>
-<h2 id="Shell-自定义函数"><a href="#Shell-自定义函数" class="headerlink" title="Shell 自定义函数"></a>Shell 自定义函数</h2><pre><code>[ function ] funname [()]
-{
-    action;
-    [return int;]
-}
-例如可以这样定义
-function start() / function start/ start()
-函数只能返回int类型
-
-如果要传入参数，需要在外面定义
-
-!#/bin/bash
-function fSum()
-{
-    echo $1,$2;
-    return $(($1+$2));
-}
-fSum 3 2;
-total=$?;
-fSum 5 7;
-total=$?;
-echo $total, $?;
-</code></pre><h2 id="脚本调试"><a href="#脚本调试" class="headerlink" title="脚本调试"></a>脚本调试</h2><p><code>sh -vx helloWorld.sh</code> 只会展现所有的执行状态，不会停</p>
-<h2 id="模拟用户输入"><a href="#模拟用户输入" class="headerlink" title="模拟用户输入"></a>模拟用户输入</h2><pre><code class="bash">auto_ssh_copy_id() {
-    expect -c &quot;set timeout -1;
-        spawn ssh-copy-id $1;
-        expect {
-            *(yes/no)* {send -- yes\r;exp_continue;}
-            *assword:* {send -- $2\r;exp_continue;}
-            eof           {exit 0;}
-        }
-    &quot;;
-}
-
-
-ssy_copy_id_to_all() {
-    for SERVER in $SERVERS
-    do
-        auto_ssh_copy_id $SERVER $PASSWORD
-    done    
-}
-</code></pre>
-
+<h2 id="Shell-自定义函数"><a href="#Shell-自定义函数" class="headerlink" title="Shell 自定义函数"></a>Shell 自定义函数</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ADA"><figure class="iseeu highlight /ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[ <span class="keyword">function</span> <span class="title">]</span> funname [()]</span><br><span class="line">&#123;</span><br><span class="line">	action;</span><br><span class="line">	[<span class="keyword">return</span> <span class="type">int</span>;]</span><br><span class="line">&#125;</span><br><span class="line">例如可以这样定义</span><br><span class="line"><span class="keyword">function</span> <span class="title">start</span>() / <span class="keyword">function</span> <span class="title">start/</span> start()</span><br><span class="line">函数只能返回int类型</span><br><span class="line"></span><br><span class="line">如果要传入参数，需要在外面定义</span><br><span class="line"></span><br><span class="line">!#/bin/bash</span><br><span class="line"><span class="keyword">function</span> <span class="title">fSum</span>()</span><br><span class="line">&#123;</span><br><span class="line">	echo $1,$2;</span><br><span class="line">	<span class="keyword">return</span> <span class="type">$(($1+$2))</span>;</span><br><span class="line">&#125;</span><br><span class="line">fSum <span class="number">3</span> <span class="number">2</span>;</span><br><span class="line">total=$?;</span><br><span class="line">fSum <span class="number">5</span> <span class="number">7</span>;</span><br><span class="line">total=$?;</span><br><span class="line">echo $total, $?;</span><br></pre></td></tr></table></figure></div>
+<h2 id="脚本调试"><a href="#脚本调试" class="headerlink" title="脚本调试"></a>脚本调试</h2><p><code>sh -vx helloWorld.sh</code> 只会展现所有的执行状态，不会停</p>
+<h2 id="模拟用户输入"><a href="#模拟用户输入" class="headerlink" title="模拟用户输入"></a>模拟用户输入</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">auto_ssh_copy_id</span></span>() &#123;</span><br><span class="line">	expect -c <span class="string">"set timeout -1;</span></span><br><span class="line"><span class="string">		spawn ssh-copy-id <span class="variable">$1</span>;</span></span><br><span class="line"><span class="string">		expect &#123;</span></span><br><span class="line"><span class="string">			*(yes/no)* &#123;send -- yes\r;exp_continue;&#125;</span></span><br><span class="line"><span class="string">			*assword:* &#123;send -- <span class="variable">$2</span>\r;exp_continue;&#125;</span></span><br><span class="line"><span class="string">			eof		   &#123;exit 0;&#125;</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">ssy_copy_id_to_all</span></span>() &#123;</span><br><span class="line">	<span class="keyword">for</span> SERVER <span class="keyword">in</span> <span class="variable">$SERVERS</span></span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">		auto_ssh_copy_id <span class="variable">$SERVER</span> <span class="variable">$PASSWORD</span></span><br><span class="line">	<span class="keyword">done</span>	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
           
         
       
@@ -1426,12 +1285,7 @@ ssy_copy_id_to_all() {
 <h2 id="Position"><a href="#Position" class="headerlink" title="Position"></a>Position</h2><p>1,    <code>static</code> 就是默认的元素定位<br>2,    <code>relative</code> 相对于<span style="color: red;font-weight: bold;">自己原本的位置</span>,比方说几次方这个东西，就可以用relative来做</p>
 <p>如果你不给Relative设置<code>top left bottom right</code>, 就相当于什么也没发生过，它就是默认的位置</p>
 <p>另外如果你设置了它为relative，就相当于给予了它<code>z-index</code>的能力</p>
-<pre><code class="css">.square {
-    position: relative;
-    top : -1px;
-    left : 1px;
-}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.square</span> &#123;</span><br><span class="line">	<span class="attribute">position</span>: relative;</span><br><span class="line">	<span class="attribute">top </span>: -<span class="number">1px</span>;</span><br><span class="line">	<span class="attribute">left </span>: <span class="number">1px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/06/16/css-basic/#more" rel="contents">
@@ -1687,761 +1541,22 @@ ssy_copy_id_to_all() {
 <img src="/2018/06/07/net-reflection/20180607145635.png">
 <p>为什么要有二次编译：<br>兼容性，不同的平台。32位64位/linux,windows在不同环境下编译的方法不同</p>
 <p>想用同一种高级语言通用于所有的平台</p>
-<h4 id="反射调用带参数的构造函数："><a href="#反射调用带参数的构造函数：" class="headerlink" title="反射调用带参数的构造函数："></a>反射调用带参数的构造函数：</h4><pre><code class="c#">Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;); //以前需要依靠一个类，现在相当于只依赖于一串字符串
-Type testType = assemly.GetType(&quot;Test.DB.SqlServer.ReflectionTest&quot;); //注意传的时候需要加上前方的namespace
-object oTest1 = Activator.CreateInstance(testType);//默认调用无参构造函数
-object oTest2 = Activator.CreateInstance(testType,new object[]{895,&quot;霉霉&quot;});//调用参数第一个是int类型，第二个是string类型的构造函数
-</code></pre>
-<h4 id="反射调用Generic类型"><a href="#反射调用Generic类型" class="headerlink" title="反射调用Generic类型:"></a>反射调用Generic类型:</h4><pre><code class="c#">//Generic Class
-namespace Test.DB.SqlServer
-{
-    public class GenericClass&lt;T,W,X&gt;
-    {
-        public void Show(T t, W w, X x)
-        {
-            Console.WriteLine(&quot;t.type={0},w.type={1},x.type={2}&quot;, t.GetType().Name,w.GetType().Name,x.GetType().Name);
-        }
-    }
-}
-
-
-Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;); 
-Type genericType = assemly.GetType(&quot;Test.DB.SqlServer.GenericClass`3&quot;);//因为泛型有占位符，所以要写占位符
-Type realGenericType = genericType.MakeGeneric(typeof(int),typeof(string),typeof(Program)); //用genericType是无法生成实例的，因为这个时候还没有参数类型，必须要定义好才能用，所以要调用MakeGeneric方法，用realGenericType生成占位符
-object oGeneric = Activator.CreateInstance(realGenericType);
-</code></pre>
+<h4 id="反射调用带参数的构造函数："><a href="#反射调用带参数的构造函数：" class="headerlink" title="反射调用带参数的构造函数："></a>反射调用带参数的构造函数：</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;); //以前需要依靠一个类，现在相当于只依赖于一串字符串</span><br><span class="line">Type testType = assemly.GetType(&quot;Test.DB.SqlServer.ReflectionTest&quot;); //注意传的时候需要加上前方的namespace</span><br><span class="line">object oTest1 = Activator.CreateInstance(testType);//默认调用无参构造函数</span><br><span class="line">object oTest2 = Activator.CreateInstance(testType,new object[]&#123;895,&quot;霉霉&quot;&#125;);//调用参数第一个是int类型，第二个是string类型的构造函数</span><br></pre></td></tr></table></figure></div>
+<h4 id="反射调用Generic类型"><a href="#反射调用Generic类型" class="headerlink" title="反射调用Generic类型:"></a>反射调用Generic类型:</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//Generic Class</span><br><span class="line">namespace Test.DB.SqlServer</span><br><span class="line">&#123;</span><br><span class="line">	public class GenericClass&lt;T,W,X&gt;</span><br><span class="line">	&#123;</span><br><span class="line">		public void Show(T t, W w, X x)</span><br><span class="line">		&#123;</span><br><span class="line">			Console.WriteLine(&quot;t.type=&#123;0&#125;,w.type=&#123;1&#125;,x.type=&#123;2&#125;&quot;, t.GetType().Name,w.GetType().Name,x.GetType().Name);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;); </span><br><span class="line">Type genericType = assemly.GetType(&quot;Test.DB.SqlServer.GenericClass`3&quot;);//因为泛型有占位符，所以要写占位符</span><br><span class="line">Type realGenericType = genericType.MakeGeneric(typeof(int),typeof(string),typeof(Program)); //用genericType是无法生成实例的，因为这个时候还没有参数类型，必须要定义好才能用，所以要调用MakeGeneric方法，用realGenericType生成占位符</span><br><span class="line">object oGeneric = Activator.CreateInstance(realGenericType);</span><br></pre></td></tr></table></figure></div>
 <h4 id="反射调用Singleton单例"><a href="#反射调用Singleton单例" class="headerlink" title="反射调用Singleton单例"></a>反射调用Singleton单例</h4><p>单力模式的意思就是保证程序运行的时候只会对这个类实例化一次</p>
 <h5 id="构造函数种类及执行顺序"><a href="#构造函数种类及执行顺序" class="headerlink" title="构造函数种类及执行顺序"></a>构造函数种类及执行顺序</h5><ol>
 <li>默认构造函数，如果没有为类指定任何构造函数，编译器会自动为类创建一个无参构造函数</li>
 <li>静态构造函数，不能访问实例成员，只能用来初始化一些静态字段或者属性，<strong>仅在第一次调用类的任何成员时自动执行，不带反问修饰符，不带任何参数，且每个类只能有一个静态构造函数</strong></li>
-<li>私有构造函数，将构造函数声明为私有，则不能通过new()在外部代码中实例话，可以这样实例：<br><code>`</code>c#<br>public class Demo<br>{<br>private Demo(){}<br>public static Demo NewDemo()<br>{<br> return new Demo();<br>}<br>}</li>
+<li><p>私有构造函数，将构造函数声明为私有，则不能通过new()在外部代码中实例话，可以这样实例：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Demo</span><br><span class="line">&#123;</span><br><span class="line">	private Demo()&#123;&#125;</span><br><span class="line">	public static Demo NewDemo()</span><br><span class="line">	&#123;</span><br><span class="line">		return new Demo();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>构造函数的执行顺序</strong><br> <strong>子类静态构造 -&gt; 父类静态构造 -&gt; 父类构造 -&gt; 子类构造</strong></p>
+</li>
 </ol>
-<pre><code>4. **构造函数的执行顺序**
-    **子类静态构造 -&gt; 父类静态构造 -&gt; 父类构造 -&gt; 子类构造**
-
-
-单例模式
-通常使用的情况是&lt;span style=&quot;color: red&quot;&gt;不能在外面调用单例模式的私有构造函数的&lt;/span&gt;
-但是通过反射的方法是可以&lt;span style=&quot;color:red; font-weight: bold;&quot;&gt;调用单例模式的私有构造函数&lt;/span&gt;!
-
-```c#
-
-namespace Test.DB.SqlServer
-{
-    public sealed class Singleton
-    {
-        private static Singleton _Singleton = null;
-        //构造函数首先要私有化，别人不能调用它，只能它自己调用
-        private Singleton()
-        {
-            Console.WriteLine(&quot;Singleton被构造&quot;);
-        }
-
-        //静态构造函数首先会被调用，这个时候会调用私有构造函数
-        //由于静态构造函数只会被调用一次，所以这个类也就只会被实例化一次
-        static Singleton()
-        {
-            _Singleton = new Singleton();
-        }
-
-
-        public stati Singleton GetInstance()
-        {
-            return _Singleton;
-        }
-    }
-}
-
-
-Type singletonType = assemly.GetType(&quot;Test.DB.SqlServer.Singleton&quot;);
-
-//反射是可以直接去访问单例模式的私有构造函数，下面这个方法会调用单例模式的私有构造函数
-//并且还可以实例化多个单例
-object oSingleton1 = Activator.CreateInstance(singletonType, true);
-object oSingleton2 = Activator.CreateInstance(singletonType, true);
-</code></pre><h4 id="反射不强制转换也能调用方法，-Reflection-Method-gt-MVC"><a href="#反射不强制转换也能调用方法，-Reflection-Method-gt-MVC" class="headerlink" title="反射不强制转换也能调用方法， Reflection + Method -&gt; MVC"></a>反射不强制转换也能调用方法， Reflection + Method -&gt; MVC</h4><pre><code class="c#">Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;);
-Type testType = assemly.GetType(&quot;Test.DB.SqlServer.ReflectionTest&quot;);
-object oTest1 = Activator.CreateInstance(testType);
-
-MethodInfo method = testType.GetMethod(&quot;Show1&quot;); //以前写的具体方法也都换成了字符串
-method.Invoke(oTest1,new object[]{1332}); //调用含参数的方法
-{
-    method.Invoke(null,null);//调用无参数的静态方法，也可以写成method.Invoke(oTest1,null);    
-}
-{
-    MethodInfo method = testType.GetMethod(&quot;Show3&quot;,new Type[]{}); //重载方法没有参数的
-}
-{
-    MethodInfo method = testType.GetMethod(&quot;Show3&quot;, new Type[]{typeof(int)}); //重载方法有一个int类型的参数
-}
-{
-    MethodInfo method = testType.GetMethod(&quot;Show4&quot;,BindingFlags.Instance | BindingFlags.NonPublic); //调用私有方法
-}
-
-public class GenericMethod
-{
-    public void Show&lt;T,W,X&gt;(T t, W w, X x)
-    {
-        Console.WriteLine(&quot;XXX&quot;);
-    }
-}
-
-{
-    Type genericType = assemly.GetType(&quot;Test.DB.SqlServer.GenericMethod&quot;);
-    object oGeneric = Activator.CreateInstance(genericType); // 因为GenericMethod只是个普通类型，不是泛型类型
-    MethodInfo method = genericType.GetMethod(&quot;Show&quot;); //泛型方法不需要使用占位符
-    MethodInfo methodNew = method.MakeGeneric(typeof(int),typeof(string),typeof(int)); //记得这里要重新生成一个MethodInfo
-    methodNew.Invoke(oGeneric, new object[]{10,&quot;test&quot;,10});
-}
-
-</code></pre>
-<h4 id="反射调用属性和字段-Reflection-Property-gt-O-RM"><a href="#反射调用属性和字段-Reflection-Property-gt-O-RM" class="headerlink" title="反射调用属性和字段 Reflection + Property -&gt; O/RM"></a>反射调用属性和字段 Reflection + Property -&gt; O/RM</h4><pre><code class="c#"> Type type = typeof(People);
- object oPeople = Activator.CreateInstance(type);
- foreach(var item in type.GetProperties()){ // 反射可以动态给对象属性赋值/获取值
-     Console.WriteLine(item.Name);
-     Console.WriteLine(item.GetValue(oPeople));
-     if(item.Name.Equals(&quot;Id&quot;))
-         item.SetValue(oPeople,1234);
-     else if(item.Name.Equals(&quot;Name&quot;))
-         item.SetValue(oPeople,&quot;ttt&quot;);
-     Console.WriteLine(item.GetValue(oPeople))
- }
-</code></pre>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/05/net-generic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/05/net-generic/" itemprop="url">.net-generic</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T11:12:08+08:00">
-                2018-06-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h2><p>现在有类</p>
-<pre><code class="c#">public interface ISports
-    {
-        void Pingpang();
-    }
-
-    public interface IWork
-    {
-        void Work();
-    }
-
-
-    public class People
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-        public void Hi()
-        { }
-
-    }
-
-    public class Chinese : People, ISports, IWork
-    {
-        public void Tradition()
-        {
-            Console.WriteLine(&quot;仁义礼智信，温良恭俭让&quot;);
-        }
-        public void SayHi()
-        {
-            Console.WriteLine(&quot;吃了么？&quot;);
-        }
-
-        public void Pingpang()
-        {
-            Console.WriteLine(&quot;打乒乓球...&quot;);
-        }
-
-        public void Work()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class Hubei : Chinese
-    {
-
-        public Hubei(int id)
-        {
-        }
-        public string Changjiang { get; set; }
-        public void Majiang()
-        {
-            Console.WriteLine(&quot;打麻将啦。。&quot;);
-        }
-    }
-
-
-    public class Japanese : ISports
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-        public void Pingpang()
-        {
-            Console.WriteLine(&quot;打乒乓球...&quot;);
-        }
-        public void Hi()
-        { }
-    }
-</code></pre>
-<p>如果你现在有一个Generic Method:</p>
-<pre><code class="c#">public class GenericMethod&lt;T&gt;
-{
-    public static void Show&lt;T&gt;(T instance){
-
-        People pInstance = (People) instance;
-        Console.WriteLine(pInstance.Id); //不会报错，但是这样做一点意义就没有了
-
-        Console.WriteLine(instance.Id); //会报错，没有Id
-        Console.WriteLint(instance.Name); //会报错，没有Name
-
-
-    }
-}
-
-</code></pre>
-<h3 id="约束类型"><a href="#约束类型" class="headerlink" title="约束类型"></a>约束类型</h3><p>如果现在有一个<span style="color: red">基类约束</span></p>
-<ol>
-<li>基类约束，可以使用基类里面的属性和方法</li>
-<li>基类约束，要求类型参数必须是基类或者其子类，所以如果你调用GenericMethod.Show(japanese)就会报错，因为它不属于People类</li>
-<li>基类约束，如果where后面跟多个类型，这些类型属于and关系，必须同时满足才行</li>
-</ol>
-<p><strong>You can only put one class name and several interfaces to one ‘where’ constraint!</strong></p>
-<pre><code class="c#">where T1: Supplier, IConstractor, IComparable, new()
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>约束</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T:struct</td>
-<td>类型参数必须是值类型。可以指定处Nullable以外的任何值类型</td>
-</tr>
-<tr>
-<td>T:class</td>
-<td>类型参数必须是引用类型，包括任何类、接口、委托或数组类型</td>
-</tr>
-<tr>
-<td>T:new()</td>
-<td>类型参数必须具有无参数的公共构造函数。当与其他约束一起使用时，new()约束必须最后指定。</td>
-</tr>
-<tr>
-<td>T:&lt;基类名&gt;</td>
-<td>类型参数必须是指定的基类或派生自指定的基类</td>
-</tr>
-<tr>
-<td>T:&lt;接口名称&gt;</td>
-<td>类型参数必须是指定的接口或实现指定的接口。可以指定多个接口约束。约束接口也可以是泛型的。</td>
-</tr>
-<tr>
-<td>T:U</td>
-<td>为T提供的类型参数必须是为U提供的参数或派生自为U提供的参数。这称为裸类型参数。</td>
-</tr>
-</tbody>
-</table>
-<pre><code class="c#">public staic void Show&lt;T&gt;(T instance)
-where T: People
-{
-    Console.WriteLine(instance.Id); //不会报错，因为告诉了T是属于什么类型
-    Console.WriteLine(instance.Name);
-}
-</code></pre>
-<p><span style="color: red">类型约束</span></p>
-<pre><code class="c#">public static T DoNothing&lt;T&gt;(T tParameter)
-//where T: ISpotrs //接口类型约束
-//where T: class // 引用类型约束
-//where T: struct // 值类型约束
-where T: new() //无参数构造函数约束
-{
-    //return default(T);//会根据T的类型，产生一个默认值，可以应用于值类型约束的返回
-
-    //return null; //引用类型约束
-
-    T t = new T();
-    return t; //无参数构造函数返回
-}
-
-</code></pre>
-<p>显示声明出来类型和用约束的区别</p>
-<ol>
-<li>用约束来写更加灵活，比方说其可以运用ISports或者new()的写法</li>
-<li>如果显式声明出来，就只能用People里面的方法</li>
-</ol>
-<pre><code class="c#">public static void Show&lt;T&gt;(T instance)
-    where T: People, ISports, new() // and关系
-{
-    Console.WriteLine(instance.Id);
-    Console.WriteLine(instance.Name);
-    instance.Hi();
-    instance.Pingpang();
-    T t  = new T();
-}
-</code></pre>
-<pre><code class="c#">public static void ShowPeople(People instance)
-{
-    Console.WriteLine(instance.Id);
-    Console.WriteLine(instance.Name);
-    instance.Hi();
-    instance.Pingpang();//报错
-}
-</code></pre>
-<p>无参数构造函数约束<br><span style="color: red">Hubei就不能使用，因为Hubei这个类里面没有定义无参构造函数</span></p>
-<pre><code class="c#">Hubei hb = new Hubei(1);
-GenericMethod.Show(hb);//报错
-</code></pre>
-<h3 id="Covariant协变与Contravariant逆变"><a href="#Covariant协变与Contravariant逆变" class="headerlink" title="Covariant协变与Contravariant逆变"></a>Covariant协变与Contravariant逆变</h3><p>out -&gt; Covariant<br>in  -&gt; Contravariant</p>
-<p><span style="color: red">只能放在接口或者委托的泛型参数前面</span>，类和方法是不能用的，这个跟之前定义函数的in, out是两个概念</p>
-<p>协变与逆变只对引用类型有效，因为值类型没有什么父子关系</p>
-<pre><code class="c#">public class Bird{
-    public int Id {get;set;}
-}
-public class Sparrow: Bird{
-    public string Name{get;set;}
-}
-</code></pre>
-<p>背景</p>
-<pre><code class="c#">Bird bird1 = new Bird();
-Bird bird2 = new Sparrow(); //左边是父类，右边是子类
-Sparrow sparrow1 = new Sparrow();
-//Sparrow sparrow2 = new Bird();//错，不是所有的鸟都是麻雀
-
-List&lt;Bird&gt; birdList1 = new List&lt;Bird&gt;();
-List&lt;Bird&gt; birdList2 = new List&lt;Sparrow&gt;(); //错！！！！！！！！！一群麻雀是一群鸟这个竟然是错的，因为List&lt;T&gt;是一个泛型概念，List&lt;Sparrow&gt;与List&lt;Bird&gt;并没有父子关系
-
-//只能像下面这样写，把每一个Sparrow转换成Bird才可以，有点不和谐了对不对
-List&lt;Bird&gt; birdList3 = new List&lt;Sparrow&gt;().Select(c=&gt;(Bird)c).ToList();
-
-</code></pre>
-<p>协变</p>
-<p><strong>告诉编译器实例化的类型就是out T中T的子类</strong></p>
-<p>先看下IEnumerable的定义，这里面用了协变</p>
-<pre><code class="c#">public interface IEnumerable&lt;out T&gt;: IEnumerable
-{
-    ...
-}
-</code></pre>
-<pre><code class="c#">IEnumerable&lt;Bird&gt; birdList1 = new List&lt;Bird&gt;();
-IEnumerable&lt;Bird&gt; birdList2 = new List&lt;Sparrow&gt;(); //这个就没问题，协变的意思就是说告诉编译器，如果我实例化的类型是我out的子类，就没问题
-</code></pre>
-<p><strong>协变只能是返回结果</strong></p>
-<pre><code class="c#">public interface ICustomerListOut&lt;out T&gt;
-{
-    T Get();
-    //void Show(T t);//报错，如果用了协变，只能作为返回结果，不能作为参数类型
-}
-
-public class CustomerListOut&lt;T&gt;: ICustomerListOut&lt;T&gt;
-{
-    public T Get()
-    {
-        return default(T);
-    }
-}
-</code></pre>
-<p>逆变 Constravariant</p>
-<p><strong>只能修饰传入参数</strong></p>
-<pre><code class="c#">public interface ICustomerListIn&lt;in T&gt;
-{
-    //T Get(); //报错，只能坐参数，不能作返回值
-    void Show(T t);
-}
-
-public class CustomerListIn&lt;T&gt;: ICustomerListIn&lt;T&gt;
-{
-    public void Show(T t){
-
-    }
-}
-</code></pre>
-<p>定义了逆变以后，我可以实现<span style="color: red">左边子类，右边父类的情况</span></p>
-<pre><code class="c#">ICustomerListIn&lt;Sparrow&gt; customerList1 = new CustomerListIn&lt;Sparrow&gt;();
-ICustomerListIn&lt;Sparrow&gt; customerList2 = new CustomerListIn&lt;Bird&gt;(); //右边可以是父类！！！！！
-
-//因为定义的时候已经定义了customerList2一定是Sparrow类型，在show的时候已经要求了必须传入Sparrow类型
-customerList2.Show(new Sparrow());//Show这里要求必须传入的是Sparrow类型
-</code></pre>
-<h3 id="泛型类中的静态字段"><a href="#泛型类中的静态字段" class="headerlink" title="泛型类中的静态字段"></a>泛型类中的静态字段</h3><p>泛型：jit编译的时候指定具体类型，同一个泛型类，不同的参数类型，其实会变成不同的类型</p>
-<p>静态字段/静态构造函数：一个类型只会初始化一次，就在第一次调用的时候初始化，之后就常驻内存</p>
-<p>那么！！！！<br><span style="color: red">泛型+静态会怎么样？</span></p>
-<p>泛型类的静态字段，<strong>是独立的</strong><br>它会根据不同类型，产生不同的类，只有在不同类型第一次声明的时候会初始化，但是相同类型第二次用的时候就不会初始化！</p>
-<pre><code class="c#">
-    Console.WriteLine(GenericCache&lt;int&gt;.GetCache());
-    Thread.Sleep(10);
-    Console.WriteLine(GenericCache&lt;long&gt;.GetCache());//第一次进long的时候，仍然会初始化
-    Thread.Sleep(10);
-    Console.WriteLine(GenericCache&lt;int&gt;.GetCache());//这个时候就不会在初始化了，因为int类型的已经初始化过了
-
-</code></pre>
-<p>这里就牵扯到了泛型静态缓存<br><strong>泛型缓存的效率非常高</strong>，是直接在内存中缓存，CPU直接拿值<br>但是这个缓存没有办法清除，比字典寻址方法要快很多</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/01/openresy-auto-start-script/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/01/openresy-auto-start-script/" itemprop="url">Openresty Auto Start Script</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-01T11:54:26+08:00">
-                2018-06-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code class="bash">
-#!/bin/sh
-#
-# chkconfig: 2345 55 25
-# Description: Nginx init.d script, put in /etc/init.d, chmod +x /etc/init.d/nginx
-#              For Debian, run: update-rc.d -f nginx defaults
-#              For CentOS, run: chkconfig --add nginx
-#
-### BEGIN INIT INFO
-# Provides:          nginx
-# Required-Start:    $all
-# Required-Stop:     $all
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: nginx init.d script
-# Description:       OpenResty (aka. ngx_openresty) is a full-fledged web application server by bundling the standard Nginx core, lots of 3rd-party Nginx modules, as well as most of their external dependencies.
-### END INIT INFO
-#
-
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DESC=&quot;Nginx Daemon&quot;
-NAME=nginx
-PREFIX=/usr/local/openresty/nginx
-DAEMON=$PREFIX/sbin/$NAME
-CONF=$PREFIX/conf/$NAME.conf
-PID=$PREFIX/logs/$NAME.pid
-SCRIPT=/etc/init.d/$NAME
-
-if [ ! -x &quot;$DAEMON&quot; ] || [ ! -f &quot;$CONF&quot; ]; then
-    echo -e &quot;\033[33m $DAEMON has no permission to run. \033[0m&quot;
-    echo -e &quot;\033[33m Or $CONF doesn&#39;t exist. \033[0m&quot;
-    sleep 1
-    exit 1
-fi
-
-do_start() {
-    if [ -f $PID ]; then
-        echo -e &quot;\033[33m $PID already exists. \033[0m&quot;
-        echo -e &quot;\033[33m $DESC is already running or crashed. \033[0m&quot;
-        echo -e &quot;\033[32m $DESC Reopening $CONF ... \033[0m&quot;
-        $DAEMON -s reopen -c $CONF
-        sleep 1
-        echo -e &quot;\033[36m $DESC reopened. \033[0m&quot;
-    else
-        echo -e &quot;\033[32m $DESC Starting $CONF ... \033[0m&quot;
-        $DAEMON -c $CONF
-        sleep 1
-        echo -e &quot;\033[36m $DESC started. \033[0m&quot;
-    fi
-}
-
-do_stop() {
-    if [ ! -f $PID ]; then
-        echo -e &quot;\033[33m $PID doesn&#39;t exist. \033[0m&quot;
-        echo -e &quot;\033[33m $DESC isn&#39;t running. \033[0m&quot;
-    else
-        echo -e &quot;\033[32m $DESC Stopping $CONF ... \033[0m&quot;
-        $DAEMON -s stop -c $CONF
-        sleep 1
-        echo -e &quot;\033[36m $DESC stopped. \033[0m&quot;
-    fi
-}
-
-do_reload() {
-    if [ ! -f $PID ]; then
-        echo -e &quot;\033[33m $PID doesn&#39;t exist. \033[0m&quot;
-        echo -e &quot;\033[33m $DESC isn&#39;t running. \033[0m&quot;
-        echo -e &quot;\033[32m $DESC Starting $CONF ... \033[0m&quot;
-        $DAEMON -c $CONF
-        sleep 1
-        echo -e &quot;\033[36m $DESC started. \033[0m&quot;
-    else
-        echo -e &quot;\033[32m $DESC Reloading $CONF ... \033[0m&quot;
-        $DAEMON -s reload -c $CONF
-        sleep 1
-        echo -e &quot;\033[36m $DESC reloaded. \033[0m&quot;
-    fi
-}
-
-do_quit() {
-    if [ ! -f $PID ]; then
-        echo -e &quot;\033[33m $PID doesn&#39;t exist. \033[0m&quot;
-        echo -e &quot;\033[33m $DESC isn&#39;t running. \033[0m&quot;
-    else
-        echo -e &quot;\033[32m $DESC Quitting $CONF ... \033[0m&quot;
-        $DAEMON -s quit -c $CONF
-        sleep 1
-        echo -e &quot;\033[36m $DESC quitted. \033[0m&quot;
-    fi
-}
-
-do_test() {
-    echo -e &quot;\033[32m $DESC Testing $CONF ... \033[0m&quot;
-    $DAEMON -t -c $CONF
-}
-
-do_info() {
-    $DAEMON -V
-}
-
-case &quot;$1&quot; in
- start)
- do_start
- ;;
- stop)
- do_stop
- ;;
- reload)
- do_reload
- ;;
- restart)
- do_stop
- do_start
- ;;
- quit)
- do_quit
- ;;
- test)
- do_test
- ;;
- info)
- do_info
- ;;
- *)
- echo &quot;Usage: $SCRIPT {start|stop|reload|restart|quit|test|info}&quot;
- exit 2
- ;;
-esac
-
-exit 0
-
-</code></pre>
-
+<p>单例模式<br>通常使用的情况是<span style="color: red">不能在外面调用单例模式的私有构造函数的</span><br>但是通过反射的方法是可以<span style="color:red; font-weight: bold;">调用单例模式的私有构造函数</span>!</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">namespace Test.DB.SqlServer</span><br><span class="line">&#123;</span><br><span class="line">	public sealed class Singleton</span><br><span class="line">	&#123;</span><br><span class="line">		private static Singleton _Singleton = null;</span><br><span class="line">		//构造函数首先要私有化，别人不能调用它，只能它自己调用</span><br><span class="line">		private Singleton()</span><br><span class="line">		&#123;</span><br><span class="line">			Console.WriteLine(&quot;Singleton被构造&quot;);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		//静态构造函数首先会被调用，这个时候会调用私有构造函数</span><br><span class="line">		//由于静态构造函数只会被调用一次，所以这个类也就只会被实例化一次</span><br><span class="line">		static Singleton()</span><br><span class="line">		&#123;</span><br><span class="line">			_Singleton = new Singleton();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		public stati Singleton GetInstance()</span><br><span class="line">		&#123;</span><br><span class="line">			return _Singleton;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Type singletonType = assemly.GetType(&quot;Test.DB.SqlServer.Singleton&quot;);</span><br><span class="line"></span><br><span class="line">//反射是可以直接去访问单例模式的私有构造函数，下面这个方法会调用单例模式的私有构造函数</span><br><span class="line">//并且还可以实例化多个单例</span><br><span class="line">object oSingleton1 = Activator.CreateInstance(singletonType, true);</span><br><span class="line">object oSingleton2 = Activator.CreateInstance(singletonType, true);</span><br></pre></td></tr></table></figure></div>
+<h4 id="反射不强制转换也能调用方法，-Reflection-Method-gt-MVC"><a href="#反射不强制转换也能调用方法，-Reflection-Method-gt-MVC" class="headerlink" title="反射不强制转换也能调用方法， Reflection + Method -&gt; MVC"></a>反射不强制转换也能调用方法， Reflection + Method -&gt; MVC</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Assembly assemly = Assembly.Load(&quot;Test.DB.SqlServer&quot;);</span><br><span class="line">Type testType = assemly.GetType(&quot;Test.DB.SqlServer.ReflectionTest&quot;);</span><br><span class="line">object oTest1 = Activator.CreateInstance(testType);</span><br><span class="line"></span><br><span class="line">MethodInfo method = testType.GetMethod(&quot;Show1&quot;); //以前写的具体方法也都换成了字符串</span><br><span class="line">method.Invoke(oTest1,new object[]&#123;1332&#125;); //调用含参数的方法</span><br><span class="line">&#123;</span><br><span class="line">	method.Invoke(null,null);//调用无参数的静态方法，也可以写成method.Invoke(oTest1,null);	</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">	MethodInfo method = testType.GetMethod(&quot;Show3&quot;,new Type[]&#123;&#125;); //重载方法没有参数的</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">	MethodInfo method = testType.GetMethod(&quot;Show3&quot;, new Type[]&#123;typeof(int)&#125;); //重载方法有一个int类型的参数</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">	MethodInfo method = testType.GetMethod(&quot;Show4&quot;,BindingFlags.Instance | BindingFlags.NonPublic); //调用私有方法</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class GenericMethod</span><br><span class="line">&#123;</span><br><span class="line">	public void Show&lt;T,W,X&gt;(T t, W w, X x)</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;XXX&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	Type genericType = assemly.GetType(&quot;Test.DB.SqlServer.GenericMethod&quot;);</span><br><span class="line">	object oGeneric = Activator.CreateInstance(genericType); // 因为GenericMethod只是个普通类型，不是泛型类型</span><br><span class="line">	MethodInfo method = genericType.GetMethod(&quot;Show&quot;); //泛型方法不需要使用占位符</span><br><span class="line">	MethodInfo methodNew = method.MakeGeneric(typeof(int),typeof(string),typeof(int)); //记得这里要重新生成一个MethodInfo</span><br><span class="line">	methodNew.Invoke(oGeneric, new object[]&#123;10,&quot;test&quot;,10&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h4 id="反射调用属性和字段-Reflection-Property-gt-O-RM"><a href="#反射调用属性和字段-Reflection-Property-gt-O-RM" class="headerlink" title="反射调用属性和字段 Reflection + Property -&gt; O/RM"></a>反射调用属性和字段 Reflection + Property -&gt; O/RM</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Type type = typeof(People);</span><br><span class="line">object oPeople = Activator.CreateInstance(type);</span><br><span class="line">foreach(var item in type.GetProperties())&#123; // 反射可以动态给对象属性赋值/获取值</span><br><span class="line">	Console.WriteLine(item.Name);</span><br><span class="line">	Console.WriteLine(item.GetValue(oPeople));</span><br><span class="line">	if(item.Name.Equals(&quot;Id&quot;))</span><br><span class="line">		item.SetValue(oPeople,1234);</span><br><span class="line">	else if(item.Name.Equals(&quot;Name&quot;))</span><br><span class="line">		item.SetValue(oPeople,&quot;ttt&quot;);</span><br><span class="line">	Console.WriteLine(item.GetValue(oPeople))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
           
         
       
@@ -2524,7 +1639,7 @@ exit 0
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -2537,7 +1652,7 @@ exit 0
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

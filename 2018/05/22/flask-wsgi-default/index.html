@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="套路文件 #!/usr/bin/env python3  import sys from os.path import abspath from os.path import dirname  # set current directory as working directory sys.path.insert(0, abspath(dirname(__file__)))  # import a">
+<meta name="description" content="套路文件 1234567891011121314#!/usr/bin/env python3import sysfrom os.path import abspathfrom os.path import dirname# set current directory as working directorysys.path.insert(0, abspath(dirname(__file__)))">
 <meta name="keywords" content="practice,flask">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flask wsgi 套路文件">
 <meta property="og:url" content="http://yoursite.com/2018/05/22/flask-wsgi-default/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="套路文件 #!/usr/bin/env python3  import sys from os.path import abspath from os.path import dirname  # set current directory as working directory sys.path.insert(0, abspath(dirname(__file__)))  # import a">
+<meta property="og:description" content="套路文件 1234567891011121314#!/usr/bin/env python3import sysfrom os.path import abspathfrom os.path import dirname# set current directory as working directorysys.path.insert(0, abspath(dirname(__file__)))">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.745Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flask wsgi 套路文件">
-<meta name="twitter:description" content="套路文件 #!/usr/bin/env python3  import sys from os.path import abspath from os.path import dirname  # set current directory as working directory sys.path.insert(0, abspath(dirname(__file__)))  # import a">
+<meta name="twitter:description" content="套路文件 1234567891011121314#!/usr/bin/env python3import sysfrom os.path import abspathfrom os.path import dirname# set current directory as working directorysys.path.insert(0, abspath(dirname(__file__)))">
 
 
 
@@ -331,33 +331,12 @@
 
       
         <p>套路文件</p>
-<pre><code class="python">#!/usr/bin/env python3
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> os.path <span class="keyword">import</span> abspath</span><br><span class="line"><span class="keyword">from</span> os.path <span class="keyword">import</span> dirname</span><br><span class="line"></span><br><span class="line"><span class="comment"># set current directory as working directory</span></span><br><span class="line">sys.path.insert(<span class="number">0</span>, abspath(dirname(__file__)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># import app.py (flask 启动文件)</span></span><br><span class="line"><span class="keyword">import</span> app</span><br><span class="line"></span><br><span class="line"><span class="comment"># MUST HAVE an application</span></span><br><span class="line">application = app.app</span><br></pre></td></tr></table></figure></div>
+<p>对于gunicorn+搭配supervisord部署<br><code>cat /etc/supervisor/conf.d/todo.conf</code><br>在此文件中更改<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="INI"><figure class="iseeu highlight /ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[program:todo]</span></span><br><span class="line"><span class="attr">command</span> = /usr/local/bin/gunicorn wsgi --bind <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">80</span> --pid /tmp/todo.pid</span><br><span class="line"><span class="attr">directory</span> = /todo</span><br><span class="line"><span class="attr">autostart</span> = <span class="literal">true</span></span><br></pre></td></tr></table></figure></div></p>
+<p>然后<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="EBNF"><figure class="iseeu highlight /ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo supervisorctl restart todo</span></span><br></pre></td></tr></table></figure></div></p>
+<p>或者<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="built_in"> service </span>supervisor restart</span><br></pre></td></tr></table></figure></div></p>
+<p>默认的日志错误文件在<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="STATA"><figure class="iseeu highlight /stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> /<span class="keyword">var</span>/<span class="keyword">log</span>/supervisor/todo-stderr---supervisor-WX7Fbz.<span class="built_in">log</span></span><br></pre></td></tr></table></figure></div></p>
 
-import sys
-from os.path import abspath
-from os.path import dirname
-
-# set current directory as working directory
-sys.path.insert(0, abspath(dirname(__file__)))
-
-# import app.py (flask 启动文件)
-import app
-
-# MUST HAVE an application
-application = app.app
-</code></pre>
-<p>对于gunicorn+搭配supervisord部署<br><code>cat /etc/supervisor/conf.d/todo.conf</code><br>在此文件中更改</p>
-<pre><code>[program:todo]
-command = /usr/local/bin/gunicorn wsgi --bind 0.0.0.0:80 --pid /tmp/todo.pid
-directory = /todo
-autostart = true
-</code></pre><p>然后</p>
-<pre><code>sudo supervisorctl restart todo
-</code></pre><p>或者</p>
-<pre><code>sudo service supervisor restart
-</code></pre><p>默认的日志错误文件在</p>
-<pre><code>cat /var/log/supervisor/todo-stderr---supervisor-WX7Fbz.log
-</code></pre>
       
     </div>
     
@@ -467,7 +446,7 @@ autostart = true
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -480,7 +459,7 @@ autostart = true
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

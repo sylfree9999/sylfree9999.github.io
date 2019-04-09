@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="概念Attribute其实是为了生成MetaData的Attribute就是一个继承于Attribute的类 public class CustomAttribute: Attribute{      public CustomAttribute(){         Console.WriteLine(&amp;quot;This is constructor of CustomAttribute&amp;qu">
+<meta name="description" content="概念Attribute其实是为了生成MetaData的Attribute就是一个继承于Attribute的类 12345678910111213141516171819202122public class CustomAttribute: Attribute&amp;#123;	public CustomAttribute()&amp;#123;		Console.WriteLine(&amp;quot;This is">
 <meta name="keywords" content="concept,.NET">
 <meta property="og:type" content="article">
 <meta property="og:title" content="net-attribute">
 <meta property="og:url" content="http://yoursite.com/2018/06/21/net-attribute/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="概念Attribute其实是为了生成MetaData的Attribute就是一个继承于Attribute的类 public class CustomAttribute: Attribute{      public CustomAttribute(){         Console.WriteLine(&amp;quot;This is constructor of CustomAttribute&amp;qu">
+<meta property="og:description" content="概念Attribute其实是为了生成MetaData的Attribute就是一个继承于Attribute的类 12345678910111213141516171819202122public class CustomAttribute: Attribute&amp;#123;	public CustomAttribute()&amp;#123;		Console.WriteLine(&amp;quot;This is">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="net-attribute">
-<meta name="twitter:description" content="概念Attribute其实是为了生成MetaData的Attribute就是一个继承于Attribute的类 public class CustomAttribute: Attribute{      public CustomAttribute(){         Console.WriteLine(&amp;quot;This is constructor of CustomAttribute&amp;qu">
+<meta name="twitter:description" content="概念Attribute其实是为了生成MetaData的Attribute就是一个继承于Attribute的类 12345678910111213141516171819202122public class CustomAttribute: Attribute&amp;#123;	public CustomAttribute()&amp;#123;		Console.WriteLine(&amp;quot;This is">
 
 
 
@@ -331,176 +331,14 @@
 
       
         <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Attribute其实是为了生成MetaData的<br>Attribute就是一个继承于Attribute的类</p>
-<pre><code class="c#">public class CustomAttribute: Attribute{
-
-    public CustomAttribute(){
-        Console.WriteLine(&quot;This is constructor of CustomAttribute&quot;);
-    }
-
-    public CustomAttribute(string remark){
-
-    }
-
-    public string Remark{get;set;}
-    public string Description{get;set;}
-
-    public void Show(){
-        Console.Writeline($&quot;This is {this.GetType().Name}&quot;);
-    }
-}
-
-//也可以间接继承于Attribute
-public class CustomChildAttribute: CustomAttribute{
-
-}
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class CustomAttribute: Attribute&#123;</span><br><span class="line"></span><br><span class="line">	public CustomAttribute()&#123;</span><br><span class="line">		Console.WriteLine(&quot;This is constructor of CustomAttribute&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public CustomAttribute(string remark)&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public string Remark&#123;get;set;&#125;</span><br><span class="line">	public string Description&#123;get;set;&#125;</span><br><span class="line"></span><br><span class="line">	public void Show()&#123;</span><br><span class="line">		Console.Writeline($&quot;This is &#123;this.GetType().Name&#125;&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//也可以间接继承于Attribute</span><br><span class="line">public class CustomChildAttribute: CustomAttribute&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <a id="more"></a>
 <p>Attribute默认情况下不能重复修饰</p>
 <p>Attribute可以放在类，方法，属性，字段等很多地方，在<code>[AttributeUsage(AttributeTargets.All, AllowMultiple=False)]</code>中设置</p>
 <p><code>[Custom] = [Custom()]</code>,代表默认用无参构造函数<br><code>[Custom(&quot;This is a student&quot;, Remark=&quot;123&quot;, Description=&quot;567&quot;)]</code>  构造函数的时候顺便把属性都赋值</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>特性在你不显式调用的时候，一点用都没有<br>特性是通过反射来使用的</p>
-<pre><code class="c#">///
-特性编译后是metadata，只有反射才能使用
-///
-public class PeopleManager
-{
-    public static void Manage(Student student){
-
-        Type type = student.GetType();
-
-        //type.GetCustomAttributes会实例化这个特性
-        if(type.IsDefined(typeof(CustomAttribute),true)){
-            object item = type.GetCustomAttributes(typeof(CustomAttribute),true)[0];
-            CustomAttribute attribute = item as CustomAttribute;
-            attribute.Show();
-        }
-
-        foreach(var item in type.GetConstructors()){
-            if(item.IsDefined(typeof(CustomAttribute),true)){
-                object ii = item.GetCustomAttributes(typeof(CustomAttribute),true)[0];
-            }
-        }
-
-        MethodInfo method = type.GetMethod(&quot;Answer&quot;);
-        if(method.IsDefined(typeof(CustomAttribute),true)){
-            object item = method.GetCustomAttributes(typeof(CustomAttribute),true)[0];
-        }
-
-        foreach(var item in method.GetParameters()){
-
-        }
-
-        if(method.ReturnParameter.IsDefined(typeof(CustomAttribute),true)){
-
-        }
-
-
-        student.Study();
-        student.Answer(&quot;SS&quot;);
-    }
-}
-</code></pre>
-<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><pre><code class="c#">public class Student{
-
-    [AuthoritytAttribute(Remark=&quot;Answer Questions&quot;)]
-    [Custom]
-    [return: Custom]
-    public string Answer([Custom]string name){
-        return $&quot;This is {name}&quot;
-    }
-}
-
-public class AuthoritytAttribute:Attribute{
-    public string Remark {get;set;}
-    public bool IsLogin(){
-        return new Random().Next(100,200) &gt; new Random().Next(100,199);
-    }
-}
-
-public class PeopleManager
-{
-    public static void Manage(Student student){
-
-        //Attribute可以增加功能，也可以多一点信息（Remark)
-        Type type = typeof(Student);
-        MethodInfo method = method.GetMethod(&quot;Answer&quot;);
-        if(method.IsDefined(typeof(AuthoritytAttribute),true)){
-            object item = type.GetCustomAttributes(typeof(AuthoritytAttribute),true)[0];
-            AuthoritytAttribute attribute = item as AuthoritytAttribute;
-            Console.WriteLine(attribute.Remark);
-            // if(DateTime.Now &gt; DateTime.Now.AddDaus(1))//实际上可以使用HttpContext.Current.Cookie/Session来检查用户登陆信息
-            // {
-            //     throw new Exception(&quot;Not authorized&quot;); //redirect to login page
-            // }
-
-            //将权限认证放到了attribute中
-            if(!attribute.IsLogin()){
-                throw new Exception(&quot;Not authorized&quot;);
-            }
-
-        }
-        student.Answer(&quot;SS&quot;);
-    }
-
-}
-
-//Caller
-class Program{
-    static void Main(string[] args){
-        Student studnet = new Student();
-        //这个方法调用是不会call AuthorityAttribute的
-        student.Answer(&quot;SS&quot;);
-
-        //这样写才会支持AuthorityAttribute
-        PeopleManager.Manage(student);
-    }
-}
-</code></pre>
-<p>实例</p>
-<pre><code class="c#">[AttributeUsage(AttributeTargets.Enum | AttributeTargets.Field)]
-public class RemarkAttribute: Attribute
-{
-    public RemarkAttribute(string remark)
-    {
-        this.Remark = remark;
-    }
-
-    public string Remark{get;set;}
-}
-
-[Remark(&quot;用户状态&quot;)]
-public enum UserState
-{
-    [Remark(&quot;正常&quot;)]
-    Normal = 0,
-    [Remark(&quot;冻结&quot;)]
-    Forzen = 1,
-    [Remark(&quot;删除&quot;)]
-    Deleted = 2
-}
-
-public class RemarkExtend
-{
-    //扩展方法
-    public static string GetRemark(this Enum enumValue){
-        Type type = enumValue.GetType();
-        FieldInfo field = type.GetField(enumValue.ToString());
-        if(field.IsDefined(typeof(RemarkAttribute),true)){
-            RemarkAttribute remarkAttribute = (RemarkAttribute)field.GetCustomAttribute(typeof(RemarkAttribute));
-        return remarkAttribute.Remark;
-        }else{
-            return enumValue.ToString();
-        }
-
-    }
-}
-
-//caller
-public void Main(string[] args)
-{
-    UserState.Deleted.GetRemark();
-}
-</code></pre>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>特性在你不显式调用的时候，一点用都没有<br>特性是通过反射来使用的<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">///</span><br><span class="line">特性编译后是metadata，只有反射才能使用</span><br><span class="line">///</span><br><span class="line">public class PeopleManager</span><br><span class="line">&#123;</span><br><span class="line">	public static void Manage(Student student)&#123;</span><br><span class="line">		</span><br><span class="line">		Type type = student.GetType();</span><br><span class="line">	</span><br><span class="line">		//type.GetCustomAttributes会实例化这个特性</span><br><span class="line">		if(type.IsDefined(typeof(CustomAttribute),true))&#123;</span><br><span class="line">			object item = type.GetCustomAttributes(typeof(CustomAttribute),true)[0];</span><br><span class="line">		    CustomAttribute attribute = item as CustomAttribute;</span><br><span class="line">		    attribute.Show();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		foreach(var item in type.GetConstructors())&#123;</span><br><span class="line">			if(item.IsDefined(typeof(CustomAttribute),true))&#123;</span><br><span class="line">				object ii = item.GetCustomAttributes(typeof(CustomAttribute),true)[0];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		MethodInfo method = type.GetMethod(&quot;Answer&quot;);</span><br><span class="line">		if(method.IsDefined(typeof(CustomAttribute),true))&#123;</span><br><span class="line">			object item = method.GetCustomAttributes(typeof(CustomAttribute),true)[0];</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		foreach(var item in method.GetParameters())&#123;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		if(method.ReturnParameter.IsDefined(typeof(CustomAttribute),true))&#123;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		student.Study();</span><br><span class="line">		student.Answer(&quot;SS&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">public class Student&#123;</span><br><span class="line"></span><br><span class="line">	[AuthoritytAttribute(Remark=&quot;Answer Questions&quot;)]</span><br><span class="line">	[Custom]</span><br><span class="line">	[return: Custom]</span><br><span class="line">	public string Answer([Custom]string name)&#123;</span><br><span class="line">		return $&quot;This is &#123;name&#125;&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class AuthoritytAttribute:Attribute&#123;</span><br><span class="line">	public string Remark &#123;get;set;&#125;</span><br><span class="line">	public bool IsLogin()&#123;</span><br><span class="line">		return new Random().Next(100,200) &gt; new Random().Next(100,199);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class PeopleManager</span><br><span class="line">&#123;</span><br><span class="line">	public static void Manage(Student student)&#123;</span><br><span class="line"></span><br><span class="line">		//Attribute可以增加功能，也可以多一点信息（Remark)</span><br><span class="line">		Type type = typeof(Student);</span><br><span class="line">		MethodInfo method = method.GetMethod(&quot;Answer&quot;);</span><br><span class="line">		if(method.IsDefined(typeof(AuthoritytAttribute),true))&#123;</span><br><span class="line">			object item = type.GetCustomAttributes(typeof(AuthoritytAttribute),true)[0];</span><br><span class="line">			AuthoritytAttribute attribute = item as AuthoritytAttribute;</span><br><span class="line">			Console.WriteLine(attribute.Remark);</span><br><span class="line">			// if(DateTime.Now &gt; DateTime.Now.AddDaus(1))//实际上可以使用HttpContext.Current.Cookie/Session来检查用户登陆信息</span><br><span class="line">			// &#123;</span><br><span class="line">			// 	throw new Exception(&quot;Not authorized&quot;); //redirect to login page</span><br><span class="line">			// &#125;</span><br><span class="line"></span><br><span class="line">			//将权限认证放到了attribute中</span><br><span class="line">			if(!attribute.IsLogin())&#123;</span><br><span class="line">				throw new Exception(&quot;Not authorized&quot;);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		student.Answer(&quot;SS&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//Caller</span><br><span class="line">class Program&#123;</span><br><span class="line">	static void Main(string[] args)&#123;</span><br><span class="line">		Student studnet = new Student();</span><br><span class="line">		//这个方法调用是不会call AuthorityAttribute的</span><br><span class="line">		student.Answer(&quot;SS&quot;);</span><br><span class="line"></span><br><span class="line">		//这样写才会支持AuthorityAttribute</span><br><span class="line">		PeopleManager.Manage(student);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>实例<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">[AttributeUsage(AttributeTargets.Enum | AttributeTargets.Field)]</span><br><span class="line">public class RemarkAttribute: Attribute</span><br><span class="line">&#123;</span><br><span class="line">	public RemarkAttribute(string remark)</span><br><span class="line">	&#123;</span><br><span class="line">		this.Remark = remark;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public string Remark&#123;get;set;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[Remark(&quot;用户状态&quot;)]</span><br><span class="line">public enum UserState</span><br><span class="line">&#123;</span><br><span class="line">	[Remark(&quot;正常&quot;)]</span><br><span class="line">	Normal = 0,</span><br><span class="line">	[Remark(&quot;冻结&quot;)]</span><br><span class="line">	Forzen = 1,</span><br><span class="line">	[Remark(&quot;删除&quot;)]</span><br><span class="line">	Deleted = 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class RemarkExtend</span><br><span class="line">&#123;</span><br><span class="line">	//扩展方法</span><br><span class="line">	public static string GetRemark(this Enum enumValue)&#123;</span><br><span class="line">		Type type = enumValue.GetType();</span><br><span class="line">		FieldInfo field = type.GetField(enumValue.ToString());</span><br><span class="line">		if(field.IsDefined(typeof(RemarkAttribute),true))&#123;</span><br><span class="line">			RemarkAttribute remarkAttribute = (RemarkAttribute)field.GetCustomAttribute(typeof(RemarkAttribute));</span><br><span class="line">		return remarkAttribute.Remark;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			return enumValue.ToString();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//caller</span><br><span class="line">public void Main(string[] args)</span><br><span class="line">&#123;</span><br><span class="line">	UserState.Deleted.GetRemark();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 
       
     </div>
@@ -620,7 +458,7 @@ public void Main(string[] args)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -633,7 +471,7 @@ public void Main(string[] args)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

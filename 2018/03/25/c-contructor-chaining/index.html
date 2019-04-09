@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Consider this sample: class Student {     string _studengType = &amp;quot;&amp;quot;;     string _id = &amp;quot;&amp;quot;;     string _fName = &amp;quot;&amp;quot;;     string _lName = &amp;quot;&amp;quot;;      public Student(str">
+<meta name="description" content="Consider this sample: 1234567891011121314151617181920212223class Student &amp;#123;	string _studengType = &quot;&quot;;	string _id = &quot;&quot;;	string _fName = &quot;&quot;;	string _lName = &quot;&quot;;	public Student(string id) : this(id,">
 <meta name="keywords" content="c#,concept">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c# constructor chaining">
 <meta property="og:url" content="http://yoursite.com/2018/03/25/c-contructor-chaining/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="Consider this sample: class Student {     string _studengType = &amp;quot;&amp;quot;;     string _id = &amp;quot;&amp;quot;;     string _fName = &amp;quot;&amp;quot;;     string _lName = &amp;quot;&amp;quot;;      public Student(str">
+<meta property="og:description" content="Consider this sample: 1234567891011121314151617181920212223class Student &amp;#123;	string _studengType = &quot;&quot;;	string _id = &quot;&quot;;	string _fName = &quot;&quot;;	string _lName = &quot;&quot;;	public Student(string id) : this(id,">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c# constructor chaining">
-<meta name="twitter:description" content="Consider this sample: class Student {     string _studengType = &amp;quot;&amp;quot;;     string _id = &amp;quot;&amp;quot;;     string _fName = &amp;quot;&amp;quot;;     string _lName = &amp;quot;&amp;quot;;      public Student(str">
+<meta name="twitter:description" content="Consider this sample: 1234567891011121314151617181920212223class Student &amp;#123;	string _studengType = &quot;&quot;;	string _id = &quot;&quot;;	string _fName = &quot;&quot;;	string _lName = &quot;&quot;;	public Student(string id) : this(id,">
 
 
 
@@ -331,30 +331,8 @@
 
       
         <p>Consider this sample:</p>
-<pre><code>class Student {
-    string _studengType = &quot;&quot;;
-    string _id = &quot;&quot;;
-    string _fName = &quot;&quot;;
-    string _lName = &quot;&quot;;
-
-    public Student(string id) : this(id, &quot;&quot;, &quot;&quot;){
-
-    }
-
-    public Student(stirng id, string fName) : this(id, fName, &quot;&quot;){
-
-    }
-
-    public Student(string id, string fName, string lName){
-        //Validation logic...
-        _studentType = &quot;&lt;student_type&gt;&quot;;
-
-        _id = id;
-        _fName = fName;
-        _lName = lName;
-    }
-}
-</code></pre><p>通过this，调用第三个构造参数，可以复用id赋值的这个语句：<br><code>_id = id;</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span><br><span class="line">	<span class="keyword">string</span> _studengType = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">string</span> _id = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">string</span> _fName = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">string</span> _lName = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Student</span>(<span class="params"><span class="keyword">string</span> id</span>) : <span class="title">this</span>(<span class="params">id, <span class="string">""</span>, <span class="string">""</span></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Student</span>(<span class="params">stirng id, <span class="keyword">string</span> fName</span>) : <span class="title">this</span>(<span class="params">id, fName, <span class="string">""</span></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Student</span>(<span class="params"><span class="keyword">string</span> id, <span class="keyword">string</span> fName, <span class="keyword">string</span> lName</span>)</span>&#123;</span><br><span class="line">		<span class="comment">//Validation logic...</span></span><br><span class="line">		_studentType = <span class="string">"&lt;student_type&gt;"</span>;</span><br><span class="line"></span><br><span class="line">		_id = id;</span><br><span class="line">		_fName = fName;</span><br><span class="line">		_lName = lName;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>通过this，调用第三个构造参数，可以复用id赋值的这个语句：<br><code>_id = id;</code></p>
 <p>这样就不用每个构造函数都写这个逻辑，只需要用那个有最多参数构造函数即可</p>
 
       
@@ -466,7 +444,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -479,7 +457,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

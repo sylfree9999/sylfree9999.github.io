@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="泛型约束现在有类 public interface ISports     {         void Pingpang();     }      public interface IWork     {         void Work();     }       public class People     {         public int Id { get; set; }">
+<meta name="description" content="泛型约束现在有类123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869public interface ISports    &amp;#123;        void Pingpang();    &amp;">
 <meta name="keywords" content="concept,.NET">
 <meta property="og:type" content="article">
 <meta property="og:title" content=".net-generic">
 <meta property="og:url" content="http://yoursite.com/2018/06/05/net-generic/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="泛型约束现在有类 public interface ISports     {         void Pingpang();     }      public interface IWork     {         void Work();     }       public class People     {         public int Id { get; set; }">
+<meta property="og:description" content="泛型约束现在有类123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869public interface ISports    &amp;#123;        void Pingpang();    &amp;">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=".net-generic">
-<meta name="twitter:description" content="泛型约束现在有类 public interface ISports     {         void Pingpang();     }      public interface IWork     {         void Work();     }       public class People     {         public int Id { get; set; }">
+<meta name="twitter:description" content="泛型约束现在有类123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869public interface ISports    &amp;#123;        void Pingpang();    &amp;">
 
 
 
@@ -330,102 +330,15 @@
       
 
       
-        <h2 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h2><p>现在有类</p>
-<pre><code class="c#">public interface ISports
-    {
-        void Pingpang();
-    }
-
-    public interface IWork
-    {
-        void Work();
-    }
-
-
-    public class People
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-        public void Hi()
-        { }
-
-    }
-
-    public class Chinese : People, ISports, IWork
-    {
-        public void Tradition()
-        {
-            Console.WriteLine(&quot;仁义礼智信，温良恭俭让&quot;);
-        }
-        public void SayHi()
-        {
-            Console.WriteLine(&quot;吃了么？&quot;);
-        }
-
-        public void Pingpang()
-        {
-            Console.WriteLine(&quot;打乒乓球...&quot;);
-        }
-
-        public void Work()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class Hubei : Chinese
-    {
-
-        public Hubei(int id)
-        {
-        }
-        public string Changjiang { get; set; }
-        public void Majiang()
-        {
-            Console.WriteLine(&quot;打麻将啦。。&quot;);
-        }
-    }
-
-
-    public class Japanese : ISports
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-        public void Pingpang()
-        {
-            Console.WriteLine(&quot;打乒乓球...&quot;);
-        }
-        public void Hi()
-        { }
-    }
-</code></pre>
-<p>如果你现在有一个Generic Method:</p>
-<pre><code class="c#">public class GenericMethod&lt;T&gt;
-{
-    public static void Show&lt;T&gt;(T instance){
-
-        People pInstance = (People) instance;
-        Console.WriteLine(pInstance.Id); //不会报错，但是这样做一点意义就没有了
-
-        Console.WriteLine(instance.Id); //会报错，没有Id
-        Console.WriteLint(instance.Name); //会报错，没有Name
-
-
-    }
-}
-
-</code></pre>
+        <h2 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h2><p>现在有类<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">public interface ISports</span><br><span class="line">    &#123;</span><br><span class="line">        void Pingpang();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public interface IWork</span><br><span class="line">    &#123;</span><br><span class="line">        void Work();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public class People</span><br><span class="line">    &#123;</span><br><span class="line">        public int Id &#123; get; set; &#125;</span><br><span class="line">        public string Name &#123; get; set; &#125;</span><br><span class="line"></span><br><span class="line">        public void Hi()</span><br><span class="line">        &#123; &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public class Chinese : People, ISports, IWork</span><br><span class="line">    &#123;</span><br><span class="line">        public void Tradition()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;仁义礼智信，温良恭俭让&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        public void SayHi()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;吃了么？&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public void Pingpang()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;打乒乓球...&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public void Work()</span><br><span class="line">        &#123;</span><br><span class="line">            throw new NotImplementedException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public class Hubei : Chinese</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        public Hubei(int id)</span><br><span class="line">        &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        public string Changjiang &#123; get; set; &#125;</span><br><span class="line">        public void Majiang()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;打麻将啦。。&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public class Japanese : ISports</span><br><span class="line">    &#123;</span><br><span class="line">        public int Id &#123; get; set; &#125;</span><br><span class="line">        public string Name &#123; get; set; &#125;</span><br><span class="line"></span><br><span class="line">        public void Pingpang()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;打乒乓球...&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        public void Hi()</span><br><span class="line">        &#123; &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>如果你现在有一个Generic Method:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class GenericMethod&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">	public static void Show&lt;T&gt;(T instance)&#123;</span><br><span class="line">		</span><br><span class="line">		People pInstance = (People) instance;</span><br><span class="line">		Console.WriteLine(pInstance.Id); //不会报错，但是这样做一点意义就没有了</span><br><span class="line"></span><br><span class="line">		Console.WriteLine(instance.Id); //会报错，没有Id</span><br><span class="line">		Console.WriteLint(instance.Name); //会报错，没有Name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <h3 id="约束类型"><a href="#约束类型" class="headerlink" title="约束类型"></a>约束类型</h3><p>如果现在有一个<span style="color: red">基类约束</span></p>
 <ol>
 <li>基类约束，可以使用基类里面的属性和方法</li>
 <li>基类约束，要求类型参数必须是基类或者其子类，所以如果你调用GenericMethod.Show(japanese)就会报错，因为它不属于People类</li>
 <li>基类约束，如果where后面跟多个类型，这些类型属于and关系，必须同时满足才行</li>
 </ol>
-<p><strong>You can only put one class name and several interfaces to one ‘where’ constraint!</strong></p>
-<pre><code class="c#">where T1: Supplier, IConstractor, IComparable, new()
-</code></pre>
+<p><strong>You can only put one class name and several interfaces to one ‘where’ constraint!</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where T1: Supplier, IConstractor, IComparable, new()</span><br></pre></td></tr></table></figure></div></p>
 <table>
 <thead>
 <tr>
@@ -460,139 +373,35 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="c#">public staic void Show&lt;T&gt;(T instance)
-where T: People
-{
-    Console.WriteLine(instance.Id); //不会报错，因为告诉了T是属于什么类型
-    Console.WriteLine(instance.Name);
-}
-</code></pre>
-<p><span style="color: red">类型约束</span></p>
-<pre><code class="c#">public static T DoNothing&lt;T&gt;(T tParameter)
-//where T: ISpotrs //接口类型约束
-//where T: class // 引用类型约束
-//where T: struct // 值类型约束
-where T: new() //无参数构造函数约束
-{
-    //return default(T);//会根据T的类型，产生一个默认值，可以应用于值类型约束的返回
-
-    //return null; //引用类型约束
-
-    T t = new T();
-    return t; //无参数构造函数返回
-}
-
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public staic void Show&lt;T&gt;(T instance)</span><br><span class="line">where T: People</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(instance.Id); //不会报错，因为告诉了T是属于什么类型</span><br><span class="line">	Console.WriteLine(instance.Name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><span style="color: red">类型约束</span><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static T DoNothing&lt;T&gt;(T tParameter)</span><br><span class="line">//where T: ISpotrs //接口类型约束</span><br><span class="line">//where T: class // 引用类型约束</span><br><span class="line">//where T: struct // 值类型约束</span><br><span class="line">where T: new() //无参数构造函数约束</span><br><span class="line">&#123;</span><br><span class="line">	//return default(T);//会根据T的类型，产生一个默认值，可以应用于值类型约束的返回</span><br><span class="line"></span><br><span class="line">	//return null; //引用类型约束</span><br><span class="line"></span><br><span class="line">	T t = new T();</span><br><span class="line">	return t; //无参数构造函数返回</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <p>显示声明出来类型和用约束的区别</p>
 <ol>
 <li>用约束来写更加灵活，比方说其可以运用ISports或者new()的写法</li>
 <li>如果显式声明出来，就只能用People里面的方法</li>
 </ol>
-<pre><code class="c#">public static void Show&lt;T&gt;(T instance)
-    where T: People, ISports, new() // and关系
-{
-    Console.WriteLine(instance.Id);
-    Console.WriteLine(instance.Name);
-    instance.Hi();
-    instance.Pingpang();
-    T t  = new T();
-}
-</code></pre>
-<pre><code class="c#">public static void ShowPeople(People instance)
-{
-    Console.WriteLine(instance.Id);
-    Console.WriteLine(instance.Name);
-    instance.Hi();
-    instance.Pingpang();//报错
-}
-</code></pre>
-<p>无参数构造函数约束<br><span style="color: red">Hubei就不能使用，因为Hubei这个类里面没有定义无参构造函数</span></p>
-<pre><code class="c#">Hubei hb = new Hubei(1);
-GenericMethod.Show(hb);//报错
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void Show&lt;T&gt;(T instance)</span><br><span class="line">	where T: People, ISports, new() // and关系</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(instance.Id);</span><br><span class="line">	Console.WriteLine(instance.Name);</span><br><span class="line">	instance.Hi();</span><br><span class="line">	instance.Pingpang();</span><br><span class="line">	T t  = new T();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void ShowPeople(People instance)</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(instance.Id);</span><br><span class="line">	Console.WriteLine(instance.Name);</span><br><span class="line">	instance.Hi();</span><br><span class="line">	instance.Pingpang();//报错</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>无参数构造函数约束<br><span style="color: red">Hubei就不能使用，因为Hubei这个类里面没有定义无参构造函数</span><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hubei hb = new Hubei(1);</span><br><span class="line">GenericMethod.Show(hb);//报错</span><br></pre></td></tr></table></figure></div></p>
 <h3 id="Covariant协变与Contravariant逆变"><a href="#Covariant协变与Contravariant逆变" class="headerlink" title="Covariant协变与Contravariant逆变"></a>Covariant协变与Contravariant逆变</h3><p>out -&gt; Covariant<br>in  -&gt; Contravariant</p>
 <p><span style="color: red">只能放在接口或者委托的泛型参数前面</span>，类和方法是不能用的，这个跟之前定义函数的in, out是两个概念</p>
 <p>协变与逆变只对引用类型有效，因为值类型没有什么父子关系</p>
-<pre><code class="c#">public class Bird{
-    public int Id {get;set;}
-}
-public class Sparrow: Bird{
-    public string Name{get;set;}
-}
-</code></pre>
-<p>背景</p>
-<pre><code class="c#">Bird bird1 = new Bird();
-Bird bird2 = new Sparrow(); //左边是父类，右边是子类
-Sparrow sparrow1 = new Sparrow();
-//Sparrow sparrow2 = new Bird();//错，不是所有的鸟都是麻雀
-
-List&lt;Bird&gt; birdList1 = new List&lt;Bird&gt;();
-List&lt;Bird&gt; birdList2 = new List&lt;Sparrow&gt;(); //错！！！！！！！！！一群麻雀是一群鸟这个竟然是错的，因为List&lt;T&gt;是一个泛型概念，List&lt;Sparrow&gt;与List&lt;Bird&gt;并没有父子关系
-
-//只能像下面这样写，把每一个Sparrow转换成Bird才可以，有点不和谐了对不对
-List&lt;Bird&gt; birdList3 = new List&lt;Sparrow&gt;().Select(c=&gt;(Bird)c).ToList();
-
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Bird&#123;</span><br><span class="line">	public int Id &#123;get;set;&#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Sparrow: Bird&#123;</span><br><span class="line">	public string Name&#123;get;set;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>背景<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Bird bird1 = new Bird();</span><br><span class="line">Bird bird2 = new Sparrow(); //左边是父类，右边是子类</span><br><span class="line">Sparrow sparrow1 = new Sparrow();</span><br><span class="line">//Sparrow sparrow2 = new Bird();//错，不是所有的鸟都是麻雀</span><br><span class="line"></span><br><span class="line">List&lt;Bird&gt; birdList1 = new List&lt;Bird&gt;();</span><br><span class="line">List&lt;Bird&gt; birdList2 = new List&lt;Sparrow&gt;(); //错！！！！！！！！！一群麻雀是一群鸟这个竟然是错的，因为List&lt;T&gt;是一个泛型概念，List&lt;Sparrow&gt;与List&lt;Bird&gt;并没有父子关系</span><br><span class="line"></span><br><span class="line">//只能像下面这样写，把每一个Sparrow转换成Bird才可以，有点不和谐了对不对</span><br><span class="line">List&lt;Bird&gt; birdList3 = new List&lt;Sparrow&gt;().Select(c=&gt;(Bird)c).ToList();</span><br></pre></td></tr></table></figure></div></p>
 <p>协变</p>
 <p><strong>告诉编译器实例化的类型就是out T中T的子类</strong></p>
-<p>先看下IEnumerable的定义，这里面用了协变</p>
-<pre><code class="c#">public interface IEnumerable&lt;out T&gt;: IEnumerable
-{
-    ...
-}
-</code></pre>
-<pre><code class="c#">IEnumerable&lt;Bird&gt; birdList1 = new List&lt;Bird&gt;();
-IEnumerable&lt;Bird&gt; birdList2 = new List&lt;Sparrow&gt;(); //这个就没问题，协变的意思就是说告诉编译器，如果我实例化的类型是我out的子类，就没问题
-</code></pre>
-<p><strong>协变只能是返回结果</strong></p>
-<pre><code class="c#">public interface ICustomerListOut&lt;out T&gt;
-{
-    T Get();
-    //void Show(T t);//报错，如果用了协变，只能作为返回结果，不能作为参数类型
-}
-
-public class CustomerListOut&lt;T&gt;: ICustomerListOut&lt;T&gt;
-{
-    public T Get()
-    {
-        return default(T);
-    }
-}
-</code></pre>
+<p>先看下IEnumerable的定义，这里面用了协变<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public interface IEnumerable&lt;out T&gt;: IEnumerable</span><br><span class="line">&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IEnumerable&lt;Bird&gt; birdList1 = new List&lt;Bird&gt;();</span><br><span class="line">IEnumerable&lt;Bird&gt; birdList2 = new List&lt;Sparrow&gt;(); //这个就没问题，协变的意思就是说告诉编译器，如果我实例化的类型是我out的子类，就没问题</span><br></pre></td></tr></table></figure></div>
+<p><strong>协变只能是返回结果</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public interface ICustomerListOut&lt;out T&gt;</span><br><span class="line">&#123;</span><br><span class="line">	T Get();</span><br><span class="line">	//void Show(T t);//报错，如果用了协变，只能作为返回结果，不能作为参数类型</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class CustomerListOut&lt;T&gt;: ICustomerListOut&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">	public T Get()</span><br><span class="line">	&#123;</span><br><span class="line">		return default(T);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <p>逆变 Constravariant</p>
-<p><strong>只能修饰传入参数</strong></p>
-<pre><code class="c#">public interface ICustomerListIn&lt;in T&gt;
-{
-    //T Get(); //报错，只能坐参数，不能作返回值
-    void Show(T t);
-}
-
-public class CustomerListIn&lt;T&gt;: ICustomerListIn&lt;T&gt;
-{
-    public void Show(T t){
-
-    }
-}
-</code></pre>
+<p><strong>只能修饰传入参数</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public interface ICustomerListIn&lt;in T&gt;</span><br><span class="line">&#123;</span><br><span class="line">	//T Get(); //报错，只能坐参数，不能作返回值</span><br><span class="line">	void Show(T t);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class CustomerListIn&lt;T&gt;: ICustomerListIn&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">	public void Show(T t)&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <p>定义了逆变以后，我可以实现<span style="color: red">左边子类，右边父类的情况</span></p>
-<pre><code class="c#">ICustomerListIn&lt;Sparrow&gt; customerList1 = new CustomerListIn&lt;Sparrow&gt;();
-ICustomerListIn&lt;Sparrow&gt; customerList2 = new CustomerListIn&lt;Bird&gt;(); //右边可以是父类！！！！！
-
-//因为定义的时候已经定义了customerList2一定是Sparrow类型，在show的时候已经要求了必须传入Sparrow类型
-customerList2.Show(new Sparrow());//Show这里要求必须传入的是Sparrow类型
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ICustomerListIn&lt;Sparrow&gt; customerList1 = new CustomerListIn&lt;Sparrow&gt;();</span><br><span class="line">ICustomerListIn&lt;Sparrow&gt; customerList2 = new CustomerListIn&lt;Bird&gt;(); //右边可以是父类！！！！！</span><br><span class="line"></span><br><span class="line">//因为定义的时候已经定义了customerList2一定是Sparrow类型，在show的时候已经要求了必须传入Sparrow类型</span><br><span class="line">customerList2.Show(new Sparrow());//Show这里要求必须传入的是Sparrow类型</span><br></pre></td></tr></table></figure></div>
 <h3 id="泛型类中的静态字段"><a href="#泛型类中的静态字段" class="headerlink" title="泛型类中的静态字段"></a>泛型类中的静态字段</h3><p>泛型：jit编译的时候指定具体类型，同一个泛型类，不同的参数类型，其实会变成不同的类型</p>
 <p>静态字段/静态构造函数：一个类型只会初始化一次，就在第一次调用的时候初始化，之后就常驻内存</p>
 <p>那么！！！！<br><span style="color: red">泛型+静态会怎么样？</span></p>
 <p>泛型类的静态字段，<strong>是独立的</strong><br>它会根据不同类型，产生不同的类，只有在不同类型第一次声明的时候会初始化，但是相同类型第二次用的时候就不会初始化！</p>
-<pre><code class="c#">
-    Console.WriteLine(GenericCache&lt;int&gt;.GetCache());
-    Thread.Sleep(10);
-    Console.WriteLine(GenericCache&lt;long&gt;.GetCache());//第一次进long的时候，仍然会初始化
-    Thread.Sleep(10);
-    Console.WriteLine(GenericCache&lt;int&gt;.GetCache());//这个时候就不会在初始化了，因为int类型的已经初始化过了
-
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Console.WriteLine(GenericCache&lt;int&gt;.GetCache());</span><br><span class="line">Thread.Sleep(10);</span><br><span class="line">Console.WriteLine(GenericCache&lt;long&gt;.GetCache());//第一次进long的时候，仍然会初始化</span><br><span class="line">Thread.Sleep(10);</span><br><span class="line">Console.WriteLine(GenericCache&lt;int&gt;.GetCache());//这个时候就不会在初始化了，因为int类型的已经初始化过了</span><br></pre></td></tr></table></figure></div>
 <p>这里就牵扯到了泛型静态缓存<br><strong>泛型缓存的效率非常高</strong>，是直接在内存中缓存，CPU直接拿值<br>但是这个缓存没有办法清除，比字典寻址方法要快很多</p>
 
       
@@ -713,7 +522,7 @@ customerList2.Show(new Sparrow());//Show这里要求必须传入的是Sparrow类
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -726,7 +535,7 @@ customerList2.Show(new Sparrow());//Show这里要求必须传入的是Sparrow类
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

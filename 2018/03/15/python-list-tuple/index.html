@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Python 3 list与tuple都是有序列表 LIST是一种有序的集合，可以随时添加或删除元素 p = [&amp;#39;asp&amp;#39;, &amp;#39;php&amp;#39;]  s = [&amp;#39;python&amp;#39;, &amp;#39;java&amp;#39;, p, &amp;#39;angular&amp;#39;]  如果想要拿到php，可以写成s[2][1],因此s可以看作为二维数组 常用方法： &amp;gt;&amp;gt;&amp;g">
+<meta name="description" content="Python 3 list与tuple都是有序列表 LIST是一种有序的集合，可以随时添加或删除元素 123p = [&apos;asp&apos;, &apos;php&apos;] s = [&apos;python&apos;, &apos;java&apos;, p, &apos;angular&apos;] 如果想要拿到php，可以写成s[2][1],因此s可以看作为二维数组 常用方法：1234567&amp;gt;&amp;gt;&amp;gt; len(classmates) ***获取元素个数***&amp;g">
 <meta name="keywords" content="concept,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python List and Tuple, Dict and Set">
 <meta property="og:url" content="http://yoursite.com/2018/03/15/python-list-tuple/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="Python 3 list与tuple都是有序列表 LIST是一种有序的集合，可以随时添加或删除元素 p = [&amp;#39;asp&amp;#39;, &amp;#39;php&amp;#39;]  s = [&amp;#39;python&amp;#39;, &amp;#39;java&amp;#39;, p, &amp;#39;angular&amp;#39;]  如果想要拿到php，可以写成s[2][1],因此s可以看作为二维数组 常用方法： &amp;gt;&amp;gt;&amp;g">
+<meta property="og:description" content="Python 3 list与tuple都是有序列表 LIST是一种有序的集合，可以随时添加或删除元素 123p = [&apos;asp&apos;, &apos;php&apos;] s = [&apos;python&apos;, &apos;java&apos;, p, &apos;angular&apos;] 如果想要拿到php，可以写成s[2][1],因此s可以看作为二维数组 常用方法：1234567&amp;gt;&amp;gt;&amp;gt; len(classmates) ***获取元素个数***&amp;g">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python List and Tuple, Dict and Set">
-<meta name="twitter:description" content="Python 3 list与tuple都是有序列表 LIST是一种有序的集合，可以随时添加或删除元素 p = [&amp;#39;asp&amp;#39;, &amp;#39;php&amp;#39;]  s = [&amp;#39;python&amp;#39;, &amp;#39;java&amp;#39;, p, &amp;#39;angular&amp;#39;]  如果想要拿到php，可以写成s[2][1],因此s可以看作为二维数组 常用方法： &amp;gt;&amp;gt;&amp;g">
+<meta name="twitter:description" content="Python 3 list与tuple都是有序列表 LIST是一种有序的集合，可以随时添加或删除元素 123p = [&apos;asp&apos;, &apos;php&apos;] s = [&apos;python&apos;, &apos;java&apos;, p, &apos;angular&apos;] 如果想要拿到php，可以写成s[2][1],因此s可以看作为二维数组 常用方法：1234567&amp;gt;&amp;gt;&amp;gt; len(classmates) ***获取元素个数***&amp;g">
 
 
 
@@ -333,110 +333,29 @@
         <p><strong>Python 3</strong></p>
 <p><strong>list与tuple都是有序列表</strong></p>
 <h3 id="LIST"><a href="#LIST" class="headerlink" title="LIST"></a>LIST</h3><p>是一种有序的集合，可以随时添加或删除元素</p>
-<pre><code class="python">p = [&#39;asp&#39;, &#39;php&#39;]
-
-s = [&#39;python&#39;, &#39;java&#39;, p, &#39;angular&#39;]
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p = [<span class="string">'asp'</span>, <span class="string">'php'</span>]</span><br><span class="line"> </span><br><span class="line">s = [<span class="string">'python'</span>, <span class="string">'java'</span>, p, <span class="string">'angular'</span>]</span><br></pre></td></tr></table></figure></div>
 <p>如果想要拿到php，可以写成<code>s[2][1]</code>,因此s可以看作为二维数组</p>
-<p>常用方法：</p>
-<pre><code class="python">&gt;&gt;&gt; len(classmates) ***获取元素个数***
-&gt;&gt;&gt; s[-2] ***获取倒数第二个元素***
-&gt;&gt;&gt; s.append(&#39;vue&#39;) ***追加元素到末尾***
-&gt;&gt;&gt; s.insert(2,&#39;vue&#39;) ***把元素插入到索引号为2的位置，索引从0开始***
-&gt;&gt;&gt; s.pop() ***删除list末尾元素***
-&gt;&gt;&gt; s.pop(1) ***删除索引位置为i的元素***
-&gt;&gt;&gt; s[1] = &#39;vue&#39; ***把某个索引位置的元素替换成另一个元素***
-</code></pre>
-<h3 id="TUPLE"><a href="#TUPLE" class="headerlink" title="TUPLE"></a>TUPLE</h3><p><strong>tuple一旦初始化就不能修改，这里的不能修改指的是tuple中的每个元素的指向不变</strong></p>
-<pre><code class="python">classmates=(&#39;Jane&#39;, &#39;Anna&#39;, &#39;Ed&#39;)
-</code></pre>
+<p>常用方法：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(classmates) ***获取元素个数***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">-2</span>] ***获取倒数第二个元素***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.append(<span class="string">'vue'</span>) ***追加元素到末尾***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.insert(<span class="number">2</span>,<span class="string">'vue'</span>) ***把元素插入到索引号为<span class="number">2</span>的位置，索引从<span class="number">0</span>开始***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.pop() ***删除list末尾元素***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.pop(<span class="number">1</span>) ***删除索引位置为i的元素***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">1</span>] = <span class="string">'vue'</span> ***把某个索引位置的元素替换成另一个元素***</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="TUPLE"><a href="#TUPLE" class="headerlink" title="TUPLE"></a>TUPLE</h3><p><strong>tuple一旦初始化就不能修改，这里的不能修改指的是tuple中的每个元素的指向不变</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">classmates=(<span class="string">'Jane'</span>, <span class="string">'Anna'</span>, <span class="string">'Ed'</span>)</span><br></pre></td></tr></table></figure></div></p>
 <p>现在这个classmates就无法更改，没有append(),insert()可以调用</p>
-<p>但是有时候却能看见给tuple添加元素的操作：</p>
-<pre><code class="python">def two(**s):
-    print(&#39;s is &#39;, s)
-    t = ()
-    for i in s.values():
-        t += (i,) #这里tuple竟然可以添加元素
-    print(t)
-
-dic = dict(
-    d1=1,
-    d2=2,
-    d3=3
-)
-
-if __name__ == &#39;__main__&#39;:
-    two(**dic) #输出为tuple(1, 2, 3)
-</code></pre>
-<p><span style="color: red"><strong>当执行上面的操作的时，其实stucture is changed. 即你每新增一个新的，其实是一个新的Object.</strong></span><br>比如：</p>
-<pre><code class="python">&gt;&gt;&gt; tup = (1, 2, 3)
-&gt;&gt;&gt; id(tup)
-140153476307856
-&gt;&gt;&gt; tup += (4, 5)
-&gt;&gt;&gt; id(tup)
-140153479825840
-</code></pre>
-<p>而如果是list的话：</p>
-<pre><code class="python">&gt;&gt;&gt; lst = [1, 2, 3]
-&gt;&gt;&gt; id(lst)
-140153476247704
-&gt;&gt;&gt; lst += [4, 5]
-&gt;&gt;&gt; id(lst)
-140153476247704
-</code></pre>
+<p>但是有时候却能看见给tuple添加元素的操作：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">two</span><span class="params">(**s)</span>:</span></span><br><span class="line">    print(<span class="string">'s is '</span>, s)</span><br><span class="line">    t = ()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s.values():</span><br><span class="line">        t += (i,) <span class="comment">#这里tuple竟然可以添加元素</span></span><br><span class="line">    print(t)</span><br><span class="line"> </span><br><span class="line">dic = dict(</span><br><span class="line">    d1=<span class="number">1</span>,</span><br><span class="line">    d2=<span class="number">2</span>,</span><br><span class="line">    d3=<span class="number">3</span></span><br><span class="line">)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    two(**dic) <span class="comment">#输出为tuple(1, 2, 3)</span></span><br></pre></td></tr></table></figure></div></p>
+<p><span style="color: red"><strong>当执行上面的操作的时，其实stucture is changed. 即你每新增一个新的，其实是一个新的Object.</strong></span><br>比如：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(tup)</span><br><span class="line"><span class="number">140153476307856</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup += (<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(tup)</span><br><span class="line"><span class="number">140153479825840</span></span><br></pre></td></tr></table></figure></div></p>
+<p>而如果是list的话：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>lst = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(lst)</span><br><span class="line"><span class="number">140153476247704</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lst += [<span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(lst)</span><br><span class="line"><span class="number">140153476247704</span></span><br></pre></td></tr></table></figure></div></p>
 <p><a href="https://drillearningss.wordpress.com/2018/01/04/python-list-and-tuple/" target="_blank" rel="noopener">Ref link</a></p>
-<p>如果想要定义一个只有一个参数的tuple,<strong>不能写成</strong></p>
-<pre><code class="python">&gt;&gt;&gt; t = (1)
-
-&gt;&gt;&gt; t
-</code></pre>
-<p><strong>因为这个时候t是数字1，（）这个时候当作数学括号来解析</strong><br>需要写成</p>
-<pre><code class="python">&gt;&gt;&gt; t = (1, )
-
-&gt;&gt;&gt; t
-
-(1, )
-</code></pre>
+<p>如果想要定义一个只有一个参数的tuple,<strong>不能写成</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="number">1</span>)</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br></pre></td></tr></table></figure></div></p>
+<p><strong>因为这个时候t是数字1，（）这个时候当作数学括号来解析</strong><br>需要写成<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="number">1</span>, )</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line"> </span><br><span class="line">(<span class="number">1</span>, )</span><br></pre></td></tr></table></figure></div></p>
 <h3 id="DICT"><a href="#DICT" class="headerlink" title="DICT"></a>DICT</h3><p>使用键值对存储, 且dict的<strong>key是不可变对象</strong></p>
-<pre><code class="python">&gt;&gt;&gt; d = {&#39;Michael&#39;: 95, &#39;Bob&#39;: 75, &#39;Tracy&#39;: 85}
-&gt;&gt;&gt; d[&#39;Michael&#39;]
-95
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">'Michael'</span>]</span><br><span class="line"><span class="number">95</span></span><br></pre></td></tr></table></figure></div>
 <p>为避免key不存在报错：</p>
-<pre><code class="python">&gt;&gt;&gt; &#39;Thomas&#39; in d
-False
-
-&gt;&gt;&gt; d.get(&#39;Thomas&#39;) //返回None
-&gt;&gt;&gt; d.get(&#39;Thomas&#39;, -1)
-
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Thomas'</span> <span class="keyword">in</span> d</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'Thomas'</span>) //返回<span class="keyword">None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'Thomas'</span>, <span class="number">-1</span>)</span><br></pre></td></tr></table></figure></div>
 <p><span style="color: red">注意，dict的添加就是直接赋值就好了，例如<br><code>d[&#39;newkey&#39;]=&#39;newvalue&#39;</code></span></p>
 <h3 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h3><p>Set也是一组Key的集合，但不存储value，且Key也不能重复。</p>
-<pre><code class="python">&gt;&gt;&gt; s = set([1,2,3])
-&gt;&gt;&gt; s
-{1,2,3}
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure></div>
 <p><strong>注意传入的参数<code>[1,2,3]</code>是一个list，而显示的<code>{1,2,3}</code>只是告诉你这个set内部有1，2，3这3个元素，显示的顺序也不表示set是有序的</strong></p>
 <p>重复元素再set中会自动被过滤掉</p>
-<pre><code class="python">&gt;&gt;&gt; s = set([1,1,2,2,3,3,])
-&gt;&gt;&gt; s
-{1,2,3}
-&gt;&gt;&gt; s.add(4)
-&gt;&gt;&gt; s
-{1,2,3,4}
-&gt;&gt;&gt; s.remove(4)
-&gt;&gt;&gt; s
-{1,2,3}
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.add(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.remove(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure></div>
 <p><strong>SET可以看成无序且无重复元素的集合，因此两个set可以做数学意义上的交集、并集等操作</strong></p>
-<pre><code class="python">&gt;&gt;&gt; s1 = set([1,2,3])
-&gt;&gt;&gt; s2 = set([2,3,4])
-&gt;&gt;&gt; s1 &amp; s2
-{2,3}
-&gt;&gt;&gt; s1 | s2
-{1,2,3,4}
-</code></pre>
-
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 = set([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2 = set([<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 &amp; s2</span><br><span class="line">&#123;<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 | s2</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure></div>
       
     </div>
     
@@ -555,7 +474,7 @@ False
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -568,7 +487,7 @@ False
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Installcd /opt/  wget --no-cookies --no-check-certificate --header &amp;quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&amp;quot; &amp;quot;http://download.oracle.com">
+<meta name="description" content="Install1234567891011121314151617181920cd /opt/wget --no-cookies --no-check-certificate --header &amp;quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&amp;quot; &amp;qu">
 <meta name="keywords" content="linux,practice">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS Install Java8">
 <meta property="og:url" content="http://yoursite.com/2018/04/02/centos-install-java8/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="Installcd /opt/  wget --no-cookies --no-check-certificate --header &amp;quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&amp;quot; &amp;quot;http://download.oracle.com">
+<meta property="og:description" content="Install1234567891011121314151617181920cd /opt/wget --no-cookies --no-check-certificate --header &amp;quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&amp;quot; &amp;qu">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS Install Java8">
-<meta name="twitter:description" content="Installcd /opt/  wget --no-cookies --no-check-certificate --header &amp;quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&amp;quot; &amp;quot;http://download.oracle.com">
+<meta name="twitter:description" content="Install1234567891011121314151617181920cd /opt/wget --no-cookies --no-check-certificate --header &amp;quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&amp;quot; &amp;qu">
 
 
 
@@ -330,43 +330,10 @@
       
 
       
-        <h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><pre><code class="linux">cd /opt/
-
-wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.tar.gz&quot;
-
-tar xzf jdk-8u161-linux-x64.tar.gz
-
-cd /opt/jdk1.8.0_161/
-alternatives --install /usr/bin/java java /opt/jdk1.8.0_161/bin/java 2
-alternatives --config java
-
-There are 3 programs which provide &#39;java&#39;.
-
-  Selection    Command
------------------------------------------------
-*  1           /opt/jdk1.7.0_71/bin/java
- + 2           /opt/jdk1.8.0_45/bin/java
-   3           /opt/jdk1.8.0_144/bin/java
-   4           /opt/jdk1.8.0_161/bin/java
-
-Enter to keep the current selection[+], or type selection number: 4
-
-</code></pre>
-<h2 id="Setup-javac-and-jar-commands-path-using-alternatives"><a href="#Setup-javac-and-jar-commands-path-using-alternatives" class="headerlink" title="Setup javac and jar commands path using alternatives"></a>Setup javac and jar commands path using <code>alternatives</code></h2><pre><code class="linux">alternatives --install /usr/bin/jar jar /opt/jdk1.8.0_161/bin/jar 2
-alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_161/bin/javac 2
-alternatives --set jar /opt/jdk1.8.0_161/bin/jar
-alternatives --set javac /opt/jdk1.8.0_161/bin/javac
-</code></pre>
-<h2 id="Check-installed-java-version"><a href="#Check-installed-java-version" class="headerlink" title="Check installed java version"></a>Check installed java version</h2><pre><code class="linux">java -version
-java version &quot;1.8.0_161&quot;
-Java(TM) SE Runtime Environment (build 1.8.0_161-b12)
-Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)
-</code></pre>
-<h2 id="Setup-Java-Environment-Variables"><a href="#Setup-Java-Environment-Variables" class="headerlink" title="Setup Java Environment Variables"></a>Setup Java Environment Variables</h2><pre><code class="linux">export JAVA_HOME=/opt/jdk1.8.0_161
-export JRE_HOME=/opt/jdk1.8.0_161/jre
-export PATH=$PATH:/opt/jdk1.8.0_161/bin:/opt/jdk1.8.0_161/jre/bin
-</code></pre>
-
+        <h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/</span><br><span class="line"></span><br><span class="line">wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.tar.gz&quot;</span><br><span class="line"></span><br><span class="line">tar xzf jdk-8u161-linux-x64.tar.gz</span><br><span class="line"></span><br><span class="line">cd /opt/jdk1.8.0_161/</span><br><span class="line">alternatives --install /usr/bin/java java /opt/jdk1.8.0_161/bin/java 2</span><br><span class="line">alternatives --config java</span><br><span class="line"></span><br><span class="line">There are 3 programs which provide &apos;java&apos;.</span><br><span class="line"></span><br><span class="line">  Selection    Command</span><br><span class="line">-----------------------------------------------</span><br><span class="line">*  1           /opt/jdk1.7.0_71/bin/java</span><br><span class="line"> + 2           /opt/jdk1.8.0_45/bin/java</span><br><span class="line">   3           /opt/jdk1.8.0_144/bin/java</span><br><span class="line">   4           /opt/jdk1.8.0_161/bin/java</span><br><span class="line"></span><br><span class="line">Enter to keep the current selection[+], or type selection number: 4</span><br></pre></td></tr></table></figure></div>
+<h2 id="Setup-javac-and-jar-commands-path-using-alternatives"><a href="#Setup-javac-and-jar-commands-path-using-alternatives" class="headerlink" title="Setup javac and jar commands path using alternatives"></a>Setup javac and jar commands path using <code>alternatives</code></h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alternatives --install /usr/bin/jar jar /opt/jdk1.8.0_161/bin/jar 2</span><br><span class="line">alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_161/bin/javac 2</span><br><span class="line">alternatives --set jar /opt/jdk1.8.0_161/bin/jar</span><br><span class="line">alternatives --set javac /opt/jdk1.8.0_161/bin/javac</span><br></pre></td></tr></table></figure></div>
+<h2 id="Check-installed-java-version"><a href="#Check-installed-java-version" class="headerlink" title="Check installed java version"></a>Check installed java version</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line">java version &quot;1.8.0_161&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_161-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</span><br></pre></td></tr></table></figure></div>
+<h2 id="Setup-Java-Environment-Variables"><a href="#Setup-Java-Environment-Variables" class="headerlink" title="Setup Java Environment Variables"></a>Setup Java Environment Variables</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8.0_161</span><br><span class="line">export JRE_HOME=/opt/jdk1.8.0_161/jre</span><br><span class="line">export PATH=$PATH:/opt/jdk1.8.0_161/bin:/opt/jdk1.8.0_161/jre/bin</span><br></pre></td></tr></table></figure></div>
       
     </div>
     
@@ -485,7 +452,7 @@ export PATH=$PATH:/opt/jdk1.8.0_161/bin:/opt/jdk1.8.0_161/jre/bin
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -498,7 +465,7 @@ export PATH=$PATH:/opt/jdk1.8.0_161/bin:/opt/jdk1.8.0_161/jre/bin
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

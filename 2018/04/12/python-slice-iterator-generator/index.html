@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Slice切片取list/tuple/字符串中的部分元素即切片 list&amp;gt;&amp;gt;&amp;gt; L = [&amp;#39;Michael&amp;#39;, &amp;#39;Sarah&amp;#39;, &amp;#39;Tracy&amp;#39;, &amp;#39;Bob&amp;#39;, &amp;#39;Jack&amp;#39;] &amp;gt;&amp;gt;&amp;gt; L[0:3] //从索引0的位置开始取，直到索引3，但是不包含索引3，也可以写成L[:3] [&amp;#">
+<meta name="description" content="Slice切片取list/tuple/字符串中的部分元素即切片 list123456789&amp;gt;&amp;gt;&amp;gt; L = [&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;, &apos;Bob&apos;, &apos;Jack&apos;]&amp;gt;&amp;gt;&amp;gt; L[0:3] //从索引0的位置开始取，直到索引3，但是不包含索引3，也可以写成L[:3][&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;]&amp;gt;&amp;gt">
 <meta name="keywords" content="concept,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python slice iterator generator">
 <meta property="og:url" content="http://yoursite.com/2018/04/12/python-slice-iterator-generator/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="Slice切片取list/tuple/字符串中的部分元素即切片 list&amp;gt;&amp;gt;&amp;gt; L = [&amp;#39;Michael&amp;#39;, &amp;#39;Sarah&amp;#39;, &amp;#39;Tracy&amp;#39;, &amp;#39;Bob&amp;#39;, &amp;#39;Jack&amp;#39;] &amp;gt;&amp;gt;&amp;gt; L[0:3] //从索引0的位置开始取，直到索引3，但是不包含索引3，也可以写成L[:3] [&amp;#">
+<meta property="og:description" content="Slice切片取list/tuple/字符串中的部分元素即切片 list123456789&amp;gt;&amp;gt;&amp;gt; L = [&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;, &apos;Bob&apos;, &apos;Jack&apos;]&amp;gt;&amp;gt;&amp;gt; L[0:3] //从索引0的位置开始取，直到索引3，但是不包含索引3，也可以写成L[:3][&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;]&amp;gt;&amp;gt">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python slice iterator generator">
-<meta name="twitter:description" content="Slice切片取list/tuple/字符串中的部分元素即切片 list&amp;gt;&amp;gt;&amp;gt; L = [&amp;#39;Michael&amp;#39;, &amp;#39;Sarah&amp;#39;, &amp;#39;Tracy&amp;#39;, &amp;#39;Bob&amp;#39;, &amp;#39;Jack&amp;#39;] &amp;gt;&amp;gt;&amp;gt; L[0:3] //从索引0的位置开始取，直到索引3，但是不包含索引3，也可以写成L[:3] [&amp;#">
+<meta name="twitter:description" content="Slice切片取list/tuple/字符串中的部分元素即切片 list123456789&amp;gt;&amp;gt;&amp;gt; L = [&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;, &apos;Bob&apos;, &apos;Jack&apos;]&amp;gt;&amp;gt;&amp;gt; L[0:3] //从索引0的位置开始取，直到索引3，但是不包含索引3，也可以写成L[:3][&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;]&amp;gt;&amp;gt">
 
 
 
@@ -331,112 +331,31 @@
 
       
         <h2 id="Slice切片"><a href="#Slice切片" class="headerlink" title="Slice切片"></a>Slice切片</h2><p>取list/tuple/字符串中的部分元素即切片</p>
-<h4 id="list"><a href="#list" class="headerlink" title="list"></a>list</h4><pre><code class="python">&gt;&gt;&gt; L = [&#39;Michael&#39;, &#39;Sarah&#39;, &#39;Tracy&#39;, &#39;Bob&#39;, &#39;Jack&#39;]
-&gt;&gt;&gt; L[0:3] //从索引0的位置开始取，直到索引3，但是不包含索引3，也可以写成L[:3]
-[&#39;Michael&#39;, &#39;Sarah&#39;, &#39;Tracy&#39;]
-&gt;&gt;&gt; L[1:3]
-[&#39;Sarah&#39;, &#39;Tracy&#39;]
-&gt;&gt;&gt; L[-2:] //取倒数两个
-[&#39;Bob&#39;, &#39;Jack&#39;]
-&gt;&gt;&gt; L[-2:-1]
-[&#39;Bob&#39;]
-</code></pre>
-<h4 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h4><pre><code class="python">&gt;&gt;&gt; (0, 1, 2, 3, 4, 5)[:3]
-(0, 1, 2)
-</code></pre>
-<h4 id="string"><a href="#string" class="headerlink" title="string"></a>string</h4><pre><code class="python">&gt;&gt;&gt; &#39;ABCDEFG&#39;[:3]
-&#39;ABC&#39;
-&gt;&gt;&gt; &#39;ABCDEFG&#39;[::2]
-&#39;ACEG&#39;
-</code></pre>
+<h4 id="list"><a href="#list" class="headerlink" title="list"></a>list</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L = [<span class="string">'Michael'</span>, <span class="string">'Sarah'</span>, <span class="string">'Tracy'</span>, <span class="string">'Bob'</span>, <span class="string">'Jack'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">0</span>:<span class="number">3</span>] //从索引<span class="number">0</span>的位置开始取，直到索引<span class="number">3</span>，但是不包含索引<span class="number">3</span>，也可以写成L[:<span class="number">3</span>]</span><br><span class="line">[<span class="string">'Michael'</span>, <span class="string">'Sarah'</span>, <span class="string">'Tracy'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">[<span class="string">'Sarah'</span>, <span class="string">'Tracy'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">-2</span>:] //取倒数两个</span><br><span class="line">[<span class="string">'Bob'</span>, <span class="string">'Jack'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">-2</span>:<span class="number">-1</span>]</span><br><span class="line">[<span class="string">'Bob'</span>]</span><br></pre></td></tr></table></figure></div>
+<h4 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)[:<span class="number">3</span>]</span><br><span class="line">(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure></div>
+<h4 id="string"><a href="#string" class="headerlink" title="string"></a>string</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'ABCDEFG'</span>[:<span class="number">3</span>]</span><br><span class="line"><span class="string">'ABC'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'ABCDEFG'</span>[::<span class="number">2</span>]</span><br><span class="line"><span class="string">'ACEG'</span></span><br></pre></td></tr></table></figure></div>
 <h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>python中<code>for</code>循环可以作用在所有可以迭代的对象上面，与有没有下标无关</p>
-<pre><code class="python">&gt;&gt;&gt; d = {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}
-&gt;&gt;&gt; for key in d:
-...     print(key)
-...
-a
-c
-b
-
-&gt;&gt;&gt; for value in d.values() //默认情况下dict迭代是的key, 可以用value来迭代
-&gt;&gt;&gt; for k, v in d.items()
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="string">'a'</span>: <span class="number">1</span>, <span class="string">'b'</span>: <span class="number">2</span>, <span class="string">'c'</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> key <span class="keyword">in</span> d:</span><br><span class="line"><span class="meta">... </span>    print(key)</span><br><span class="line">...</span><br><span class="line">a</span><br><span class="line">c</span><br><span class="line">b</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> value <span class="keyword">in</span> d.values() //默认情况下dict迭代是的key, 可以用value来迭代</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()</span><br></pre></td></tr></table></figure></div>
 <p>如何判断是否是可迭代的对象：</p>
-<pre><code class="python">&gt;&gt;&gt; from collections import Iterable
-&gt;&gt;&gt; isinstance(&#39;abc&#39;, Iterable) # str是否可迭代
-True
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'abc'</span>, Iterable) <span class="comment"># str是否可迭代</span></span><br><span class="line"><span class="keyword">True</span></span><br></pre></td></tr></table></figure></div>
 <p>如果在<code>for</code>循环里面同时引用两个变量：</p>
-<pre><code class="python">&gt;&gt;&gt; for x, y in [(1, 1), (2, 4), (3, 9)]:
-...     print(x, y)
-...
-1 1
-2 4
-3 9
-</code></pre>
-<h2 id="List-Comprehensions-列表生成式"><a href="#List-Comprehensions-列表生成式" class="headerlink" title="List Comprehensions 列表生成式"></a>List Comprehensions 列表生成式</h2><pre><code class="python">&gt;&gt;&gt; [x * x for x in range(1, 11) if x % 2 == 0]
-[4, 16, 36, 64, 100]
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> x, y <span class="keyword">in</span> [(<span class="number">1</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">4</span>), (<span class="number">3</span>, <span class="number">9</span>)]:</span><br><span class="line"><span class="meta">... </span>    print(x, y)</span><br><span class="line">...</span><br><span class="line"><span class="number">1</span> <span class="number">1</span></span><br><span class="line"><span class="number">2</span> <span class="number">4</span></span><br><span class="line"><span class="number">3</span> <span class="number">9</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="List-Comprehensions-列表生成式"><a href="#List-Comprehensions-列表生成式" class="headerlink" title="List Comprehensions 列表生成式"></a>List Comprehensions 列表生成式</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>[x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>) <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>]</span><br><span class="line">[<span class="number">4</span>, <span class="number">16</span>, <span class="number">36</span>, <span class="number">64</span>, <span class="number">100</span>]</span><br></pre></td></tr></table></figure></div>
 <p>也可以使用两层循环</p>
-<pre><code class="python">&gt;&gt;&gt; [m + n for m in &#39;ABC&#39; for n in &#39;XYZ&#39;]
-[&#39;AX&#39;, &#39;AY&#39;, &#39;AZ&#39;, &#39;BX&#39;, &#39;BY&#39;, &#39;BZ&#39;, &#39;CX&#39;, &#39;CY&#39;, &#39;CZ&#39;]
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>[m + n <span class="keyword">for</span> m <span class="keyword">in</span> <span class="string">'ABC'</span> <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">'XYZ'</span>]</span><br><span class="line">[<span class="string">'AX'</span>, <span class="string">'AY'</span>, <span class="string">'AZ'</span>, <span class="string">'BX'</span>, <span class="string">'BY'</span>, <span class="string">'BZ'</span>, <span class="string">'CX'</span>, <span class="string">'CY'</span>, <span class="string">'CZ'</span>]</span><br></pre></td></tr></table></figure></div>
 <h2 id="Generator-生成器"><a href="#Generator-生成器" class="headerlink" title="Generator 生成器"></a>Generator 生成器</h2><p>不是一次性生成所有的list,而是一边循环一边计算，从而节省大量的空间</p>
 <ul>
 <li>生成器就是把列表生成式从[]to()</li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt; L = [x * x for x in range(10)]
-&gt;&gt;&gt; L
-[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
-&gt;&gt;&gt; g = (x * x for x in range(10))
-&gt;&gt;&gt; g
-&lt;generator object &lt;genexpr&gt; at 0x1022ef630&gt;
-&gt;&gt;&gt; next(g) //不常用
-0
-&gt;&gt;&gt; g = (x * x for x in range(10)) 
-&gt;&gt;&gt; for n in g: //一般是用这样的形式来拿取生成器里面的值
-...     print(n)
-... 
-0
-1
-4
-9
-16
-25
-36
-49
-64
-81
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L = [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>, <span class="number">36</span>, <span class="number">49</span>, <span class="number">64</span>, <span class="number">81</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>g</span><br><span class="line">&lt;generator object &lt;genexpr&gt; at <span class="number">0x1022ef630</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>next(g) //不常用</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> n <span class="keyword">in</span> g: //一般是用这样的形式来拿取生成器里面的值</span><br><span class="line"><span class="meta">... </span>    print(n)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line"><span class="number">25</span></span><br><span class="line"><span class="number">36</span></span><br><span class="line"><span class="number">49</span></span><br><span class="line"><span class="number">64</span></span><br><span class="line"><span class="number">81</span></span><br></pre></td></tr></table></figure></div>
 <ul>
 <li>也可以是用<code>yield</code>来生成</li>
 </ul>
-<pre><code class="python">def fib(max):
-    n, a, b = 0, 0, 1
-    while n &lt; max:
-        yield b //如果是print b则不是生成器了
-        a, b = b, a + b
-        n = n + 1
-    return &#39;done&#39;
-</code></pre>
-<pre><code class="python">&gt;&gt;&gt; for n in fib(6):
-...     print(n)
-...
-1
-1
-2
-3
-5
-8
-
-</code></pre>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(max)</span>:</span></span><br><span class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> n &lt; max:</span><br><span class="line">        <span class="keyword">yield</span> b //如果是<span class="keyword">print</span> b则不是生成器了</span><br><span class="line">        a, b = b, a + b</span><br><span class="line">        n = n + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'done'</span></span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> n <span class="keyword">in</span> fib(<span class="number">6</span>):</span><br><span class="line"><span class="meta">... </span>    print(n)</span><br><span class="line">...</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">8</span></span><br></pre></td></tr></table></figure></div>
 <h2 id="Iterator-迭代器"><a href="#Iterator-迭代器" class="headerlink" title="Iterator 迭代器"></a>Iterator 迭代器</h2><p><code>for</code> 除了可以作用于集合类型如： <code>list    tuple    dict    set    str</code><br>还可作用于<code>generator</code></p>
 <p>这些可以直接作用于<code>for</code>循环的对象称为可迭代对象 <code>Iterable</code></p>
-<pre><code class="python">&gt;&gt;&gt; from collections import Iterable
-&gt;&gt;&gt; isinstance([], Iterable)
-True
-</code></pre>
-
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance([], Iterable)</span><br><span class="line"><span class="keyword">True</span></span><br></pre></td></tr></table></figure></div>
       
     </div>
     
@@ -555,7 +474,7 @@ True
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -568,7 +487,7 @@ True
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
