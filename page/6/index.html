@@ -260,6 +260,131 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/flask-concepts/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/17/flask-concepts/" itemprop="url">Flask 一些概念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T15:32:39+08:00">
+                2018-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="URL重定向行文"><a href="#URL重定向行文" class="headerlink" title="URL重定向行文"></a>URL重定向行文</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route('/projects/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">projects</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'The project page'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/about')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">about</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'The about page'</span></span><br></pre></td></tr></table></figure></div>
+<p>注意<a href="mailto:`@app.route" target="_blank" rel="noopener">`@app.route</a>(‘/projects/‘)<code>最末尾的</code>/`，看起来如同一个文件夹。<br><strong>访问一个没有斜杠结尾的URL时，Flask会自动进行重定向，帮你在尾部加上一个斜杠</strong></p>
+<p>但是<a href="mailto:`@app.route" target="_blank" rel="noopener">`@app.route</a>(‘/about’)<code>尾部没有斜杠，如果你在浏览器里面输入了</code>localhost:2000/about/`， 会出现<span style="color: red">404错误</span>    </p>
+<h2 id="url-for（）用于生成制定函数的url"><a href="#url-for（）用于生成制定函数的url" class="headerlink" title="url_for（）用于生成制定函数的url"></a>url_for（）用于生成制定函数的url</h2><p>url_for()会为你处理特殊字符的转义以及Unicode数据</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, url_for</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>app = Flask(__name__)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>@app.route(<span class="string">'/'</span>)</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>@app.route(<span class="string">'/login'</span>)</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>@app.route(<span class="string">'/user/&lt;username&gt;'</span>)</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">profile</span><span class="params">(username)</span>:</span> <span class="keyword">pass</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">with</span> app.test_request_context():</span><br><span class="line"><span class="meta">... </span> <span class="keyword">print</span> url_for(<span class="string">'index'</span>)</span><br><span class="line"><span class="meta">... </span> <span class="keyword">print</span> url_for(<span class="string">'login'</span>)</span><br><span class="line"><span class="meta">... </span> <span class="keyword">print</span> url_for(<span class="string">'login'</span>, next=<span class="string">'/'</span>)</span><br><span class="line"><span class="meta">... </span> <span class="keyword">print</span> url_for(<span class="string">'profile'</span>, username=<span class="string">'John Doe'</span>)</span><br><span class="line">...</span><br><span class="line">/</span><br><span class="line">/login</span><br><span class="line">/login?next=/</span><br><span class="line">/user/John%<span class="number">20</span>Doe</span><br></pre></td></tr></table></figure></div>
+<h2 id="flask-blueprint"><a href="#flask-blueprint" class="headerlink" title="flask blueprint"></a>flask blueprint</h2><p>flask blueprint用于模块化代码， 如果没有蓝图，那么一个blog系统（分前端和后端）</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template, reque</span><br></pre></td></tr></table></figure></div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/linux-concepts/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1516,145 +1641,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/28/linux-process-to-backend/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/28/linux-process-to-backend/" itemprop="url">linux-process-to-backend</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-28T19:18:47+08:00">
-                2018-03-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/" target="_blank" rel="noopener">Ref: Linux 技巧：让进程在后台可靠运行的几种方法</a></p>
-<p>如果SSH登陆了远程Linux服务器，经常为Connection Timeout, 这样会自动kill掉正在运行的任务。<br>如何让命令提交后不受本地关闭终端窗口/网络断开连接的干扰？</p>
-<h2 id="nohup-setsid-amp"><a href="#nohup-setsid-amp" class="headerlink" title="nohup/setsid/&amp;"></a>nohup/setsid/&amp;</h2><p>当用户注销logout或者网络断开时终端会收到<code>HUP</code>(hangup) 信号从而关闭所有子进程。<br>因此为解决这个问题：<br>要么让进程忽略HUP信号<br>要么让进程运行在新的会话里从而成为不属于此终端的子进程</p>
-<ol>
-<li>nohup， 让进程忽略HUP信号</li>
-</ol>
-<p>nohup，标准输出和标准错误缺省会被重定向到nohup.out文件中。<br>一般我们可在结尾加上<code>&amp;</code>来将命令同时放入后台运行</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@pvcent107 ~]# nohup<span class="built_in"> ping </span>www.ibm.com &amp;</span><br><span class="line">[1] 3059</span><br><span class="line">nohup: appending output <span class="keyword">to</span> `nohup.out'</span><br><span class="line">[root@pvcent107 ~]# ps -ef |grep 3059</span><br><span class="line">root      3059   984  0 21:06 pts/3    00:00:00<span class="built_in"> ping </span>www.ibm.com</span><br><span class="line">root      3067   984  0 21:06 pts/3    00:00:00 grep 3059</span><br><span class="line">[root@pvcent107 ~]#</span><br></pre></td></tr></table></figure></div>
-<ol>
-<li>setsid</li>
-</ol>
-<p>如果进程不属于接受HUP信号的终端的子进程，就要用setsid.</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@pvcent107 ~]# setsid<span class="built_in"> ping </span>www.ibm.com</span><br><span class="line">[root@pvcent107 ~]# ps -ef |grep www.ibm.com</span><br><span class="line">root     31094     1  0 07:28 ?        00:00:00<span class="built_in"> ping </span>www.ibm.com</span><br><span class="line">root     31102 29217  0 07:29 pts/4    00:00:00 grep www.ibm.com</span><br><span class="line">[root@pvcent107 ~]#</span><br></pre></td></tr></table></figure></div>
-<p>注意的是我们的进程31094其父进程为1（<code>即为init进程ID</code>），<strong>并不是当前终端的进程ID</strong></p>
-<ol>
-<li>&amp;</li>
-</ol>
-<p>将<code>&amp;</code>也放入<code>()</code>,所提交的作业不会出现在作业列表中，就是无法通过jobs来查看。<br>subshell示例:</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LESS"><figure class="iseeu highlight /less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[root@pvcent107 ~]</span># (ping www.ibm.com &amp;)</span><br><span class="line"><span class="selector-attr">[root@pvcent107 ~]</span># <span class="selector-tag">ps</span> <span class="selector-tag">-ef</span> |<span class="selector-tag">grep</span> <span class="selector-tag">www</span><span class="selector-class">.ibm</span><span class="selector-class">.com</span></span><br><span class="line"><span class="selector-tag">root</span>     <span class="selector-tag">16270</span>     <span class="selector-tag">1</span>  <span class="selector-tag">0</span> <span class="selector-tag">14</span><span class="selector-pseudo">:13</span> <span class="selector-tag">pts</span>/<span class="selector-tag">4</span>    <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">ping</span> <span class="selector-tag">www</span><span class="selector-class">.ibm</span><span class="selector-class">.com</span></span><br><span class="line"><span class="selector-tag">root</span>     <span class="selector-tag">16278</span> <span class="selector-tag">15362</span>  <span class="selector-tag">0</span> <span class="selector-tag">14</span><span class="selector-pseudo">:13</span> <span class="selector-tag">pts</span>/<span class="selector-tag">4</span>    <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">grep</span> <span class="selector-tag">www</span><span class="selector-class">.ibm</span><span class="selector-class">.com</span></span><br><span class="line"><span class="selector-attr">[root@pvcent107 ~]</span>#</span><br></pre></td></tr></table></figure></div>
-<p>新提交的进程父ID为1（init进程ID）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1703,7 +1689,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1716,7 +1702,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

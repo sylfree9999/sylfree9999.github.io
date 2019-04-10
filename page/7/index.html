@@ -260,6 +260,145 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/28/linux-process-to-backend/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/28/linux-process-to-backend/" itemprop="url">linux-process-to-backend</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-28T19:18:47+08:00">
+                2018-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/" target="_blank" rel="noopener">Ref: Linux 技巧：让进程在后台可靠运行的几种方法</a></p>
+<p>如果SSH登陆了远程Linux服务器，经常为Connection Timeout, 这样会自动kill掉正在运行的任务。<br>如何让命令提交后不受本地关闭终端窗口/网络断开连接的干扰？</p>
+<h2 id="nohup-setsid-amp"><a href="#nohup-setsid-amp" class="headerlink" title="nohup/setsid/&amp;"></a>nohup/setsid/&amp;</h2><p>当用户注销logout或者网络断开时终端会收到<code>HUP</code>(hangup) 信号从而关闭所有子进程。<br>因此为解决这个问题：<br>要么让进程忽略HUP信号<br>要么让进程运行在新的会话里从而成为不属于此终端的子进程</p>
+<ol>
+<li>nohup， 让进程忽略HUP信号</li>
+</ol>
+<p>nohup，标准输出和标准错误缺省会被重定向到nohup.out文件中。<br>一般我们可在结尾加上<code>&amp;</code>来将命令同时放入后台运行</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@pvcent107 ~]# nohup<span class="built_in"> ping </span>www.ibm.com &amp;</span><br><span class="line">[1] 3059</span><br><span class="line">nohup: appending output <span class="keyword">to</span> `nohup.out'</span><br><span class="line">[root@pvcent107 ~]# ps -ef |grep 3059</span><br><span class="line">root      3059   984  0 21:06 pts/3    00:00:00<span class="built_in"> ping </span>www.ibm.com</span><br><span class="line">root      3067   984  0 21:06 pts/3    00:00:00 grep 3059</span><br><span class="line">[root@pvcent107 ~]#</span><br></pre></td></tr></table></figure></div>
+<ol>
+<li>setsid</li>
+</ol>
+<p>如果进程不属于接受HUP信号的终端的子进程，就要用setsid.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@pvcent107 ~]# setsid<span class="built_in"> ping </span>www.ibm.com</span><br><span class="line">[root@pvcent107 ~]# ps -ef |grep www.ibm.com</span><br><span class="line">root     31094     1  0 07:28 ?        00:00:00<span class="built_in"> ping </span>www.ibm.com</span><br><span class="line">root     31102 29217  0 07:29 pts/4    00:00:00 grep www.ibm.com</span><br><span class="line">[root@pvcent107 ~]#</span><br></pre></td></tr></table></figure></div>
+<p>注意的是我们的进程31094其父进程为1（<code>即为init进程ID</code>），<strong>并不是当前终端的进程ID</strong></p>
+<ol>
+<li>&amp;</li>
+</ol>
+<p>将<code>&amp;</code>也放入<code>()</code>,所提交的作业不会出现在作业列表中，就是无法通过jobs来查看。<br>subshell示例:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LESS"><figure class="iseeu highlight /less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[root@pvcent107 ~]</span># (ping www.ibm.com &amp;)</span><br><span class="line"><span class="selector-attr">[root@pvcent107 ~]</span># <span class="selector-tag">ps</span> <span class="selector-tag">-ef</span> |<span class="selector-tag">grep</span> <span class="selector-tag">www</span><span class="selector-class">.ibm</span><span class="selector-class">.com</span></span><br><span class="line"><span class="selector-tag">root</span>     <span class="selector-tag">16270</span>     <span class="selector-tag">1</span>  <span class="selector-tag">0</span> <span class="selector-tag">14</span><span class="selector-pseudo">:13</span> <span class="selector-tag">pts</span>/<span class="selector-tag">4</span>    <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">ping</span> <span class="selector-tag">www</span><span class="selector-class">.ibm</span><span class="selector-class">.com</span></span><br><span class="line"><span class="selector-tag">root</span>     <span class="selector-tag">16278</span> <span class="selector-tag">15362</span>  <span class="selector-tag">0</span> <span class="selector-tag">14</span><span class="selector-pseudo">:13</span> <span class="selector-tag">pts</span>/<span class="selector-tag">4</span>    <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">grep</span> <span class="selector-tag">www</span><span class="selector-class">.ibm</span><span class="selector-class">.com</span></span><br><span class="line"><span class="selector-attr">[root@pvcent107 ~]</span>#</span><br></pre></td></tr></table></figure></div>
+<p>新提交的进程父ID为1（init进程ID）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/26/SSIS-CanNotImportPackage/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1527,150 +1666,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/python-list-tuple/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/15/python-list-tuple/" itemprop="url">Python List and Tuple, Dict and Set</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-15T11:20:11+08:00">
-                2018-03-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>Python 3</strong></p>
-<p><strong>list与tuple都是有序列表</strong></p>
-<h3 id="LIST"><a href="#LIST" class="headerlink" title="LIST"></a>LIST</h3><p>是一种有序的集合，可以随时添加或删除元素</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p = [<span class="string">'asp'</span>, <span class="string">'php'</span>]</span><br><span class="line"> </span><br><span class="line">s = [<span class="string">'python'</span>, <span class="string">'java'</span>, p, <span class="string">'angular'</span>]</span><br></pre></td></tr></table></figure></div>
-<p>如果想要拿到php，可以写成<code>s[2][1]</code>,因此s可以看作为二维数组</p>
-<p>常用方法：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(classmates) ***获取元素个数***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">-2</span>] ***获取倒数第二个元素***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.append(<span class="string">'vue'</span>) ***追加元素到末尾***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.insert(<span class="number">2</span>,<span class="string">'vue'</span>) ***把元素插入到索引号为<span class="number">2</span>的位置，索引从<span class="number">0</span>开始***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.pop() ***删除list末尾元素***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.pop(<span class="number">1</span>) ***删除索引位置为i的元素***</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">1</span>] = <span class="string">'vue'</span> ***把某个索引位置的元素替换成另一个元素***</span><br></pre></td></tr></table></figure></div></p>
-<h3 id="TUPLE"><a href="#TUPLE" class="headerlink" title="TUPLE"></a>TUPLE</h3><p><strong>tuple一旦初始化就不能修改，这里的不能修改指的是tuple中的每个元素的指向不变</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">classmates=(<span class="string">'Jane'</span>, <span class="string">'Anna'</span>, <span class="string">'Ed'</span>)</span><br></pre></td></tr></table></figure></div></p>
-<p>现在这个classmates就无法更改，没有append(),insert()可以调用</p>
-<p>但是有时候却能看见给tuple添加元素的操作：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">two</span><span class="params">(**s)</span>:</span></span><br><span class="line">    print(<span class="string">'s is '</span>, s)</span><br><span class="line">    t = ()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s.values():</span><br><span class="line">        t += (i,) <span class="comment">#这里tuple竟然可以添加元素</span></span><br><span class="line">    print(t)</span><br><span class="line"> </span><br><span class="line">dic = dict(</span><br><span class="line">    d1=<span class="number">1</span>,</span><br><span class="line">    d2=<span class="number">2</span>,</span><br><span class="line">    d3=<span class="number">3</span></span><br><span class="line">)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    two(**dic) <span class="comment">#输出为tuple(1, 2, 3)</span></span><br></pre></td></tr></table></figure></div></p>
-<p><span style="color: red"><strong>当执行上面的操作的时，其实stucture is changed. 即你每新增一个新的，其实是一个新的Object.</strong></span><br>比如：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(tup)</span><br><span class="line"><span class="number">140153476307856</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup += (<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(tup)</span><br><span class="line"><span class="number">140153479825840</span></span><br></pre></td></tr></table></figure></div></p>
-<p>而如果是list的话：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>lst = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(lst)</span><br><span class="line"><span class="number">140153476247704</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lst += [<span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(lst)</span><br><span class="line"><span class="number">140153476247704</span></span><br></pre></td></tr></table></figure></div></p>
-<p><a href="https://drillearningss.wordpress.com/2018/01/04/python-list-and-tuple/" target="_blank" rel="noopener">Ref link</a></p>
-<p>如果想要定义一个只有一个参数的tuple,<strong>不能写成</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="number">1</span>)</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br></pre></td></tr></table></figure></div></p>
-<p><strong>因为这个时候t是数字1，（）这个时候当作数学括号来解析</strong><br>需要写成<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="number">1</span>, )</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line"> </span><br><span class="line">(<span class="number">1</span>, )</span><br></pre></td></tr></table></figure></div></p>
-<h3 id="DICT"><a href="#DICT" class="headerlink" title="DICT"></a>DICT</h3><p>使用键值对存储, 且dict的<strong>key是不可变对象</strong></p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">'Michael'</span>]</span><br><span class="line"><span class="number">95</span></span><br></pre></td></tr></table></figure></div>
-<p>为避免key不存在报错：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Thomas'</span> <span class="keyword">in</span> d</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'Thomas'</span>) //返回<span class="keyword">None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'Thomas'</span>, <span class="number">-1</span>)</span><br></pre></td></tr></table></figure></div>
-<p><span style="color: red">注意，dict的添加就是直接赋值就好了，例如<br><code>d[&#39;newkey&#39;]=&#39;newvalue&#39;</code></span></p>
-<h3 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h3><p>Set也是一组Key的集合，但不存储value，且Key也不能重复。</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure></div>
-<p><strong>注意传入的参数<code>[1,2,3]</code>是一个list，而显示的<code>{1,2,3}</code>只是告诉你这个set内部有1，2，3这3个元素，显示的顺序也不表示set是有序的</strong></p>
-<p>重复元素再set中会自动被过滤掉</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.add(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.remove(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure></div>
-<p><strong>SET可以看成无序且无重复元素的集合，因此两个set可以做数学意义上的交集、并集等操作</strong></p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 = set([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2 = set([<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 &amp; s2</span><br><span class="line">&#123;<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 | s2</span><br><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure></div>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1719,7 +1714,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1732,7 +1727,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

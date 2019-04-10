@@ -260,6 +260,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/22/session-cookie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/22/session-cookie/" itemprop="url">Session Cookie</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-22T16:12:41+08:00">
+                2018-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Session 和 Cookie的出现都是为了保存状态， 因为浏览器是无状态的</p>
+<h2 id="Cookie-是保存在客户端的，如果服务器的response里面有set-cookie-则客户端的服务器就会存这个值"><a href="#Cookie-是保存在客户端的，如果服务器的response里面有set-cookie-则客户端的服务器就会存这个值" class="headerlink" title="Cookie 是保存在客户端的，如果服务器的response里面有set_cookie,则客户端的服务器就会存这个值"></a>Cookie 是保存在客户端的，如果服务器的response里面有set_cookie,则客户端的服务器就会存这个值</h2><h2 id="Cookie里面不能直接存敏感的值，所以有了Session-服务器维护Session和Cookie的Mapping关系，但是"><a href="#Cookie里面不能直接存敏感的值，所以有了Session-服务器维护Session和Cookie的Mapping关系，但是" class="headerlink" title="Cookie里面不能直接存敏感的值，所以有了Session, 服务器维护Session和Cookie的Mapping关系，但是"></a>Cookie里面不能直接存敏感的值，所以有了Session, 服务器维护Session和Cookie的Mapping关系，但是</h2><p><span style="color:red">Session也是可以存在客户端的</span></p>
+<p>比方说<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@main.route("/login", methods=['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">    form = request.form</span><br><span class="line">    u = User.validate_login(form)</span><br><span class="line">    <span class="keyword">if</span> u <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">'.index'</span>))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># session 中写入 user_id</span></span><br><span class="line">        session[<span class="string">'user_id'</span>] = u.id</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">'.profile'</span>))</span><br></pre></td></tr></table></figure></div></p>
+<img src="/2018/05/22/session-cookie/20180522162224.png">
+<p>不过比较好的方法是放在服务器中防止客户端丢失数据，比方说存储在服务的mongodb</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/22/linux-server-chinese-encoding/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1498,131 +1622,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/flask-concepts/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/17/flask-concepts/" itemprop="url">Flask 一些概念</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T15:32:39+08:00">
-                2018-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="URL重定向行文"><a href="#URL重定向行文" class="headerlink" title="URL重定向行文"></a>URL重定向行文</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route('/projects/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">projects</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'The project page'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/about')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">about</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'The about page'</span></span><br></pre></td></tr></table></figure></div>
-<p>注意<a href="mailto:`@app.route" target="_blank" rel="noopener">`@app.route</a>(‘/projects/‘)<code>最末尾的</code>/`，看起来如同一个文件夹。<br><strong>访问一个没有斜杠结尾的URL时，Flask会自动进行重定向，帮你在尾部加上一个斜杠</strong></p>
-<p>但是<a href="mailto:`@app.route" target="_blank" rel="noopener">`@app.route</a>(‘/about’)<code>尾部没有斜杠，如果你在浏览器里面输入了</code>localhost:2000/about/`， 会出现<span style="color: red">404错误</span>    </p>
-<h2 id="url-for（）用于生成制定函数的url"><a href="#url-for（）用于生成制定函数的url" class="headerlink" title="url_for（）用于生成制定函数的url"></a>url_for（）用于生成制定函数的url</h2><p>url_for()会为你处理特殊字符的转义以及Unicode数据</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, url_for</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>app = Flask(__name__)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>@app.route(<span class="string">'/'</span>)</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>@app.route(<span class="string">'/login'</span>)</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>@app.route(<span class="string">'/user/&lt;username&gt;'</span>)</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">profile</span><span class="params">(username)</span>:</span> <span class="keyword">pass</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">with</span> app.test_request_context():</span><br><span class="line"><span class="meta">... </span> <span class="keyword">print</span> url_for(<span class="string">'index'</span>)</span><br><span class="line"><span class="meta">... </span> <span class="keyword">print</span> url_for(<span class="string">'login'</span>)</span><br><span class="line"><span class="meta">... </span> <span class="keyword">print</span> url_for(<span class="string">'login'</span>, next=<span class="string">'/'</span>)</span><br><span class="line"><span class="meta">... </span> <span class="keyword">print</span> url_for(<span class="string">'profile'</span>, username=<span class="string">'John Doe'</span>)</span><br><span class="line">...</span><br><span class="line">/</span><br><span class="line">/login</span><br><span class="line">/login?next=/</span><br><span class="line">/user/John%<span class="number">20</span>Doe</span><br></pre></td></tr></table></figure></div>
-<h2 id="flask-blueprint"><a href="#flask-blueprint" class="headerlink" title="flask blueprint"></a>flask blueprint</h2><p>flask blueprint用于模块化代码， 如果没有蓝图，那么一个blog系统（分前端和后端）</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template, reque</span><br></pre></td></tr></table></figure></div>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1671,7 +1670,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1684,7 +1683,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
