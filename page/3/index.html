@@ -260,6 +260,135 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/26/auto-deploy-scripts/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/26/auto-deploy-scripts/" itemprop="url">auto-deploy-scripts</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-26T14:16:09+08:00">
+                2018-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="自己建yum源【centos系统】"><a href="#自己建yum源【centos系统】" class="headerlink" title="自己建yum源【centos系统】"></a>自己建yum源【centos系统】</h2><p>1，启一个httpd web service，不需要装tomcat这类，只需要一个静态的服务器即可<br>2，检查httpd service <code>service httpd status</code><br>3，在<code>/var/www/html</code>下面创建一个目录挂载cdrom<br>4，挂载目录指令为<br>    <code>mount -t iso9660 -o ro /dev/cdrom /mnt/cdrom</code><br>41，如果iso盘中没有<code>repodata</code>,即没有dependecy link文件，需要手动创建<br>    <code>createrepo /mnt/cdromlocal</code><br>42，    创建完<code>repodata</code>后，需要再生成一个iso文件<br>    <code>mkisofs -o /mnt/example.iso /mnt/cdromlocal/</code><br>5，设置重启自动挂载<br>    <code>vi /etc/fstab</code><br>    在文件尾部追加<br>    <code>/dev/cdrom        /mnt/cdrom        iso9660        defaults        0        0</code><br>6，在httpd html文件夹下面新建一个文件夹比方说叫centos，软链接指向这个mnt目录即可，假设mnt目录为/mnt/cdrom<br>    <code>ln -s /mnt/cdrom /var/www/html/centos</code><br>7，更改centos repo.d文件，指向这个yum源<br>    <code>vi /etc/yum.repos.d/xxx.repo</code><br>    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="INI"><figure class="iseeu highlight /ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[base]</span></span><br><span class="line"><span class="attr">name</span>=CentOS-Local</span><br><span class="line"><span class="attr">baseurl</span>=http://<span class="number">192.168</span>.X.X/centos</span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="number">1</span>   #很重要，<span class="number">1</span>才启用</span><br><span class="line"><span class="attr">gpgkey</span>=file:///mnt/cdrom/rpm-gpg/RPM-GPG-KEY-CentOS-<span class="number">6</span></span><br></pre></td></tr></table></figure></div></p>
+<p>8，常用yum命令<br>    <code>yum clean all</code>    清除所有缓冲数据<br>    <code>yum repolist</code>    列出可用的yum源<br>    <code>yum deplist httpd</code>    列出一个包所依赖的包<br>    <code>yum remove httpd</code>    删除一个包</p>
+<h2 id="准备一个boot-sh脚本"><a href="#准备一个boot-sh脚本" class="headerlink" title="准备一个boot.sh脚本"></a>准备一个boot.sh脚本</h2><p><code>ssh-keygen -f</code>    查看pem对应的private key</p>
+<p>ssh登陆所用的key pair存在.ssh/authorized_keys文件中，如果不小心删掉了，可以把private key的内容copy到authorized_keys文件，然后+空格+pem的名称，比如<code>ssh-rsa XXXXXX linuxAAAA</code>,之后再更改文件权限<code>chmod 600 .ssh/authorized_keys</code></p>
+<p><code>ssh-keygen -f publickey.pem &gt;&gt; authorized.keys</code>或者可以用这个命令写进去前半段key的内容</p>
+<p><code>ssh-keygen -R hostname</code>    删除known_hosts</p>
+<p><code>sudo yum install expect</code>    模拟用户输入密码，yes等信息</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">SERVERS=<span class="string">"node-3.itcast.cn node-4.itcast.cn"</span></span><br><span class="line">PASSWORD=123456</span><br><span class="line">BASE_SERVER=172.16.203.100</span><br><span class="line"></span><br><span class="line"><span class="comment">#auto_ssh_copy_id() &#123;</span></span><br><span class="line"><span class="comment">#    expect -c "set timeout -1;</span></span><br><span class="line"><span class="comment">#        spawn ssh-copy-id $1;</span></span><br><span class="line"><span class="comment">#        expect &#123;</span></span><br><span class="line"><span class="comment">#            *(yes/no)* &#123;send -- #yes\r;exp_continue;&#125;</span></span><br><span class="line"><span class="comment">#            *assword:* &#123;send -- $2\r;exp_continue;&#125;</span></span><br><span class="line"><span class="comment">#            eof        &#123;exit 0;&#125;</span></span><br><span class="line"><span class="comment">#        &#125;";</span></span><br><span class="line"><span class="comment">#&#125;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#ssh_copy_id_to_all() &#123;</span></span><br><span class="line"><span class="comment">#    for SERVER in $SERVERS</span></span><br><span class="line"><span class="comment">#    do</span></span><br><span class="line"><span class="comment">#        auto_ssh_copy_id $SERVER $PASSWORD</span></span><br><span class="line"><span class="comment">#    done</span></span><br><span class="line"><span class="comment">#&#125;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">auto_ssh_login</span></span>() &#123;</span><br><span class="line">    expect -c <span class="string">"set timeout -1;</span></span><br><span class="line"><span class="string">        spawn ssh -i /home/ec2-user/linuxSS.pem ec2-user@<span class="variable">$1</span>;</span></span><br><span class="line"><span class="string">        expect &#123;</span></span><br><span class="line"><span class="string">            *(yes/no)* &#123;send -- yes\r;exp_continue;&#125;</span></span><br><span class="line"><span class="string">            eof        &#123;exit 0;&#125;</span></span><br><span class="line"><span class="string">        &#125;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">ssh_login_to_all</span></span>() &#123;</span><br><span class="line">        <span class="keyword">for</span> SERVER <span class="keyword">in</span> <span class="variable">$SERVERS</span></span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">                auto_ssh_login <span class="variable">$SERVER</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ssh_login_to_all</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> SERVER <span class="keyword">in</span> <span class="variable">$SERVERS</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">       scp -i linuxSS.pem install.sh ec2-user@<span class="variable">$SERVER</span>:/home/ec2-user</span><br><span class="line">       ssh -i linuxSS.pem ec2-user@<span class="variable">$SERVER</span> <span class="string">"sudo chmod u+x /home/ec2-user/install.sh;echo lalalal &gt;&gt; /home/ec2-use$</span></span><br><span class="line"><span class="string">done</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="Install-sh"><a href="#Install-sh" class="headerlink" title="Install.sh"></a>Install.sh</h2><p>如果用<code>echo</code>来写入到/etc/profile中，换行符不好弄<br><code>&lt;&lt;</code>类似于文件的重定向，就是写个文件进去，<code>EOF</code>就是文件的标志，末尾也要写个EOF进去，就相当于追加一个文件到/etc/profile的末尾</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">BASE_SERVER=172.16.203.100</span><br><span class="line">yum install -y wget</span><br><span class="line">wget <span class="variable">$BASE_SERVER</span>/soft/jdk-XXXX.tar.gz</span><br><span class="line">tar -zxvf jdk-XXXX.tar.gz -C /usr/<span class="built_in">local</span></span><br><span class="line">cat &gt;&gt; /etc/profile &lt;&lt; EOF</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdkXXX</span><br><span class="line"><span class="built_in">export</span> PATH=\<span class="variable">$PATH</span>:\<span class="variable">$JAVA_HOME</span>/bin</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure></div>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/25/linux-yum-web-package-storage/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -701,14 +830,13 @@
             <h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p><code>public delegate string WithReturnWithPara(int x, int y);</code>没有方法体的方法声明+delegate</p>
 <p>委托其实就是MulticastDelegate的一个<strong>子类</strong>，是一个<strong>类</strong>！</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public delegate void NoReturnNoPara();</span><br><span class="line">public delegate void NoReturnWithPara(int x, int y);</span><br><span class="line">public delegate int WithReturnNoPara();</span><br><span class="line">public delegate void GenericDelegate(T x); //泛型委托</span><br><span class="line"></span><br><span class="line">public void Show()</span><br><span class="line">&#123;</span><br><span class="line">	&#123;</span><br><span class="line">		//2. 实例化委托，要求传入的签名一致的方法</span><br><span class="line">		NoReturnNoPara method = new NoReturnNoPara(this.DoNothing);</span><br><span class="line">		//3. 委托实例的调用，参数和委托声明的时候参数一致</span><br><span class="line">		method.Invoke();</span><br><span class="line">		//4. 与上面的Invoke效果是一样的</span><br><span class="line">		method();</span><br><span class="line">	&#125;</span><br><span class="line">	&#123;</span><br><span class="line">		NoReturnWithPara method = new NoReturnWithPara(this.DoNothingWithPara);</span><br><span class="line">		method.Invoke(1,2);</span><br><span class="line">	&#125;</span><br><span class="line">	&#123;</span><br><span class="line">		WithReturnNoPara method = new WithReturnNoPara(this.GetNothing);</span><br><span class="line">		int iResult = method.Invoke();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void DoNothing()</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(&quot;This is DoNothing&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void DoNothingWithPara(int x, int y)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int GetNothing()</span><br><span class="line">&#123;</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>##.NET自带的一些委托类型</p>
-<p>####Action -&gt; 无返回值的委托<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Action act = new Action(this.DoNothing);</span><br><span class="line">Action&lt;int,string,int,string&gt; act2 = null;</span><br></pre></td></tr></table></figure></div></p>
-<p>####Func -&gt; 带返回值的泛型委托，注意，最后一个泛型类型代表返回类型<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;int&gt; fun1 = new Func&lt;int&gt;(this.GetNothing);//返回一个int类型</span><br><span class="line">Func&lt;int,string&gt; fun2 = null; //接受一个int类型的参数，返回类型为string</span><br></pre></td></tr></table></figure></div></p>
-<p>####多播委托 -&gt;<br>+=表示向一个委托实例里面添加多个方法，形成方法链，invoke的时候按添加顺序执行<br>-=表示向一个委托实例里面移除方法，从方法链尾部开始匹配，遇到第一个完全吻合的，移除且只移除一个；没有匹配的不报错</p>
+<h2 id="NET自带的一些委托类型"><a href="#NET自带的一些委托类型" class="headerlink" title=".NET自带的一些委托类型"></a>.NET自带的一些委托类型</h2><h4 id="Action-gt-无返回值的委托"><a href="#Action-gt-无返回值的委托" class="headerlink" title="Action -&gt; 无返回值的委托"></a>Action -&gt; 无返回值的委托</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Action act = new Action(this.DoNothing);</span><br><span class="line">Action&lt;int,string,int,string&gt; act2 = null;</span><br></pre></td></tr></table></figure></div>
+<h4 id="Func-gt-带返回值的泛型委托，注意，最后一个泛型类型代表返回类型"><a href="#Func-gt-带返回值的泛型委托，注意，最后一个泛型类型代表返回类型" class="headerlink" title="Func -&gt; 带返回值的泛型委托，注意，最后一个泛型类型代表返回类型"></a>Func -&gt; 带返回值的泛型委托，注意，最后一个泛型类型代表返回类型</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;int&gt; fun1 = new Func&lt;int&gt;(this.GetNothing);//返回一个int类型</span><br><span class="line">Func&lt;int,string&gt; fun2 = null; //接受一个int类型的参数，返回类型为string</span><br></pre></td></tr></table></figure></div>
+<h4 id="多播委托-gt"><a href="#多播委托-gt" class="headerlink" title="多播委托 -&gt;"></a>多播委托 -&gt;</h4><p>+=表示向一个委托实例里面添加多个方法，形成方法链，invoke的时候按添加顺序执行<br>-=表示向一个委托实例里面移除方法，从方法链尾部开始匹配，遇到第一个完全吻合的，移除且只移除一个；没有匹配的不报错</p>
 <p><strong>如果是用lambda表达式来定义方法，那么永远都无法-=，因为编译器碰到lambda表达式，会自动生成一个委托，都是不同的实例</strong></p>
 <p><strong>多播委托<span style="color: red">不适用于带返回值的委托</span>&gt;带返回值的委托，因为到后面只会拿最后一个委托的返回值</strong></p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Action act = new Action(this.DoNothing);</span><br><span class="line">act += this.DoNothing;</span><br><span class="line">act += this.DoNothingStatic;</span><br><span class="line">act += new OtherClass().DoNothing;</span><br><span class="line"></span><br><span class="line">//act.BeginInvoke(null, null);//不能调用，因为不知道里面这么多实例应该按照什么顺序去执行</span><br><span class="line">foreach(Action item in act.GetInvocationList())</span><br><span class="line">&#123;</span><br><span class="line">	item.BeginInvoke(null,null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">act -= this.DoNothing;</span><br><span class="line">act -= this.DoNothingStatic;</span><br><span class="line">act -= new OtherClass().DoNothing; //你会发现这个方法没有被移除，原因是上面的act += new OtherClass()与这个是两个实例，不是同一个，所以没有移除</span><br></pre></td></tr></table></figure></div>
-<p>##委托的使用<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">private static List&lt;Student&gt; Where(List&lt;Student&gt; studentList, Func&lt;Student, bool&gt; func)</span><br><span class="line">&#123;</span><br><span class="line">	list&lt;Student&gt; resultList = new List&lt;Student&gt;();</span><br><span class="line">	foreach(var student in studentList)</span><br><span class="line">	&#123;</span><br><span class="line">		if(func.invoke(student))</span><br><span class="line">		&#123;</span><br><span class="line">			resultList.Add(student);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//caller</span><br><span class="line">private static bool Equals(Student)</span><br><span class="line">&#123;</span><br><span class="line">	return student.ClassId == 1;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">Func&lt;Student,bool&gt; func = new Func&lt;Student,bool&gt;(Equals);</span><br><span class="line">var list = Where(studentList, func);</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="委托的使用"><a href="#委托的使用" class="headerlink" title="委托的使用"></a>委托的使用</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">private static List&lt;Student&gt; Where(List&lt;Student&gt; studentList, Func&lt;Student, bool&gt; func)</span><br><span class="line">&#123;</span><br><span class="line">	list&lt;Student&gt; resultList = new List&lt;Student&gt;();</span><br><span class="line">	foreach(var student in studentList)</span><br><span class="line">	&#123;</span><br><span class="line">		if(func.invoke(student))</span><br><span class="line">		&#123;</span><br><span class="line">			resultList.Add(student);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//caller</span><br><span class="line">private static bool Equals(Student)</span><br><span class="line">&#123;</span><br><span class="line">	return student.ClassId == 1;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">Func&lt;Student,bool&gt; func = new Func&lt;Student,bool&gt;(Equals);</span><br><span class="line">var list = Where(studentList, func);</span><br></pre></td></tr></table></figure></div>
 
           
         
@@ -828,34 +956,30 @@
       
         
           
-            <p>##封装就是写类</p>
-<p>封装的好处:</p>
+            <h2 id="封装就是写类"><a href="#封装就是写类" class="headerlink" title="封装就是写类"></a>封装就是写类</h2><p>封装的好处:</p>
 <ul>
 <li>保护属性，通过访问修饰符(public, private(只能自己访问，子类都不行),internal(只能这个程序集里面访问),protected(只能自己和子类访问))</li>
 <li>接口不变，可以随便扩展</li>
 <li>代码重用，任何只要用了这个类都可以调用这个方法</li>
 </ul>
-<p>##继承，就是可以用父类的</p>
-<p>##多态：同一个东东运行的时候会展现不同的形态</p>
-<ol>
+<h2 id="继承，就是可以用父类的"><a href="#继承，就是可以用父类的" class="headerlink" title="继承，就是可以用父类的"></a>继承，就是可以用父类的</h2><h2 id="多态：同一个东东运行的时候会展现不同的形态"><a href="#多态：同一个东东运行的时候会展现不同的形态" class="headerlink" title="多态：同一个东东运行的时候会展现不同的形态"></a>多态：同一个东东运行的时候会展现不同的形态</h2><ol>
 <li><p>继承多态：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//编译器编译的时候认为这三个都是People类型</span><br><span class="line">//但在运行的时候people, student, teacher是三种不同的类型</span><br><span class="line">People people = new People();</span><br><span class="line">People student = new Student();</span><br><span class="line">People teacher = new Teacher();</span><br></pre></td></tr></table></figure></div>
 </li>
 <li><p>编译时多态:<br> 声明，接口<br> 方法的重载(overload)也是多态<br> <span style="color: red;">普通方法的调用</span></p>
-<pre><code>注意：`Parent ins = new Child(); ins.Method();`会调用的是父类方法，因为这是编译时确定的！！！
+<pre><code> 注意：`Parent ins = new Child(); ins.Method();`会调用的是父类方法，因为这是编译时确定的！！！
 </code></pre></li>
 </ol>
 <ol>
 <li><p>运行时多态<br> 抽象方法与虚方法的区别：</p>
-<pre><code>虚方法本身是一个普通方法，但是加了一个virtual，子类继承的时候可以覆写也可以不覆写
-抽象方法没有方法体，必须在一个抽象类里面定义，子类继承后，必须显性的override掉这个抽象类
+<pre><code> 虚方法本身是一个普通方法，但是加了一个virtual，子类继承的时候可以覆写也可以不覆写
+ 抽象方法没有方法体，必须在一个抽象类里面定义，子类继承后，必须显性的override掉这个抽象类
 </code></pre><p> 在override之前加<code>sealed</code>代表不想让它的子类再覆写</p>
 <p> <span style="color: red;"><code>new</code>这种写法尽量不要用！改成虚方法</span></p>
 </li>
 </ol>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">public abstract class ParentClass</span><br><span class="line">&#123;</span><br><span class="line">	public int age = 70;</span><br><span class="line"></span><br><span class="line">	public void CommonMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ParentClass CommonMethod&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//虚方法本身是一个普通方法，但是加了一个virtual</span><br><span class="line">	//子类继承的时候可以覆写也可以不覆写</span><br><span class="line">	public virtual void VirtualMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ParentClass VirtualMethod&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public virtual void VirtualMethod(string name)</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ParentClass VirtualMethod with string name&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//抽象方法没有方法体，必须在一个抽象类里面定义</span><br><span class="line">	//子类继承后，必须显性的override掉这个抽象类</span><br><span class="line">	public abstract void AbstractMethod();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class ChildClass: ParentClass</span><br><span class="line">&#123;</span><br><span class="line">	public int age  = 18;</span><br><span class="line"></span><br><span class="line">	//这里隐藏父类的CommonMethod,并没有覆盖掉</span><br><span class="line">	public new void CommonMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ChildClass CommonMethod&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public override void VirtualMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ChildClass VirtualMethod&quot;);</span><br><span class="line">		base.VirtualMethod();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public override void AbstractMethod()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(&quot;ChildClass AbstractMethod&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//caller</span><br><span class="line">public static void Test()</span><br><span class="line">&#123;</span><br><span class="line">	ParentClass instance = new ChildClass();</span><br><span class="line">	//父类，age=70</span><br><span class="line">	Console.WriteLint(instance.age);</span><br><span class="line">	//父类,编译的时候决定了普通方法的调用，只根据等号左边来看，ChildClass里面的new一点用都没有</span><br><span class="line">	instance.CommonMethod();</span><br><span class="line">	//子类，虽然最终调用的是父类，运行的时候决定了虚方法的调用</span><br><span class="line">	instance.VirtualMethod();</span><br><span class="line">	//子类,运行时决定了抽象方法的调用</span><br><span class="line">	instance.AbstractMethod();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>##接口抽象类</p>
-<p>什么方法适用于虚方法：<br>    大家都有默认实现，只有少部分不同，建议采用虚方法<br>其他用abstract方法：<br>    抽象方法就是约束一下，但是不提供实现，子类必须override，且必须在抽象类里面</p>
+<h2 id="接口抽象类"><a href="#接口抽象类" class="headerlink" title="接口抽象类"></a>接口抽象类</h2><p>什么方法适用于虚方法：<br>    大家都有默认实现，只有少部分不同，建议采用虚方法<br>其他用abstract方法：<br>    抽象方法就是约束一下，但是不提供实现，子类必须override，且必须在抽象类里面</p>
 <pre><code>**抽象类是不能实例化的**，只能这么用
 
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BasePhone iphone = new iPhone();</span><br><span class="line"></span><br><span class="line">public abstract class BasePhone</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
@@ -1445,133 +1569,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/14/linux-basic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/14/linux-basic/" itemprop="url">linux-basic</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-14T15:24:37+08:00">
-                2018-06-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="VMWARE-NAT-虚拟网络的配置介绍"><a href="#VMWARE-NAT-虚拟网络的配置介绍" class="headerlink" title="VMWARE NAT 虚拟网络的配置介绍"></a>VMWARE NAT 虚拟网络的配置介绍</h3><p>NAT是借助NAT（网络地址转换）通过物理机器的网络访问外网。其实这里的NAT就相当于路由器，它把虚拟机发到虚拟网卡的包进行地址转换后再发到实际的网络上。这个时候虚拟网段就可以和物理网段不一样。</p>
-<p>VMWARE会自己生成一个虚拟的路由器，这个路由器的IP地址一般就是子网的网关地址和DNS地址。<br>DNS地址也可以设置成一些知名的DNS服务器地址，例如google的8.8.8.8</p>
-<p>VMWARE在windows上面也会虚拟出一个VMWARE用的网卡，例如vmnet8,如果想让windows可以与虚拟机子连接，就设置成同一个子网的IP即可</p>
-<img src="/2018/06/14/linux-basic/vmware-network-map.png">
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/14/linux-basic/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1620,7 +1617,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-count">78</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1633,7 +1630,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

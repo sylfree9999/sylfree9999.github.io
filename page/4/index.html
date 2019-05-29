@@ -260,6 +260,133 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/14/linux-basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/14/linux-basic/" itemprop="url">linux-basic</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-14T15:24:37+08:00">
+                2018-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="VMWARE-NAT-虚拟网络的配置介绍"><a href="#VMWARE-NAT-虚拟网络的配置介绍" class="headerlink" title="VMWARE NAT 虚拟网络的配置介绍"></a>VMWARE NAT 虚拟网络的配置介绍</h3><p>NAT是借助NAT（网络地址转换）通过物理机器的网络访问外网。其实这里的NAT就相当于路由器，它把虚拟机发到虚拟网卡的包进行地址转换后再发到实际的网络上。这个时候虚拟网段就可以和物理网段不一样。</p>
+<p>VMWARE会自己生成一个虚拟的路由器，这个路由器的IP地址一般就是子网的网关地址和DNS地址。<br>DNS地址也可以设置成一些知名的DNS服务器地址，例如google的8.8.8.8</p>
+<p>VMWARE在windows上面也会虚拟出一个VMWARE用的网卡，例如vmnet8,如果想让windows可以与虚拟机子连接，就设置成同一个子网的IP即可</p>
+<img src="/2018/06/14/linux-basic/vmware-network-map.png">
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/14/linux-basic/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/07/net-reflection/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -478,6 +605,7 @@
 <li>基类约束，如果where后面跟多个类型，这些类型属于and关系，必须同时满足才行</li>
 </ol>
 <p><strong>You can only put one class name and several interfaces to one ‘where’ constraint!</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where T1: Supplier, IConstractor, IComparable, new()</span><br></pre></td></tr></table></figure></div></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -512,6 +640,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public staic void Show&lt;T&gt;(T instance)</span><br><span class="line">where T: People</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(instance.Id); //不会报错，因为告诉了T是属于什么类型</span><br><span class="line">	Console.WriteLine(instance.Name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p><span style="color: red">类型约束</span><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static T DoNothing&lt;T&gt;(T tParameter)</span><br><span class="line">//where T: ISpotrs //接口类型约束</span><br><span class="line">//where T: class // 引用类型约束</span><br><span class="line">//where T: struct // 值类型约束</span><br><span class="line">where T: new() //无参数构造函数约束</span><br><span class="line">&#123;</span><br><span class="line">	//return default(T);//会根据T的类型，产生一个默认值，可以应用于值类型约束的返回</span><br><span class="line"></span><br><span class="line">	//return null; //引用类型约束</span><br><span class="line"></span><br><span class="line">	T t = new T();</span><br><span class="line">	return t; //无参数构造函数返回</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <p>显示声明出来类型和用约束的区别</p>
@@ -1568,164 +1697,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/28/data-structure/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/28/data-structure/" itemprop="url">数据结构简概</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-28T10:54:55+08:00">
-                2018-05-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>学习萧大神笔记：</p>
-<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul>
-<li><p>O(1)<br>常数复杂度，例如取数组第1000000个元素<br><strong>字典和集合的存取都是O(1)</strong><br><strong>数组的存取是O(1)</strong></p>
-<p>O(1)与O(n)的区别：<br>O(1)的时间是确定的，O(n)是随着时间增大而增大<br>O(1)是随着数据规模的增长而增长</p>
-</li>
-<li><p>O(lgN)<br>对数复杂度<br>例如一个<strong>有序数组</strong>，二分法查找</p>
-</li>
-<li><p>O(n)<br>线性复杂度<br>例如有一个数组，以遍历方式在其中查找元素</p>
-</li>
-<li><p>O(nlgN)<br>例如求两个数组的交集，其中A是有序数组，B不是有序数组<br>A数组每一个元素都要在B数组中进行查找<br>因为每次查找用二分法的复杂度是lgN，那么n个数据就是nLgN</p>
-</li>
-<li><p>O(n^2)<br>平方复杂度<br>求两个无序数组的交集</p>
-</li>
-</ul>
-<h2 id="常用数据结构"><a href="#常用数据结构" class="headerlink" title="常用数据结构"></a>常用数据结构</h2><ul>
-<li><p>数组<br>连续的一块内存<br>存取元素的时间是O(1),因为是连续的内存，只要计算出内存地址就可以迅速拿到数据，这里的存取是指替换掉原来的元素<br>插入、删除是O(n)，因为插入之后的元素都要往后挪</p>
-</li>
-<li><p>链表<br>手拉手的盒子，一个盒子只能访问左右手的盒子<br>以下标方式读取元素的时间是O(n)，因为要一个个搜过去<br>插入、删除是O(1)，只要更改链表的指向就可<br>栈和队列是链表的改良<br>队列 先进先出<br>栈    先进后出</p>
-</li>
-<li><p>字典(哈希表 对象 关联数组 Map 都是字典)<br>想要像数组一样可以拿取数据都是O(1),但是数组都是用数字来取数据，想要也能用字符串来取数据<br>把字符串转为数字作为下标存储在数组中<br>字符串转化为数字的算法是O(1)<br>所有字典的存取操作也都是O(1)<br>除非对数据有顺序要求，否则字典永远都是最佳选择<br>字符串转化为数字的算法：</p>
-<ol>
-<li>确定数据规模，这样可以确定容器数组的大小 =  Size</li>
-<li>把字符当作N进制数字得到结果：<br> ‘gua’ = g <em> 1+u </em> 10+1 * 100 = n<br> n % Size作为字符串在数组中的下标<br> 通常Size会选一个素数，素数也叫做质数，指在大于1的整数中只能被1和它本身整除的数，比如2、3、5、7、11、43、109</li>
-<li>如果下标冲突（即碰撞）的时候，有标准解决碰撞的方法，比方说用HashTable<br> 它的原理是我在数组中存的不是数据，而是一个链表<br> 当Hash值相同的时候，就放在这个链表里面</li>
-</ol>
-</li>
-<li><p>搜索树<br>用于作搜索用，比方说二叉搜索树，左边的节点总是小于中间的节点，右边的节点总是大于中间的节点<br>这样搜索最小的 ，只要搜索最左边那一条线就可以了<br>时间复杂度跟二叉搜索一样，都取决于你这棵树的高度O(lgN)</p>
-<p>平衡树的意思就是当树的高度差超过1的时候，会重新定义根节点，把原来的树进行旋转</p>
-</li>
-<li><p>图</p>
-</li>
-<li><p>Python List<br>存取是O(1)<br>插入删除也是O(1)</p>
-<p>当它最初申请的数组空间用完了以后，它会申请一个更大的数组空间，然后把原来的数组空间copy到新申请的大数组空间中</p>
-<p>所以有时候看会有时间断层</p>
-<p>Python list有两个部件：<br>   数组        存储数据在链表中的地址<br>   链表        实际存储数据</p>
-</li>
-</ul>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># HashTable Data Structure</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HashTable</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.table_size = <span class="number">11</span></span><br><span class="line">        self.table = [<span class="number">0</span>]*self.table_size</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 这个魔法方法来实现in/not in语法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__contains__</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.has_key(item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">has_key</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        index = self._index(key)</span><br><span class="line">        v = self.table[index]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> isinstance(v, list):</span><br><span class="line">            <span class="keyword">for</span> kv <span class="keyword">in</span> v:</span><br><span class="line">                <span class="keyword">if</span> kv[<span class="number">0</span>] == key:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_index</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._hash(key) % self.table_size</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_hash</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        n = <span class="number">0</span></span><br><span class="line">        f = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            n += ord(i) * f</span><br><span class="line">            f *= <span class="number">10</span></span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, key, value)</span>:</span></span><br><span class="line">        index = self._index(key)</span><br><span class="line">        self._insert_at_index(index, key, value)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_insert_at_index</span><span class="params">(self, index, key, value)</span>:</span></span><br><span class="line">        v = self.table[index]</span><br><span class="line">        data = [key, value]</span><br><span class="line">        <span class="keyword">if</span> isinstance(v, int):</span><br><span class="line">            self.table[index] = [data]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.table[index].append(data)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, key, default_value = None)</span>:</span></span><br><span class="line">        index = self._index(key)</span><br><span class="line">        v = self.table[index]</span><br><span class="line">        <span class="keyword">if</span> isinstance(v, list):</span><br><span class="line">            <span class="keyword">for</span> kv <span class="keyword">in</span> v:</span><br><span class="line">                <span class="keyword">if</span> kv[<span class="number">0</span>] == key:</span><br><span class="line">                    <span class="keyword">return</span> kv[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">return</span> default_value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">import</span> uuid</span><br><span class="line">    names = [</span><br><span class="line">        <span class="string">'ss'</span>,</span><br><span class="line">        <span class="string">'drill'</span>,</span><br><span class="line">        <span class="string">'name'</span>,</span><br><span class="line">        <span class="string">'python'</span>,</span><br><span class="line">        <span class="string">'web'</span>,</span><br><span class="line">        <span class="string">'Banana'</span>,</span><br><span class="line">        <span class="string">'Apple'</span>,</span><br><span class="line">        <span class="string">'Computer'</span>,</span><br><span class="line">        <span class="string">'Android'</span>,</span><br><span class="line">        <span class="string">'Mobile'</span></span><br><span class="line">    ]</span><br><span class="line">    ht = HashTable()</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> names:</span><br><span class="line">        value = uuid.uuid4()</span><br><span class="line">        ht.add(key, value)</span><br><span class="line">        print(<span class="string">'add 元素'</span>, key, value)</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> names:</span><br><span class="line">        v = ht.get(key)</span><br><span class="line">        print(<span class="string">'get 元素'</span>, key, v)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure></div>
-<p>如果这个素数设置的够小，你就能看到有些item存的是一个list<br><img src="/2018/05/28/data-structure/20180528160417.png"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1774,7 +1745,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-count">78</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1787,7 +1758,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

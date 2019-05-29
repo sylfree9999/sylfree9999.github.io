@@ -260,6 +260,128 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/02/centos-install-java8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/02/centos-install-java8/" itemprop="url">CentOS Install Java8</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-02T12:00:37+08:00">
+                2018-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/</span><br><span class="line"></span><br><span class="line">wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.tar.gz&quot;</span><br><span class="line"></span><br><span class="line">tar xzf jdk-8u161-linux-x64.tar.gz</span><br><span class="line"></span><br><span class="line">cd /opt/jdk1.8.0_161/</span><br><span class="line">alternatives --install /usr/bin/java java /opt/jdk1.8.0_161/bin/java 2</span><br><span class="line">alternatives --config java</span><br><span class="line"></span><br><span class="line">There are 3 programs which provide &apos;java&apos;.</span><br><span class="line"></span><br><span class="line">  Selection    Command</span><br><span class="line">-----------------------------------------------</span><br><span class="line">*  1           /opt/jdk1.7.0_71/bin/java</span><br><span class="line"> + 2           /opt/jdk1.8.0_45/bin/java</span><br><span class="line">   3           /opt/jdk1.8.0_144/bin/java</span><br><span class="line">   4           /opt/jdk1.8.0_161/bin/java</span><br><span class="line"></span><br><span class="line">Enter to keep the current selection[+], or type selection number: 4</span><br></pre></td></tr></table></figure></div>
+<h2 id="Setup-javac-and-jar-commands-path-using-alternatives"><a href="#Setup-javac-and-jar-commands-path-using-alternatives" class="headerlink" title="Setup javac and jar commands path using alternatives"></a>Setup javac and jar commands path using <code>alternatives</code></h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alternatives --install /usr/bin/jar jar /opt/jdk1.8.0_161/bin/jar 2</span><br><span class="line">alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_161/bin/javac 2</span><br><span class="line">alternatives --set jar /opt/jdk1.8.0_161/bin/jar</span><br><span class="line">alternatives --set javac /opt/jdk1.8.0_161/bin/javac</span><br></pre></td></tr></table></figure></div>
+<h2 id="Check-installed-java-version"><a href="#Check-installed-java-version" class="headerlink" title="Check installed java version"></a>Check installed java version</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line">java version &quot;1.8.0_161&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_161-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</span><br></pre></td></tr></table></figure></div>
+<h2 id="Setup-Java-Environment-Variables"><a href="#Setup-Java-Environment-Variables" class="headerlink" title="Setup Java Environment Variables"></a>Setup Java Environment Variables</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8.0_161</span><br><span class="line">export JRE_HOME=/opt/jdk1.8.0_161/jre</span><br><span class="line">export PATH=$PATH:/opt/jdk1.8.0_161/bin:/opt/jdk1.8.0_161/jre/bin</span><br></pre></td></tr></table></figure></div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/28/linux-process-to-backend/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -897,8 +1019,7 @@
 <p>到这里，我想算是把登录代码的第二句话讲完了，讲清楚了，那么我们来看看第三句话，也就是最后一句，其实它才是登录的核心，第二句只是创建了一个ClaimsIdentity的对象。</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="HAXE"><figure class="iseeu highlight /haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> IAuthenticationManager AuthenticationManager</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">get</span> &#123; <span class="keyword">return</span> HttpContext.GetOwinContext().Authentication; &#125;</span><br><span class="line">&#125;</span><br><span class="line">AuthenticationManager.SignIn(<span class="keyword">new</span> <span class="type">AuthenticationProperties</span>() &#123; IsPersistent = <span class="literal">true</span> &#125;, identity);</span><br></pre></td></tr></table></figure></div>
 <p>IAuthenticationManager 在<code>Microsoft.Owin.Security</code>命名空间下，而这个接口是定义在Microsoft.Owin.dll中。</p>
-<p>##Owin</p>
-<p>OWIN目标是解耦服务器和应用，这里面的服务器主要是指web服务器，比如说IIS等，那么是如何做到的呢？</p>
+<h2 id="Owin"><a href="#Owin" class="headerlink" title="Owin"></a>Owin</h2><p>OWIN目标是解耦服务器和应用，这里面的服务器主要是指web服务器，比如说IIS等，那么是如何做到的呢？</p>
 <p><strong>解耦服务器与应用程序</strong><br>首先需要复习ASP.NET或者<span style="background-color: #FFFF00">IIS集成模式管道模型</span>，也就是说一个http请求在进入IIS之后（IIS7.0以上）一直到返回response这中间所经历的步骤。</p>
 <img src="/2018/03/25/asp-net-identity/netpipe.png">
 <img src="/2018/03/25/asp-net-identity/mvc-request-lifecycle.png">
@@ -1490,182 +1611,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/sql-id-increment-jump/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/15/sql-id-increment-jump/" itemprop="url">SQL identity column increment suddenly jumps</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-15T16:29:45+08:00">
-                2018-03-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>SQL SERVER 2016</p>
-<img src="/2018/03/15/sql-id-increment-jump/sql_id_increment.jpg">
-<p>SQL Server 2012 now uses a cache size of 1,000 when allocating IDENTITY values in an int column and restarting the service can “lose” unused values (The cache size is 10,000 for bigint/numeric).</p>
-<p>Workarounds:</p>
-<ul>
-<li>You can use a <code>SEQUENCE</code> instead of an identity column and define a smaller cache size for example and use <code>NEXT VALUE FOR</code> in a column default</li>
-</ul>
-<p>e.g:</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">SEQUENCE</span> Service_Ticket_Seq <span class="keyword">AS</span> <span class="built_in">INTEGER</span></span><br><span class="line"><span class="keyword">START</span> <span class="keyword">WITH</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">INCREMENT</span> <span class="keyword">BY</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">MINVALUE</span> <span class="number">1</span></span><br><span class="line">MAXVALUE <span class="number">100</span></span><br><span class="line"><span class="keyword">CYCLE</span>;</span><br></pre></td></tr></table></figure></div>
-<p>We can put a <code>SEQUENCE</code> in the <code>DEFAULT</code> clause of the DDL for table:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Service_Tickets</span><br><span class="line">(ticket_nbr <span class="built_in">INTEGER</span> <span class="keyword">DEFAULT</span> <span class="keyword">NEXT</span> <span class="keyword">VALUE</span> <span class="keyword">FOR</span> Service_Ticket_Seq,</span><br><span class="line"> department_code <span class="built_in">CHAR</span>(<span class="number">1</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line"> <span class="keyword">CHECK</span> (department_code <span class="keyword">IN</span> (<span class="string">'M'</span>, <span class="string">'F'</span>)));</span><br></pre></td></tr></table></figure></div></p>
-<p>Now play with code:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Service_Tickets (department_code)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">'M'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Service_Tickets;</span><br></pre></td></tr></table></figure></div></p>
-<p>Now we get:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">ticket_nbr</th>
-<th style="text-align:left">department_code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">1</td>
-<td style="text-align:left">M</td>
-</tr>
-</tbody>
-</table>
-<p>Let’s re-do the Meats and Fish tables.<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Meats</span><br><span class="line">(ticket_seq INTEGER<span class="built_in"> DEFAULT </span>NEXT VALUE <span class="keyword">FOR</span> Service_Ticket_Seq </span><br><span class="line">       PRIMARY KEY,</span><br><span class="line"> meat_type VARCHAR(15) <span class="keyword">NOT</span> <span class="literal">NULL</span>);</span><br><span class="line"> </span><br><span class="line">CREATE TABLE Fish</span><br><span class="line">(ticket_seq INTEGER<span class="built_in"> DEFAULT </span>NEXT VALUE <span class="keyword">FOR</span> Service_Ticket_Seq </span><br><span class="line">       PRIMARY KEY,</span><br><span class="line"> fish_type VARCHAR(15) <span class="keyword">NOT</span> <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure></div></p>
-<p>Now try:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Meats (meat_type) <span class="keyword">VALUES</span> (<span class="string">'pig'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Fish (fish_type) <span class="keyword">VALUES</span> (<span class="string">'squid'</span>);</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Meats;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Fish;</span><br></pre></td></tr></table></figure></div></p>
-<p>We get:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">ticket_nbr</th>
-<th style="text-align:left">department_code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">2</td>
-<td style="text-align:left">pig</td>
-</tr>
-<tr>
-<td style="text-align:left">3</td>
-<td style="text-align:left">squid</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><p>Apply trace flag 272 which makes the <code>IDENTITY</code> allocation logged as in previous versions.</p>
-<ul>
-<li>Run <strong>SQL Server Configuration Manager</strong></li>
-<li><p>Select <strong>SQL SERVER SERVICES</strong>, right-click <code>SQL Server</code> and select <code>Properties</code>, select <code>Startup Parameters</code>, type <code>-T272</code> , Add, Apply, close and restart.</p>
-<img src="/2018/03/15/sql-id-increment-jump/sql_server_config.jpg">
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1714,7 +1659,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-count">78</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1727,7 +1672,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

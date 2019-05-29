@@ -335,7 +335,8 @@
 <h3 id="g-全局匹配"><a href="#g-全局匹配" class="headerlink" title="g, 全局匹配"></a>g, 全局匹配</h3><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="match-匹配"><a href="#match-匹配" class="headerlink" title="match 匹配"></a>match 匹配</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">"234sdfsfsd aser0934534sdf lert09345"</span>;</span><br><span class="line"><span class="keyword">let</span> re = <span class="regexp">/\d+/g</span>; <span class="comment">//找出所有的数字</span></span><br><span class="line">alert(str.match(re));</span><br></pre></td></tr></table></figure></div>
 <h3 id="replace替换"><a href="#replace替换" class="headerlink" title="replace替换"></a>replace替换</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">"sdf3aedfsafd Adsffg Asdf"</span>;</span><br><span class="line">alert(str.replace(<span class="regexp">/a/gi</span>,<span class="string">'*'</span>));<span class="comment">//替换掉所有的a为*</span></span><br></pre></td></tr></table></figure></div>
 <h3 id="test测试"><a href="#test测试" class="headerlink" title="test测试"></a>test测试</h3><p>​    <code>test</code>返回<code>true/false</code>,注意的是如果是用<code>test</code>，不限定行首行尾的话，只要部分匹配就算<code>true</code></p>
-<h2 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h2><table>
+<h2 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>量词</th>
@@ -369,13 +370,15 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符-[]"></a>元字符-<code>[]</code></h2><h3 id="任何一个"><a href="#任何一个" class="headerlink" title="任何一个"></a>任何一个</h3><p>​        <code>/a[abc]q/</code> - 可以匹配aaq,abq,acq,<span style="color:red">在正则中只要不写量词，默认就是匹配一个</span></p>
 <h3 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h3><p>​        <code>/[a-z]/i</code></p>
 <p>​        <code>/[0-9]</code></p>
 <p>​        <code>/[a-z0-9]/</code></p>
 <p>​        <code>[3-59]</code> 这个不是匹配3~59而是代表可以是3~5或者是9，<span style="color:red">因为正则没有分隔符</span></p>
 <h3 id="排除"><a href="#排除" class="headerlink" title="排除^"></a>排除<code>^</code></h3><p>​        <code>[^a-z0-9]</code> 排除字母a-z和数字0-9</p>
-<h2 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h2><table>
+<h2 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>转义名称</th>
@@ -397,11 +400,11 @@
 </tr>
 <tr>
 <td>\D</td>
-<td>[^0-9]</td>
+<td><sup><a href="#fn_0-9" id="reffn_0-9">0-9</a></sup></td>
 </tr>
 <tr>
 <td>\W</td>
-<td>[^a-z0-9]</td>
+<td><sup><a href="#fn_a-z0-9" id="reffn_a-z0-9">a-z0-9</a></sup></td>
 </tr>
 <tr>
 <td>\S</td>
@@ -413,7 +416,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><table>
+</div>
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>修饰符</th>
@@ -431,6 +436,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>例，判定是否为QQ号，规则是第一个不为0，共5~12位数字，这里必须要加入行首<code>^</code>和行尾<code>$</code> </p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> re = <span class="regexp">/^[1-9]\d&#123;4,11&#125;$/</span>;</span><br><span class="line"><span class="keyword">if</span>(str.test(re))&#123; <span class="comment">//str.test如果正则里面不包含行首和结尾限定符（从头到尾），则只要字符串部分匹配也为true,例如ssd124768625d，也可以通过</span></span><br><span class="line">    alert(<span class="string">"Pass"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    alert(<span class="string">"Fail"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>​    <code>|</code>-或优先级，或的优先级非常低，所以如果要匹配gif/png/jpg结尾的图片，写成<code>/\.jpg|gif|png$/i</code>其实是<span style="color:red">错的!在计算机眼里，因为或优先级很低，所以会读成要么.jpg,要么gif，要么png$, 所以字符串<code>sdfgifsdgterstpng</code>也可以匹配成功</span></p>
@@ -476,6 +482,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/10/nodejs-basics/" rel="prev" title="Nodejs 入门">
+                Nodejs 入门 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -550,7 +560,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-count">78</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -563,7 +573,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

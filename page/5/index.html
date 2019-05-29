@@ -260,6 +260,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/28/data-structure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/28/data-structure/" itemprop="url">数据结构简概</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-28T10:54:55+08:00">
+                2018-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>学习萧大神笔记：</p>
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul>
+<li><p>O(1)<br>常数复杂度，例如取数组第1000000个元素<br><strong>字典和集合的存取都是O(1)</strong><br><strong>数组的存取是O(1)</strong></p>
+<p>O(1)与O(n)的区别：<br>O(1)的时间是确定的，O(n)是随着时间增大而增大<br>O(1)是随着数据规模的增长而增长</p>
+</li>
+<li><p>O(lgN)<br>对数复杂度<br>例如一个<strong>有序数组</strong>，二分法查找</p>
+</li>
+<li><p>O(n)<br>线性复杂度<br>例如有一个数组，以遍历方式在其中查找元素</p>
+</li>
+<li><p>O(nlgN)<br>例如求两个数组的交集，其中A是有序数组，B不是有序数组<br>A数组每一个元素都要在B数组中进行查找<br>因为每次查找用二分法的复杂度是lgN，那么n个数据就是nLgN</p>
+</li>
+<li><p>O(n^2)<br>平方复杂度<br>求两个无序数组的交集</p>
+</li>
+</ul>
+<h2 id="常用数据结构"><a href="#常用数据结构" class="headerlink" title="常用数据结构"></a>常用数据结构</h2><ul>
+<li><p>数组<br>连续的一块内存<br>存取元素的时间是O(1),因为是连续的内存，只要计算出内存地址就可以迅速拿到数据，这里的存取是指替换掉原来的元素<br>插入、删除是O(n)，因为插入之后的元素都要往后挪</p>
+</li>
+<li><p>链表<br>手拉手的盒子，一个盒子只能访问左右手的盒子<br>以下标方式读取元素的时间是O(n)，因为要一个个搜过去<br>插入、删除是O(1)，只要更改链表的指向就可<br>栈和队列是链表的改良<br>队列 先进先出<br>栈    先进后出</p>
+</li>
+<li><p>字典(哈希表 对象 关联数组 Map 都是字典)<br>想要像数组一样可以拿取数据都是O(1),但是数组都是用数字来取数据，想要也能用字符串来取数据<br>把字符串转为数字作为下标存储在数组中<br>字符串转化为数字的算法是O(1)<br>所有字典的存取操作也都是O(1)<br>除非对数据有顺序要求，否则字典永远都是最佳选择<br>字符串转化为数字的算法：</p>
+<ol>
+<li>确定数据规模，这样可以确定容器数组的大小 =  Size</li>
+<li>把字符当作N进制数字得到结果：<br> ‘gua’ = g <em> 1+u </em> 10+1 * 100 = n<br> n % Size作为字符串在数组中的下标<br> 通常Size会选一个素数，素数也叫做质数，指在大于1的整数中只能被1和它本身整除的数，比如2、3、5、7、11、43、109</li>
+<li>如果下标冲突（即碰撞）的时候，有标准解决碰撞的方法，比方说用HashTable<br> 它的原理是我在数组中存的不是数据，而是一个链表<br> 当Hash值相同的时候，就放在这个链表里面</li>
+</ol>
+</li>
+<li><p>搜索树<br>用于作搜索用，比方说二叉搜索树，左边的节点总是小于中间的节点，右边的节点总是大于中间的节点<br>这样搜索最小的 ，只要搜索最左边那一条线就可以了<br>时间复杂度跟二叉搜索一样，都取决于你这棵树的高度O(lgN)</p>
+<p>平衡树的意思就是当树的高度差超过1的时候，会重新定义根节点，把原来的树进行旋转</p>
+</li>
+<li><p>图</p>
+</li>
+<li><p>Python List<br>存取是O(1)<br>插入删除也是O(1)</p>
+<p>当它最初申请的数组空间用完了以后，它会申请一个更大的数组空间，然后把原来的数组空间copy到新申请的大数组空间中</p>
+<p>所以有时候看会有时间断层</p>
+<p>Python list有两个部件：<br>   数组        存储数据在链表中的地址<br>   链表        实际存储数据</p>
+</li>
+</ul>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># HashTable Data Structure</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HashTable</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.table_size = <span class="number">11</span></span><br><span class="line">        self.table = [<span class="number">0</span>]*self.table_size</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 这个魔法方法来实现in/not in语法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__contains__</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.has_key(item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">has_key</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        index = self._index(key)</span><br><span class="line">        v = self.table[index]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> isinstance(v, list):</span><br><span class="line">            <span class="keyword">for</span> kv <span class="keyword">in</span> v:</span><br><span class="line">                <span class="keyword">if</span> kv[<span class="number">0</span>] == key:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_index</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._hash(key) % self.table_size</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_hash</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        n = <span class="number">0</span></span><br><span class="line">        f = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            n += ord(i) * f</span><br><span class="line">            f *= <span class="number">10</span></span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, key, value)</span>:</span></span><br><span class="line">        index = self._index(key)</span><br><span class="line">        self._insert_at_index(index, key, value)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_insert_at_index</span><span class="params">(self, index, key, value)</span>:</span></span><br><span class="line">        v = self.table[index]</span><br><span class="line">        data = [key, value]</span><br><span class="line">        <span class="keyword">if</span> isinstance(v, int):</span><br><span class="line">            self.table[index] = [data]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.table[index].append(data)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, key, default_value = None)</span>:</span></span><br><span class="line">        index = self._index(key)</span><br><span class="line">        v = self.table[index]</span><br><span class="line">        <span class="keyword">if</span> isinstance(v, list):</span><br><span class="line">            <span class="keyword">for</span> kv <span class="keyword">in</span> v:</span><br><span class="line">                <span class="keyword">if</span> kv[<span class="number">0</span>] == key:</span><br><span class="line">                    <span class="keyword">return</span> kv[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">return</span> default_value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">import</span> uuid</span><br><span class="line">    names = [</span><br><span class="line">        <span class="string">'ss'</span>,</span><br><span class="line">        <span class="string">'drill'</span>,</span><br><span class="line">        <span class="string">'name'</span>,</span><br><span class="line">        <span class="string">'python'</span>,</span><br><span class="line">        <span class="string">'web'</span>,</span><br><span class="line">        <span class="string">'Banana'</span>,</span><br><span class="line">        <span class="string">'Apple'</span>,</span><br><span class="line">        <span class="string">'Computer'</span>,</span><br><span class="line">        <span class="string">'Android'</span>,</span><br><span class="line">        <span class="string">'Mobile'</span></span><br><span class="line">    ]</span><br><span class="line">    ht = HashTable()</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> names:</span><br><span class="line">        value = uuid.uuid4()</span><br><span class="line">        ht.add(key, value)</span><br><span class="line">        print(<span class="string">'add 元素'</span>, key, value)</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> names:</span><br><span class="line">        v = ht.get(key)</span><br><span class="line">        print(<span class="string">'get 元素'</span>, key, v)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure></div>
+<p>如果这个素数设置的够小，你就能看到有些item存的是一个list<br><img src="/2018/05/28/data-structure/20180528160417.png"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/22/session-cookie/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -987,13 +1145,13 @@
 <li><strong>spam(2 leading underline and <strong>at most one trailing underline</strong>) will be replaced with `_classname</strong>spam<code>, where</code>classname` is the current class name.</li>
 <li>If you create a subclass of <code>A</code>, say <code>B</code> then you can’t easily override <code>A&#39;s</code> __method_name</li>
 </ul>
-<pre><code class="Python"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span>
-        <span class="function"><span class="keyword">def</span> <span class="title">_internal_use</span><span class="params">(self)</span>:</span>
-            <span class="keyword">pass</span>
-        <span class="function"><span class="keyword">def</span> <span class="title">__method_name</span><span class="params">(self)</span>:</span>
-            <span class="keyword">pass</span>
-<span class="meta">&gt;&gt;&gt; </span>dir(A())
-[<span class="string">'_A__method_name'</span>,...,<span class="string">'_internal_use'</span>]
+<pre><code class="lang-Python">&gt;&gt;&gt; class A(object):
+        def _internal_use(self):
+            pass
+        def __method_name(self):
+            pass
+&gt;&gt;&gt; dir(A())
+[&#39;_A__method_name&#39;,...,&#39;_internal_use&#39;]
 </code></pre>
 <h3 id="双划线开头，双划线结尾"><a href="#双划线开头，双划线结尾" class="headerlink" title="双划线开头，双划线结尾"></a>双划线开头，双划线结尾</h3><ul>
 <li>Python自己的<code>魔术</code>对象, used by Python itself. 比方说<strong>init</strong>, <strong>del</strong>, <strong>add</strong>, <strong>getitem</strong> 以及全局的<strong>file</strong>, <strong>name</strong>等。 不要试图重写他们</li>
@@ -1118,15 +1276,14 @@
         
           
             <p>作者：Manjusaka<br>链接：<a href="https://www.zhihu.com/question/266222348/answer/304632928" target="_blank" rel="noopener">https://www.zhihu.com/question/266222348/answer/304632928</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<p>##同步阻塞：</p>
-<p>举一点不严谨的例子吧你现在要买一本《人体艺术导论》，但是奶茶东缺货。<br>最开始你一直刷新页面，等着书到货了，这是<strong>同步阻塞</strong>。</p>
-<p>##同步非阻塞<br>你觉得这样太浪费时间了。你就去去汤不热看点照片压压惊，然后时不时的去刷一下图书状态是否有货，这是同步非阻塞。</p>
-<p>##异步阻塞<br>好了，你最后成功买到《人体艺术导论》这本书。<br>某一天，你想去再去买一本《知乎撕逼指南》，抱歉你运气很差，还是没货了那么现在你觉得不断的刷是否有货太傻了<br>你现在奶茶东上设置了一下，当有货的时候给你响起 FBI Warning 的闹钟。<br>好了，你现在一直等着闹钟的想起，这叫异步阻塞。</p>
-<p>##异步非阻塞<br>你还是觉得，我怎么能这么傻于是你去干点奇遇事情，等闹钟响起的时候，你就下单。这叫异步非阻塞OK，明白了 前面四个概念么？</p>
+<h2 id="同步阻塞："><a href="#同步阻塞：" class="headerlink" title="同步阻塞："></a>同步阻塞：</h2><p>举一点不严谨的例子吧你现在要买一本《人体艺术导论》，但是奶茶东缺货。<br>最开始你一直刷新页面，等着书到货了，这是<strong>同步阻塞</strong>。</p>
+<h2 id="同步非阻塞"><a href="#同步非阻塞" class="headerlink" title="同步非阻塞"></a>同步非阻塞</h2><p>你觉得这样太浪费时间了。你就去去汤不热看点照片压压惊，然后时不时的去刷一下图书状态是否有货，这是同步非阻塞。</p>
+<h2 id="异步阻塞"><a href="#异步阻塞" class="headerlink" title="异步阻塞"></a>异步阻塞</h2><p>好了，你最后成功买到《人体艺术导论》这本书。<br>某一天，你想去再去买一本《知乎撕逼指南》，抱歉你运气很差，还是没货了那么现在你觉得不断的刷是否有货太傻了<br>你现在奶茶东上设置了一下，当有货的时候给你响起 FBI Warning 的闹钟。<br>好了，你现在一直等着闹钟的想起，这叫异步阻塞。</p>
+<h2 id="异步非阻塞"><a href="#异步非阻塞" class="headerlink" title="异步非阻塞"></a>异步非阻塞</h2><p>你还是觉得，我怎么能这么傻于是你去干点奇遇事情，等闹钟响起的时候，你就下单。这叫异步非阻塞OK，明白了 前面四个概念么？</p>
 <p>都是在奶茶东买书，<br>基本版的奶茶东，同步，我们只能手动去不断查询书是否有货<br>设置闹钟后的奶茶东，异步，奶茶东可以在有货的时候主动通知我们<br><strong>阻塞</strong>，在书籍有货之前，我们都没法干其余的事情<br><strong>非阻塞</strong>，在书籍有货之前，我们可以干其余的事情</p>
-<p>##回调<br>好了，现在你觉得自己下单太傻了，你在奶茶东上做了更进一步的设置。当这本书有货的时候，帮我下单。这就是回调</p>
+<h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h2><p>好了，现在你觉得自己下单太傻了，你在奶茶东上做了更进一步的设置。当这本书有货的时候，帮我下单。这就是回调</p>
 <p>好了，进程，线程，协程<br>你现在要买十本书，每本书都可能没货，现在你觉得这个工作太繁琐了<br>你开了十家公司，每个公司分别帮你购买一本书，公司-&gt;进程<br>你开了一家公司，公司里找了十个人，每个人帮你购买一本书，人-&gt;线程<br>你开了一家公司，找了一个人，用十个手机，每个手机帮你购买一本书，手机-&gt;协程</p>
-<p>##并发并行<br>并发和并行是相对的一个概念<br>并发：交替做不同事的能力<br>并行：同时做不同事的能力</p>
+<h2 id="并发并行"><a href="#并发并行" class="headerlink" title="并发并行"></a>并发并行</h2><p>并发和并行是相对的一个概念<br>并发：交替做不同事的能力<br>并行：同时做不同事的能力</p>
 <p>举个例子，回到买书的问题，有个妹子，找你想让你帮忙买四本书，<br>你找了两个人，一个人买两本书，对于买书的人而言，购买两本书的操作交互进行，这是并发。<br>对你而言，你将四本书分别交给两个人同时购买，这是并行。<br>对于妹子而言，你一个人交替购买四本书，这是并发。</p>
 <p>事件循环是什么？前面不是说了么你购买书，想收到有货通知，想有货自动下单，但是你自己不知道怎么搞定，你把这个事情交给奶茶东。奶茶东-&gt;事件循环</p>
 
@@ -1262,12 +1419,12 @@
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sudo apt-get <span class="keyword">install</span> -y libcurl4-openssl-dev</span><br><span class="line">#<span class="keyword">install</span> x11</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> -y xvfb xauth xfonts-base</span><br><span class="line">#Xvfb :<span class="number">0</span> -ac -screen <span class="number">0</span> <span class="number">1960</span>x2000x24 &amp;</span><br><span class="line">#<span class="keyword">then</span> <span class="keyword">set</span> Sys.setenv(<span class="string">"DISPLAY"</span>=<span class="string">":0"</span>) <span class="keyword">on</span> top <span class="keyword">of</span> ui.R</span><br><span class="line"></span><br><span class="line">#<span class="keyword">install</span> cairo</span><br><span class="line">sudo apt-<span class="keyword">get</span> -y <span class="keyword">build</span>-dep cairo</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> -y libcairo2-dev</span><br></pre></td></tr></table></figure></div>
 </li>
 </ul>
-<h4 id="If-you-choose-to-use-cairo-put-options-bitmapType-39-cairo-39-on-top-of-the-server-R-or-put-it-in-the-Rprofile-so-that-all-sessions-will-read-this-configuration-https-stackoverflow-com-questions-17243648-cant-display-png"><a href="#If-you-choose-to-use-cairo-put-options-bitmapType-39-cairo-39-on-top-of-the-server-R-or-put-it-in-the-Rprofile-so-that-all-sessions-will-read-this-configuration-https-stackoverflow-com-questions-17243648-cant-display-png" class="headerlink" title="If you choose to use cairo, put options(bitmapType=&#39;cairo&#39;) on top of the server.R or put it in the Rprofile so that all sessions will read this configuration. [https://stackoverflow.com/questions/17243648/cant-display-png]"></a>If you choose to use cairo, put <code>options(bitmapType=&#39;cairo&#39;)</code> on top of the server.R or put it in the Rprofile so that all sessions will read this configuration. [<a href="https://stackoverflow.com/questions/17243648/cant-display-png]" target="_blank" rel="noopener">https://stackoverflow.com/questions/17243648/cant-display-png]</a></h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SMALI"><figure class="iseeu highlight /smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libbz2-dev</span><br><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/CRAN/src/base/R-3/R-3.5.0.tar.gz</span><br><span class="line">tar xzvf R-3.5.0.tar.gz</span><br><span class="line">cd R-3.5.0</span><br><span class="line">sudo -s</span><br><span class="line"><span class="keyword">.</span>/configure --with-readline=no --with-libtiff --with-libjpeg --with-libpng --with-x --with-cairo</span><br><span class="line">make</span><br><span class="line">make check</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></div>
+<h4 id="If-you-choose-to-use-cairo-put-options-bitmapType-39-cairo-39-on-top-of-the-server-R-or-put-it-in-the-Rprofile-so-that-all-sessions-will-read-this-configuration-https-stackoverflow-com-questions-17243648-cant-display-png"><a href="#If-you-choose-to-use-cairo-put-options-bitmapType-39-cairo-39-on-top-of-the-server-R-or-put-it-in-the-Rprofile-so-that-all-sessions-will-read-this-configuration-https-stackoverflow-com-questions-17243648-cant-display-png" class="headerlink" title="If you choose to use cairo, put options(bitmapType=&#39;cairo&#39;) on top of the server.R or put it in the Rprofile so that all sessions will read this configuration. [https://stackoverflow.com/questions/17243648/cant-display-png]"></a>If you choose to use cairo, put <code>options(bitmapType=&#39;cairo&#39;)</code> on top of the server.R or put it in the Rprofile so that all sessions will read this configuration. [<a href="https://stackoverflow.com/questions/17243648/cant-display-png" target="_blank" rel="noopener">https://stackoverflow.com/questions/17243648/cant-display-png</a>]</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SMALI"><figure class="iseeu highlight /smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libbz2-dev</span><br><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/CRAN/src/base/R-3/R-3.5.0.tar.gz</span><br><span class="line">tar xzvf R-3.5.0.tar.gz</span><br><span class="line">cd R-3.5.0</span><br><span class="line">sudo -s</span><br><span class="line"><span class="keyword">.</span>/configure --with-readline=no --with-libtiff --with-libjpeg --with-libpng --with-x --with-cairo</span><br><span class="line">make</span><br><span class="line">make check</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></div>
 <p>Check capabilities:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="R"><figure class="iseeu highlight /r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">R</span><br><span class="line">capabilities()</span><br></pre></td></tr></table></figure></div></p>
 <ul>
 <li>Rprofile<br>At startup, R will source the <strong>RProfile.site</strong> file.<br>Then look for a .Rprofile file to source in the current working directory.<br>Not found, it will look for on in ~/.Rprofile.</li>
 </ul>
-<p>[<a href="https://www.r-bloggers.com/fun-with-rprofile-and-customizing-r-startup/]" target="_blank" rel="noopener">https://www.r-bloggers.com/fun-with-rprofile-and-customizing-r-startup/]</a><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="APPLESCRIPT"><figure class="iseeu highlight /applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In <span class="keyword">the</span> absence <span class="keyword">of</span> any command-line flags being used, when R starts up, <span class="keyword">it</span> will “source” (<span class="built_in">run</span>) <span class="keyword">the</span> site-wide R startup configuration <span class="built_in">file</span>/<span class="keyword">script</span> <span class="keyword">if</span> <span class="keyword">it</span> exists. In a fresh install <span class="keyword">of</span> R, this will rarely exist, <span class="keyword">but</span> <span class="keyword">if</span> <span class="keyword">it</span> <span class="keyword">does</span>, <span class="keyword">it</span> will usually be <span class="keyword">in</span> ‘/Library/Frameworks/R.framework/Resources/etc/’ <span class="keyword">on</span> OS X, ‘C:Program FilesRR-***etc’ <span class="keyword">on</span> Windows, <span class="keyword">or</span> ‘/etc/R/’ <span class="keyword">on</span> Debian. Next, <span class="keyword">it</span> will check <span class="keyword">for</span> a .Rprofile hidden <span class="built_in">file</span> <span class="keyword">in</span> <span class="keyword">the</span> current working directory (<span class="keyword">the</span> directory <span class="keyword">where</span> R <span class="keyword">is</span> started <span class="keyword">on</span> <span class="keyword">the</span> command-line) <span class="keyword">to</span> source. Failing <span class="keyword">that</span>, <span class="keyword">it</span> will check your home directory <span class="keyword">for</span> <span class="keyword">the</span> .Rprofile hidden <span class="built_in">file</span>.</span><br></pre></td></tr></table></figure></div></p>
+<p>[<a href="https://www.r-bloggers.com/fun-with-rprofile-and-customizing-r-startup/" target="_blank" rel="noopener">https://www.r-bloggers.com/fun-with-rprofile-and-customizing-r-startup/</a>]<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="APPLESCRIPT"><figure class="iseeu highlight /applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In <span class="keyword">the</span> absence <span class="keyword">of</span> any command-line flags being used, when R starts up, <span class="keyword">it</span> will “source” (<span class="built_in">run</span>) <span class="keyword">the</span> site-wide R startup configuration <span class="built_in">file</span>/<span class="keyword">script</span> <span class="keyword">if</span> <span class="keyword">it</span> exists. In a fresh install <span class="keyword">of</span> R, this will rarely exist, <span class="keyword">but</span> <span class="keyword">if</span> <span class="keyword">it</span> <span class="keyword">does</span>, <span class="keyword">it</span> will usually be <span class="keyword">in</span> ‘/Library/Frameworks/R.framework/Resources/etc/’ <span class="keyword">on</span> OS X, ‘C:Program FilesRR-***etc’ <span class="keyword">on</span> Windows, <span class="keyword">or</span> ‘/etc/R/’ <span class="keyword">on</span> Debian. Next, <span class="keyword">it</span> will check <span class="keyword">for</span> a .Rprofile hidden <span class="built_in">file</span> <span class="keyword">in</span> <span class="keyword">the</span> current working directory (<span class="keyword">the</span> directory <span class="keyword">where</span> R <span class="keyword">is</span> started <span class="keyword">on</span> <span class="keyword">the</span> command-line) <span class="keyword">to</span> source. Failing <span class="keyword">that</span>, <span class="keyword">it</span> will check your home directory <span class="keyword">for</span> <span class="keyword">the</span> .Rprofile hidden <span class="built_in">file</span>.</span><br></pre></td></tr></table></figure></div></p>
 <p>There are two special functions you can put:</p>
 <pre><code>* **.First()** will run at the start of the R session
 * **.Last()** will run at the end of the session
@@ -1285,7 +1442,7 @@
 <li><p>Install keras(h5py),tensorflow</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="STYLUS"><figure class="iseeu highlight /stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y python-virtualenv</span><br><span class="line">sudo pip3 install tensorflow -<span class="selector-tag">i</span> https:<span class="comment">//pypi.tuna.tsinghua.edu.cn/simple</span></span><br><span class="line">sudo pip3 install keras -<span class="selector-tag">i</span> https:<span class="comment">//pypi.tuna.tsinghua.edu.cn/simple</span></span><br></pre></td></tr></table></figure></div>
 </li>
-<li><p>Install Shiny Server, check this page[<a href="https://www.rstudio.com/products/shiny/download-server/]" target="_blank" rel="noopener">https://www.rstudio.com/products/shiny/download-server/]</a> for the newest package</p>
+<li><p>Install Shiny Server, check this page[<a href="https://www.rstudio.com/products/shiny/download-server/" target="_blank" rel="noopener">https://www.rstudio.com/products/shiny/download-server/</a>] for the newest package</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="VIM"><figure class="iseeu highlight /vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install gdebi-core</span><br><span class="line">wget http<span class="variable">s:</span>//download3.rstudio.org/ubuntu-<span class="number">14.04</span>/x86_64/shiny-server-<span class="number">1.5</span>.<span class="number">7.907</span>-amd64.<span class="keyword">deb</span></span><br><span class="line">sudo gdebi shiny-server-<span class="number">1.5</span>.<span class="number">7.907</span>-amd64.<span class="keyword">deb</span></span><br></pre></td></tr></table></figure></div>
 </li>
 <li><p>Shiny Server Management</p>
@@ -1299,7 +1456,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="Deploy-App"><a href="#Deploy-App" class="headerlink" title="Deploy App"></a>Deploy App</h2><p>[<a href="https://www.linode.com/docs/development/r/how-to-deploy-rshiny-server-on-ubuntu-and-debian/#deploy-your-app]" target="_blank" rel="noopener">https://www.linode.com/docs/development/r/how-to-deploy-rshiny-server-on-ubuntu-and-debian/#deploy-your-app]</a></p>
+<h2 id="Deploy-App"><a href="#Deploy-App" class="headerlink" title="Deploy App"></a>Deploy App</h2><p>[<a href="https://www.linode.com/docs/development/r/how-to-deploy-rshiny-server-on-ubuntu-and-debian/#deploy-your-app" target="_blank" rel="noopener">https://www.linode.com/docs/development/r/how-to-deploy-rshiny-server-on-ubuntu-and-debian/#deploy-your-app</a>]</p>
 <p>By default, Shiny Server uses /srv/shiny-server/ as its site directory. Any Shiny apps in this directory will be served automatically.</p>
 <p>Copy the example app directory into /srv/shiny-server/:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="AWK"><figure class="iseeu highlight /awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp -r Example<span class="regexp">/ /</span>srv<span class="regexp">/shiny-server/</span></span><br></pre></td></tr></table></figure></div></p>
 <p>In a web browser, navigate to the app’s address. Replace example.com with your Linode’s public IP address or FQDN:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="STYLUS"><figure class="iseeu highlight /stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example<span class="selector-class">.com</span>:<span class="number">3838</span>/Example</span><br></pre></td></tr></table></figure></div></p>
@@ -1437,7 +1594,7 @@
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="R"><figure class="iseeu highlight /r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; x&lt;-matrix(<span class="number">1</span>:<span class="number">12</span>, ncol=<span class="number">3</span>)</span><br><span class="line">&gt; x</span><br><span class="line">     [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">1</span>    <span class="number">5</span>    <span class="number">9</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">2</span>    <span class="number">6</span>   <span class="number">10</span></span><br><span class="line">[<span class="number">3</span>,]    <span class="number">3</span>    <span class="number">7</span>   <span class="number">11</span></span><br><span class="line">[<span class="number">4</span>,]    <span class="number">4</span>    <span class="number">8</span>   <span class="number">12</span></span><br><span class="line">&gt; apply(x, <span class="number">1</span>, sum)</span><br><span class="line">[<span class="number">1</span>] <span class="number">15</span> <span class="number">18</span> <span class="number">21</span> <span class="number">24</span></span><br></pre></td></tr></table></figure></div>
 <p>例： 按行循环，让数据框的x1列+1,并计算x1,x2列的均值</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="R"><figure class="iseeu highlight /r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&gt; x &lt;- cbind(x1=<span class="number">3</span>, x2=c(<span class="number">4</span>:<span class="number">1</span>,<span class="number">2</span>:<span class="number">5</span>)); x</span><br><span class="line">     x1 x2</span><br><span class="line">[<span class="number">1</span>,]  <span class="number">3</span>  <span class="number">4</span></span><br><span class="line">[<span class="number">2</span>,]  <span class="number">3</span>  <span class="number">3</span></span><br><span class="line">[<span class="number">3</span>,]  <span class="number">3</span>  <span class="number">2</span></span><br><span class="line">[<span class="number">4</span>,]  <span class="number">3</span>  <span class="number">1</span></span><br><span class="line">[<span class="number">5</span>,]  <span class="number">3</span>  <span class="number">2</span></span><br><span class="line">[<span class="number">6</span>,]  <span class="number">3</span>  <span class="number">3</span></span><br><span class="line">[<span class="number">7</span>,]  <span class="number">3</span>  <span class="number">4</span></span><br><span class="line">[<span class="number">8</span>,]  <span class="number">3</span>  <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 自定义函数myFUN, 第一个参数x为数据，第二、第三个参数为自定义参数</span></span><br><span class="line"></span><br><span class="line">&gt; myFun &lt;- <span class="keyword">function</span>(x,c1,c2)&#123;</span><br><span class="line">	c(sum(x[c1],<span class="number">1</span>), mean(x[c2]))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt; apply(x,<span class="number">1</span>,myFUN,c1=<span class="string">'x1'</span>,c2=(<span class="string">'x1'</span>,<span class="string">'x2'</span>))</span><br><span class="line">    [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>] [,<span class="number">4</span>] [,<span class="number">5</span>] [,<span class="number">6</span>] [,<span class="number">7</span>] [,<span class="number">8</span>]</span><br><span class="line">[<span class="number">1</span>,]  <span class="number">4.0</span>    <span class="number">4</span>  <span class="number">4.0</span>    <span class="number">4</span>  <span class="number">4.0</span>    <span class="number">4</span>  <span class="number">4.0</span>    <span class="number">4</span></span><br><span class="line">[<span class="number">2</span>,]  <span class="number">3.5</span>    <span class="number">3</span>  <span class="number">2.5</span>    <span class="number">2</span>  <span class="number">2.5</span>    <span class="number">3</span>  <span class="number">3.5</span>    <span class="number">4</span></span><br></pre></td></tr></table></figure></div>
-<h2 id="accessors"><a href="#accessors" class="headerlink" title="[,[[,$ accessors"></a>[,[[,$ accessors</h2><p>[Ref:<a href="https://www.r-bloggers.com/r-accessors-explained/]" target="_blank" rel="noopener">https://www.r-bloggers.com/r-accessors-explained/]</a></p>
+<h2 id="accessors"><a href="#accessors" class="headerlink" title="[,[[,$ accessors"></a>[,[[,$ accessors</h2><p>[Ref:<a href="https://www.r-bloggers.com/r-accessors-explained/" target="_blank" rel="noopener">https://www.r-bloggers.com/r-accessors-explained/</a>]</p>
 <ul>
 <li><p>Subset with [<br>  取Object子集用[]. 取出来的子集与原object类型相同</p>
 </li>
@@ -1461,133 +1618,6 @@
 *    Returns only one item.
 *    If the name contains special characters, the name must be enclosed in **&quot;&quot;**
 </code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/18/rshiny-concept/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/18/rshiny-concept/" itemprop="url">rshiny-concept</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-18T11:29:21+08:00">
-                2018-04-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Shiny-Scope"><a href="#Shiny-Scope" class="headerlink" title="Shiny Scope"></a>Shiny Scope</h2><h3 id="Per-session-objects"><a href="#Per-session-objects" class="headerlink" title="Per-session objects"></a>Per-session objects</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="R"><figure class="iseeu highlight /r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># server.R</span></span><br><span class="line"></span><br><span class="line">shinyServer(func = <span class="keyword">function</span>(input, output)&#123;</span><br><span class="line">		startTime &lt;- Sys.time()</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure></div>
-<p><code>func</code> is called each time a web brower is pointed to the Shiny application = is called once for each session.</p>
-<p>所有在func里面的东西是每个session单独实例化的。这包括<code>input</code>和<code>output</code>。<br>每个session有自己的<code>input</code>和<code>output</code>,只在func中可见。 每个session也会有自己的startTime。</p>
-<h3 id="Objects-所有session可见"><a href="#Objects-所有session可见" class="headerlink" title="Objects 所有session可见"></a>Objects 所有session可见</h3><p>适用于需要使用大数据，或者不需要<code>input</code>和<code>output</code>的工具函数的情况。<br>只需要把objects定义在shinyServer之外+inside server.R文件即可。</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="R"><figure class="iseeu highlight /r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># objects visible across all sessions</span></span><br><span class="line">bigDataSet &lt;- read.csv(<span class="string">'bigdata.csv'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># objects visible across all sessions</span></span><br><span class="line">utilityFunc &lt;- <span class="keyword">function</span>(x)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">shinyServer(<span class="keyword">function</span>(input,output)&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-<p>如果要修改共享objects，<strong>需要使用&lt;&lt;-运算符，&lt;-只针对本地变量</strong></p>
-<h3 id="Global-Objects"><a href="#Global-Objects" class="headerlink" title="Global Objects"></a>Global Objects</h3><p>Objects defined in <code>global.R</code>. 与<code>所有Session可见Objects</code>相似，但是不同的是，它同时对于<code>ui.R</code>可见。 这是因为他们被加载到了R session的全局环境中。所有的Shiny app的R代码都是运行在这个全局环境或者其子环境中。</p>
-<p>实际应用中，这个并不常见。<strong><code>ui.R</code>中的代码只会被执行一次，就是当Shiny app启动时。然后它会生成html 文件，缓存然后传给与其相连的浏览器</strong>。 这种所发当设置一些共享配置的时候可能比较有用。</p>
-
           
         
       
@@ -1670,7 +1700,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-count">78</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1683,7 +1713,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

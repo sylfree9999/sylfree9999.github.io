@@ -260,6 +260,133 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/18/rshiny-concept/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/18/rshiny-concept/" itemprop="url">rshiny-concept</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-18T11:29:21+08:00">
+                2018-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Shiny-Scope"><a href="#Shiny-Scope" class="headerlink" title="Shiny Scope"></a>Shiny Scope</h2><h3 id="Per-session-objects"><a href="#Per-session-objects" class="headerlink" title="Per-session objects"></a>Per-session objects</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="R"><figure class="iseeu highlight /r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># server.R</span></span><br><span class="line"></span><br><span class="line">shinyServer(func = <span class="keyword">function</span>(input, output)&#123;</span><br><span class="line">		startTime &lt;- Sys.time()</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure></div>
+<p><code>func</code> is called each time a web brower is pointed to the Shiny application = is called once for each session.</p>
+<p>所有在func里面的东西是每个session单独实例化的。这包括<code>input</code>和<code>output</code>。<br>每个session有自己的<code>input</code>和<code>output</code>,只在func中可见。 每个session也会有自己的startTime。</p>
+<h3 id="Objects-所有session可见"><a href="#Objects-所有session可见" class="headerlink" title="Objects 所有session可见"></a>Objects 所有session可见</h3><p>适用于需要使用大数据，或者不需要<code>input</code>和<code>output</code>的工具函数的情况。<br>只需要把objects定义在shinyServer之外+inside server.R文件即可。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="R"><figure class="iseeu highlight /r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># objects visible across all sessions</span></span><br><span class="line">bigDataSet &lt;- read.csv(<span class="string">'bigdata.csv'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># objects visible across all sessions</span></span><br><span class="line">utilityFunc &lt;- <span class="keyword">function</span>(x)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">shinyServer(<span class="keyword">function</span>(input,output)&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>如果要修改共享objects，<strong>需要使用&lt;&lt;-运算符，&lt;-只针对本地变量</strong></p>
+<h3 id="Global-Objects"><a href="#Global-Objects" class="headerlink" title="Global Objects"></a>Global Objects</h3><p>Objects defined in <code>global.R</code>. 与<code>所有Session可见Objects</code>相似，但是不同的是，它同时对于<code>ui.R</code>可见。 这是因为他们被加载到了R session的全局环境中。所有的Shiny app的R代码都是运行在这个全局环境或者其子环境中。</p>
+<p>实际应用中，这个并不常见。<strong><code>ui.R</code>中的代码只会被执行一次，就是当Shiny app启动时。然后它会生成html 文件，缓存然后传给与其相连的浏览器</strong>。 这种所发当设置一些共享配置的时候可能比较有用。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/flask-concepts/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -332,8 +459,8 @@
         
           
             <h2 id="URL重定向行文"><a href="#URL重定向行文" class="headerlink" title="URL重定向行文"></a>URL重定向行文</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route('/projects/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">projects</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'The project page'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/about')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">about</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'The about page'</span></span><br></pre></td></tr></table></figure></div>
-<p>注意<a href="mailto:`@app.route" target="_blank" rel="noopener">`@app.route</a>(‘/projects/‘)<code>最末尾的</code>/`，看起来如同一个文件夹。<br><strong>访问一个没有斜杠结尾的URL时，Flask会自动进行重定向，帮你在尾部加上一个斜杠</strong></p>
-<p>但是<a href="mailto:`@app.route" target="_blank" rel="noopener">`@app.route</a>(‘/about’)<code>尾部没有斜杠，如果你在浏览器里面输入了</code>localhost:2000/about/`， 会出现<span style="color: red">404错误</span>    </p>
+<p>注意<code>@app.route(&#39;/projects/&#39;)</code>最末尾的<code>/</code>，看起来如同一个文件夹。<br><strong>访问一个没有斜杠结尾的URL时，Flask会自动进行重定向，帮你在尾部加上一个斜杠</strong></p>
+<p>但是<code>@app.route(&#39;/about&#39;)</code>尾部没有斜杠，如果你在浏览器里面输入了<code>localhost:2000/about/</code>， 会出现<span style="color: red">404错误</span>    </p>
 <h2 id="url-for（）用于生成制定函数的url"><a href="#url-for（）用于生成制定函数的url" class="headerlink" title="url_for（）用于生成制定函数的url"></a>url_for（）用于生成制定函数的url</h2><p>url_for()会为你处理特殊字符的转义以及Unicode数据</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, url_for</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>app = Flask(__name__)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>@app.route(<span class="string">'/'</span>)</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>@app.route(<span class="string">'/login'</span>)</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>@app.route(<span class="string">'/user/&lt;username&gt;'</span>)</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">profile</span><span class="params">(username)</span>:</span> <span class="keyword">pass</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">with</span> app.test_request_context():</span><br><span class="line"><span class="meta">... </span> <span class="keyword">print</span> url_for(<span class="string">'index'</span>)</span><br><span class="line"><span class="meta">... </span> <span class="keyword">print</span> url_for(<span class="string">'login'</span>)</span><br><span class="line"><span class="meta">... </span> <span class="keyword">print</span> url_for(<span class="string">'login'</span>, next=<span class="string">'/'</span>)</span><br><span class="line"><span class="meta">... </span> <span class="keyword">print</span> url_for(<span class="string">'profile'</span>, username=<span class="string">'John Doe'</span>)</span><br><span class="line">...</span><br><span class="line">/</span><br><span class="line">/login</span><br><span class="line">/login?next=/</span><br><span class="line">/user/John%<span class="number">20</span>Doe</span><br></pre></td></tr></table></figure></div>
 <h2 id="flask-blueprint"><a href="#flask-blueprint" class="headerlink" title="flask blueprint"></a>flask blueprint</h2><p>flask blueprint用于模块化代码， 如果没有蓝图，那么一个blog系统（分前端和后端）</p>
@@ -997,7 +1124,7 @@
 <ul>
 <li>name: 要访问的文件名称</li>
 <li><p>mode:    决定打开文件的模式：</p>
-<p>  模式    |    描述<br>  —    |    —<br>  r    |    默认方式， 只读， 文件指针在文件开头<br>  w    |    写入，如果文件存在覆盖，不存在创建<br>  a     |    打开文件追加，如果文件存在文件指针放在文件结尾，不存在创建<br>  x    |    exclusive creation, fail if file already exists<br>  b     |    二进制格式<br>  t    |    文本格式(默认)    </p>
+<p>  模式    |    描述<br>  —-    |    —-<br>  r    |    默认方式， 只读， 文件指针在文件开头<br>  w    |    写入，如果文件存在覆盖，不存在创建<br>  a     |    打开文件追加，如果文件存在文件指针放在文件结尾，不存在创建<br>  x    |    exclusive creation, fail if file already exists<br>  b     |    二进制格式<br>  t    |    文本格式(默认)    </p>
 <ul>
 <li>|    打开文件读写</li>
 </ul>
@@ -1269,7 +1396,8 @@
       
         
           
-            <table>
+            <div class="table-container">
+<table>
 <thead>
 <tr>
 <th>对象</th>
@@ -1307,6 +1435,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 
           
         
@@ -1433,6 +1562,7 @@
 <p>or<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Things t</span><br><span class="line"><span class="keyword">where</span> t.ThingID <span class="keyword">in</span> (</span><br><span class="line">    <span class="keyword">select</span> top <span class="number">10</span> ThingID</span><br><span class="line">    <span class="keyword">from</span> Things tt</span><br><span class="line">    <span class="keyword">where</span> tt.Section = t.Section <span class="keyword">and</span> tt.ThingDate = @<span class="built_in">Date</span></span><br><span class="line">    <span class="keyword">order</span> <span class="keyword">by</span> tt.DateEntered <span class="keyword">desc</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">and</span> t.ThingDate = @<span class="built_in">Date</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">Section</span>, DateEntered <span class="keyword">desc</span></span><br></pre></td></tr></table></figure></div></p>
 <p>In MS Access:</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> StudentID, TestID, TestScore</span><br><span class="line">  <span class="keyword">FROM</span> MyTable t</span><br><span class="line"> <span class="keyword">WHERE</span> TestID <span class="keyword">IN</span></span><br><span class="line">(</span><br><span class="line">  <span class="keyword">SELECT</span> TOP <span class="number">3</span> TestID </span><br><span class="line">    <span class="keyword">FROM</span> MyTable</span><br><span class="line">   <span class="keyword">WHERE</span> StudentID = t.StudentID </span><br><span class="line">   <span class="keyword">ORDER</span> <span class="keyword">BY</span> TestScore <span class="keyword">DESC</span>, TestID</span><br><span class="line">)</span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> StudentID, TestScore <span class="keyword">DESC</span>, TestID;</span><br></pre></td></tr></table></figure></div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1484,129 +1614,8 @@
 </tr>
 </tbody>
 </table>
+</div>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/02/centos-install-java8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/02/centos-install-java8/" itemprop="url">CentOS Install Java8</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-02T12:00:37+08:00">
-                2018-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/</span><br><span class="line"></span><br><span class="line">wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.tar.gz&quot;</span><br><span class="line"></span><br><span class="line">tar xzf jdk-8u161-linux-x64.tar.gz</span><br><span class="line"></span><br><span class="line">cd /opt/jdk1.8.0_161/</span><br><span class="line">alternatives --install /usr/bin/java java /opt/jdk1.8.0_161/bin/java 2</span><br><span class="line">alternatives --config java</span><br><span class="line"></span><br><span class="line">There are 3 programs which provide &apos;java&apos;.</span><br><span class="line"></span><br><span class="line">  Selection    Command</span><br><span class="line">-----------------------------------------------</span><br><span class="line">*  1           /opt/jdk1.7.0_71/bin/java</span><br><span class="line"> + 2           /opt/jdk1.8.0_45/bin/java</span><br><span class="line">   3           /opt/jdk1.8.0_144/bin/java</span><br><span class="line">   4           /opt/jdk1.8.0_161/bin/java</span><br><span class="line"></span><br><span class="line">Enter to keep the current selection[+], or type selection number: 4</span><br></pre></td></tr></table></figure></div>
-<h2 id="Setup-javac-and-jar-commands-path-using-alternatives"><a href="#Setup-javac-and-jar-commands-path-using-alternatives" class="headerlink" title="Setup javac and jar commands path using alternatives"></a>Setup javac and jar commands path using <code>alternatives</code></h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alternatives --install /usr/bin/jar jar /opt/jdk1.8.0_161/bin/jar 2</span><br><span class="line">alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_161/bin/javac 2</span><br><span class="line">alternatives --set jar /opt/jdk1.8.0_161/bin/jar</span><br><span class="line">alternatives --set javac /opt/jdk1.8.0_161/bin/javac</span><br></pre></td></tr></table></figure></div>
-<h2 id="Check-installed-java-version"><a href="#Check-installed-java-version" class="headerlink" title="Check installed java version"></a>Check installed java version</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line">java version &quot;1.8.0_161&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_161-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</span><br></pre></td></tr></table></figure></div>
-<h2 id="Setup-Java-Environment-Variables"><a href="#Setup-Java-Environment-Variables" class="headerlink" title="Setup Java Environment Variables"></a>Setup Java Environment Variables</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8.0_161</span><br><span class="line">export JRE_HOME=/opt/jdk1.8.0_161/jre</span><br><span class="line">export PATH=$PATH:/opt/jdk1.8.0_161/bin:/opt/jdk1.8.0_161/jre/bin</span><br></pre></td></tr></table></figure></div>
           
         
       
@@ -1689,7 +1698,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-count">78</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1702,7 +1711,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
