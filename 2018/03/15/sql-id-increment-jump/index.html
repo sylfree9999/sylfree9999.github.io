@@ -345,7 +345,6 @@
 <p>We can put a <code>SEQUENCE</code> in the <code>DEFAULT</code> clause of the DDL for table:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Service_Tickets</span><br><span class="line">(ticket_nbr <span class="built_in">INTEGER</span> <span class="keyword">DEFAULT</span> <span class="keyword">NEXT</span> <span class="keyword">VALUE</span> <span class="keyword">FOR</span> Service_Ticket_Seq,</span><br><span class="line"> department_code <span class="built_in">CHAR</span>(<span class="number">1</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line"> <span class="keyword">CHECK</span> (department_code <span class="keyword">IN</span> (<span class="string">'M'</span>, <span class="string">'F'</span>)));</span><br></pre></td></tr></table></figure></div></p>
 <p>Now play with code:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Service_Tickets (department_code)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">'M'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Service_Tickets;</span><br></pre></td></tr></table></figure></div></p>
 <p>Now we get:</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -360,11 +359,9 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>Let’s re-do the Meats and Fish tables.<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Meats</span><br><span class="line">(ticket_seq INTEGER<span class="built_in"> DEFAULT </span>NEXT VALUE <span class="keyword">FOR</span> Service_Ticket_Seq </span><br><span class="line">       PRIMARY KEY,</span><br><span class="line"> meat_type VARCHAR(15) <span class="keyword">NOT</span> <span class="literal">NULL</span>);</span><br><span class="line"> </span><br><span class="line">CREATE TABLE Fish</span><br><span class="line">(ticket_seq INTEGER<span class="built_in"> DEFAULT </span>NEXT VALUE <span class="keyword">FOR</span> Service_Ticket_Seq </span><br><span class="line">       PRIMARY KEY,</span><br><span class="line"> fish_type VARCHAR(15) <span class="keyword">NOT</span> <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure></div></p>
 <p>Now try:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Meats (meat_type) <span class="keyword">VALUES</span> (<span class="string">'pig'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Fish (fish_type) <span class="keyword">VALUES</span> (<span class="string">'squid'</span>);</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Meats;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Fish;</span><br></pre></td></tr></table></figure></div></p>
 <p>We get:</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -383,7 +380,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <ul>
 <li><p>Apply trace flag 272 which makes the <code>IDENTITY</code> allocation logged as in previous versions.</p>
 <ul>

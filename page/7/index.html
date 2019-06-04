@@ -1019,7 +1019,8 @@
 <p>到这里，我想算是把登录代码的第二句话讲完了，讲清楚了，那么我们来看看第三句话，也就是最后一句，其实它才是登录的核心，第二句只是创建了一个ClaimsIdentity的对象。</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="HAXE"><figure class="iseeu highlight /haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> IAuthenticationManager AuthenticationManager</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">get</span> &#123; <span class="keyword">return</span> HttpContext.GetOwinContext().Authentication; &#125;</span><br><span class="line">&#125;</span><br><span class="line">AuthenticationManager.SignIn(<span class="keyword">new</span> <span class="type">AuthenticationProperties</span>() &#123; IsPersistent = <span class="literal">true</span> &#125;, identity);</span><br></pre></td></tr></table></figure></div>
 <p>IAuthenticationManager 在<code>Microsoft.Owin.Security</code>命名空间下，而这个接口是定义在Microsoft.Owin.dll中。</p>
-<h2 id="Owin"><a href="#Owin" class="headerlink" title="Owin"></a>Owin</h2><p>OWIN目标是解耦服务器和应用，这里面的服务器主要是指web服务器，比如说IIS等，那么是如何做到的呢？</p>
+<p>##Owin</p>
+<p>OWIN目标是解耦服务器和应用，这里面的服务器主要是指web服务器，比如说IIS等，那么是如何做到的呢？</p>
 <p><strong>解耦服务器与应用程序</strong><br>首先需要复习ASP.NET或者<span style="background-color: #FFFF00">IIS集成模式管道模型</span>，也就是说一个http请求在进入IIS之后（IIS7.0以上）一直到返回response这中间所经历的步骤。</p>
 <img src="/2018/03/25/asp-net-identity/netpipe.png">
 <img src="/2018/03/25/asp-net-identity/mvc-request-lifecycle.png">
