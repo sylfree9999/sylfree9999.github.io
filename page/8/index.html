@@ -260,6 +260,278 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/20/dns-forwarding/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/20/dns-forwarding/" itemprop="url">DNS Resolution in Private Subnet with VPN to on-premises network</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-20T14:39:44+08:00">
+                2018-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="DNS-Forwarding-Definition"><a href="#DNS-Forwarding-Definition" class="headerlink" title="DNS Forwarding Definition"></a>DNS Forwarding Definition</h3><p>DNS forwarding is the process by which particular sets of DNS queries are handled by a designated server, rather than being handled by the initial server contacted by the client. Usually, all DNS servers that handle address resolution within the network are configured to forward requests for addresses that are outside the network to a dedicated forwarder.<br><a href="http://social.dnsmadeeasy.com/blog/understanding-dns-forwarding/" target="_blank" rel="noopener">reference doc</a></p>
+<h3 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h3><p>AWS EC2 instances in private subnet cannot resolve dns names.<br>But EC2 instances can communicate with corporate network through VPN, the corporate network is able to correctly resolve dns.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Change private subnet dns server to corporate dns server.</p>
+<ul>
+<li><p>How to see current network dns server:</p>
+<ul>
+<li>windows: <code>ipconfig/all --&gt; dns server</code></li>
+<li>linux:<br>  <code>cat /etc/resolv.conf</code> can show your DNS servers</li>
+</ul>
+</li>
+<li><p>How to check if corporate dns is success or not:</p>
+<ul>
+<li>windows: <ul>
+<li><code>nslookup</code></li>
+<li>type <code>server 10.82.XX.XX</code>, where <code>10.82.XX.XX</code> is your corporate dns server ip address</li>
+<li>type any dns name, like baidu.com, bing.com, and press <code>Enter</code></li>
+<li>check if the ip address is returned:<img src="/2018/03/20/dns-forwarding/nslookup.png"></li>
+</ul>
+</li>
+<li><p>linux(centos):</p>
+<ul>
+<li>normally <code>dig baidu.com</code></li>
+<li>check if ip address is returned:<img src="/2018/03/20/dns-forwarding/dig.png"></li>
+<li><p>resolve use specific DNS server, like Google’s</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig @8.8.8.8 baidu.com</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>If you are just looking for IP address, you can add <code>+short</code> at the end</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig @8.8.8.8 baidu.com +short</span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/dns-cname/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/19/dns-cname/" itemprop="url">DNS CNAME ANAME</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-19T16:40:46+08:00">
+                2018-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <img src="/2018/03/19/dns-cname/dns_cname.png">
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/sql-id-increment-jump/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -343,6 +615,7 @@
 <p>We can put a <code>SEQUENCE</code> in the <code>DEFAULT</code> clause of the DDL for table:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Service_Tickets</span><br><span class="line">(ticket_nbr <span class="built_in">INTEGER</span> <span class="keyword">DEFAULT</span> <span class="keyword">NEXT</span> <span class="keyword">VALUE</span> <span class="keyword">FOR</span> Service_Ticket_Seq,</span><br><span class="line"> department_code <span class="built_in">CHAR</span>(<span class="number">1</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line"> <span class="keyword">CHECK</span> (department_code <span class="keyword">IN</span> (<span class="string">'M'</span>, <span class="string">'F'</span>)));</span><br></pre></td></tr></table></figure></div></p>
 <p>Now play with code:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Service_Tickets (department_code)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">'M'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Service_Tickets;</span><br></pre></td></tr></table></figure></div></p>
 <p>Now we get:</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -357,9 +630,11 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>Let’s re-do the Meats and Fish tables.<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Meats</span><br><span class="line">(ticket_seq INTEGER<span class="built_in"> DEFAULT </span>NEXT VALUE <span class="keyword">FOR</span> Service_Ticket_Seq </span><br><span class="line">       PRIMARY KEY,</span><br><span class="line"> meat_type VARCHAR(15) <span class="keyword">NOT</span> <span class="literal">NULL</span>);</span><br><span class="line"> </span><br><span class="line">CREATE TABLE Fish</span><br><span class="line">(ticket_seq INTEGER<span class="built_in"> DEFAULT </span>NEXT VALUE <span class="keyword">FOR</span> Service_Ticket_Seq </span><br><span class="line">       PRIMARY KEY,</span><br><span class="line"> fish_type VARCHAR(15) <span class="keyword">NOT</span> <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure></div></p>
 <p>Now try:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Meats (meat_type) <span class="keyword">VALUES</span> (<span class="string">'pig'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Fish (fish_type) <span class="keyword">VALUES</span> (<span class="string">'squid'</span>);</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Meats;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Fish;</span><br></pre></td></tr></table></figure></div></p>
 <p>We get:</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -378,6 +653,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li><p>Apply trace flag 272 which makes the <code>IDENTITY</code> allocation logged as in previous versions.</p>
 <ul>
@@ -1376,7 +1652,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1389,7 +1665,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

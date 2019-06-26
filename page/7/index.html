@@ -260,6 +260,344 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/12/python-true-value/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/12/python-true-value/" itemprop="url">Python对象真值</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-12T15:59:45+08:00">
+                2018-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div class="table-container">
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“spam”</td>
+<td>True</td>
+</tr>
+<tr>
+<td>“”</td>
+<td>False</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>False</td>
+</tr>
+<tr>
+<td>{}</td>
+<td>False</td>
+</tr>
+<tr>
+<td>1</td>
+<td>true</td>
+</tr>
+<tr>
+<td>0.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>None</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/11/sql-select-top-n/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/11/sql-select-top-n/" itemprop="url">SQL select top n</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-11T17:53:07+08:00">
+                2018-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>If &gt; SQL 2005,</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> ExcelMediaPlanId,ChannelCN,<span class="keyword">rank</span></span><br><span class="line"><span class="keyword">from</span>(</span><br><span class="line">	<span class="keyword">select</span> ExcelMediaplanId, ChannelCN,<span class="keyword">Rank</span>() </span><br><span class="line">	<span class="keyword">over</span> (<span class="keyword">Partition</span> <span class="keyword">BY</span> ExcelMediaplanId <span class="keyword">order</span> <span class="keyword">by</span> UnitRatecard <span class="keyword">desc</span>) <span class="keyword">as</span> <span class="keyword">rank</span></span><br><span class="line">	<span class="keyword">from</span> ExcelAdPosition) rs </span><br><span class="line"><span class="keyword">where</span> <span class="keyword">rank</span> &lt;=<span class="number">3</span></span><br></pre></td></tr></table></figure></div>
+<p>or </p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">WITH TOPTEN AS (</span><br><span class="line">    <span class="keyword">SELECT</span> *, ROW_NUMBER() </span><br><span class="line">    <span class="keyword">over</span> (</span><br><span class="line">        <span class="keyword">PARTITION</span> <span class="keyword">BY</span> [group_by_field] </span><br><span class="line">        <span class="keyword">order</span> <span class="keyword">by</span> [prioritise_field]</span><br><span class="line">    ) <span class="keyword">AS</span> RowNo </span><br><span class="line">    <span class="keyword">FROM</span> [table_name]</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> TOPTEN <span class="keyword">WHERE</span> RowNo &lt;= <span class="number">10</span></span><br></pre></td></tr></table></figure></div>
+<p>or<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Things t</span><br><span class="line"><span class="keyword">where</span> t.ThingID <span class="keyword">in</span> (</span><br><span class="line">    <span class="keyword">select</span> top <span class="number">10</span> ThingID</span><br><span class="line">    <span class="keyword">from</span> Things tt</span><br><span class="line">    <span class="keyword">where</span> tt.Section = t.Section <span class="keyword">and</span> tt.ThingDate = @<span class="built_in">Date</span></span><br><span class="line">    <span class="keyword">order</span> <span class="keyword">by</span> tt.DateEntered <span class="keyword">desc</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">and</span> t.ThingDate = @<span class="built_in">Date</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">Section</span>, DateEntered <span class="keyword">desc</span></span><br></pre></td></tr></table></figure></div></p>
+<p>In MS Access:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> StudentID, TestID, TestScore</span><br><span class="line">  <span class="keyword">FROM</span> MyTable t</span><br><span class="line"> <span class="keyword">WHERE</span> TestID <span class="keyword">IN</span></span><br><span class="line">(</span><br><span class="line">  <span class="keyword">SELECT</span> TOP <span class="number">3</span> TestID </span><br><span class="line">    <span class="keyword">FROM</span> MyTable</span><br><span class="line">   <span class="keyword">WHERE</span> StudentID = t.StudentID </span><br><span class="line">   <span class="keyword">ORDER</span> <span class="keyword">BY</span> TestScore <span class="keyword">DESC</span>, TestID</span><br><span class="line">)</span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> StudentID, TestScore <span class="keyword">DESC</span>, TestID;</span><br></pre></td></tr></table></figure></div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>StudentID</th>
+<th>TestID</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>95</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>90</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>90</td>
+</tr>
+<tr>
+<td>1</td>
+<td>4</td>
+<td>90</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>99</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>95</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>90</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+<td>90</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/02/centos-install-java8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1019,8 +1357,7 @@
 <p>到这里，我想算是把登录代码的第二句话讲完了，讲清楚了，那么我们来看看第三句话，也就是最后一句，其实它才是登录的核心，第二句只是创建了一个ClaimsIdentity的对象。</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="HAXE"><figure class="iseeu highlight /haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> IAuthenticationManager AuthenticationManager</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">get</span> &#123; <span class="keyword">return</span> HttpContext.GetOwinContext().Authentication; &#125;</span><br><span class="line">&#125;</span><br><span class="line">AuthenticationManager.SignIn(<span class="keyword">new</span> <span class="type">AuthenticationProperties</span>() &#123; IsPersistent = <span class="literal">true</span> &#125;, identity);</span><br></pre></td></tr></table></figure></div>
 <p>IAuthenticationManager 在<code>Microsoft.Owin.Security</code>命名空间下，而这个接口是定义在Microsoft.Owin.dll中。</p>
-<p>##Owin</p>
-<p>OWIN目标是解耦服务器和应用，这里面的服务器主要是指web服务器，比如说IIS等，那么是如何做到的呢？</p>
+<h2 id="Owin"><a href="#Owin" class="headerlink" title="Owin"></a>Owin</h2><p>OWIN目标是解耦服务器和应用，这里面的服务器主要是指web服务器，比如说IIS等，那么是如何做到的呢？</p>
 <p><strong>解耦服务器与应用程序</strong><br>首先需要复习ASP.NET或者<span style="background-color: #FFFF00">IIS集成模式管道模型</span>，也就是说一个http请求在进入IIS之后（IIS7.0以上）一直到返回response这中间所经历的步骤。</p>
 <img src="/2018/03/25/asp-net-identity/netpipe.png">
 <img src="/2018/03/25/asp-net-identity/mvc-request-lifecycle.png">
@@ -1340,278 +1677,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/20/dns-forwarding/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/20/dns-forwarding/" itemprop="url">DNS Resolution in Private Subnet with VPN to on-premises network</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-20T14:39:44+08:00">
-                2018-03-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="DNS-Forwarding-Definition"><a href="#DNS-Forwarding-Definition" class="headerlink" title="DNS Forwarding Definition"></a>DNS Forwarding Definition</h3><p>DNS forwarding is the process by which particular sets of DNS queries are handled by a designated server, rather than being handled by the initial server contacted by the client. Usually, all DNS servers that handle address resolution within the network are configured to forward requests for addresses that are outside the network to a dedicated forwarder.<br><a href="http://social.dnsmadeeasy.com/blog/understanding-dns-forwarding/" target="_blank" rel="noopener">reference doc</a></p>
-<h3 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h3><p>AWS EC2 instances in private subnet cannot resolve dns names.<br>But EC2 instances can communicate with corporate network through VPN, the corporate network is able to correctly resolve dns.</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Change private subnet dns server to corporate dns server.</p>
-<ul>
-<li><p>How to see current network dns server:</p>
-<ul>
-<li>windows: <code>ipconfig/all --&gt; dns server</code></li>
-<li>linux:<br>  <code>cat /etc/resolv.conf</code> can show your DNS servers</li>
-</ul>
-</li>
-<li><p>How to check if corporate dns is success or not:</p>
-<ul>
-<li>windows: <ul>
-<li><code>nslookup</code></li>
-<li>type <code>server 10.82.XX.XX</code>, where <code>10.82.XX.XX</code> is your corporate dns server ip address</li>
-<li>type any dns name, like baidu.com, bing.com, and press <code>Enter</code></li>
-<li>check if the ip address is returned:<img src="/2018/03/20/dns-forwarding/nslookup.png"></li>
-</ul>
-</li>
-<li><p>linux(centos):</p>
-<ul>
-<li>normally <code>dig baidu.com</code></li>
-<li>check if ip address is returned:<img src="/2018/03/20/dns-forwarding/dig.png"></li>
-<li><p>resolve use specific DNS server, like Google’s</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig @8.8.8.8 baidu.com</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>If you are just looking for IP address, you can add <code>+short</code> at the end</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig @8.8.8.8 baidu.com +short</span><br></pre></td></tr></table></figure></div>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/dns-cname/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/19/dns-cname/" itemprop="url">DNS CNAME ANAME</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-19T16:40:46+08:00">
-                2018-03-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <img src="/2018/03/19/dns-cname/dns_cname.png">
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1660,7 +1725,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1673,7 +1738,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

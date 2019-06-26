@@ -260,6 +260,296 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/20/shell-basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/20/shell-basic/" itemprop="url">Shell 基本语法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-20T16:14:59+08:00">
+                2018-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="test-sh-两个点的含义"><a href="#test-sh-两个点的含义" class="headerlink" title=". ./test.sh 两个点的含义"></a>. ./test.sh 两个点的含义</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">aa = <span class="string">"hello"</span></span><br></pre></td></tr></table></figure></div>
+<p>如果<code>echo $aa</code>是没有东西的，为什么？</p>
+<p>当只运行一个    <code>./test.sh</code> 的时候,其实是test.sh是在别的进程里面跑的，所以你在当前进程里跑的时候是不会输出东西的<br>所以用<code>. ./test.sh</code>是说在我现在这个进程里面来跑这个脚本</p>
+<h2 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h2><pre><code>1，系统变量：$HOME、$PWD、$SHELL(现在用的是哪种解释器)、$USER(当前用户)等
+2，查看所有变量:`set`
+3，定义变量：VAR=value，&lt;span style=&quot;color:red;&quot;&gt;等号两侧不能有空格&lt;/span&gt;，变量名称一般为大写 
+4，双引号与单引号的区别：双引号仅将空格脱意，单引号会将所有特殊字符脱意(单引号里面用变量引用没有用) 
+
+    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">X</span>=hello</span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello</span><br><span class="line"><span class="attribute">X</span>=<span class="string">"hello world"</span></span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello world</span><br><span class="line"><span class="attribute">X</span>=<span class="string">'hello\nworld'</span></span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello\nworld</span><br><span class="line"><span class="attribute">Y</span>=abc</span><br><span class="line"><span class="attribute">X</span>=<span class="string">'hello $Y'</span></span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello <span class="variable">$Y</span></span><br><span class="line"><span class="attribute">X</span>=<span class="string">"hello <span class="variable">$Y</span>"</span></span><br><span class="line">echo <span class="variable">$X</span> -&gt; hello abc</span><br></pre></td></tr></table></figure></div>
+
+5，撤销变量：unset X
+6，export：可以把变量提升为全局环境变量，所有连上去的BASH都能访问，否则只在当前的bash能用
+
+7，&lt;span style=&quot;color:red;&quot;&gt;把当前command的结果赋予另一个变量&lt;/span&gt;
+    1，用A=`ls -la`反引号的形式
+    2，用A=$(ls -la)，等价于上面的方式
+
+    <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X=<span class="string">"Hello;World;SS"</span></span><br><span class="line"><span class="keyword">echo</span> $X | cut -d <span class="string">";"</span> -f2  <span class="comment">//拿到以；为分隔符切分的第二个元素</span></span><br><span class="line">Y=`<span class="keyword">echo</span> $X | cut -d <span class="string">";"</span> -f2`</span><br><span class="line"><span class="keyword">echo</span> $Y -&gt; World</span><br></pre></td></tr></table></figure></div>
+
+8，Shell中的特殊变量
+    1，$? 上一个命令执行的状态，类似与方法的返回值，通常情况下返回值为0代表成功，非0代表不正常
+        <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">true</span></span><br><span class="line">echo <span class="variable">$?</span> -&gt; <span class="number">0</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line">echo <span class="variable">$?</span> -&gt; <span class="number">1</span></span><br><span class="line">ll</span><br><span class="line">echo <span class="variable">$?</span> -&gt; <span class="number">0</span></span><br><span class="line">lsss</span><br><span class="line">echo <span class="variable">$?</span> -&gt; <span class="number">127</span></span><br></pre></td></tr></table></figure></div>
+
+    2，$$ 表示当前进程号
+    3，$0 表示当前脚本名称
+    4，$N 表示N位置的输入参数
+        <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">aa=<span class="string">"hello"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第一个参数="</span><span class="variable">$1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第二个参数="</span><span class="variable">$2</span></span><br><span class="line"></span><br><span class="line">./test.sh hello world</span><br><span class="line">第一个参数=hello</span><br><span class="line">第二个参数=world</span><br></pre></td></tr></table></figure></div>
+
+    5，$# 表示参数的个数，常用于循环
+    6，$*和$@都表示参数列表
+        &quot;$*&quot;会将所有的参数作为一个整体，以&quot;$S1$S2...$Sn&quot;的形式输出
+        &quot;$@&quot;会将各个参数分开，以&quot;$S1&quot;&quot;$S2&quot;...&quot;$Sn&quot;的形式输出
+        <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> $*</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$@</span></span><br><span class="line"><span class="keyword">for</span> N <span class="keyword">in</span> <span class="string">"$*"</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$N</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> N <span class="keyword">in</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$N</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></div>
+</code></pre><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>格式：expr m+n 或者 $((m+n)) 注意expr运算符间要有空格<br>例如（2+3）*4<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LSL"><figure class="iseeu highlight /lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S=`expr <span class="number">2</span>+<span class="number">3</span>`\*<span class="number">4</span> 或者 $(((<span class="number">2</span>+<span class="number">3</span>)*<span class="number">4</span>)),最外层的$()代表取其值</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> N <span class="keyword">in</span> 1 2 3</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="variable">$N</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">或者 <span class="keyword">for</span> N <span class="keyword">in</span> &#123;1..3&#125;;<span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">$N</span>;<span class="keyword">done</span></span><br><span class="line">或者</span><br><span class="line"><span class="keyword">for</span> ((i=0;i&lt;=5;i++)) //必须要是两层括号</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"welcome <span class="variable">$i</span> times"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="OCAML"><figure class="iseeu highlight /ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> expression</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">	command</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">或者</span><br><span class="line"><span class="built_in">int</span>=<span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> ((<span class="built_in">int</span>&lt;=<span class="number">3</span>))</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	echo $<span class="built_in">int</span></span><br><span class="line">	<span class="keyword">let</span> <span class="built_in">int</span>++</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="variable">$1</span> <span class="keyword">in</span></span><br><span class="line">start)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"starting"</span></span><br><span class="line">	;;</span><br><span class="line">stop)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"stoping"</span></span><br><span class="line">	;;</span><br><span class="line">*)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"Usage:&#123;start|stop&#125;"</span></span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="read命令"><a href="#read命令" class="headerlink" title="read命令"></a>read命令</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="STYLUS"><figure class="iseeu highlight /stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">read -<span class="selector-tag">p</span> <span class="string">"please enter a number: "</span> numb</span><br><span class="line">please enter <span class="selector-tag">a</span> number:  <span class="number">1</span></span><br><span class="line">echo <span class="variable">$numb</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="if"><a href="#if" class="headerlink" title="if"></a>if</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="variable">$NAME</span>=root ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"hello <span class="variable">$&#123;NAME&#125;</span>"</span></span><br><span class="line"><span class="keyword">elif</span> [ <span class="variable">$NAME</span>=itcast ]</span><br><span class="line">	<span class="keyword">then</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"hello <span class="variable">$&#123;NAME&#125;</span>"</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"OUT"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></div>
+<p>[ condition ]一定要前后有空格，空[  ]则返回1，即false</p>
+<h2 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h2><p>[ condition ] &amp;&amp; echo OK || echo notok<br>= 字符串比较<br>-lt 小于<br>-le 小于等于<br>-eq 等于<br>-gt 大于<br>-ge 大于等于<br>-ne 不等于<br>-r     有读的权限<br>-w     有写权限<br>-f     文件存在并且是一个常规的文件<br>-s     文件存在且不为空<br>-d     文件存在并且为一个目录<br>-b     文件存在并且是一个块设备<br>-L     文件存在并且是一个链接</p>
+<h2 id="Shell-自定义函数"><a href="#Shell-自定义函数" class="headerlink" title="Shell 自定义函数"></a>Shell 自定义函数</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="ADA"><figure class="iseeu highlight /ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[ <span class="keyword">function</span> <span class="title">]</span> funname [()]</span><br><span class="line">&#123;</span><br><span class="line">	action;</span><br><span class="line">	[<span class="keyword">return</span> <span class="type">int</span>;]</span><br><span class="line">&#125;</span><br><span class="line">例如可以这样定义</span><br><span class="line"><span class="keyword">function</span> <span class="title">start</span>() / <span class="keyword">function</span> <span class="title">start/</span> start()</span><br><span class="line">函数只能返回int类型</span><br><span class="line"></span><br><span class="line">如果要传入参数，需要在外面定义</span><br><span class="line"></span><br><span class="line">!#/bin/bash</span><br><span class="line"><span class="keyword">function</span> <span class="title">fSum</span>()</span><br><span class="line">&#123;</span><br><span class="line">	echo $1,$2;</span><br><span class="line">	<span class="keyword">return</span> <span class="type">$(($1+$2))</span>;</span><br><span class="line">&#125;</span><br><span class="line">fSum <span class="number">3</span> <span class="number">2</span>;</span><br><span class="line">total=$?;</span><br><span class="line">fSum <span class="number">5</span> <span class="number">7</span>;</span><br><span class="line">total=$?;</span><br><span class="line">echo $total, $?;</span><br></pre></td></tr></table></figure></div>
+<h2 id="脚本调试"><a href="#脚本调试" class="headerlink" title="脚本调试"></a>脚本调试</h2><p><code>sh -vx helloWorld.sh</code> 只会展现所有的执行状态，不会停</p>
+<h2 id="模拟用户输入"><a href="#模拟用户输入" class="headerlink" title="模拟用户输入"></a>模拟用户输入</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">auto_ssh_copy_id</span></span>() &#123;</span><br><span class="line">	expect -c <span class="string">"set timeout -1;</span></span><br><span class="line"><span class="string">		spawn ssh-copy-id <span class="variable">$1</span>;</span></span><br><span class="line"><span class="string">		expect &#123;</span></span><br><span class="line"><span class="string">			*(yes/no)* &#123;send -- yes\r;exp_continue;&#125;</span></span><br><span class="line"><span class="string">			*assword:* &#123;send -- <span class="variable">$2</span>\r;exp_continue;&#125;</span></span><br><span class="line"><span class="string">			eof		   &#123;exit 0;&#125;</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">ssy_copy_id_to_all</span></span>() &#123;</span><br><span class="line">	<span class="keyword">for</span> SERVER <span class="keyword">in</span> <span class="variable">$SERVERS</span></span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">		auto_ssh_copy_id <span class="variable">$SERVER</span> <span class="variable">$PASSWORD</span></span><br><span class="line">	<span class="keyword">done</span>	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/16/css-basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Spence">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Drill Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/16/css-basic/" itemprop="url">css-basic</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-16T21:34:41+08:00">
+                2018-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="布局-传统display-position-float"><a href="#布局-传统display-position-float" class="headerlink" title="布局(传统display+position+float)"></a>布局(传统display+position+float)</h1><h2 id="Display"><a href="#Display" class="headerlink" title="Display"></a>Display</h2><p>1,    <code>block</code>占一行<br>    默认<code>block</code>的元素有：<br>    <code>div p ul ol li h1 h2 h3 h4 h5 h6</code><br>2,    <code>inline</code>只占其content的尺寸，如果没有content，就不会显示<br>3，    <code>inline-block</code>是inline的布局，就是都挤在一行（对外的表现），对内表现为block,就是可以像block元素一样设置宽高等（盒模型数据）</p>
+<h2 id="Position"><a href="#Position" class="headerlink" title="Position"></a>Position</h2><p>1,    <code>static</code> 就是默认的元素定位<br>2,    <code>relative</code> 相对于<span style="color: red;font-weight: bold;">自己原本的位置</span>,比方说几次方这个东西，就可以用relative来做</p>
+<p>如果你不给Relative设置<code>top left bottom right</code>, 就相当于什么也没发生过，它就是默认的位置</p>
+<p>另外如果你设置了它为relative，就相当于给予了它<code>z-index</code>的能力</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.square</span> &#123;</span><br><span class="line">	<span class="attribute">position</span>: relative;</span><br><span class="line">	<span class="attribute">top </span>: -<span class="number">1px</span>;</span><br><span class="line">	<span class="attribute">left </span>: <span class="number">1px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/16/css-basic/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/14/linux-basic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -605,6 +895,7 @@
 <li>基类约束，如果where后面跟多个类型，这些类型属于and关系，必须同时满足才行</li>
 </ol>
 <p><strong>You can only put one class name and several interfaces to one ‘where’ constraint!</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where T1: Supplier, IConstractor, IComparable, new()</span><br></pre></td></tr></table></figure></div></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -639,6 +930,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public staic void Show&lt;T&gt;(T instance)</span><br><span class="line">where T: People</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(instance.Id); //不会报错，因为告诉了T是属于什么类型</span><br><span class="line">	Console.WriteLine(instance.Name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p><span style="color: red">类型约束</span><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static T DoNothing&lt;T&gt;(T tParameter)</span><br><span class="line">//where T: ISpotrs //接口类型约束</span><br><span class="line">//where T: class // 引用类型约束</span><br><span class="line">//where T: struct // 值类型约束</span><br><span class="line">where T: new() //无参数构造函数约束</span><br><span class="line">&#123;</span><br><span class="line">	//return default(T);//会根据T的类型，产生一个默认值，可以应用于值类型约束的返回</span><br><span class="line"></span><br><span class="line">	//return null; //引用类型约束</span><br><span class="line"></span><br><span class="line">	T t = new T();</span><br><span class="line">	return t; //无参数构造函数返回</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <p>显示声明出来类型和用约束的区别</p>
@@ -1393,308 +1685,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/conda-packages-install/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/29/conda-packages-install/" itemprop="url">conda-packages-install</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-29T15:31:15+08:00">
-                2018-05-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="如何查看一个包所在的地址"><a href="#如何查看一个包所在的地址" class="headerlink" title="如何查看一个包所在的地址"></a>如何查看一个包所在的地址</h2><ul>
-<li></li>
-</ul>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SWIFT"><figure class="iseeu highlight /swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="built_in">print</span> numpy.__file__</span><br></pre></td></tr></table></figure></div>
-<ul>
-<li></li>
-</ul>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="XL"><figure class="iseeu highlight /xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="built_in">path</span> = os.<span class="built_in">path</span>.dirname(numpy.__file__)</span><br></pre></td></tr></table></figure></div>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/28/information-test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Spence">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Drill Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/28/information-test/" itemprop="url">论文</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-28T16:14:07+08:00">
-                2018-05-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="论文写作"><a href="#论文写作" class="headerlink" title="论文写作"></a>论文写作</h2><ul>
-<li>四大领域：<br>进度        成本        质量        范围</li>
-<li>辅助<br>人力        沟通        风险        采购        干系人</li>
-<li>论文不及格的几种类型：<ol>
-<li>虚构情节，<span style="color: red"><strong>千万不要写什么教育方面的系统</strong></span></li>
-<li>没有项目开发的实际经验，正片都是浅层次纯理论的论文</li>
-<li>所讨论的内容与方法过于陈旧，也千万别用<strong>云计算等</strong>改卷老师都不知道的技术（？？？？）</li>
-<li>一定不能写你既是项目经理、又是技术人员</li>
-<li>乙方角度，一定不能写在签订合同前的事情</li>
-<li>如果题目里面没有提到“大项目”，纵使项目再大，也不要写“大项目”；如果题目里面提到了“大项目”，纵使项目再小，也要写成“大项目”，写大项目就要突出大项目的特点、需要写间接管理</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li><p>论文素材<br>建议投资在一百万以上<br>统一设定成乙方的项目<br>项目可以通过政府采购网站上查找招标书，比方说XX市政府采购网/或搜索信息系统方案书，投标书/或再加上十二金中一金为关键词，比方说金盾 方案书/选定项目之后，再搜索详细功能介绍，比方说相关项目怒的博士/硕士论文</p>
-<p>项目必须是已经完工的项目，且最好是最近几年的</p>
-</li>
-<li><p>论文格式<br>分摘要和正文<br>摘要要求字数300字左右，330字一下<br>正文要求2000字以上<br><span style="color: red">不要在论文中书画图形</span><br>正文又可分为</p>
-<ol>
-<li>背景， 建议2段左右完成， 字数控制在500字左右，写完后写150字左右的过渡段</li>
-<li>正文实践部分，一般3~6个论点，一个论点1~2段，整体字数在1400左右</li>
-<li>收尾，一般1~2段，画龙点睛，写总结经验和教训，表决心，字数在300字左右为佳</li>
-</ol>
-</li>
-<li><p>大项目的论文写作</p>
-<ol>
-<li>要在摘要和背景里面体现项目大，<strong>需要写明投资和工期</strong>，比方说投资纯软件300万+，软件+硬件1200万+，工期1年左右</li>
-<li>摘要里面最后总结对大项目你管理的心得体会</li>
-<li>体现简介管理，分级分工管理，比如我带领了/我指导了XXX做了什么工作</li>
-<li>如果题目没有要求写大项目，建议不要写大项目</li>
-</ol>
-</li>
-<li><p>摘要的写法<br>一定要规范，（时间、项目、投资金额、周期、项目目标、本文导论的内容（哪个管理的描述、管理的几个过程的介绍、管理中的问题、解决措施）、项目是否完工、是否达到目标）</p>
-<p>举例：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LSL"><figure class="iseeu highlight /lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2016</span>年<span class="number">3</span>月，我作为项目经理参与了XX市XX项目，整个项目总投资<span class="number">7</span>--余万元，建设工期为<span class="number">1</span>年。某市力图通过XX项目的建设，实现XX的目的。该项目于<span class="number">2017</span>年<span class="number">3</span>月，通过了业主方的验收，赢得了用户的好评。</span><br><span class="line"></span><br><span class="line">本文以XX项目为例，结合作者实践，探讨了在项目XX管理中遇到的问题及解决方法。包括XX、XX、XX。（或者讨论了信息系统项目过程中的XX管理，主要从如下几个方面进行论述：XX-结合自己的论点去写，可以是过程，可以是解决方法，但是需要和论点对应）最后，针对存在的不足之处，提出了今后的改进思路</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>正文背景写法<br>背景基本上就是摘要的扩充</p>
-<ol>
-<li>甲方立项的目的，即项目将要解决什么问题</li>
-<li>公开招标，乙方赢得该项目，项目投资额、项目工期</li>
-<li>项目详细的功能介绍</li>
-<li>项目技术选择</li>
-<li>项目组织形式以及项目团队构成<br>以上500字左右</li>
-<li>XX管理的重要性</li>
-<li>过渡到论述的论点<br>以上150字左右</li>
-</ol>
-<p>例：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="LSL"><figure class="iseeu highlight /lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2017</span>年<span class="number">2</span>月， 我参与了XX市区域卫生信息集成平台建设项目，担任项目经理职位。该项目由该市卫生局贯彻“十二五”期间关于深化医药卫生体制改革规划而催生，共投资人民币<span class="number">980</span>万元，工期<span class="number">15</span>个月。通过该项目的建设，实现了该市人人享有基本医疗卫生服务，提高全民健康水平的总体目标。该项目将该市卫生局下属<span class="number">7</span>家二级以上医院，以及<span class="number">23</span>家乡镇卫生院各类医疗信息进行整合，建立区域内患者医疗信息集中存储、分布调阅、资源整合、互联互通、资源共享，减少患者跨院就诊重复检查，从而以推进公共卫生、医疗、医保、药品、财务监管信息化建设为着力点，加快信息标准化和公共卫生服务信息平台建设。</span><br><span class="line"></span><br><span class="line">该集成平台涵盖了区域市民健康系统、区域医院信息系统（简称HIS）、区域电子病历系统（EMR）、基层医疗卫生信息系统、绩效考核系统、药品监督系统等<span class="number">6</span>大子系统。由于系统应用于各乡镇各医疗机构，考虑使用者的地域性，所以该集成平台使用基于.net平台的B/S三层架构，所有服务器集中存放在卫生局的中心机房，各医疗机构通过专网连接。该集成平台应用系统采用C#+MVC+ExtJS架构开发，服务器使用IBM Power <span class="number">720</span>小型机，应用服务器操作系统为Windows Server <span class="number">2008</span>,数据库采用Oracle <span class="number">11</span>g,数据库服务器操作系统为AIX <span class="number">5</span>L。同时使用vs2013自带的团队管理器TFS作为项目配置管理工具。【<span class="number">515</span>字，一般到这里就结束了】</span><br><span class="line"></span><br><span class="line">该项目建设具有如下特征：<span class="number">1.</span> 项目周期长，历时长达<span class="number">15</span>个月之久。<span class="number">2.</span> 项目规模大，目标构成复杂。<span class="number">3.</span> 项目干系人构成复杂，包括市卫生局、社保中心、医院卫生院以及各子系统的项目成员等。 <span class="number">4.</span> 综合性强。然而面对如此复杂的应用，我面临更多“间接管理”的挑战，日常职责更集中于管理职责。由于本系统涉及业务考核，因此在本项目中，质量管理尤为重要。在本项目中，我作为项目经理，除了对其他管理领域进行恪尽职守的管理外，主要从质量规划、质量保证和质量控制等方面进行质量管理。下面结合本人实际经验，简要介绍该项目的质量管理过程和方法，望各位批评指正。【这一段一般市大项目的写法，一般项目不用谢】</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>正文中的万能模板<br>需求管理</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">从事多年项目管理的我深知，需求是龙头，是做项目管理的基础，没有需求，项目就无从谈起；因此在项目开始实施后，我带领我的项目团队深入甲方现场，通过用户访谈方式获得了用户需求，为后期项目管理奠定了基础；【建议在实践的开头部分写】</span><br></pre></td></tr></table></figure></div>
-<p>变更管理</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在项目实施过程中，变更不可避免的可能会由于用户的需求发生了变化、政策导向的改变或者由于一些新金属的出现等等。在本项目中我严格遵照变更控制流程进行管理，比如变更申请-评估-决策-实施-验证-沟通存档，我通过严格管理变更，没有导致项目的延期【建议在时间的偏后写】</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>收尾的万能模板</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">由于在实际项目中我们对XX管理的高度重视，采取了···（方法和措施），取得了良好的收效，我们的项目按期完成，项目组也赢得了公司的好评，项目基本上取得了成功。但通过总结认为，该项目··管理中····（哪些方面）仍存在一些不足，主要是由于····（原因）造成了····（不良后果），所以在后续的学习和工作中，我将不断充电学习，同时进行业务交流，提升自己的业务和管理水平，力争为我国信息化建设做出自己的努力</span><br></pre></td></tr></table></figure></div></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1743,7 +1733,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1756,7 +1746,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

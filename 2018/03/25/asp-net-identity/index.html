@@ -373,8 +373,7 @@
 <p>到这里，我想算是把登录代码的第二句话讲完了，讲清楚了，那么我们来看看第三句话，也就是最后一句，其实它才是登录的核心，第二句只是创建了一个ClaimsIdentity的对象。</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="HAXE"><figure class="iseeu highlight /haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> IAuthenticationManager AuthenticationManager</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">get</span> &#123; <span class="keyword">return</span> HttpContext.GetOwinContext().Authentication; &#125;</span><br><span class="line">&#125;</span><br><span class="line">AuthenticationManager.SignIn(<span class="keyword">new</span> <span class="type">AuthenticationProperties</span>() &#123; IsPersistent = <span class="literal">true</span> &#125;, identity);</span><br></pre></td></tr></table></figure></div>
 <p>IAuthenticationManager 在<code>Microsoft.Owin.Security</code>命名空间下，而这个接口是定义在Microsoft.Owin.dll中。</p>
-<p>##Owin</p>
-<p>OWIN目标是解耦服务器和应用，这里面的服务器主要是指web服务器，比如说IIS等，那么是如何做到的呢？</p>
+<h2 id="Owin"><a href="#Owin" class="headerlink" title="Owin"></a>Owin</h2><p>OWIN目标是解耦服务器和应用，这里面的服务器主要是指web服务器，比如说IIS等，那么是如何做到的呢？</p>
 <p><strong>解耦服务器与应用程序</strong><br>首先需要复习ASP.NET或者<span style="background-color: #FFFF00">IIS集成模式管道模型</span>，也就是说一个http请求在进入IIS之后（IIS7.0以上）一直到返回response这中间所经历的步骤。</p>
 <img src="/2018/03/25/asp-net-identity/netpipe.png">
 <img src="/2018/03/25/asp-net-identity/mvc-request-lifecycle.png">
@@ -533,7 +532,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -546,7 +545,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -581,7 +580,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Claim-baised-Identity"><span class="nav-number">1.</span> <span class="nav-text">Claim-baised Identity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClaimsIdentity-ClaimsPrincipal"><span class="nav-number">2.</span> <span class="nav-text">ClaimsIdentity, ClaimsPrincipal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OWIN如何做到解耦"><span class="nav-number">3.</span> <span class="nav-text">OWIN如何做到解耦</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Forms-Authentication"><span class="nav-number">4.</span> <span class="nav-text">Forms Authentication</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC5默认的StartUp配置类"><span class="nav-number">5.</span> <span class="nav-text">MVC5默认的StartUp配置类</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Claim-baised-Identity"><span class="nav-number">1.</span> <span class="nav-text">Claim-baised Identity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClaimsIdentity-ClaimsPrincipal"><span class="nav-number">2.</span> <span class="nav-text">ClaimsIdentity, ClaimsPrincipal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Owin"><span class="nav-number">3.</span> <span class="nav-text">Owin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OWIN如何做到解耦"><span class="nav-number">4.</span> <span class="nav-text">OWIN如何做到解耦</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Forms-Authentication"><span class="nav-number">5.</span> <span class="nav-text">Forms Authentication</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC5默认的StartUp配置类"><span class="nav-number">6.</span> <span class="nav-text">MVC5默认的StartUp配置类</span></a></li></ol></div>
             
 
           </div>
