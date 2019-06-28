@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="作者：Manjusaka链接：https://www.zhihu.com/question/266222348/answer/304632928来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 同步阻塞：举一点不严谨的例子吧你现在要买一本《人体艺术导论》，但是奶茶东缺货。最开始你一直刷新页面，等着书到货了，这是同步阻塞。 同步非阻塞你觉得这样太浪费时间了。你就去去汤不">
+<meta name="description" content="作者：Manjusaka链接：https://www.zhihu.com/question/266222348/answer/304632928来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 ##同步阻塞： 举一点不严谨的例子吧你现在要买一本《人体艺术导论》，但是奶茶东缺货。最开始你一直刷新页面，等着书到货了，这是同步阻塞。 ##同步非阻塞你觉得这样太浪费时间了。你">
 <meta name="keywords" content="concept">
 <meta property="og:type" content="article">
 <meta property="og:title" content="同步、异步、回调、阻塞、非阻塞、线程、进程、协程">
 <meta property="og:url" content="http://yoursite.com/2018/05/14/concurrent-async-concept/index.html">
 <meta property="og:site_name" content="Drill Learning">
-<meta property="og:description" content="作者：Manjusaka链接：https://www.zhihu.com/question/266222348/answer/304632928来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 同步阻塞：举一点不严谨的例子吧你现在要买一本《人体艺术导论》，但是奶茶东缺货。最开始你一直刷新页面，等着书到货了，这是同步阻塞。 同步非阻塞你觉得这样太浪费时间了。你就去去汤不">
+<meta property="og:description" content="作者：Manjusaka链接：https://www.zhihu.com/question/266222348/answer/304632928来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 ##同步阻塞： 举一点不严谨的例子吧你现在要买一本《人体艺术导论》，但是奶茶东缺货。最开始你一直刷新页面，等着书到货了，这是同步阻塞。 ##同步非阻塞你觉得这样太浪费时间了。你">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T08:43:47.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同步、异步、回调、阻塞、非阻塞、线程、进程、协程">
-<meta name="twitter:description" content="作者：Manjusaka链接：https://www.zhihu.com/question/266222348/answer/304632928来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 同步阻塞：举一点不严谨的例子吧你现在要买一本《人体艺术导论》，但是奶茶东缺货。最开始你一直刷新页面，等着书到货了，这是同步阻塞。 同步非阻塞你觉得这样太浪费时间了。你就去去汤不">
+<meta name="twitter:description" content="作者：Manjusaka链接：https://www.zhihu.com/question/266222348/answer/304632928来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 ##同步阻塞： 举一点不严谨的例子吧你现在要买一本《人体艺术导论》，但是奶茶东缺货。最开始你一直刷新页面，等着书到货了，这是同步阻塞。 ##同步非阻塞你觉得这样太浪费时间了。你">
 
 
 
@@ -331,14 +331,15 @@
 
       
         <p>作者：Manjusaka<br>链接：<a href="https://www.zhihu.com/question/266222348/answer/304632928" target="_blank" rel="noopener">https://www.zhihu.com/question/266222348/answer/304632928</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<h2 id="同步阻塞："><a href="#同步阻塞：" class="headerlink" title="同步阻塞："></a>同步阻塞：</h2><p>举一点不严谨的例子吧你现在要买一本《人体艺术导论》，但是奶茶东缺货。<br>最开始你一直刷新页面，等着书到货了，这是<strong>同步阻塞</strong>。</p>
-<h2 id="同步非阻塞"><a href="#同步非阻塞" class="headerlink" title="同步非阻塞"></a>同步非阻塞</h2><p>你觉得这样太浪费时间了。你就去去汤不热看点照片压压惊，然后时不时的去刷一下图书状态是否有货，这是同步非阻塞。</p>
-<h2 id="异步阻塞"><a href="#异步阻塞" class="headerlink" title="异步阻塞"></a>异步阻塞</h2><p>好了，你最后成功买到《人体艺术导论》这本书。<br>某一天，你想去再去买一本《知乎撕逼指南》，抱歉你运气很差，还是没货了那么现在你觉得不断的刷是否有货太傻了<br>你现在奶茶东上设置了一下，当有货的时候给你响起 FBI Warning 的闹钟。<br>好了，你现在一直等着闹钟的想起，这叫异步阻塞。</p>
-<h2 id="异步非阻塞"><a href="#异步非阻塞" class="headerlink" title="异步非阻塞"></a>异步非阻塞</h2><p>你还是觉得，我怎么能这么傻于是你去干点奇遇事情，等闹钟响起的时候，你就下单。这叫异步非阻塞OK，明白了 前面四个概念么？</p>
+<p>##同步阻塞：</p>
+<p>举一点不严谨的例子吧你现在要买一本《人体艺术导论》，但是奶茶东缺货。<br>最开始你一直刷新页面，等着书到货了，这是<strong>同步阻塞</strong>。</p>
+<p>##同步非阻塞<br>你觉得这样太浪费时间了。你就去去汤不热看点照片压压惊，然后时不时的去刷一下图书状态是否有货，这是同步非阻塞。</p>
+<p>##异步阻塞<br>好了，你最后成功买到《人体艺术导论》这本书。<br>某一天，你想去再去买一本《知乎撕逼指南》，抱歉你运气很差，还是没货了那么现在你觉得不断的刷是否有货太傻了<br>你现在奶茶东上设置了一下，当有货的时候给你响起 FBI Warning 的闹钟。<br>好了，你现在一直等着闹钟的想起，这叫异步阻塞。</p>
+<p>##异步非阻塞<br>你还是觉得，我怎么能这么傻于是你去干点奇遇事情，等闹钟响起的时候，你就下单。这叫异步非阻塞OK，明白了 前面四个概念么？</p>
 <p>都是在奶茶东买书，<br>基本版的奶茶东，同步，我们只能手动去不断查询书是否有货<br>设置闹钟后的奶茶东，异步，奶茶东可以在有货的时候主动通知我们<br><strong>阻塞</strong>，在书籍有货之前，我们都没法干其余的事情<br><strong>非阻塞</strong>，在书籍有货之前，我们可以干其余的事情</p>
-<h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h2><p>好了，现在你觉得自己下单太傻了，你在奶茶东上做了更进一步的设置。当这本书有货的时候，帮我下单。这就是回调</p>
+<p>##回调<br>好了，现在你觉得自己下单太傻了，你在奶茶东上做了更进一步的设置。当这本书有货的时候，帮我下单。这就是回调</p>
 <p>好了，进程，线程，协程<br>你现在要买十本书，每本书都可能没货，现在你觉得这个工作太繁琐了<br>你开了十家公司，每个公司分别帮你购买一本书，公司-&gt;进程<br>你开了一家公司，公司里找了十个人，每个人帮你购买一本书，人-&gt;线程<br>你开了一家公司，找了一个人，用十个手机，每个手机帮你购买一本书，手机-&gt;协程</p>
-<h2 id="并发并行"><a href="#并发并行" class="headerlink" title="并发并行"></a>并发并行</h2><p>并发和并行是相对的一个概念<br>并发：交替做不同事的能力<br>并行：同时做不同事的能力</p>
+<p>##并发并行<br>并发和并行是相对的一个概念<br>并发：交替做不同事的能力<br>并行：同时做不同事的能力</p>
 <p>举个例子，回到买书的问题，有个妹子，找你想让你帮忙买四本书，<br>你找了两个人，一个人买两本书，对于买书的人而言，购买两本书的操作交互进行，这是并发。<br>对你而言，你将四本书分别交给两个人同时购买，这是并行。<br>对于妹子而言，你一个人交替购买四本书，这是并发。</p>
 <p>事件循环是什么？前面不是说了么你购买书，想收到有货通知，想有货自动下单，但是你自己不知道怎么搞定，你把这个事情交给奶茶东。奶茶东-&gt;事件循环</p>
 
@@ -435,17 +436,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Spence">
           <p class="site-author-name" itemprop="name">Spence</p>
@@ -496,22 +488,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#同步阻塞："><span class="nav-number">1.</span> <span class="nav-text">同步阻塞：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步非阻塞"><span class="nav-number">2.</span> <span class="nav-text">同步非阻塞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步阻塞"><span class="nav-number">3.</span> <span class="nav-text">异步阻塞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步非阻塞"><span class="nav-number">4.</span> <span class="nav-text">异步非阻塞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回调"><span class="nav-number">5.</span> <span class="nav-text">回调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发并行"><span class="nav-number">6.</span> <span class="nav-text">并发并行</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

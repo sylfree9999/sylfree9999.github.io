@@ -333,105 +333,22 @@
           
             <p>摘自<a href="https://zhuanlan.zhihu.com/p/30960190" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/30960190</a></p>
 <h2 id="Axis"><a href="#Axis" class="headerlink" title="Axis"></a>Axis</h2><p><code>axis</code>就是计数方式，直白来说就是<strong>最外面的括号代表axis=0, 依次往里面的括号对应的axis技术就依次+1</strong></p>
-<p>比方说对于矩阵</p>
-<script type="math/tex; mode=display">
-x = \begin{bmatrix}
-0 & 1\\
-2 & 3
-\end{bmatrix}</script><p>在<code>numpy</code>里面，这个矩阵表达成<code>x=[[0,1],[2,3]]</code>,则最外层的括号代表axis=0,里面一层的括号代表axis=1</p>
-<p><img src="D:\Study\drilllearning\source\_posts\python-numpy-axis\01.jpg" alt="01"></p>
+<p>比方说对于矩阵<br>$$<br>x = \begin{bmatrix}<br>0 &amp; 1\<br>2 &amp; 3<br>\end{bmatrix}<br>$$<br>在<code>numpy</code>里面，这个矩阵表达成<code>x=[[0,1],[2,3]]</code>,则最外层的括号代表axis=0,里面一层的括号代表axis=1</p>
+<p><img src="https://pic3.zhimg.com/v2-23bac6d76512cc451157e4f902032f7a_r.jpg" alt="preview"></p>
 <p>所以对应的运算就有</p>
-<p><img src="D:\Study\drilllearning\source\_posts\python-numpy-axis.assets\02.jpg" alt="02"></p>
+<p><img src="https://pic4.zhimg.com/80/v2-93d8cd8c8ae6745394150a7c5f5ed663_hd.jpg" alt="img"></p>
 <p>更加高维的运算：</p>
-<p><img src="D:\Study\drilllearning\source\_posts\python-numpy-axis.assets\03-1561537347611.jpg" alt="03"></p>
+<p><img src="https://pic4.zhimg.com/80/v2-bc560c9de7835dbdabb6ad8b684b937b_hd.jpg" alt="img"></p>
 <h2 id="Transpose"><a href="#Transpose" class="headerlink" title="Transpose"></a>Transpose</h2><p><code>transpose</code>就是更换矩阵的顺序，比方说一个<code>shape</code>为<code>(2,3,4)</code>的矩阵</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">x = np.arrange(<span class="number">24</span>).reshape([<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br></pre></td></tr></table></figure></div>
-<p>则此时这个</p>
-<script type="math/tex; mode=display">
-x = \begin{bmatrix}
-\begin{bmatrix}
-\begin{bmatrix}
-0 & 1 & 2 & 3
-\end{bmatrix}\\
-\begin{bmatrix}
-4 & 5 & 6 & 7
-\end{bmatrix} \\
-\begin{bmatrix}
-8 & 9 & 10 & 11
-\end{bmatrix}
-\end{bmatrix} \\
-\begin{bmatrix}
-\begin{bmatrix}
-12 & 13 & 14 & 15
-\end{bmatrix}\\
-\begin{bmatrix}
-16 & 17 & 18 & 19
-\end{bmatrix}\\
-\begin{bmatrix}
-20 & 21 & 22 & 23
-\end{bmatrix}
-\end{bmatrix}
-\end{bmatrix}</script><p>首先需要了解shape的直观概念，<strong>shape中的各个数就是对应的axis的元素个数</strong>，如下图：</p>
-<p><img src="D:\Study\drilllearning\source\_posts\python-numpy-axis.assets\04.jpg" alt="04"></p>
+<p>则此时这个<br>$$<br>x = \begin{bmatrix}<br>\begin{bmatrix}<br>\begin{bmatrix}<br>0 &amp; 1 &amp; 2 &amp; 3<br>\end{bmatrix}\<br>\begin{bmatrix}<br>4 &amp; 5 &amp; 6 &amp; 7<br>\end{bmatrix} \<br>\begin{bmatrix}<br>8 &amp; 9 &amp; 10 &amp; 11<br>\end{bmatrix}<br>\end{bmatrix} \<br>\begin{bmatrix}<br>\begin{bmatrix}<br>12 &amp; 13 &amp; 14 &amp; 15<br>\end{bmatrix}\<br>\begin{bmatrix}<br>16 &amp; 17 &amp; 18 &amp; 19<br>\end{bmatrix}\<br>\begin{bmatrix}<br>20 &amp; 21 &amp; 22 &amp; 23<br>\end{bmatrix}<br>\end{bmatrix}<br>\end{bmatrix}<br>$$<br>首先需要了解shape的直观概念，<strong>shape中的各个数就是对应的axis的元素个数</strong>，如下图：</p>
+<p><img src="https://pic4.zhimg.com/80/v2-916a48c8610713b37e7343269893037b_hd.jpg" alt="img"></p>
 <p>所以shape的值为<code>(2,3,4)</code>也就是说对于axis=0,每隔两个元素往下走(每个元素相差12)，对于axis=1，每隔3个元素往下走（每个元素相差4），对于axis=2来说，每隔4个元素往下走（每个元素相差1）</p>
 <p>这个时候我们定义另外一个参数<code>strides</code>，记录每个axis跳过的数，则上面的<code>strides=(12,4,1)</code></p>
 <p>那么，<strong>transpose的本质就是对strides中的各个数的顺序进行了调换</strong>，比方说</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.transpose(<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure></div>
-<p>则这个时候strides就变成<code>(4,12,1)</code>, shape就变成<code>(3,2,4)</code>,也就是说一个大的矩阵里面包含三个矩阵b，其中每个b里面又有两个矩阵c, 每个c矩阵里面有4列，画出来就变成这样的形式</p>
-<script type="math/tex; mode=display">
-x = \begin{bmatrix}
-\begin{bmatrix}
-\begin{bmatrix}
-x & x & x & x
-\end{bmatrix}\\
-\begin{bmatrix}
-x & x & x & x
-\end{bmatrix}
-\end{bmatrix}\\
-\begin{bmatrix}
-\begin{bmatrix}
-x & x & x & x
-\end{bmatrix}\\
-\begin{bmatrix}
-x & x & x & x
-\end{bmatrix}
-\end{bmatrix}\\
-\begin{bmatrix}
-\begin{bmatrix}
-x & x & x & x
-\end{bmatrix}\\
-\begin{bmatrix}
-x & x & x & x
-\end{bmatrix}
-\end{bmatrix}
-\end{bmatrix}</script><p>这个时候再定义里面<code>strides</code>跳跃，则可以确定此时变换后的矩阵变成：</p>
-<script type="math/tex; mode=display">
-x = \begin{bmatrix}
-\begin{bmatrix}
-\begin{bmatrix}
-0 & 1 & 2 & 3
-\end{bmatrix}\\
-\begin{bmatrix}
-12 & 13 & 14 & 15
-\end{bmatrix}
-\end{bmatrix}\\
-\begin{bmatrix}
-\begin{bmatrix}
-4 & 5 & 6 & 7
-\end{bmatrix}\\
-\begin{bmatrix}
-16 & 17 & 18 & 19
-\end{bmatrix}
-\end{bmatrix}\\
-\begin{bmatrix}
-\begin{bmatrix}
-8 & 9 & 10 & 11
-\end{bmatrix}\\
-\begin{bmatrix}
-20 & 21 & 22 & 23
-\end{bmatrix}
-\end{bmatrix}
-\end{bmatrix}</script>
+<p>则这个时候strides就变成<code>(4,12,1)</code>, shape就变成<code>(3,2,4)</code>,也就是说一个大的矩阵里面包含三个矩阵b，其中每个b里面又有两个矩阵c, 每个c矩阵里面有4列，画出来就变成这样的形式<br>$$<br>x = \begin{bmatrix}<br>\begin{bmatrix}<br>\begin{bmatrix}<br>x &amp; x &amp; x &amp; x<br>\end{bmatrix}\<br>\begin{bmatrix}<br>x &amp; x &amp; x &amp; x<br>\end{bmatrix}<br>\end{bmatrix}\<br>\begin{bmatrix}<br>\begin{bmatrix}<br>x &amp; x &amp; x &amp; x<br>\end{bmatrix}\<br>\begin{bmatrix}<br>x &amp; x &amp; x &amp; x<br>\end{bmatrix}<br>\end{bmatrix}\<br>\begin{bmatrix}<br>\begin{bmatrix}<br>x &amp; x &amp; x &amp; x<br>\end{bmatrix}\<br>\begin{bmatrix}<br>x &amp; x &amp; x &amp; x<br>\end{bmatrix}<br>\end{bmatrix}<br>\end{bmatrix}<br>$$<br>这个时候再定义里面<code>strides</code>跳跃，则可以确定此时变换后的矩阵变成：<br>$$<br>x = \begin{bmatrix}<br>\begin{bmatrix}<br>\begin{bmatrix}<br>0 &amp; 1 &amp; 2 &amp; 3<br>\end{bmatrix}\<br>\begin{bmatrix}<br>12 &amp; 13 &amp; 14 &amp; 15<br>\end{bmatrix}<br>\end{bmatrix}\<br>\begin{bmatrix}<br>\begin{bmatrix}<br>4 &amp; 5 &amp; 6 &amp; 7<br>\end{bmatrix}\<br>\begin{bmatrix}<br>16 &amp; 17 &amp; 18 &amp; 19<br>\end{bmatrix}<br>\end{bmatrix}\<br>\begin{bmatrix}<br>\begin{bmatrix}<br>8 &amp; 9 &amp; 10 &amp; 11<br>\end{bmatrix}\<br>\begin{bmatrix}<br>20 &amp; 21 &amp; 22 &amp; 23<br>\end{bmatrix}<br>\end{bmatrix}<br>\end{bmatrix}<br>$$</p>
+
           
         
       
@@ -875,8 +792,7 @@ x = \begin{bmatrix}
 <h3 id="g-全局匹配"><a href="#g-全局匹配" class="headerlink" title="g, 全局匹配"></a>g, 全局匹配</h3><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="match-匹配"><a href="#match-匹配" class="headerlink" title="match 匹配"></a>match 匹配</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">"234sdfsfsd aser0934534sdf lert09345"</span>;</span><br><span class="line"><span class="keyword">let</span> re = <span class="regexp">/\d+/g</span>; <span class="comment">//找出所有的数字</span></span><br><span class="line">alert(str.match(re));</span><br></pre></td></tr></table></figure></div>
 <h3 id="replace替换"><a href="#replace替换" class="headerlink" title="replace替换"></a>replace替换</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">"sdf3aedfsafd Adsffg Asdf"</span>;</span><br><span class="line">alert(str.replace(<span class="regexp">/a/gi</span>,<span class="string">'*'</span>));<span class="comment">//替换掉所有的a为*</span></span><br></pre></td></tr></table></figure></div>
 <h3 id="test测试"><a href="#test测试" class="headerlink" title="test测试"></a>test测试</h3><p>​    <code>test</code>返回<code>true/false</code>,注意的是如果是用<code>test</code>，不限定行首行尾的话，只要部分匹配就算<code>true</code></p>
-<h2 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h2><div class="table-container">
-<table>
+<h2 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h2><table>
 <thead>
 <tr>
 <th>量词</th>
@@ -910,15 +826,13 @@ x = \begin{bmatrix}
 </tr>
 </tbody>
 </table>
-</div>
 <h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符-[]"></a>元字符-<code>[]</code></h2><h3 id="任何一个"><a href="#任何一个" class="headerlink" title="任何一个"></a>任何一个</h3><p>​        <code>/a[abc]q/</code> - 可以匹配aaq,abq,acq,<span style="color:red">在正则中只要不写量词，默认就是匹配一个</span></p>
 <h3 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h3><p>​        <code>/[a-z]/i</code></p>
 <p>​        <code>/[0-9]</code></p>
 <p>​        <code>/[a-z0-9]/</code></p>
 <p>​        <code>[3-59]</code> 这个不是匹配3~59而是代表可以是3~5或者是9，<span style="color:red">因为正则没有分隔符</span></p>
 <h3 id="排除"><a href="#排除" class="headerlink" title="排除^"></a>排除<code>^</code></h3><p>​        <code>[^a-z0-9]</code> 排除字母a-z和数字0-9</p>
-<h2 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h2><div class="table-container">
-<table>
+<h2 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h2><table>
 <thead>
 <tr>
 <th>转义名称</th>
@@ -940,11 +854,11 @@ x = \begin{bmatrix}
 </tr>
 <tr>
 <td>\D</td>
-<td><sup><a href="#fn_0-9" id="reffn_0-9">0-9</a></sup></td>
+<td>[^0-9]</td>
 </tr>
 <tr>
 <td>\W</td>
-<td><sup><a href="#fn_a-z0-9" id="reffn_a-z0-9">a-z0-9</a></sup></td>
+<td>[^a-z0-9]</td>
 </tr>
 <tr>
 <td>\S</td>
@@ -956,9 +870,7 @@ x = \begin{bmatrix}
 </tr>
 </tbody>
 </table>
-</div>
-<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><div class="table-container">
-<table>
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><table>
 <thead>
 <tr>
 <th>修饰符</th>
@@ -976,7 +888,6 @@ x = \begin{bmatrix}
 </tr>
 </tbody>
 </table>
-</div>
 <p>例，判定是否为QQ号，规则是第一个不为0，共5~12位数字，这里必须要加入行首<code>^</code>和行尾<code>$</code> </p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> re = <span class="regexp">/^[1-9]\d&#123;4,11&#125;$/</span>;</span><br><span class="line"><span class="keyword">if</span>(str.test(re))&#123; <span class="comment">//str.test如果正则里面不包含行首和结尾限定符（从头到尾），则只要字符串部分匹配也为true,例如ssd124768625d，也可以通过</span></span><br><span class="line">    alert(<span class="string">"Pass"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    alert(<span class="string">"Fail"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>​    <code>|</code>-或优先级，或的优先级非常低，所以如果要匹配gif/png/jpg结尾的图片，写成<code>/\.jpg|gif|png$/i</code>其实是<span style="color:red">错的!在计算机眼里，因为或优先级很低，所以会读成要么.jpg,要么gif，要么png$, 所以字符串<code>sdfgifsdgterstpng</code>也可以匹配成功</span></p>
@@ -1368,7 +1279,7 @@ x = \begin{bmatrix}
         
           <p>与其恐惧，不如直面它吧！</p>
 <h2 id="对数函数"><a href="#对数函数" class="headerlink" title="对数函数"></a>对数函数</h2><p>基本公式为：<br>$\log_a{MN} = \log_aM + \log_aN$<br>$\log_a{\frac{M}{N}} = \log_aM - \log_aN$<br>$\log_a{M^n} = n\log_aM$<br>$\log_{a^n}M = \frac{1}{n}\log_aM$<br>换底公式$\log_ba = \frac{\log_ca}{\log_cb}$<br>倒数公式$\frac{1}{\log_ab} = \log_ba$</p>
-<h2 id="三角函数"><a href="#三角函数" class="headerlink" title="三角函数"></a>三角函数</h2><p>[Ref:<a href="https://zhuanlan.zhihu.com/p/20102140" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/20102140</a>]<br>[Ref:<a href="https://www.youtube.com/watch?v=diMjCkwL9Xo&amp;list=PLF38FCD363F7184B0&amp;index=7" target="_blank" rel="noopener">https://www.youtube.com/watch?v=diMjCkwL9Xo&amp;list=PLF38FCD363F7184B0&amp;index=7</a>]</p>
+<h2 id="三角函数"><a href="#三角函数" class="headerlink" title="三角函数"></a>三角函数</h2><p>[Ref:<a href="https://zhuanlan.zhihu.com/p/20102140]" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/20102140]</a><br>[Ref:<a href="https://www.youtube.com/watch?v=diMjCkwL9Xo&amp;list=PLF38FCD363F7184B0&amp;index=7]" target="_blank" rel="noopener">https://www.youtube.com/watch?v=diMjCkwL9Xo&amp;list=PLF38FCD363F7184B0&amp;index=7]</a></p>
 <h3 id="基础定义"><a href="#基础定义" class="headerlink" title="基础定义"></a>基础定义</h3><p>设角$\alpha$的的终边与单位圆交于点P(x,y),则有<br>$\sin\alpha =y, \cos\alpha = x$<br>$\tan\alpha = \frac{y}{x}, \cot\alpha = \frac{x}{y}$<br>$\sec\alpha = \frac{1}{x},\csc\alpha = \frac{1}{y}$<br><strong>sec pronounces secant</strong><br><strong>csc pronounces cosecant</strong></p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1497,13 +1408,13 @@ x = \begin{bmatrix}
 <p>凹！被数学支配的恐惧还涌在心头，依稀记得在大学的时候学的时候感觉都懂，过一个暑假全忘了（这种特殊技能同样包括各种电视剧，比方说什么射雕英雄传，鹿鼎记，还珠格格这种，看的时候那是比谁都清楚，看完就忘）</p>
 <p>我也是佩服我自己的。<br>好了，废话不多说了，现在毕竟科技发达了，不如以往，只能靠老师教的方法学。现在各种网上的资源很是丰富啊。</p>
 <p>在众多资源中，一个3Blue1Brown的大神还有meetmath做的系列脱颖而出，我决定引用他们的例子，用这种图形化的学习方式重温一下线性代数。</p>
-<p>MeetMath:[Ref: <a href="https://mp.weixin.qq.com/s?__biz=MzAxNzg3MTE3Ng==&amp;mid=2247485798&amp;idx=1&amp;sn=15a52a1e1fc3a2ba51353b66faa735db&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAxNzg3MTE3Ng==&amp;mid=2247485798&amp;idx=1&amp;sn=15a52a1e1fc3a2ba51353b66faa735db&amp;scene=21#wechat_redirect</a>]</p>
-<p>3Blue1Brown: [Ref:<a href="https://www.bilibili.com/video/av6240005/?spm_id_from=333.788.videocard.2" target="_blank" rel="noopener">https://www.bilibili.com/video/av6240005/?spm_id_from=333.788.videocard.2</a>]</p>
+<p>MeetMath:[Ref: <a href="https://mp.weixin.qq.com/s?__biz=MzAxNzg3MTE3Ng==&amp;mid=2247485798&amp;idx=1&amp;sn=15a52a1e1fc3a2ba51353b66faa735db&amp;scene=21#wechat_redirect]" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAxNzg3MTE3Ng==&amp;mid=2247485798&amp;idx=1&amp;sn=15a52a1e1fc3a2ba51353b66faa735db&amp;scene=21#wechat_redirect]</a></p>
+<p>3Blue1Brown: [Ref:<a href="https://www.bilibili.com/video/av6240005/?spm_id_from=333.788.videocard.2]" target="_blank" rel="noopener">https://www.bilibili.com/video/av6240005/?spm_id_from=333.788.videocard.2]</a></p>
 <h2 id="向量的加法"><a href="#向量的加法" class="headerlink" title="向量的加法"></a>向量的加法</h2><p>向量的加法这种，是唯一一个情况需要把一个向量移开原点的情况。<br>为什么要移开呢？因为可以理解为从 $\vec{v}$ ,<span style="color: red;">走到</span> $\vec{w}$ 就相当于$\vec{v}$+$\vec{w}$</p>
 <img src="/2018/09/03/linear-algebra-graphics/vector_Add.png">
 <h2 id="线性变换"><a href="#线性变换" class="headerlink" title="线性变换"></a>线性变换</h2><p>概念：必须具有两个性质，首先直线必须在变换后还是直线，且原点不能变<br><img src="/2018/09/03/linear-algebra-graphics/linear_function.png"></p>
-<p>如何用数值来描述线性变换？<br>变换后的向量都可以用基本的$\hat{i}$和$\hat{j}$来表示,只要告诉你变换后$\hat{i}$和$\hat{j}$的坐标，你就可以计算出$\begin{bmatrix}x\\\y\end{bmatrix}$</p>
-<p>你就可以计算出$\begin{bmatrix}x\\\y\end{bmatrix}$ -&gt; x$\begin{bmatrix} 1 \\\ -2\end{bmatrix}$ + y$\begin{bmatrix}3 \\\ 0\end{bmatrix}$ = $\begin{bmatrix}1x+3y \\\ -2x+0y \end{bmatrix}$</p>
+<p>如何用数值来描述线性变换？<br>变换后的向量都可以用基本的$\hat{i}$和$\hat{j}$来表示,只要告诉你变换后$\hat{i}$和$\hat{j}$的坐标，你就可以计算出$\begin{bmatrix}x\\y\end{bmatrix}$</p>
+<p>你就可以计算出$\begin{bmatrix}x\\y\end{bmatrix}$ -&gt; x$\begin{bmatrix} 1 \\ -2\end{bmatrix}$ + y$\begin{bmatrix}3 \\ 0\end{bmatrix}$ = $\begin{bmatrix}1x+3y \\ -2x+0y \end{bmatrix}$</p>
 <img src="/2018/09/03/linear-algebra-graphics/ihat.png">
 <p><code>shear</code>的意思是保持x轴不变，然后转y轴</p>
           <!--noindex-->

@@ -895,7 +895,6 @@
 <li>基类约束，如果where后面跟多个类型，这些类型属于and关系，必须同时满足才行</li>
 </ol>
 <p><strong>You can only put one class name and several interfaces to one ‘where’ constraint!</strong><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where T1: Supplier, IConstractor, IComparable, new()</span><br></pre></td></tr></table></figure></div></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -930,7 +929,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public staic void Show&lt;T&gt;(T instance)</span><br><span class="line">where T: People</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(instance.Id); //不会报错，因为告诉了T是属于什么类型</span><br><span class="line">	Console.WriteLine(instance.Name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p><span style="color: red">类型约束</span><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static T DoNothing&lt;T&gt;(T tParameter)</span><br><span class="line">//where T: ISpotrs //接口类型约束</span><br><span class="line">//where T: class // 引用类型约束</span><br><span class="line">//where T: struct // 值类型约束</span><br><span class="line">where T: new() //无参数构造函数约束</span><br><span class="line">&#123;</span><br><span class="line">	//return default(T);//会根据T的类型，产生一个默认值，可以应用于值类型约束的返回</span><br><span class="line"></span><br><span class="line">	//return null; //引用类型约束</span><br><span class="line"></span><br><span class="line">	T t = new T();</span><br><span class="line">	return t; //无参数构造函数返回</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <p>显示声明出来类型和用约束的区别</p>
